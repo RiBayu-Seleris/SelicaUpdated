@@ -43,7 +43,7 @@ const isSelerisCareApplicator = computed(() => route.path === "/sca");
       class="hidden relative lg:flex flex-row w-full h-auto bg-[#FFFFFF] px-10 py-1.5 rounded-[40px] border-[#E9EAEC] border-[1px] shadow-[0px_18px_32px_0px_rgba(0,0,0,0.06)]"
     >
       <router-link :to="LogoLink" class="absolute w-auto h-full left-10 top-0 py-3">
-        <img v-if="logo" :src="logo" alt="Logo" class="w-full h-full object-contain" />
+        <img v-if="logo" :src="logo" alt="Logo" class="w-auto h-full object-contain" />
       </router-link>
       <div class="w-full h-full py-3">
         <MenuNav />

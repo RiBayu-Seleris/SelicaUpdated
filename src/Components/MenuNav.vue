@@ -29,8 +29,9 @@ const defaultProductMenu = [
     label: "Contact",
   },
   {
-    href: "https://seleris.ai/product/seleris-care-applicator",
+    href: "/sca",
     label: "Seleris Care Applicator",
+    target: "_blank", // ← tambahkan ini
   },
 ];
 
@@ -88,7 +89,7 @@ const isSelerisCareApplicator = ref(route.path === "/sca");
     ]"
   >
     <li v-for="(menuDefault, index) in defaultProductMenu" :key="index">
-      <Navlink class="text-[11pt]" :href="menuDefault.href">
+      <Navlink class="text-[11pt]" :href="menuDefault.href" :target="menuDefault.target ?? null">
         {{ menuDefault.label }}
       </Navlink>
     </li>

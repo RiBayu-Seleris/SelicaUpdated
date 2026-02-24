@@ -9,14 +9,16 @@ const props = defineProps({
     type: String,
     required: true,
   },
+  target: {
+    type: String,
+    default: null,
+  },
 });
 
-// Detect external link
 const isExternal = computed(
   () => props.href.startsWith("http://") || props.href.startsWith("https://"),
 );
 
-// Fungsi scroll ke elemen dengan id tertentu
 function scrollToId(id) {
   const el = document.getElementById(id);
   if (!el) return;
@@ -60,7 +62,7 @@ function scrollToId(id) {
     <slot />
   </button>
 
-  <!-- EXTERNAL LINK (TAMBAHAN SAJA) -->
+  <!-- EXTERNAL LINK -->
   <a
     v-else-if="isExternal"
     :href="href"
@@ -80,7 +82,27 @@ function scrollToId(id) {
     <slot />
   </a>
 
-  <!-- INTERNAL ROUTE -->
+  <!-- INTERNAL ROUTE — buka tab baru jika target="_blank" -->
+  <a
+    v-else-if="target === '_blank'"
+    :href="href"
+    target="_blank"
+    rel="noopener noreferrer"
+    :class="[
+      'relative inline-block font-medium',
+      route.path === '/product/lifins'
+        ? 'text-[#374151]'
+        : route.path === '/'
+          ? 'text-[#374151]'
+          : route.path === href
+            ? 'text-[#374151]'
+            : '',
+    ]"
+  >
+    <slot />
+  </a>
+
+  <!-- INTERNAL ROUTE biasa -->
   <router-link
     v-else
     :to="href"

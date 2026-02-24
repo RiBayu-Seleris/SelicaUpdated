@@ -1687,8 +1687,8 @@ watch(showModal, (isOpen) => {
             </a>
 
             <!-- SECONDARY BUTTON -->
-            <router-link
-              to="/contact"
+            <a
+              href="https://seleris.ai/contact"
               aria-label="Hubungi Admin"
               class="inline-flex justify-center items-center gap-x-3 w-full lg:w-auto px-6 md:px-8 lg:px-4 xl:px-6 py-2.5 md:py-2 xl:py-3 bg-[#31423F] rounded-[12px]"
             >
@@ -1712,7 +1712,7 @@ watch(showModal, (isOpen) => {
               >
                 Hubungi Admin
               </span>
-            </router-link>
+            </a>
           </div>
         </div>
         <!-- Phone Desktop -->
