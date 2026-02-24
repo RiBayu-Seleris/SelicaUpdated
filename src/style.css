@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  scrollbar-gutter: stable;
+}
+
+/* style.css */
+@layer utilities {
+  .border-gradient {
+    background: linear-gradient(to right, blue, red);
+    padding: 1px; /* untuk membuat efek border tipis */
+    border-radius: 1rem;
+  }
+  .border-gradient-inner {
+    border-radius: 0.95rem; /* sedikit lebih kecil dari luar */
+    background-color: #1d1f23; /* atau bg-white, atau dark:bg */
+  }
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.custom-pagination .swiper-pagination-bullet {
+  @apply bg-gray-800 rounded-full transition-all;
+}
+
+/* Aktif */
+.custom-pagination .swiper-pagination-bullet-active {
+  @apply bg-[#1DC457];
+}
+
+/* Dark mode */
+.dark .custom-pagination .swiper-pagination-bullet {
+  @apply bg-white;
+}
+
+.dark .custom-pagination .swiper-pagination-bullet-active {
+  @apply bg-[#1DC457];
+}
+
+.custom-pagination2 .custom-bullet {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  color: white;
+  border-radius: full;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.custom-pagination2 .swiper-pagination-bullet-active {
+  background-color: #1dc457;
+}
+
+.text-animate-hover {
+  position: relative;
+  display: inline-block;
+  background-image: linear-gradient(to right, #18ab53 0%, #18ab53 100%);
+  background-size: 0% 100%;
+  background-repeat: no-repeat;
+  background-position: left;
+  -webkit-background-clip: text;
+  background-clip: text;
+  transition:
+    background-size 0.5s ease,
+    -webkit-text-fill-color 0.5s ease;
+}
+
+.text-animate-hover:hover {
+  background-size: 100% 100%;
+  -webkit-text-fill-color: transparent;
+}
+
+.dark .dark-text-animate-hover {
+  position: relative;
+  display: inline-block;
+  background-image: linear-gradient(to right, #eeeeee 0%, #eeeeee 100%);
+  background-size: 0% 100%;
+  background-repeat: no-repeat;
+  background-position: left;
+  -webkit-background-clip: text;
+  background-clip: text;
+  transition:
+    background-size 0.5s ease,
+    -webkit-text-fill-color 0.5s ease;
+}
+.dark .dark-text-animate-hover:hover {
+  background-size: 100% 100%;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Autofill Light */
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
+  -webkit-text-fill-color: #000 !important;
+  border: 0.25px solid #d1d5db !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Autofill Light Focus */
+input:-webkit-autofill:focus {
+  -webkit-box-shadow:
+    0 0 0 1px #2ab857 inset,
+    0 0 0px 1000px #ffffff inset !important;
+  -webkit-text-fill-color: #000 !important;
+  border: 0.25px solid #2ab857 !important;
+}
+
+/* Autofill Dark */
+.dark input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #323232 inset !important;
+  -webkit-text-fill-color: #fafafa !important;
+  border: 0.25px solid rgba(250, 250, 250, 0.25) !important;
+  box-shadow: none !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Autofill Dark Focus */
+.dark input:-webkit-autofill:focus {
+  -webkit-box-shadow:
+    0 0 0 1px #2ab857 inset,
+    0 0 0px 1000px #323232 inset !important;
+  -webkit-text-fill-color: #fafafa !important;
+  border: 0.25px solid #2ab857 !important;
+  outline: none;
+  box-shadow: 0 0 0 1px #2ab857 !important;
+}
+
+/* Trigger repaint */
+.dark input:-webkit-autofill {
+  animation: autofill-fix-dark 0s 1;
+}
+@keyframes autofill-fix-dark {
+}
