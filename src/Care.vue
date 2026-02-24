@@ -212,7 +212,7 @@ const stepsWithPath = careWorkSteps.map((step) => ({
       />
       <div class="w-full h-auto md:max-w-6xl mx-auto relative z-30">
         <DownloadFrame
-          appname="Seleris Medins"
+          appname="Seleris Care"
           description="Stay in control of your health data and claims anytime, anywhere. Our
           AI-powered platform makes medical data processing, claims tracking,
           and risk analysis easier and faster."
@@ -227,7 +227,7 @@ const stepsWithPath = careWorkSteps.map((step) => ({
       id="bookdemo"
     >
       <BookDemoProduct
-        title="Seleris Medins A Complete Solution for Your Health Needs"
+        title="Seleris Care A Complete Solution for Your Health Needs"
         :framebookdemo="medinsframebook"
         colorarrow="text-[#42C5AF]"
       />

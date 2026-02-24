@@ -53,7 +53,7 @@ const LogoLink = computed(() => {
           </nav>
         </div>
       </div>
-      <div class="flex items-center col-span-10 h-auto" />
+      <div class="flex items-center col-span-1 h-auto" />
     </div>
 
     <!-- Mobile Navbar -->

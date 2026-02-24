@@ -2,13 +2,13 @@
 export const testimonials = [
   {
     comment:
-      "Seleris Medins helped us reduce claim processing time by 70%. It’s been a game-changer for our operations.",
+      "Seleris Care helped us reduce claim processing time by 70%. It’s been a game-changer for our operations.",
     authorName: "Arianto Nugroho",
     authorPosition: "Chief Operations Officer, Nusantara Health Insurance",
   },
   {
     comment:
-      "With Seleris Medins, our fraud detection capabilities improved dramatically. It’s fast, reliable, and scalable.",
+      "With Seleris Care, our fraud detection capabilities improved dramatically. It’s fast, reliable, and scalable.",
     authorName: "Siti Ramadhani",
     authorPosition: "VP Claims Management, Medisafe Corp",
   },
@@ -20,7 +20,7 @@ export const testimonials = [
   },
   {
     comment:
-      "Regulatory compliance used to be a nightmare. Thanks to Seleris Medins, we now meet standards effortlessly.",
+      "Regulatory compliance used to be a nightmare. Thanks to Seleris Care, we now meet standards effortlessly.",
     authorName: "Veronica Lim",
     authorPosition: "Compliance Manager, HealthPlus Global",
   },
@@ -32,7 +32,7 @@ export const testimonials = [
   },
   {
     comment:
-      "Seamless API integration and responsive support team. Seleris Medins has become a key part of our ecosystem.",
+      "Seamless API integration and responsive support team. Seleris Care has become a key part of our ecosystem.",
     authorName: "Clara Wijaya",
     authorPosition: "IT Solutions Lead, Bumi Insure",
   },
