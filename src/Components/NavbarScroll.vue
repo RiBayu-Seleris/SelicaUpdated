@@ -17,20 +17,11 @@ const isSelerisCredit = computed(() => route.path === "/product/seleris-credit")
 const isSelerisCareApplicator = computed(() => route.path === "/product/seleris-care-applicator");
 
 const LogoLink = computed(() => {
-  if (route.path === "/product/credit-cover") {
-    return "/product/credit-cover";
-  }
-  if (route.path === "/product/medins") {
-    return "/product/medins";
-  }
-  if (route.path === "/product/lifins") {
-    return "/product/lifins";
-  }
   if (route.path === "/") {
     return "/";
   }
-  if (route.path === "/product/seleris-credit") {
-    return "/product/seleris-credit";
+  if (route.path === "/sca") {
+    return "/sca";
   }
   return "";
 });

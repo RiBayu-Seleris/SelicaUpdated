@@ -5,6 +5,7 @@ import router from "./router";
 import "./style.css";
 // import AOS from "aos";
 // import "aos/dist/aos.css";
+import VueApexCharts from "vue3-apexcharts";
 
 import App from "./App.vue";
 import { useSidebarStore } from "@/stores/sidebar"; // ✅ import store
@@ -14,6 +15,7 @@ const app = createApp(App);
 const pinia = createPinia();
 app.use(pinia);
 app.use(router);
+app.component("apexchart", VueApexCharts);
 
 // ✅ Set title per halaman
 router.beforeEach((to, from, next) => {

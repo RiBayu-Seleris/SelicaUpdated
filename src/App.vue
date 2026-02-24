@@ -33,13 +33,7 @@ const isTooltipOpen = ref(false);
 // ================= COMPUTED =================
 const showTooltip = computed(() => scrollStore.isScrolled);
 
-const isSelerisCredit = computed(() => route.path === "/product/seleris-credit");
-
-const isSelerisCareApplicator = computed(() => route.path === "/product/seleris-care-applicator");
-
-const isProductRoute = computed(() => route.path.startsWith("/product"));
-
-const isBlogDetail = computed(() => route.path.startsWith("/blog/"));
+const isSelerisCareApplicator = computed(() => route.path === "/sca");
 
 // Scroll progress
 const scrollProgress = computed(() => {
@@ -175,7 +169,7 @@ watch(
       class="relative w-full mx-auto font-poppins animate__animated animate__fadeIn animate__slower"
     >
       <main class="relative w-full mx-auto">
-        <header v-if="!isSelerisCredit && !isSelerisCareApplicator" class="fixed top-0 w-full z-50">
+        <header v-if="!isSelerisCareApplicator" class="fixed top-0 w-full z-50">
           <transition name="slide-down" mode="out-in">
             <component :is="scrollStore.isScrolled ? NavbarScroll : Navbar" />
           </transition>

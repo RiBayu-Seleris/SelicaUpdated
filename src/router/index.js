@@ -7,6 +7,12 @@ const routes = [
     component: () => import("@/Care.vue"),
     meta: { title: "Health Care" },
   },
+  {
+    path: "/sca",
+    name: "sca",
+    component: () => import("@/CareApplicator.vue"),
+    meta: { title: "SCA" },
+  },
 
   // catch-all route (harus di paling bawah)
   {

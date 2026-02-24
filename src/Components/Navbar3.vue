@@ -25,13 +25,13 @@ const LogoLink = computed(() => {
   if (route.path === "/product/seleris-credit") {
     return "/product/seleris-credit";
   }
-  if (route.path === "/product/seleris-care-applicator") {
-    return "/product/seleris-care-applicator";
+  if (route.path === "/sca") {
+    return "/sca";
   }
   return "";
 });
 
-const isSelerisCareApplicator = computed(() => route.path === "/product/seleris-care-applicator");
+const isSelerisCareApplicator = computed(() => route.path === "/sca");
 </script>
 
 <template>
@@ -49,13 +49,17 @@ const isSelerisCareApplicator = computed(() => route.path === "/product/seleris-
         <MenuNav />
       </div>
 
-      <div v-if="isSelerisCareApplicator" class="absolute w-auto h-full right-10 top-0 py-3">
+      <a
+        href="https://sca.seleriscare.ai/register"
+        v-if="isSelerisCareApplicator"
+        class="absolute w-auto h-full right-10 top-0 py-3"
+      >
         <div
           class="w-auto h-full flex items-center justify-center px-6 bg-[#13B89C] shadow-[0px_4px_8px_0px_#13B89C40] rounded-[24px]"
         >
           <span class="text-[#FFFFFF] font-[600] text-[14px]">Gabung SCA</span>
         </div>
-      </div>
+      </a>
     </div>
 
     <!-- Mobile Navbar -->
