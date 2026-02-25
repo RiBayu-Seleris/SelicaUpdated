@@ -102,7 +102,7 @@ const stepsWithPath = careWorkSteps.map((step) => ({
         <div class="w-full h-auto mt-10 md:mt-10 lg:mt-10">
           <AboutUsDescription
             :image="imageAbout"
-            title="AI Health Metrics Insurance Application"
+            title="AI Health Metrics Assistance Application"
             description="Seleris Care is an AI-powered platform built for corporate health and wellness. It automates employee health monitoring, delivers real-time preventive care insights, and helps companies optimize wellness programs while reducing medical costs by up to 20%"
           />
         </div>
@@ -156,14 +156,14 @@ const stepsWithPath = careWorkSteps.map((step) => ({
     </section>
 
     <!-- Client -->
-    <section class="relative w-full h-auto max-w-[1440px] mx-auto px-8 mt-20" id="client">
+    <section class="relative w-full h-auto max-w-[1440px] mx-auto lg:px-8 mt-20" id="client">
       <div class="w-full h-auto flex flex-col">
         <TitleAndSubCard
           title="Our Client"
           subtitle="Seleris Meditekno Internasional"
           subtitleColor="text-[#42C5AF]"
         />
-        <div class="mt-10 px-12">
+        <div class="mt-10 lg:px-12">
           <ClientCardFrameProduct :client-logos="clientLogos" />
         </div>
       </div>
@@ -210,12 +210,10 @@ const stepsWithPath = careWorkSteps.map((step) => ({
         positionClass="top-[150px] sm:-top-5 xl:-top-[200px]"
         heightClass="w-full h-auto lg:h-full"
       />
-      <div class="w-full h-auto md:max-w-6xl mx-auto relative z-30">
+      <div class="w-full h-auto md:max-w-3xl lg:max-w-6xl mx-auto relative z-30">
         <DownloadFrame
           appname="Seleris Care"
-          description="Stay in control of your health data and claims anytime, anywhere. Our
-          AI-powered platform makes medical data processing, claims tracking,
-          and risk analysis easier and faster."
+          description="Enable smarter employee health monitoring with real-time wellness insights, AI-powered preventive analytics, and proactive health cost management — all in one secure corporate platform."
           :img="DownloadImage"
         />
       </div>

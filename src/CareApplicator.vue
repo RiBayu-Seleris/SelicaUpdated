@@ -234,7 +234,7 @@ watch(targetPerDay, (val) => {
 onMounted(() => {
   interval = setInterval(() => {
     activeIndex.value = (activeIndex.value + 1) % whatsSelerisCare.length;
-  }, 2500);
+  }, 3000);
 });
 
 onMounted(async () => {
@@ -422,11 +422,12 @@ watch(showModal, (isOpen) => {
               (data.id === 2 || data.id === 4) && 'mt-8 md:mt-14',
 
               index === activeIndex &&
-                'bg-gradient-to-tl from-[#13B89C00] from-60% via-[#2EDFC1] via-100% to-white -translate-y-2 shadow-[0_21px_16.9px_0_#0000001A]',
+                'animated-border-wrapper -translate-y-2 shadow-[0_21px_16.9px_0_#0000001A]',
+              ,
             ]"
           >
             <div
-              class="w-full h-[190px] sm:h-[150px] md:h-[180px] lg:h-[190px] xl:h-[180px] flex flex-col justify-between bg-white rounded-2xl p-4 lg:p-3 xl:p-4"
+              class="w-full h-full flex flex-col justify-between bg-white rounded-2xl p-4 lg:p-3 xl:p-4"
             >
               <div
                 class="w-auto h-auto"
@@ -1399,9 +1400,7 @@ watch(showModal, (isOpen) => {
         <div
           class="md:max-w-4xl lg:max-w-3xl xl:max-w-4xl md:mx-auto w-full h-auto flex flex-col sm:flex-row gap-y-5 sm:gap-x-4 xl:gap-x-8 px-4"
         >
-          <div
-            class="w-full h-auto bg-gradient-to-b from-[#42C5AF]/0 to-[#54B5FF] p-0.5 rounded-xl overflow-hidden"
-          >
+          <div class="animated-border-wrapper-blue w-full h-auto p-0.5 rounded-xl overflow-hidden">
             <div
               class="w-full h-full bg-[#FFFFFF] flex flex-col gap-y-7 px-4 lg:px-10 pt-10 pb-10 sm:pt-5 md:pt-10 md:pb-14 xl:pb-20 rounded-xl"
             >
@@ -1454,9 +1453,7 @@ watch(showModal, (isOpen) => {
               </div>
             </div>
           </div>
-          <div
-            class="w-full h-auto bg-gradient-to-b from-[#3BE3C9] to-[#18BFA5]/0 p-0.5 rounded-xl overflow-hidden"
-          >
+          <div class="animated-border-wrapper-teal w-full h-auto p-0.5 rounded-xl overflow-hidden">
             <div
               class="w-full h-full bg-[#FFFFFF] flex flex-col gap-y-7 px-4 lg:px-10 pt-10 pb-10 sm:pt-5 md:pt-10 md:pb-14 xl:pb-20 rounded-xl"
             >
@@ -1774,5 +1771,72 @@ input[type="number"]::-webkit-outer-spin-button {
 .zoom-leave-from {
   opacity: 1;
   transform: scale(1); /* ukuran final */
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes spin-border {
+  to {
+    --angle: 360deg;
+  }
+}
+
+.animated-border-wrapper {
+  background: conic-gradient(
+    from var(--angle),
+    #13b89c00 0%,
+    #39d5bc 45%,
+    #39d5bc 50%,
+    #13b89c00 90%
+  );
+  animation: spin-border 4s linear infinite;
+}
+
+/* Card 1 - Blue */
+.animated-border-wrapper-blue {
+  background: conic-gradient(
+    from var(--angle),
+    #42c5af00 0%,
+    #54b5ff 40%,
+    #54b5ff 60%,
+    #42c5af00 100%
+  );
+  animation: none;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.animated-border-wrapper-blue:hover {
+  animation: spin-border 4s linear infinite;
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(84, 181, 255, 0.25);
+}
+
+/* Card 2 - Teal - state normal: static, tidak bergerak */
+.animated-border-wrapper-teal {
+  background: conic-gradient(from 180deg, #18bfa500 0%, #3be3c9 40%, #3be3c9 60%, #18bfa500 100%);
+  animation: none;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* Card 2 - Teal - hover: animasi aktif + override background */
+.animated-border-wrapper-teal:hover {
+  background: conic-gradient(
+    from calc(180deg + var(--angle)),
+    #18bfa500 0%,
+    #3be3c9 40%,
+    #3be3c9 60%,
+    #18bfa500 100%
+  ) !important;
+  animation: spin-border 4s linear infinite;
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(59, 227, 201, 0.25);
 }
 </style>

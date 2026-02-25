@@ -15,7 +15,9 @@ defineProps({
 </script>
 
 <template>
-  <div class="w-full h-auto flex flex-col-reverse md:flex-row justify-between gap-x-20">
+  <div
+    class="w-full h-auto flex flex-col-reverse md:flex-row justify-between gap-x-20 px-0 md:px-10 lg:px-0"
+  >
     <div
       class="w-full h-auto flex flex-col justify-center items-center px-8 md:pl-0 gap-y-6 md:gap-y-8 mt-10"
     >

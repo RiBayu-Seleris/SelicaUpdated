@@ -96,10 +96,10 @@ const connectColor = computed(() => {
             </div>
             <div class="w-full h-auto mt-4">
               <p
-                class="text-[#B8B8B8] text-base xl:text-[18px] text-justify lg:text-left xl:text-left"
+                class="text-[#B8B8B8] text-base xl:text-[16px] text-justify lg:text-left xl:text-left"
               >
-                Transform the Life and Medical industry by making it more efficient, accurate, and
-                accessible for everyone
+                Transform corporate healthcare management through AI-driven wellness monitoring,
+                preventive risk detection, and intelligent health cost optimization.
               </p>
             </div>
             <div class="w-full h-auto mt-4">

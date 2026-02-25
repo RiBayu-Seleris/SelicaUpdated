@@ -25,7 +25,7 @@ const defaultProductMenu = [
     label: "FAQ",
   },
   {
-    href: "/contact",
+    href: "https://seleris.ai/contact",
     label: "Contact",
   },
   {
@@ -53,7 +53,7 @@ const careApplicatorProductMenu = [
     label: "FAQ",
   },
   {
-    href: "/contact",
+    href: "https://seleris.ai/contact",
     label: "Contact",
   },
 ];
