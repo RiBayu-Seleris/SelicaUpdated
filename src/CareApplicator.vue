@@ -1638,7 +1638,7 @@ watch(showModal, (isOpen) => {
     >
       <div class="w-full h-auto flex flex-col gap-y-5">
         <div class="w-full h-auto flex flex-row gap-x-5">
-          <div class="w-10 h-10 shrink-0 flex justify-center items-center">
+          <div class="w-8 h-8 md:w-10 md:h-10 shrink-0 flex justify-center items-center">
             <img
               src="@/assets/Products/images/Care-Applicator/disclaimer-icon.svg"
               alt=""
@@ -1647,13 +1647,13 @@ watch(showModal, (isOpen) => {
             />
           </div>
           <div class="w-full h-auto flex justify-start items-center">
-            <p class="text-[#374151] font-[600] md:text-[20px]">
+            <p class="text-[#374151] font-[600] text-[16px] md:text-[20px]">
               Medical Disclaimer & Legal Notice
             </p>
           </div>
         </div>
         <div
-          class="w-full h-auto flex flex-col gap-y-5 text-[#374151] font-[400] text-[16px] tracking-normal leading-relaxed"
+          class="w-full h-auto flex flex-col gap-y-5 text-[#374151] font-[400] text-[12px] md:text-[16px] tracking-normal leading-relaxed"
         >
           <p>
             <span class="font-[600]">
