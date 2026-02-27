@@ -24,7 +24,7 @@ defineProps({
     >
       <div class="w-full h-full flex items-center">
         <div class="w-full h-auto flex flex-col gap-y-2 md:gap-y-4 lg:gap-y-8">
-          <div class="w-full h-full">
+          <div class="w-full h-full pr-5 sm:pr-0">
             <p
               class="text-[#FAFAFA] font-[500] text-[10px] md:text-[22px] lg:text-[24px] xl:text-[36px] leading-tight"
             >
@@ -32,18 +32,16 @@ defineProps({
             </p>
           </div>
           <div class="w-full h-auto">
-            <p
-              class="text-[#FAFAFA] font-[500] text-[10px] md:text-[20px] lg:text-[24px]"
-            >
+            <p class="text-[#FAFAFA] font-[500] text-[10px] md:text-[20px] lg:text-[24px]">
               Request Demo Now!
             </p>
           </div>
         </div>
       </div>
-      <div class="w-full h-full flex items-center md:pr-10">
+      <div class="w-auto shrink-0 sm:w-full sm:shrink h-full flex items-center md:pr-10">
         <div class="w-full h-auto flex flex-col">
           <div class="w-full h-[80px] flex items-center justify-end">
-            <a href="/book-a-demo" target="_blank">
+            <a href="https://seleris.ai/book-a-demo" target="_blank">
               <div
                 class="w-auto h-auto md:h-full py-1 md:py-2 rounded-md md:rounded-lg flex flex-row px-2 md:px-5 bg-[#FAFAFA]"
               >
@@ -52,11 +50,7 @@ defineProps({
                     `w-full h-full flex items-center justify-center gap-x-2 md:gap-x-2 ${colorarrow}`,
                   ]"
                 >
-                  <p
-                    class="font-[500] text-[10px] md:text-[19px] lg:text-[24px]"
-                  >
-                    Book a Demo
-                  </p>
+                  <p class="font-[500] text-[10px] md:text-[19px] lg:text-[24px]">Book a Demo</p>
                   <svg
                     class="w-6 h-6 md:w-12 md:h-12"
                     viewBox="0 0 48 48"

@@ -3,14 +3,9 @@ export const payPerScanPackages = [
     id: "essential",
     label: "ESSENTIAL",
     badge: null,
-    price: 120000,
+    price: 179000,
     parameterTotal: 15,
-    features: [
-      "15 Parameter Kesehatan",
-      "Basic Health Report",
-      "Health Score",
-      "Hasil Instan",
-    ],
+    features: ["15 Parameter Kesehatan", "Basic Health Report", "Health Score", "Hasil Instan"],
     commission: { direct: 18000, team: 12000 },
     modalValues: [
       /* isi */
@@ -20,7 +15,7 @@ export const payPerScanPackages = [
     id: "core",
     label: "CORE",
     badge: "Populer",
-    price: 150000,
+    price: 239000,
     parameterTotal: 20,
     features: [
       "20 Parameter Kesehatan",
@@ -38,7 +33,7 @@ export const payPerScanPackages = [
     id: "prime",
     label: "PRIME",
     badge: "Terlengkap",
-    price: 200000,
+    price: 299000,
     parameterTotal: 30,
     features: [
       "30 Parameter (All In)",

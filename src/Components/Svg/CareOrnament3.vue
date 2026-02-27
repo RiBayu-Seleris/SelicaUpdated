@@ -11,9 +11,7 @@ defineProps({
 
 <template>
   <!-- w-auto -->
-  <figure
-    :class="[`hidden sm:flex sm:absolute ${positionClass} ${heightClass}`]"
-  >
+  <figure :class="[`absolute sm:flex sm:absolute ${positionClass} ${heightClass}`]">
     <img
       src="@/assets/Products/images/CareOrnament3.png"
       alt="CareOrnament"

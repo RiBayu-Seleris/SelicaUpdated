@@ -51,6 +51,7 @@ const isSelerisCareApplicator = computed(() => route.path === "/sca");
 
       <a
         href="https://sca.seleriscare.ai/register"
+        target="_blank"
         v-if="isSelerisCareApplicator"
         class="absolute w-auto h-full right-10 top-0 py-3"
       >

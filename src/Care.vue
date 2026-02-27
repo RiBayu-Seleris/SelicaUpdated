@@ -29,7 +29,7 @@ import CareOrnament4 from "@/Components/Svg/CareOrnament4.vue";
 
 import imageAbout from "@/assets/Products/images/Care/about-care.png";
 import FrameLineWorks from "@/Components/Svg/HealthCareDescriptionWork.vue";
-import medinsframebook from "@/assets/Products/images/bg-book-demo-medins.png";
+import medinsframebook from "@/assets/Products/images/bg-book-demo-care.png";
 
 import DownloadImage from "@/assets/Products/images/Care/download-care.png";
 
@@ -88,11 +88,11 @@ const stepsWithPath = careWorkSteps.map((step) => ({
     <!-- About Us -->
     <section class="relative w-full h-auto" id="about">
       <CareOrnament3
-        positionClass="top-[150px] sm:-top-5 xl:-top-7"
+        positionClass="top-[50px] sm:-top-5 xl:-top-7"
         heightClass="w-full h-auto lg:h-full"
       />
       <CareOrnament2
-        positionClass="bottom-[100px] sm:bottom-0 xl:top-44"
+        positionClass="bottom-[200px] sm:bottom-0 xl:top-44"
         heightClass="w-full h-auto lg:h-full"
       />
       <div
@@ -111,7 +111,7 @@ const stepsWithPath = careWorkSteps.map((step) => ({
 
     <!-- How Application Work -->
     <section
-      class="relative w-full h-auto max-w-[1440px] mx-auto mt-14 lg:mt-20 scroll-mt-[80px]"
+      class="relative w-full h-auto max-w-[1440px] mx-auto mt-14 lg:mt-20 xl:mt-56 scroll-mt-[80px]"
       id="howapplicationwork"
     >
       <!-- Application Work Slider -->
@@ -205,12 +205,12 @@ const stepsWithPath = careWorkSteps.map((step) => ({
     </section>
 
     <!-- Download App -->
-    <section class="relative w-full h-auto max-w-[1440px] mx-auto mt-20 lg:mt-40" id="download">
+    <section class="relative w-full h-auto mt-20 lg:mt-40" id="download">
       <CareOrnament4
-        positionClass="top-[150px] sm:-top-5 xl:-top-[200px]"
+        positionClass="top-[150px] sm:-top-5 top-[100px] lg:-top-[130px] xl:-top-[180px]"
         heightClass="w-full h-auto lg:h-full"
       />
-      <div class="w-full h-auto md:max-w-3xl lg:max-w-6xl mx-auto relative z-30">
+      <div class="w-full h-auto md:max-w-3xl lg:max-w-6xl xl:max-w-7xl mx-auto relative z-30">
         <DownloadFrame
           appname="Seleris Care"
           description="Enable smarter employee health monitoring with real-time wellness insights, AI-powered preventive analytics, and proactive health cost management — all in one secure corporate platform."
@@ -221,7 +221,7 @@ const stepsWithPath = careWorkSteps.map((step) => ({
 
     <!-- Book Demo -->
     <section
-      class="relative w-full h-auto max-w-[1440px] mx-auto mt-20 lg:mt-40 px-8"
+      class="relative w-full h-auto max-w-7xl mx-auto mt-20 lg:mt-40 px-8 lg:px-16 xl:px-10"
       id="bookdemo"
     >
       <BookDemoProduct

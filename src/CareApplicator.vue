@@ -322,6 +322,7 @@ watch(showModal, (isOpen) => {
             >
               <a
                 href="https://sca.seleriscare.ai/register"
+                target="_blank"
                 aria-label="Daftar Jadi SCA"
                 class="inline-flex justify-between md:justify-start items-center gap-x-3 w-full lg:w-auto px-20 md:px-8 lg:px-4 xl:px-6 py-3 md:py-2 bg-[#3DDAC1] rounded-[12px]"
               >
@@ -530,50 +531,54 @@ watch(showModal, (isOpen) => {
             <div class="w-full h-auto flex flex-col gap-y-5 xls:gap-y-5 lg:pl-2 lg:pr-10">
               <div class="w-full h-auto flex flex-row gap-5 xl:gap-5 xls:gap-5">
                 <div
-                  class="w-full h-auto flex flex-col bg-[#DDDDDD]/40 gap-y-5 border-[#FFFFFF]/20 border-[1px] px-5 py-5 md:py-10 lg:py-5 xl:py-10 rounded-[12px]"
+                  class="w-full h-auto flex flex-col bg-[#DDDDDD]/40 gap-y-5 lg:gap-y-3 xl:gap-y-5 border-[#FFFFFF]/20 border-[1px] px-5 lg:px-3 xl:px-5 py-5 md:py-10 lg:py-3 xl:py-10 rounded-[12px]"
                 >
                   <div class="w-full h-auto">
                     <img
                       src="@/assets/Products/images/Care-Applicator/mitra-resmi-icon1.png"
                       alt=""
-                      class="w-14 h-14 md:w-auto md:h-auto lg:w-14 lg:h-14 xl:w-auto xl:h-auto object-contain"
+                      class="w-14 h-14 md:w-auto md:h-auto lg:w-12 lg:h-12 xl:w-auto xl:h-auto object-contain"
                     />
                   </div>
                   <div class="w-full h-auto flex flex-col">
                     <div class="w-full h-auto flex">
                       <span
-                        class="text-[#FFFFFF] font-[600] text-[16px] md:text-[24px] lg:text-[18px] xl:text-[24px]"
+                        class="text-[#FFFFFF] font-[600] text-[16px] md:text-[24px] lg:text-[16px] xl:text-[24px]"
                       >
                         Partner Resmi
                       </span>
                     </div>
                     <div class="w-full h-auto flex">
-                      <span class="text-[#ECECEC] font-[400] text-[10px] md:text-[12px]">
+                      <span
+                        class="text-[#ECECEC] font-[400] text-[10px] md:text-[12px] lg:text-[10px] xl:text-[14px]"
+                      >
                         Telah melalui proses verifikasi dan sertifikasi
                       </span>
                     </div>
                   </div>
                 </div>
                 <div
-                  class="w-full h-auto flex flex-col bg-[#DDDDDD]/40 gap-y-5 border-[#FFFFFF]/20 border-[1px] px-5 py-5 md:py-10 lg:py-5 xl:py-10 rounded-[12px]"
+                  class="w-full h-auto flex flex-col bg-[#DDDDDD]/40 gap-y-5 lg:gap-y-3 xl:gap-y-5 border-[#FFFFFF]/20 border-[1px] px-5 lg:px-3 xl:px-5 py-5 md:py-10 lg:py-3 xl:py-10 rounded-[12px]"
                 >
                   <div class="w-full h-auto">
                     <img
                       src="@/assets/Products/images/Care-Applicator/mitra-resmi-icon2.png"
                       alt=""
-                      class="w-14 h-14 md:w-auto md:h-auto lg:w-14 lg:h-14 xl:w-auto xl:h-auto object-contain"
+                      class="w-14 h-14 md:w-auto md:h-auto lg:w-12 lg:h-12 xl:w-auto xl:h-auto object-contain"
                     />
                   </div>
                   <div class="w-full h-auto flex flex-col">
                     <div class="w-full h-auto flex">
                       <span
-                        class="text-[#FFFFFF] font-[600] text-[16px] md:text-[24px] lg:text-[18px] xl:text-[24px] whitespace-nowrap"
+                        class="text-[#FFFFFF] font-[600] text-[16px] md:text-[24px] lg:text-[16px] xl:text-[24px] whitespace-nowrap"
                       >
                         Solusi Kesehatan
                       </span>
                     </div>
                     <div class="w-full h-auto flex">
-                      <span class="text-[#ECECEC] font-[400] text-[10px] md:text-[12px]">
+                      <span
+                        class="text-[#ECECEC] font-[400] text-[10px] md:text-[12px] lg:text-[10px] xl:text-[14px]"
+                      >
                         Didukung teknologi scanning modern
                       </span>
                     </div>
@@ -600,7 +605,7 @@ watch(showModal, (isOpen) => {
                   <div class="w-full h-auto flex flex-col justify-center gap-y-1 md:gap-y-0">
                     <div class="w-full h-auto flex">
                       <span
-                        class="text-[#FFFFFF] font-[600] text-[16px] md:text-[20px] lg:text-[18px] xl:text-[20px]"
+                        class="text-[#FFFFFF] font-[600] text-[16px] md:text-[20px] lg:text-[16px] xl:text-[20px]"
                       >
                         Platform Digital Pintar
                       </span>
@@ -1627,9 +1632,64 @@ watch(showModal, (isOpen) => {
       </div>
     </section>
 
+    <!-- DISCLAIMER -->
+    <section
+      class="relative w-full h-full rounded-[20px] z-20 mx-auto max-w-[1440px] px-8 md:px-12 lg:px-16 xl:px-20 xls:px-32 mt-20 py-10 bg-[#FAFAFA]"
+    >
+      <div class="w-full h-auto flex flex-col gap-y-5">
+        <div class="w-full h-auto flex flex-row gap-x-5">
+          <div class="w-10 h-10 shrink-0 flex justify-center items-center">
+            <img
+              src="@/assets/Products/images/Care-Applicator/disclaimer-icon.svg"
+              alt=""
+              srcset=""
+              class="w-full h-full object-contain"
+            />
+          </div>
+          <div class="w-full h-auto flex justify-start items-center">
+            <p class="text-[#374151] font-[600] md:text-[20px]">
+              Medical Disclaimer & Legal Notice
+            </p>
+          </div>
+        </div>
+        <div
+          class="w-full h-auto flex flex-col gap-y-5 text-[#374151] font-[400] text-[16px] tracking-normal leading-relaxed"
+        >
+          <p>
+            <span class="font-[600]">
+              Seleris Care merupakan aplikasi/perangkat lunak berbasis teknologi kecerdasan buatan
+              yang dikembangkan sebagai alat skrining dan pemantauan kesehatan untuk tujuan deteksi
+              dini</span
+            >, pemantauan parameter kesehatan secara berkala, serta pendukung pengambilan keputusan
+            terkait gaya hidup dan pencegahan. Sistem ini tidak dimaksudkan, dirancang, maupun
+            diposisikan sebagai alat diagnosis medis, tidak menggantikan pemeriksaan medis
+            komprehensif, pemeriksaan laboratorium, tindakan diagnostik klinis, maupun konsultasi
+            dan keputusan profesional oleh dokter atau tenaga kesehatan berlisensi.
+          </p>
+          <p>
+            <span class="font-[600]">
+              Seluruh hasil, skor, indikator, maupun rekomendasi yang ditampilkan dalam laporan ini
+              bersifat informatif dan indikatif berdasarkan algoritma analitik sistem, sehingga
+              tidak dapat dijadikan sebagai satu-satunya dasar dalam penegakan diagnosis atau
+              penentuan terapi medis</span
+            >. Apabila ditemukan hasil dengan kategori abnormal, berisiko, atau memerlukan perhatian
+            khusus, pengguna wajib melakukan konsultasi dengan dokter atau tenaga kesehatan yang
+            berwenang serta, apabila diperlukan, menjalani pemeriksaan penunjang atau laboratorium
+            untuk konfirmasi sesuai standar praktik kedokteran dan regulasi yang berlaku.
+          </p>
+          <p class="font-[600]">
+            Dengan menerima dan menggunakan laporan ini, pengguna memahami dan menyetujui bahwa
+            Seleris Care berfungsi sebagai alat skrining dan monitoring non-diagnostik, serta
+            membebaskan pengembang dan/atau penyedia layanan dari tanggung jawab atas penggunaan
+            hasil di luar tujuan yang dimaksudkan atau tanpa tindak lanjut medis yang semestinya.
+          </p>
+        </div>
+      </div>
+    </section>
+
     <!-- Akses Eksklusif -->
     <section
-      class="relative w-full h-full rounded-[20px] z-20 mx-auto max-w-[1440px] px-8 md:px-12 lg:px-16 xl:px-20 xls:px-32 mt-20 md:mt-32 pt-20"
+      class="relative w-full h-full rounded-[20px] z-20 mx-auto max-w-[1440px] px-8 md:px-12 lg:px-16 xl:px-20 xls:px-32 mt-20 pt-20"
     >
       <div
         class="w-full h-auto flex flex-col lg:flex-row bg-[#EAFCFA] gap-x-5 gap-y-6 md:gap-y-8 lg:gap-y-0 px-0 md:px-6 lg:px-10 xl:px-20 py-10 md:py-20 xls:py-16 rounded-[20px] md:rounded-[48px]"
@@ -1673,6 +1733,7 @@ watch(showModal, (isOpen) => {
             <!-- PRIMARY BUTTON -->
             <a
               href="https://sca.seleriscare.ai/register"
+              target="_blank"
               aria-label="Daftar Jadi SCA"
               class="inline-flex justify-center items-center gap-x-3 w-full lg:w-auto px-6 md:px-8 lg:px-4 xl:px-6 py-2.5 md:py-2 xl:py-3 bg-[#3DDAC1] rounded-[12px]"
             >
