@@ -74,31 +74,13 @@ const defaultProductMenu = [
     label: "FAQ",
   },
   {
-    href: "/contact",
+    href: "https://seleris.ai/book-a-demo",
     label: "Contact",
   },
-];
-
-const creditProductMenu = [
   {
-    href: "#hero",
-    label: "Home",
-  },
-  {
-    href: "#about",
-    label: "Product",
-  },
-  {
-    href: "#technology",
-    label: "Technology",
-  },
-  {
-    href: "#whyus",
-    label: "Why Us",
-  },
-  {
-    href: "/contact",
-    label: "Contact",
+    href: "/sca",
+    label: "Seleris Care Applicator",
+    target: "_blank", // ← tambahkan ini
   },
 ];
 
@@ -201,7 +183,11 @@ const isSelerisCareApplicator = ref(route.path === "/product/seleris-care-applic
                 v-for="(menuDefault, index) in defaultProductMenu"
                 :key="index"
               >
-                <Navlink class="text-[11pt]" :href="menuDefault.href">
+                <Navlink
+                  class="text-[11pt]"
+                  :href="menuDefault.href"
+                  :target="menuDefault?.target || '_self'"
+                >
                   {{ menuDefault.label }}
                 </Navlink>
               </div>
