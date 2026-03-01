@@ -134,7 +134,7 @@ const stepsWithPath = careWorkSteps.map((step) => ({
       <div class="w-full h-auto flex flex-col px-8 pt-14 pb-20 bg-[#F3F4F6] rounded-[20px]">
         <div class="w-full h-auto flex flex-col gap-y-2">
           <EasyQuickText
-            title="Smarter Medical Claims with"
+            title="Smarter Health Management with"
             subtitle="AI-Powered Automation"
             subtitlecolor="text-[#42C5AF]"
             subsubtitle="Seleris Meditekno Internasional"

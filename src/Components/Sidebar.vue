@@ -102,13 +102,17 @@ const careApplicatorProductMenu = [
     label: "FAQ",
   },
   {
-    href: "/contact",
+    href: "https://seleris.ai/book-a-demo",
     label: "Contact",
+  },
+  {
+    href: "https://sca.seleriscare.ai/register",
+    label: "Gabung SCA",
+    target: "_blank", // ← tambahkan ini
   },
 ];
 
-const isSelerisCredit = ref(route.path === "/product/seleris-credit");
-const isSelerisCareApplicator = ref(route.path === "/product/seleris-care-applicator");
+const isSelerisCareApplicator = ref(route.path === "/sca");
 </script>
 
 <template>

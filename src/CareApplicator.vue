@@ -18,10 +18,13 @@ import { whyJoinSCA } from "@/Data/Products/CareApplicator/WhyJoinSCA.js";
 import { howToJoin } from "@/Data/Products/CareApplicator/HowToJoin.js";
 import { benefits } from "@/Data/Products/CareApplicator/benefits.js";
 
-import ArrowLeft from "@/assets/icons/arrow-left.svg";
+// import ArrowLeft from "@/assets/icons/arrow-left.svg";
 import PaketPemeriksaan from "@/components/SCA/paketPemeriksaan.vue";
-import HealthParameterTabs from "@/components/SCA/healthParameters.vue";
-import { payPerScanPackages } from "@/Data/Products/CareApplicator/HealthPackage";
+import { packages } from "@/Data/Products/CareApplicator/HealthPackage";
+import HealthParameter from "@/Components/SCA/HealthParameter.vue";
+import DashboardPreview from "./Components/SCA/dashboardPreview.vue";
+import Disclaimer from "@/Components/SCA/Disclaimer.vue";
+import Faq from "@/Components/SCA/Faq.vue";
 
 const modules = [Navigation, Pagination, Autoplay];
 
@@ -67,6 +70,15 @@ const tabs = [
   { id: "Metabolic2", label: "Metabolic2" },
 ];
 
+const formatRupiah = (value) => {
+  return new Intl.NumberFormat("id-ID").format(value);
+};
+
+const capitalizeFirst = (str) => {
+  if (!str) return "";
+  return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+};
+
 const toggle = () => {
   pricingType.value = isSubscribe.value ? "payPerScan" : "subscribe";
 };
@@ -77,13 +89,12 @@ const toggleExpand = (index) => {
 
 const openDetail = (pkg) => {
   selectedPackage.value = pkg;
+  showModal.value = true; // ✅ tambahkan ini
 };
 
-function handleOpenModal(pkg) {
-  selectedPackage.value = pkg; // simpan paket yang diklik
-  showModal.value = true; // buka modal
-  console.log("OPEN CLICKED");
-}
+const getPriceDeleted = (price) => {
+  return Math.ceil((price / 0.6 + 1000) / 1000) * 1000;
+};
 
 function handleCloseModal() {
   showModal.value = false;
@@ -258,7 +269,7 @@ watch(showModal, (isOpen) => {
 <template>
   <div class="relative w-full overflow-hidden">
     <!-- Hero -->
-    <section class="relative w-full h-full rounded-[20px] z-20 mx-auto max-w-[1440px]" id="tentang">
+    <section class="relative w-full h-full z-20 mx-auto max-w-[1440px]" id="tentang">
       <div class="relative w-full h-auto rounded-[20px] z-20 max-w-[1440px] mx-auto">
         <div
           class="relative w-full h-full flex flex-col lg:flex-row pt-32 px-0 lg:px-16 xl:px-20 xls:px-32 lg:pt-48 xls:pt-56 gap-y-10 lg:gap-x-10 xl:gap-x-0"
@@ -292,7 +303,7 @@ watch(showModal, (isOpen) => {
                 <span
                   class="text-[12px] sm:text-[14px] md:text-[14px] lg:text-[16px] xl:text-[16px]"
                 >
-                  Peluang Bisnis Tanpa Modal
+                  Peluang bisnis tanpa modal
                 </span>
               </div>
               <div class="w-full h-auto flex flex-col gap-y-0 justify-normal items-start">
@@ -300,14 +311,14 @@ watch(showModal, (isOpen) => {
                   class="font-[600] text-[18px] sm:text-[24px] md:text-[28px] lg:text-[40px] xl:text-[46px]"
                 >
                   <span class="text-[#374151]">
-                    Peluang Bisnis <br class="hidden lg:block" />
-                    Kesehatan Berbasis
+                    Peluang bisnis <br class="hidden lg:block" />
+                    kesehatan berbasis
                   </span>
                 </p>
                 <p
                   class="text-[#1889D1] font-[600] text-[18px] sm:text-[22px] md:text-[22px] lg:text-[38px] xl:text-[40px]"
                 >
-                  AI Masa Depan
+                  AI masa depan
                 </p>
               </div>
               <p
@@ -329,7 +340,7 @@ watch(showModal, (isOpen) => {
                 <span
                   class="text-white whitespace-nowrap text-[14px] md:text-[16px] lg:text-[14px] xl:text-[18px] font-[500]"
                 >
-                  Daftar Jadi SCA Sekarang
+                  Daftar jadi SCA sekarang
                 </span>
 
                 <div class="w-auto h-auto text-[#FFFFFF] flex items-end justify-center">
@@ -392,7 +403,7 @@ watch(showModal, (isOpen) => {
 
     <!-- About -->
     <section
-      class="relative w-full h-full rounded-[20px] z-20 mx-auto max-w-[1440px] px-8 md:px-12 lg:px-16 xl:px-20 xls:px-32 mt-40"
+      class="relative w-full h-full z-20 mx-auto max-w-[1440px] px-8 md:px-12 lg:px-16 xl:px-20 xls:px-32 mt-40"
     >
       <div
         class="w-full h-auto py-10 md:py-14 px-4 md:px-8 lg:px-10 xl:px-12 bg-[#FAFAFA] flex flex-col gap-y-14 rounded-xl"
@@ -405,7 +416,7 @@ watch(showModal, (isOpen) => {
             <span
               class="text-[12px] md:text-[16px] lg:text-[18px] font-[400] text-[#374151] leading-normal lg:leading-snug"
             >
-              Layanan scanning kesehatan berbasis kecerdasan buatan dari PT Seleris Meditekno
+              Layanan skrining kesehatan berbasis kecerdasan buatan dari PT Seleris Meditekno
               Internasional untuk analisis kondisi kesehatan yang cepat, noninvasif, dan
               akurat.</span
             >
@@ -461,7 +472,7 @@ watch(showModal, (isOpen) => {
 
     <!-- APA ITU SCA -->
     <section
-      class="relative w-full h-full rounded-[20px] z-20 mx-auto max-w-[1440px] px-8 md:px-12 lg:px-16 xl:px-20 xls:px-32 mt-20 md:mt-32 lg:mt-40"
+      class="relative w-full h-full z-20 mx-auto max-w-[1440px] px-8 md:px-12 lg:px-16 xl:px-20 xls:px-32 mt-20 md:mt-32 lg:mt-40"
     >
       <!-- Desktop -->
       <div class="flex relative w-full h-auto">
@@ -483,7 +494,7 @@ watch(showModal, (isOpen) => {
                 <span
                   class="text-[#FFFFFF] text-[18px] sm:text-[28px] md:text-[32px] lg:text-[24px] xl:text-[42px] xls:text-[42px] font-[600] leading-snug"
                 >
-                  Apa Itu Seleris Care <br />
+                  Apa itu Seleris Care <br />
                   Applicator (SCA) ?
                 </span>
               </div>
@@ -531,7 +542,7 @@ watch(showModal, (isOpen) => {
             <div class="w-full h-auto flex flex-col gap-y-5 xls:gap-y-5 lg:pl-2 lg:pr-10">
               <div class="w-full h-auto flex flex-row gap-5 xl:gap-5 xls:gap-5">
                 <div
-                  class="w-full h-auto flex flex-col bg-[#DDDDDD]/40 gap-y-5 lg:gap-y-3 xl:gap-y-5 border-[#FFFFFF]/20 border-[1px] px-5 lg:px-3 xl:px-5 py-5 md:py-10 lg:py-3 xl:py-10 rounded-[12px]"
+                  class="w-[50%] h-auto flex flex-col bg-[#DDDDDD]/40 gap-y-3 md:gap-y-5 lg:gap-y-3 xl:gap-y-5 border-[#FFFFFF]/20 border-[1px] px-5 lg:px-3 xl:px-5 py-5 md:py-10 lg:py-3 xl:py-10 rounded-[12px]"
                 >
                   <div class="w-full h-auto">
                     <img
@@ -540,10 +551,10 @@ watch(showModal, (isOpen) => {
                       class="w-14 h-14 md:w-auto md:h-auto lg:w-12 lg:h-12 xl:w-auto xl:h-auto object-contain"
                     />
                   </div>
-                  <div class="w-full h-auto flex flex-col">
+                  <div class="w-full h-auto flex flex-col gap-y-2">
                     <div class="w-full h-auto flex">
                       <span
-                        class="text-[#FFFFFF] font-[600] text-[16px] md:text-[24px] lg:text-[16px] xl:text-[24px]"
+                        class="text-[#FFFFFF] font-[600] text-[16px] md:text-[24px] lg:text-[16px] xl:text-[24px] leading-tight"
                       >
                         Partner Resmi
                       </span>
@@ -558,7 +569,7 @@ watch(showModal, (isOpen) => {
                   </div>
                 </div>
                 <div
-                  class="w-full h-auto flex flex-col bg-[#DDDDDD]/40 gap-y-5 lg:gap-y-3 xl:gap-y-5 border-[#FFFFFF]/20 border-[1px] px-5 lg:px-3 xl:px-5 py-5 md:py-10 lg:py-3 xl:py-10 rounded-[12px]"
+                  class="w-[50%] h-auto flex flex-col bg-[#DDDDDD]/40 gap-y-3 md:gap-y-5 lg:gap-y-3 xl:gap-y-5 border-[#FFFFFF]/20 border-[1px] px-5 lg:px-3 xl:px-5 py-5 md:py-10 lg:py-3 xl:py-10 rounded-[12px]"
                 >
                   <div class="w-full h-auto">
                     <img
@@ -567,10 +578,10 @@ watch(showModal, (isOpen) => {
                       class="w-14 h-14 md:w-auto md:h-auto lg:w-12 lg:h-12 xl:w-auto xl:h-auto object-contain"
                     />
                   </div>
-                  <div class="w-full h-auto flex flex-col">
+                  <div class="w-full h-auto flex flex-col gap-y-2">
                     <div class="w-full h-auto flex">
                       <span
-                        class="text-[#FFFFFF] font-[600] text-[16px] md:text-[24px] lg:text-[16px] xl:text-[24px] whitespace-nowrap"
+                        class="text-[#FFFFFF] font-[600] text-[16px] md:text-[24px] lg:text-[16px] xl:text-[24px] leading-tight md:whitespace-nowrap"
                       >
                         Solusi Kesehatan
                       </span>
@@ -627,45 +638,15 @@ watch(showModal, (isOpen) => {
     </section>
 
     <!-- 30 Health Parameter -->
-    <!-- <section
-      class="relative w-full h-full rounded-[20px] z-20 mx-auto max-w-[1440px] px-8 md:px-12 lg:px-16 xls:px-32 mt-32 lg:mt-40"
+    <section
+      class="relative w-full h-full z-20 mx-auto max-w-[1440px] px-0 md:px-12 lg:px-16 xls:px-32 mt-32 lg:mt-40"
     >
-      <div class="w-full h-auto flex flex-col">
-        <div
-          class="max-w-xl mx-auto w-full h-auto flex flex-col gap-y-2 justify-center items-center text-center"
-        >
-          <p class="text-[#374151] font-[600] text-[48px]">
-            30 Health Parameters
-          </p>
-          <p class="text-[#374151] font-[400] text-[16px]">
-            Teknologi AI kami menganalisis spektrum kesehatan tubuh secara
-            mendalam hanya dalam satu sesi pemindaian.
-          </p>
-        </div>
-        <HealthParameterTabs :tabs="tabs">
-          <template #default="{ activeTab }">
-            <div class="p-4 bg-white rounded shadow">
-              <div v-if="activeTab === 'Cardiovascular'">
-                <p>Ini isi Tab 1</p>
-              </div>
-              <div v-else-if="activeTab === 'Metabolic'">
-                <p>Ini isi Tab 2</p>
-              </div>
-              <div v-else-if="activeTab === 'Metabolic2'">
-                <p>Ini isi Tab 2</p>
-              </div>
-              <div v-else>
-                <p>Ini isi Tab 3</p>
-              </div>
-            </div>
-          </template>
-        </HealthParameterTabs>
-      </div>
-    </section> -->
+      <HealthParameter />
+    </section>
 
     <!-- Paket Pemeriksaan Kesehatan -->
     <section
-      class="relative w-full h-full rounded-[20px] z-20 mx-auto max-w-[1440px] px-8 md:px-12 lg:px-16 xls:px-32 mt-32 lg:mt-40"
+      class="relative w-full h-full z-20 mx-auto max-w-[1440px] px-8 md:px-10 lg:px-16 xls:px-32 mt-32 lg:mt-40"
     >
       <div class="w-full h-auto flex">
         <div class="w-full h-auto flex flex-col gap-y-10">
@@ -673,12 +654,12 @@ watch(showModal, (isOpen) => {
             <span
               class="text-[24px] md:text-[28px] lg:text-[36px] text-[#374151] font-[600] text-center leading-tight tracking-wider"
             >
-              Pilih Paket Kesehatan <br />
-              Sesuai Kebutuhan Anda
+              Pilih paket kesehatan <br />
+              sesuai kebutuhan anda
             </span>
           </div>
           <div class="w-full h-auto flex flex-col gap-y-6">
-            <div class="flex items-center justify-center gap-6">
+            <!-- <div class="flex items-center justify-center gap-6">
               <p :class="!isSubscribe ? 'text-black' : 'text-gray-400'">Pay Per Scan</p>
               <div
                 @click="toggle"
@@ -692,11 +673,11 @@ watch(showModal, (isOpen) => {
                 />
               </div>
               <p :class="isSubscribe ? 'text-black' : 'text-gray-400'">Subscribe</p>
-            </div>
-            <div class="max-w-5xl w-full h-auto mx-auto">
-              <div class="w-full h-auto flex flex-row gap-x-5">
+            </div> -->
+            <div class="w-full lg:max-w-5xl h-auto mx-auto">
+              <div class="w-full h-auto flex flex-col gap-y-5 md:flex-row gap-x-5">
                 <PaketPemeriksaan
-                  v-for="pkg in payPerScanPackages"
+                  v-for="pkg in packages"
                   :key="pkg.id"
                   :pkg="pkg"
                   @show-detail="openDetail"
@@ -712,20 +693,20 @@ watch(showModal, (isOpen) => {
     <transition name="fade">
       <div
         v-if="showModal"
-        class="fixed inset-0 w-auto h-auto z-50 flex transition-all justify-center items-center duration-300 overflow-auto bg-[#FFFFFF]"
+        class="fixed inset-0 z-50 transition-all duration-300 overflow-y-auto bg-[#FFFFFF]"
       >
         <transition name="zoom">
           <div
             v-if="selectedPackage"
-            class="w-full h-auto max-w-md lg:max-w-4xl relative z-50 flex flex-col justify-center items-center gap-y-6 lg:gap-y-14 xls:gap-y-16 bg-green-500"
+            class="w-full lg:max-w-4xl xl:max-w-5xl mx-auto relative z-50 flex flex-col gap-y-6 lg:gap-y-14 xls:gap-y-16 pt-10 px-0"
           >
-            <div class="w-full h-auto flex">
+            <div class="w-full h-auto flex px-10 lg:px-0">
               <button
                 @click="handleCloseModal()"
                 class="w-auto h-auto flex flex-row bg-[#2EDFC1]/70 rounded-full cursor-pointer"
               >
                 <div
-                  class="w-10 h-10 flex justify-center items-center p-2 bg-[#3DDAC1] text-white rounded-full shadow-[0_4px_12px_0_rgba(61,218,193,0.2)]"
+                  class="w-8 h-8 sm:w-10 sm:h-10 flex justify-center items-center p-2 bg-[#3DDAC1] text-white rounded-full shadow-[0_4px_12px_0_rgba(61,218,193,0.2)]"
                 >
                   <svg
                     class="w-full h-full"
@@ -751,150 +732,191 @@ watch(showModal, (isOpen) => {
                     />
                   </svg>
                 </div>
-                <div class="w-auto pl-5 pr-4 h-auto flex justify-center items-center">
-                  <span class="text-[#FFFFFF] font-[500] text-[16px]"> Kembali ke beranda </span>
+                <div class="w-auto pl-3 pr-4 h-auto flex justify-center items-center">
+                  <span class="text-[#FFFFFF] font-[500] text-[14px] md:text-[16px]"
+                    >Kembali ke beranda</span
+                  >
                 </div>
               </button>
             </div>
-            <div class="w-full h-auto xls:h-auto flex flex-col lg:flex-row gap-x-0">
-              <div class="w-full h-full flex flex-col gap-y-5 items-start">
-                <div class="w-full h-[45px] flex items-start">
-                  <div
-                    class="w-auto h-auto shrink-0 flex p-[2px] bg-gradient-to-r from-[#4273C2] to-[#4273C2]/0 rounded-full"
-                  >
-                    <div class="w-auto h-auto bg-[#C4EAFF] px-10 py-2 rounded-full">
-                      <span class="text-[#4273C2] font-[600] text-[14px] lg:text-[16px]">
-                        Paket
-                        <span class="uppercase">
-                          {{ selectedPackage.name }}
-                        </span>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div class="w-full h-auto flex flex-col gap-y-3">
-                  <div class="w-full h-auto flex">
-                    <span
-                      class="text-[28px] lg:text-[38px] text-[#374151] font-[600] leading-tight tracking-wider"
-                    >
-                      Kesehatan Anda, <br />
-                      Analisis
-                      <span
-                        class="text-transparent bg-clip-text bg-gradient-to-br from-[#13B89C] to-[#2EDFC1]"
-                      >
-                        Tanpa <br />
-                        Jarum
-                      </span>
-                    </span>
-                  </div>
-                  <div class="w-full h-auto flex">
-                    <span
-                      class="text-[#8E98A8] font-[400] text-[16px] leading-relaxed tracking-wide"
-                    >
-                      Solusi cepat untuk pemantauan <br />
-                      rutin kesehatan dasar Anda.
-                    </span>
-                  </div>
-                </div>
-                <div
-                  class="w-[70%] h-auto flex flex-col gap-y-2 items-start bg-[#FAFAFA] px-5 py-4 rounded-[24px]"
-                >
-                  <div class="w-full h-auto flex">
-                    <span class="text-[16px] font-[500] text-[#374151]">
-                      Harga Retail Layanan
-                    </span>
-                  </div>
-                  <div class="w-full h-auto flex">
-                    <span class="text-[28px] font-[600] text-[#374151]">
-                      {{ selectedPackage.price }}
-                    </span>
-                  </div>
-                  <div class="w-auto h-auto flex flex-row gap-x-1.5 md:gap-x-3 rounded-full">
-                    <div class="flex items-center">
-                      <img
-                        src="@/assets/Products/images/Care-Applicator/checklist-icon2.png"
-                        alt=""
-                        class="w-4 h-4 sm:w-6 sm:h-6 md:w-5 md:h-5 object-contain shrink-0"
-                      />
-                    </div>
-                    <div class="flex items-center">
-                      <span
-                        class="text-[#374151] text-[10px] sm:text-[14px] lg:text-[12px] xl:text-[16px]"
-                      >
-                        Hasil Keluar dalam 5 Menit
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <button
-                  aria-label="Daftar Jadi SCA"
-                  class="w-[83%] h-auto inline-flex justify-center items-center gap-x-3 py-2.5 md:py-2 lg:py-4 bg-[#3DDAC1] rounded-[8px]"
-                >
-                  <span
-                    class="text-white whitespace-nowrap text-[14px] md:text-[16px] lg:text-[18px] font-[500]"
-                  >
-                    Daftar SCA & Mulai Jualan
-                  </span>
 
-                  <div class="w-auto h-auto text-[#FFFFFF] flex items-end justify-center">
-                    <svg
-                      class="w-5 h-5 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-5 lg:h-5 xl:w-6 xl:h-6 xls:w-8 xls:h-8"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
+            <div
+              class="w-full h-auto xls:h-auto flex flex-col lg:flex-row gap-y-5 lg:gap-y-0 gap-x-0"
+            >
+              <!-- LEFT -->
+              <div class="w-full lg:w-[45%] shrink-0 h-auto relative px-10 lg:px-0">
+                <div class="sticky top-10 w-full h-auto flex flex-col gap-y-5 items-start">
+                  <div class="w-full h-[45px] flex items-start">
+                    <div
+                      class="w-auto h-auto shrink-0 flex p-[2px] bg-gradient-to-r from-[#4273C2] to-[#4273C2]/0 rounded-full"
                     >
-                      <path
-                        d="M14.43 18.07L20.5 12L14.43 5.92999"
-                        stroke="currentColor"
-                        stroke-width="1.5"
-                        stroke-miterlimit="10"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M3.50002 12L20.33 12"
-                        stroke="currentColor"
-                        stroke-width="1.5"
-                        stroke-miterlimit="10"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
-                  </div>
-                </button>
-              </div>
-              <div class="w-full lg:h-[530px] xls:h-[560px] flex flex-col gap-y-5">
-                <div class="w-full h-[45px] flex items-center flex-shrink-0">
-                  <span class="text-[24px] font-[600] text-[#374151]">
-                    Detail Parameter {{ totalParameters }}
-                  </span>
-                </div>
-                <div class="w-full h-[200px] lg:h-auto flex flex-col gap-y-5 overflow-y-auto pr-3">
-                  <div
-                    v-for="data in selectedPackage.modalValues"
-                    :key="data.title"
-                    class="w-full h-auto flex flex-col bg-[#FFFFFF] gap-6 px-6 py-8 border-[0.5px] border-[#DADADA] rounded-[16px]"
-                  >
-                    <div class="w-full h-auto flex">
-                      <span class="text-[#374151] font-[600] text-[20px]">
-                        {{ data.title }}
-                      </span>
+                      <div class="w-auto h-auto bg-[#C4EAFF] px-10 py-2 rounded-full">
+                        <span class="text-[#4273C2] font-[600] text-[14px] lg:text-[16px]">
+                          Paket
+                          <span class="uppercase">
+                            {{ selectedPackage.label }}
+                            <!-- ✅ fix: .name → .label -->
+                          </span>
+                        </span>
+                      </div>
                     </div>
-                    <div class="w-full h-auto flex flex-wrap gap-4">
-                      <div
-                        v-for="item in data.values"
-                        :key="item"
-                        class="w-auto h-auto flex flex-row gap-x-1.5 md:gap-x-2 rounded-full"
-                      >
-                        <div class="w-auto h-auto flex items-center">
-                          <div class="w-3 h-3 rounded-full bg-[#2DDBBD]" />
+                  </div>
+                  <div class="w-full h-auto flex flex-col sm:flex-row lg:flex-col gap-y-3">
+                    <div class="w-full h-auto flex flex-col gap-y-3">
+                      <div class="w-full h-auto flex">
+                        <span
+                          class="text-[20px] md:text-[28px] lg:text-[38px] text-[#374151] font-[600] leading-tight tracking-wider"
+                        >
+                          Kesehatan anda, <br />
+                          analisis
+                          <span
+                            class="text-transparent bg-clip-text bg-gradient-to-br from-[#13B89C] to-[#2EDFC1]"
+                          >
+                            tanpa <br class="hidden sm:block" />jarum
+                          </span>
+                        </span>
+                      </div>
+                      <div class="w-full h-auto flex">
+                        <span
+                          class="text-[#8E98A8] font-[400] text-[16px] leading-relaxed tracking-wide"
+                        >
+                          Solusi cepat untuk pemantauan <br />rutin kesehatan dasar Anda.
+                        </span>
+                      </div>
+                    </div>
+                    <div
+                      class="w-full sm:w-[70%] h-auto flex flex-col gap-y-2 items-start bg-[#FAFAFA] px-5 py-4 rounded-[24px]"
+                    >
+                      <div class="w-full h-auto flex">
+                        <span class="text-[16px] font-[500] text-[#374151]"
+                          >Harga detail layanan</span
+                        >
+                      </div>
+                      <div class="w-full h-auto flex flex-col">
+                        <del class="text-[#9CA3AF] decoration-[#E22F4A]">
+                          <p class="text-[#CDCDCD] font-[400] text-[12px] lg:text-[16px]">
+                            Rp {{ formatRupiah(getPriceDeleted(selectedPackage.price)) }}
+                          </p>
+                        </del>
+                        <span class="text-[20px] md:text-[28px] font-[600] text-[#374151]">
+                          Rp {{ formatRupiah(selectedPackage.price) }}
+                          <!-- ✅ fix: tambah formatRupiah -->
+                        </span>
+                      </div>
+                      <div class="w-auto h-auto flex flex-row gap-x-1.5 md:gap-x-3 rounded-full">
+                        <div class="flex items-center">
+                          <img
+                            src="@/assets/Products/images/Care-Applicator/checklist-icon2.png"
+                            alt=""
+                            class="w-4 h-4 sm:w-6 sm:h-6 md:w-5 md:h-5 object-contain shrink-0"
+                          />
                         </div>
                         <div class="flex items-center">
-                          <span
-                            class="text-[#374151] text-[10px] sm:text-[14px] lg:text-[12px] xl:text-[16px]"
-                          >
-                            {{ item }}
+                          <span class="text-[#374151] text-[14px] lg:text-[12px] xl:text-[16px]">
+                            Hasil keluar dalam 5 Menit
                           </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <a
+                    href="https://sca.seleriscare.ai/register"
+                    aria-label="Daftar Jadi SCA"
+                    class="w-full lg:w-[83%] h-auto inline-flex justify-center items-center gap-x-3 py-2.5 md:py-2 lg:py-3 bg-[#3DDAC1] rounded-[8px]"
+                  >
+                    <span
+                      class="text-white whitespace-nowrap text-[14px] md:text-[16px] lg:text-[18px] font-[500]"
+                    >
+                      Daftar SCA & mulai jualan
+                    </span>
+                    <div class="w-auto h-auto text-[#FFFFFF] flex items-end justify-center">
+                      <svg
+                        class="w-5 h-5 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-5 lg:h-5 xl:w-6 xl:h-6 xls:w-8 xls:h-8"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M14.43 18.07L20.5 12L14.43 5.92999"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-miterlimit="10"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M3.50002 12L20.33 12"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-miterlimit="10"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+              <!-- RIGHT -->
+              <div class="w-full h-auto overflow-y-auto flex flex-col gap-y-8">
+                <div class="w-full h-auto flex px-10 lg:px-5">
+                  <div
+                    class="w-full h-auto flex flex-wrap gap-5 bg-[#FFFFFF] p-5 border-[0.5px] border-[#DADADA] rounded-[16px] shadow-lg"
+                  >
+                    <div
+                      v-for="feature in selectedPackage.modalValues"
+                      :key="feature"
+                      class="flex flex-row items-start gap-x-2 lg:gap-x-2"
+                    >
+                      <div
+                        class="w-5 h-5 lg:w-6 lg:h-6 shrink-0 flex justify-center items-center bg-[#10F492]/20 rounded-full p-1"
+                      >
+                        <img src="@/assets/icons/green-checklist.svg" />
+                      </div>
+                      <div class="w-full h-auto flex items-center">
+                        <p class="text-[#515E71] text-[14px] lg:text-[16px]">
+                          {{ capitalizeFirst(feature.name) }}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="w-full h-auto flex flex-col gap-y-3 lg:px-5">
+                  <div class="w-full h-auto flex items-center flex-shrink-0 px-10 lg:px-0">
+                    <span class="text-[20px] font-[600] text-[#374151]">
+                      Detail parameter ({{ totalParameters }})
+                    </span>
+                  </div>
+                  <div
+                    class="w-full h-auto flex flex-row lg:flex-col gap-x-3 lg:gap-x-0 lg:gap-y-8 pb-10 overflow-x-auto px-10 lg:px-0 snap-x snap-mandatory lg:overflow-x-visible lg:snap-none scrollbar-hide"
+                  >
+                    <div
+                      v-for="data in selectedPackage.modalValues"
+                      :key="data.name"
+                      class="shrink-0 snap-center w-[85vw] lg:w-full h-full flex flex-col bg-[#FFFFFF] gap-3 px-6 py-6 border-[0.5px] border-[#DADADA] rounded-[16px] shadow-lg"
+                    >
+                      <div class="w-full h-auto flex">
+                        <span class="text-[#374151] font-[600] text-[18px]">
+                          {{ capitalizeFirst(data.name) }}
+                        </span>
+                      </div>
+                      <div class="w-full h-auto flex flex-wrap gap-4">
+                        <div
+                          v-for="item in data.values"
+                          :key="item"
+                          class="w-auto h-auto flex flex-row gap-x-1.5 md:gap-x-2 rounded-full"
+                        >
+                          <div class="w-auto h-auto flex items-center">
+                            <div class="w-3 h-3 rounded-full bg-[#2DDBBD]" />
+                          </div>
+                          <div class="flex items-center">
+                            <span
+                              class="text-[#374151] text-[12px] sm:text-[14px] lg:text-[12px] xl:text-[14px]"
+                            >
+                              {{ item }}
+                            </span>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -909,7 +931,7 @@ watch(showModal, (isOpen) => {
 
     <!-- Mengapa bergabung SCA? -->
     <section
-      class="relative w-full h-full rounded-[20px] z-20 mx-auto max-w-[1440px] px-8 md:px-12 lg:px-16 xl:px-20 xls:px-32 mt-20 md:mt-32 pt-20"
+      class="relative w-full h-full z-20 mx-auto max-w-[1440px] px-8 md:px-12 lg:px-16 xl:px-20 xls:px-32 mt-20 md:mt-32 pt-20"
       id="keunggulan"
     >
       <div
@@ -920,7 +942,7 @@ watch(showModal, (isOpen) => {
             <span
               class="text-[#374151] text-[20px] md:text-[32px] lg:text-[44px] font-[600] text-center"
             >
-              Kenapa Bergabung Jadi SCA?
+              Kenapa bergabung jadi SCA?
             </span>
           </div>
           <div class="w-full h-auto flex justify-center items-center">
@@ -942,14 +964,12 @@ watch(showModal, (isOpen) => {
             >
               <div class="w-full h-auto flex justify-center items-center">
                 <div
-                  class="w-auto h-auto flex justify-center items-start bg-[#39D5BC] text-[#FFFFFF] rounded-[12px]"
+                  class="w-10 h-10 md:w-12 md:h-12 flex justify-center items-center bg-[#39D5BC] text-[#FFFFFF] rounded-[12px] p-2 md:p-3"
                 >
-                  <ThunderIcon
-                    class="w-8 h-8 md:w-full md:h-full object-contain p-1 md:p-2 rounded-[8px]"
-                  />
+                  <ThunderIcon class="w-full h-full object-contain" />
                 </div>
               </div>
-              <div class="w-full h-auto flex flex-col md:gap-y-3">
+              <div class="w-full h-auto flex flex-col md:gap-y-3 lg:gap-y-1.5">
                 <div class="w-full h-[35px] md:h-[45px] lg:h-auto flex justify-center items-center">
                   <span
                     class="text-[#374151] font-[600] text-[12px] md:text-[16px] lg:text-[20px] xl:text-[20px] text-center leading-snug"
@@ -969,9 +989,17 @@ watch(showModal, (isOpen) => {
       </div>
     </section>
 
+    <!-- Dashboard Preview -->
+    <section
+      class="relative w-full h-full z-20 mx-auto max-w-[1440px] mt-20 md:mt-32"
+      id="keunggulan"
+    >
+      <DashboardPreview />
+    </section>
+
     <!-- Komisi -->
     <section
-      class="relative w-full h-full rounded-[20px] z-20 mx-auto max-w-[1440px] px-8 md:px-12 lg:px-16 xl:px-20 xls:px-32 mt-14 md:mt-32 pt-20"
+      class="relative w-full h-full z-20 mx-auto max-w-[1440px] px-8 md:px-12 lg:px-16 xl:px-20 xls:px-32 mt-14 md:mt-32 pt-20"
       id="komisi"
     >
       <div class="w-full h-auto bg-[#FAFAFA] rounded-[16px]">
@@ -981,8 +1009,8 @@ watch(showModal, (isOpen) => {
           <div class="w-full h-auto flex flex-col gap-y-5">
             <div class="w-full h-auto flex justify-center lg:justify-start">
               <span class="text-[#374151] font-[600] text-[16px] lg:text-[24px] xl:text-[26px]">
-                Struktur Komisi & <br class="hidden lg:block" />
-                Simulasi Penghasilan
+                Struktur komisi & <br class="hidden lg:block" />
+                simulasi penghasilan
               </span>
             </div>
             <div class="flex lg:hidden w-full h-[300px] bg-white rounded-2xl justify-end items-end">
@@ -1002,7 +1030,7 @@ watch(showModal, (isOpen) => {
               <div class="w-full h-auto flex flex-row justify-between">
                 <div class="w-full h-auto flex">
                   <span class="text-[#6F6F6F] font-[400] text-[10px] md:text-[12px]">
-                    Harga Layanan
+                    Harga layanan
                   </span>
                 </div>
                 <div class="w-full h-auto flex justify-end items-center">
@@ -1013,7 +1041,7 @@ watch(showModal, (isOpen) => {
                 <div class="w-full h-auto flex">
                   <span class="text-[#374151] font-[600] text-[14px] md:text-[18px] leading-none">
                     Rp 300.000
-                    <span class="text-[#B8B8B8] text-[10px]">/ Scanning</span>
+                    <span class="text-[#B8B8B8] text-[10px]">/ skrining</span>
                   </span>
                 </div>
                 <div class="w-full h-auto flex justify-end items-center">
@@ -1025,7 +1053,7 @@ watch(showModal, (isOpen) => {
             </div>
             <div class="w-full h-auto flex flex-row gap-x-5">
               <div
-                class="relative w-full h-[110px] md:h-[125px] bg-[#83C5FF] px-5 py-7 rounded-[18px]"
+                class="relative w-full h-[120px] md:h-[125px] bg-[#83C5FF] px-5 py-7 rounded-[18px]"
               >
                 <div
                   class="absolute top-0 left-0 z-10 w-full h-full opacity-30 bg-white rounded-[18px]"
@@ -1035,7 +1063,7 @@ watch(showModal, (isOpen) => {
                 >
                   <div class="w-full h-auto flex">
                     <span class="text-[#195279] text-[12px] md:text-[14px] font-[500]">
-                      Komisi Langsung
+                      Komisi langsung
                     </span>
                   </div>
                   <div class="w-full h-auto flex">
@@ -1043,13 +1071,13 @@ watch(showModal, (isOpen) => {
                   </div>
                   <div class="w-full h-auto flex">
                     <span class="text-[12px] md:text-[12px] text-[#2D71DD] font-[500]">
-                      ± Rp 45.000 / scan
+                      ± Rp 45.000 / skrining
                     </span>
                   </div>
                 </div>
               </div>
               <div
-                class="relative w-full h-[110px] md:h-[125px] bg-[#82F9CF] px-5 py-7 rounded-[18px]"
+                class="relative w-full h-[120px] md:h-[125px] bg-[#82F9CF] px-5 py-7 rounded-[18px]"
               >
                 <div
                   class="absolute top-0 left-0 z-10 w-full h-full opacity-30 bg-white rounded-[18px]"
@@ -1059,7 +1087,7 @@ watch(showModal, (isOpen) => {
                 >
                   <div class="w-full h-auto flex">
                     <span class="text-[#00B692] text-[12px] md:text-[14px] font-[500]">
-                      Komisi Jaringan
+                      Komisi jaringan
                     </span>
                   </div>
                   <div class="w-full h-auto flex">
@@ -1067,7 +1095,7 @@ watch(showModal, (isOpen) => {
                   </div>
                   <div class="w-full h-auto flex">
                     <span class="text-[12px] md:text-[12px] text-[#00B171] font-[500]">
-                      ± Rp 30.000 / scan
+                      ± Rp 30.000 / skrining
                     </span>
                   </div>
                 </div>
@@ -1081,7 +1109,7 @@ watch(showModal, (isOpen) => {
                   <span
                     class="text-[12px] md:text-[18px] lg:text-[14px] xls:text-[16px] text-[#FFFFFF] font-[600]"
                   >
-                    Target Scanning per Hari
+                    Target skrining per Hari
                   </span>
                 </div>
                 <div class="w-auto h-auto flex justify-end">
@@ -1121,7 +1149,7 @@ watch(showModal, (isOpen) => {
                     <span
                       class="text-[12px] md:text-[18px] lg:text-[14px] text-[#37B3D5] font-[400]"
                     >
-                      Potensi Income Bulanan Anda
+                      Potensi pendapatan bulanan anda
                     </span>
                   </div>
                   <div class="w-full md:w-auto h-auto flex items-center justify-end">
@@ -1159,16 +1187,17 @@ watch(showModal, (isOpen) => {
     </section>
 
     <!-- Cara Bergabung -->
-    <section class="relative w-full h-full rounded-[20px] z-20 mx-auto max-w-[1440px] mt-32 pt-20">
+    <section class="relative w-full h-full z-20 mx-auto max-w-[1440px] mt-32 pt-20">
       <!-- px-8 md:px-12 lg:px-12 -->
-      <div class="w-full h-auto hidden lg:flex flex-col gap-y-10">
+      <div class="w-full h-auto flex flex-col gap-y-10">
+        <!-- Header -->
         <div class="w-full h-auto flex flex-col gap-y-3">
-          <div class="w-full h-auto flex justify-center items-center">
-            <span class="font-[600] text-[#374151] xl:text-[42px] text-center">
-              Cara Bergabung
+          <div class="w-full flex justify-center items-center">
+            <span class="font-[600] text-[#374151] text-[28px] lg:text-[42px] text-center">
+              Cara bergabung
             </span>
           </div>
-          <div class="w-full h-auto flex justify-center items-center">
+          <div class="w-full flex justify-center items-center">
             <span
               class="font-[400] text-[#374151] text-[12px] md:text-[14px] lg:text-[16px] text-center tracking-tight"
             >
@@ -1176,7 +1205,9 @@ watch(showModal, (isOpen) => {
             </span>
           </div>
         </div>
-        <div class="relative w-full h-[400px] flex">
+
+        <!-- Desktop Version -->
+        <div class="relative w-full h-[400px] hidden md:flex">
           <div class="absolute w-full h-auto z-10 top-1/2">
             <img
               src="@/assets/Products/images/Care-Applicator/wave.png"
@@ -1189,7 +1220,7 @@ watch(showModal, (isOpen) => {
               v-for="data in howToJoin"
               :key="data.id"
               class="w-full h-full flex flex-col justify-between"
-              :class="data.id === 2 ? 'pt-5' : ''"
+              :class="data.id === 1 ? 'md:pt-5 lg:pt-0' : data.id === 2 ? 'pt-5' : ''"
             >
               <div class="w-full h-full flex justify-center items-end">
                 <div
@@ -1201,7 +1232,7 @@ watch(showModal, (isOpen) => {
                   <div
                     class="w-full h-full bg-[#FFFFFF] flex items-center justify-center rounded-[8px] p-2"
                   >
-                    <img :src="data.icon" alt="" srcset="" />
+                    <img :src="data.icon" alt="" />
                   </div>
                 </div>
               </div>
@@ -1209,11 +1240,11 @@ watch(showModal, (isOpen) => {
                 <div
                   @mouseenter="activeHover = data.id"
                   @mouseleave="activeHover = null"
-                  class="w-10 h-10 bg-[#34C9B1] rounded-full flex justify-center items-center cursor-pointer"
+                  class="w-8 h-8 lg:w-10 lg:h-10 bg-[#34C9B1] rounded-full flex justify-center items-center cursor-pointer"
                 >
-                  <span class="text-white font-[600] text-[21px] text-center">
-                    {{ data.id }}
-                  </span>
+                  <span class="text-white font-[600] text-[16px] lg:text-[20px] text-center">{{
+                    data.id
+                  }}</span>
                 </div>
               </div>
               <div class="w-full h-full flex">
@@ -1222,17 +1253,51 @@ watch(showModal, (isOpen) => {
                   @mouseleave="activeHover = null"
                   class="w-full h-auto flex flex-col gap-y-2 items-center cursor-pointer"
                 >
-                  <div class="w-full h-auto flex items-center justify-center">
-                    <span class="text-[#374151] text-[18px] font-[600] text-center">
-                      {{ data.step }}
-                    </span>
-                  </div>
-                  <div class="w-full h-auto flex items-center justify-center">
-                    <span class="text-[#8E98A8] text-[14px] font-[400] text-center px-10 lg:px-8">
-                      {{ data.content }}
-                    </span>
-                  </div>
+                  <span
+                    class="text-[#374151] text-[18px] font-[600] text-center whitespace-nowrap"
+                    >{{ data.step }}</span
+                  >
+                  <span class="text-[#8E98A8] text-[14px] font-[400] text-center lg:px-8">{{
+                    data.content
+                  }}</span>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Version (vertical stepper) -->
+        <div class="flex md:hidden flex-col px-6 md:px-10 gap-y-0">
+          <div v-for="(data, index) in howToJoin" :key="data.id" class="flex flex-row gap-x-5">
+            <!-- Left: number + line -->
+            <div class="flex flex-col items-center pt-2">
+              <div
+                class="w-8 h-8 bg-[#34C9B1] rounded-full flex justify-center items-center shrink-0"
+              >
+                <span class="text-white font-[600] text-[14px]">{{ data.id }}</span>
+              </div>
+              <!-- Connector line (hide on last item) -->
+              <div
+                v-if="index < howToJoin.length - 1"
+                class="w-[2px] flex-1 min-h-[60px] bg-gray-200 my-1"
+              />
+            </div>
+
+            <!-- Right: icon + text -->
+            <div class="flex flex-row gap-x-4 pb-8 items-start">
+              <div
+                class="w-12 h-12 p-1 rounded-[8px] flex justify-center items-center shrink-0 shadow-[0px_10px_15px_0px_rgba(0,0,0,0.05)]"
+                :class="activeHover === data.id ? 'bg-[#34C9B1]' : 'bg-[#D7F3F1]'"
+              >
+                <div
+                  class="w-full h-full bg-white flex items-center justify-center rounded-[6px] p-1.5"
+                >
+                  <img :src="data.icon" alt="" class="w-full h-full object-contain" />
+                </div>
+              </div>
+              <div class="flex flex-col gap-y-1 pt-1">
+                <span class="text-[#374151] text-[16px] font-[600]">{{ data.step }}</span>
+                <span class="text-[#8E98A8] text-[13px] font-[400]">{{ data.content }}</span>
               </div>
             </div>
           </div>
@@ -1242,7 +1307,7 @@ watch(showModal, (isOpen) => {
 
     <!-- Benefit SCA -->
     <section
-      class="relative w-full h-full rounded-[20px] z-20 mx-auto max-w-[1440px] px-8 md:px-12 lg:px-12 xl:px-20 xls:px-32 mt-20 md:mt-32 pt-20"
+      class="relative w-full h-full z-20 mx-auto max-w-[1440px] px-8 md:px-12 lg:px-12 xl:px-20 xls:px-32 mt-20 md:mt-32 pt-20"
       id="keunggulan"
     >
       <div
@@ -1253,7 +1318,7 @@ watch(showModal, (isOpen) => {
             <span
               class="text-[#374151] text-[20px] sm:text-[32px] lg:text-[40px] xl:text-[44px] font-[600] text-center"
             >
-              Benefit Menjadi SCA
+              Benefit menjadi SCA
             </span>
           </div>
           <div class="w-full h-auto flex justify-center items-center px-6 md:px-0">
@@ -1394,7 +1459,7 @@ watch(showModal, (isOpen) => {
 
     <!-- Testimonial -->
     <section
-      class="relative w-full h-full rounded-[20px] z-20 mx-auto max-w-[1440px] lg:px-0 xls:max-w-full xls:px-14 mt-32"
+      class="relative w-full h-full z-20 mx-auto max-w-[1440px] lg:px-0 xls:max-w-full xls:px-14 mt-32"
       id="testimonials"
     >
       <div class="w-full h-auto flex flex-col gap-y-5 md:gap-y-6 lg:gap-y-8 pb-10">
@@ -1496,64 +1561,23 @@ watch(showModal, (isOpen) => {
       </div>
     </section>
 
+    <!-- FAQ -->
+    <section
+      class="relative w-full h-full z-20 mx-auto max-w-[1440px] px-8 md:px-12 lg:px-16 xl:px-20 xls:px-32 mt-20 py-10 bg-[#FAFAFA]"
+    >
+      <Faq />
+    </section>
+
     <!-- DISCLAIMER -->
     <section
-      class="relative w-full h-full rounded-[20px] z-20 mx-auto max-w-[1440px] px-8 md:px-12 lg:px-16 xl:px-20 xls:px-32 mt-20 py-10 bg-[#FAFAFA]"
+      class="relative w-full h-full z-20 mx-auto max-w-[1440px] px-8 md:px-12 lg:px-16 xl:px-20 xls:px-32 mt-20 py-10 bg-[#FAFAFA]"
     >
-      <div class="w-full h-auto flex flex-col gap-y-5">
-        <div class="w-full h-auto flex flex-row gap-x-5">
-          <div class="w-8 h-8 md:w-10 md:h-10 shrink-0 flex justify-center items-center">
-            <img
-              src="@/assets/Products/images/Care-Applicator/disclaimer-icon.svg"
-              alt=""
-              srcset=""
-              class="w-full h-full object-contain"
-            />
-          </div>
-          <div class="w-full h-auto flex justify-start items-center">
-            <p class="text-[#374151] font-[600] text-[16px] md:text-[20px]">
-              Medical Disclaimer & Legal Notice
-            </p>
-          </div>
-        </div>
-        <div
-          class="w-full h-auto flex flex-col gap-y-5 text-[#374151] font-[400] text-[12px] md:text-[16px] tracking-normal leading-relaxed"
-        >
-          <p>
-            <span class="font-[600]">
-              Seleris Care merupakan aplikasi/perangkat lunak berbasis teknologi kecerdasan buatan
-              yang dikembangkan sebagai alat skrining dan pemantauan kesehatan untuk tujuan deteksi
-              dini</span
-            >, pemantauan parameter kesehatan secara berkala, serta pendukung pengambilan keputusan
-            terkait gaya hidup dan pencegahan. Sistem ini tidak dimaksudkan, dirancang, maupun
-            diposisikan sebagai alat diagnosis medis, tidak menggantikan pemeriksaan medis
-            komprehensif, pemeriksaan laboratorium, tindakan diagnostik klinis, maupun konsultasi
-            dan keputusan profesional oleh dokter atau tenaga kesehatan berlisensi.
-          </p>
-          <p>
-            <span class="font-[600]">
-              Seluruh hasil, skor, indikator, maupun rekomendasi yang ditampilkan dalam laporan ini
-              bersifat informatif dan indikatif berdasarkan algoritma analitik sistem, sehingga
-              tidak dapat dijadikan sebagai satu-satunya dasar dalam penegakan diagnosis atau
-              penentuan terapi medis</span
-            >. Apabila ditemukan hasil dengan kategori abnormal, berisiko, atau memerlukan perhatian
-            khusus, pengguna wajib melakukan konsultasi dengan dokter atau tenaga kesehatan yang
-            berwenang serta, apabila diperlukan, menjalani pemeriksaan penunjang atau laboratorium
-            untuk konfirmasi sesuai standar praktik kedokteran dan regulasi yang berlaku.
-          </p>
-          <p class="font-[600]">
-            Dengan menerima dan menggunakan laporan ini, pengguna memahami dan menyetujui bahwa
-            Seleris Care berfungsi sebagai alat skrining dan monitoring non-diagnostik, serta
-            membebaskan pengembang dan/atau penyedia layanan dari tanggung jawab atas penggunaan
-            hasil di luar tujuan yang dimaksudkan atau tanpa tindak lanjut medis yang semestinya.
-          </p>
-        </div>
-      </div>
+      <Disclaimer />
     </section>
 
     <!-- Akses Eksklusif -->
     <section
-      class="relative w-full h-full rounded-[20px] z-20 mx-auto max-w-[1440px] px-8 md:px-12 lg:px-16 xl:px-20 xls:px-32 mt-20 pt-20"
+      class="relative w-full h-full z-20 mx-auto max-w-[1440px] px-8 md:px-12 lg:px-16 xl:px-20 xls:px-32 mt-20 pt-20"
     >
       <div
         class="w-full h-auto flex flex-col lg:flex-row bg-[#EAFCFA] gap-x-5 gap-y-6 md:gap-y-8 lg:gap-y-0 px-0 md:px-6 lg:px-10 xl:px-20 py-10 md:py-20 xls:py-16 rounded-[20px] md:rounded-[48px]"
@@ -1577,12 +1601,13 @@ watch(showModal, (isOpen) => {
             <div class="w-full h-auto flex flex-col gap-y-0 justify-normal items-start">
               <p class="font-[600] text-[18px] md:text-[28px] lg:text-[32px] xls:text-[36px]">
                 <span class="text-[#374151]">
-                  Siap Memulai Bisnis <br class="hidden lg:block" />
-                  Kesehatan
+                  Siap memulai bisnis <br class="hidden lg:block" />
+                  kesehatan
                   <span
                     class="text-transparent bg-clip-text bg-gradient-to-br from-[#13B89C] to-[#2EDFC1]"
-                    >Masa Depan?</span
                   >
+                    masa depan?
+                  </span>
                 </span>
               </p>
             </div>
@@ -1604,7 +1629,7 @@ watch(showModal, (isOpen) => {
               <span
                 class="text-white whitespace-nowrap text-[14px] md:text-[16px] lg:text-[14px] xl:text-[16px] font-[500]"
               >
-                Daftar Jadi SCA Sekarang
+                Daftar jadi SCA sekarang
               </span>
             </a>
 
@@ -1632,7 +1657,7 @@ watch(showModal, (isOpen) => {
               <span
                 class="text-white whitespace-nowrap text-[14px] md:text-[16px] lg:text-[14px] xl:text-[16px] font-[500]"
               >
-                Hubungi Admin
+                Hubungi admin
               </span>
             </a>
           </div>
@@ -1713,16 +1738,25 @@ input[type="number"]::-webkit-outer-spin-button {
 .animated-border-wrapper {
   background: conic-gradient(
     from var(--angle),
-    #13b89c00 0%,
-    #39d5bc 45%,
-    #39d5bc 50%,
-    #13b89c00 90%
+    #42c5af00 0%,
+    #54b5ff 40%,
+    #54b5ff 60%,
+    #42c5af00 100%
   );
   animation: spin-border 4s linear infinite;
 }
 
-/* Card 1 - Blue */
+/* Card 1 - Blue - state normal: gradient statis dari bawah */
 .animated-border-wrapper-blue {
+  background: linear-gradient(180deg, rgba(66, 198, 176, 0) 20%, #54b5ff 100%);
+  animation: none;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* Card 1 - Blue - hover: ganti ke conic + animasi spinning */
+.animated-border-wrapper-blue:hover {
   background: conic-gradient(
     from var(--angle),
     #42c5af00 0%,
@@ -1730,21 +1764,14 @@ input[type="number"]::-webkit-outer-spin-button {
     #54b5ff 60%,
     #42c5af00 100%
   );
-  animation: none;
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
-.animated-border-wrapper-blue:hover {
   animation: spin-border 4s linear infinite;
   transform: translateY(-10px);
   box-shadow: 0 20px 40px rgba(84, 181, 255, 0.25);
 }
 
-/* Card 2 - Teal - state normal: static, tidak bergerak */
+/* Card 2 - Teal - state normal: gradient statis dari atas */
 .animated-border-wrapper-teal {
-  background: conic-gradient(from 180deg, #18bfa500 0%, #3be3c9 40%, #3be3c9 60%, #18bfa500 100%);
+  background: linear-gradient(180deg, #3be3c9 0%, rgba(24, 191, 165, 0) 100%);
   animation: none;
   transition:
     transform 0.3s ease,
@@ -1763,5 +1790,13 @@ input[type="number"]::-webkit-outer-spin-button {
   animation: spin-border 4s linear infinite;
   transform: translateY(-10px);
   box-shadow: 0 20px 40px rgba(59, 227, 201, 0.25);
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 </style>
