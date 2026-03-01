@@ -23,7 +23,7 @@
           @click="toggle(index)"
         >
           <span
-            class="text-base font-semibold transition-colors duration-200"
+            class="text-[14px] sm:text-[16px] font-semibold transition-colors duration-200"
             :class="activeIndex === index ? 'text-[#13B89C]' : 'text-[#374151]'"
           >
             {{ item.question }}

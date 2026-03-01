@@ -3,7 +3,7 @@ export const benefits = [
     title: "Paket Keanggotaan",
     items: [
       { content: "Akses aplikasi Seleris Care" },
-      { content: "Training produk dan scanning" },
+      { content: "Training produk dan skrining" },
       { content: "Dashboard penjualan real time" },
       { content: "Kode referral pribadi" },
       { content: "Materi marketing digital" },

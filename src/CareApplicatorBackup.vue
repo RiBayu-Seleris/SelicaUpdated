@@ -30,7 +30,12 @@ const selectedPackage = ref(null);
 const showModal = ref(false);
 
 const activeIndex = ref(0);
+const activeBenefitIndex = ref(0);
+const isMobile = ref(false);
+const activeHover = ref(null);
+
 let interval = null;
+let benefitInterval = null;
 
 const targetPerDay = ref(1);
 const MIN_TARGET = 1;
@@ -40,40 +45,6 @@ const DIRECT_PERCENT = 0.15;
 const PASSIVE_PERCENT = 0.1;
 const DAYS_PER_MONTH = 30;
 
-const activeHover = ref(null);
-
-// Auto-animate benefit cards on mobile/tablet (<= md)
-const activeBenefitCard = ref(0); // 0 = blue card, 1 = teal card
-let benefitInterval = null;
-const isMobileView = ref(false);
-
-const checkMobileView = () => {
-  isMobileView.value = window.innerWidth <= 768;
-  if (isMobileView.value) {
-    if (!benefitInterval) {
-      benefitInterval = setInterval(() => {
-        activeBenefitCard.value = (activeBenefitCard.value + 1) % 2;
-      }, 3000);
-    }
-  } else {
-    clearInterval(benefitInterval);
-    benefitInterval = null;
-    activeBenefitCard.value = -1;
-  }
-};
-
-const monthlyScan = computed(() => targetPerDay.value * DAYS_PER_MONTH);
-const directIncome = computed(() => monthlyScan.value * PRICE_PER_SCAN * DIRECT_PERCENT);
-const passiveIncome = computed(() => monthlyScan.value * PRICE_PER_SCAN * PASSIVE_PERCENT);
-
-const paketKeanggotaan = computed(
-  () => benefits.find((b) => b.title === "Paket Keanggotaan")?.items || [],
-);
-
-const supportBerkelanjutan = computed(
-  () => benefits.find((b) => b.title === "Support Berkelanjutan")?.items || [],
-);
-
 const pricingType = ref("payPerScan");
 const isSubscribe = computed(() => pricingType.value === "subscribe");
 
@@ -82,6 +53,44 @@ const tabs = [
   { id: "Metabolic", label: "Metabolic" },
   { id: "Metabolic2", label: "Metabolic2" },
 ];
+
+// ─── Computed ───────────────────────────────────────────
+const monthlyScan = computed(() => targetPerDay.value * DAYS_PER_MONTH);
+const directIncome = computed(() => monthlyScan.value * PRICE_PER_SCAN * DIRECT_PERCENT);
+const passiveIncome = computed(() => monthlyScan.value * PRICE_PER_SCAN * PASSIVE_PERCENT);
+
+const paketKeanggotaan = computed(
+  () => benefits.find((b) => b.title === "Paket Keanggotaan")?.items || [],
+);
+const supportBerkelanjutan = computed(
+  () => benefits.find((b) => b.title === "Support Berkelanjutan")?.items || [],
+);
+
+const displaySizeClass = computed(() => {
+  const len = String(targetPerDay.value).length;
+  if (len >= 4) return "text-[12px]";
+  if (len === 3) return "text-[14px]";
+  return "text-[16px]";
+});
+
+const totalParameters = computed(() => {
+  if (!selectedPackage.value) return 0;
+  return selectedPackage.value.modalValues.reduce((sum, section) => {
+    return sum + section.values.length;
+  }, 0);
+});
+
+const series = computed(() => [
+  {
+    name: "Income",
+    data: [directIncome.value, passiveIncome.value],
+  },
+]);
+
+// ─── Helpers ────────────────────────────────────────────
+const checkMobile = () => {
+  isMobile.value = window.innerWidth < 768; // < md
+};
 
 const formatRupiah = (value) => {
   return new Intl.NumberFormat("id-ID").format(value);
@@ -109,18 +118,63 @@ const getPriceDeleted = (price) => {
   return Math.ceil((price / 0.6 + 1000) / 1000) * 1000;
 };
 
-function handleCloseModal() {
+const handleCloseModal = () => {
   showModal.value = false;
   selectedPackage.value = null;
-}
+};
 
-const series = computed(() => [
-  {
-    name: "Income",
-    data: [directIncome.value, passiveIncome.value],
-  },
-]);
+const increase = () => {
+  if (targetPerDay.value < MAX_TARGET) targetPerDay.value++;
+};
 
+const decrease = () => {
+  if (targetPerDay.value > MIN_TARGET) targetPerDay.value--;
+};
+
+// ─── Lifecycle ──────────────────────────────────────────
+onMounted(async () => {
+  // Mobile detection
+  checkMobile();
+  window.addEventListener("resize", checkMobile);
+
+  // whatsSelerisCare carousel
+  interval = setInterval(() => {
+    activeIndex.value = (activeIndex.value + 1) % whatsSelerisCare.length;
+  }, 3000);
+
+  // Benefit auto-highlight
+  benefitInterval = setInterval(() => {
+    activeBenefitIndex.value = (activeBenefitIndex.value + 1) % 2;
+  }, 3000);
+
+  // Content heights
+  await nextTick();
+  contentHeights.value = contentRefs.value.map((el) => el.scrollHeight);
+});
+
+onUnmounted(() => {
+  clearInterval(interval);
+  clearInterval(benefitInterval);
+  window.removeEventListener("resize", checkMobile);
+});
+
+// ─── Watchers ───────────────────────────────────────────
+watch(targetPerDay, (val) => {
+  const numeric = Number(val);
+  if (isNaN(numeric)) {
+    targetPerDay.value = MIN_TARGET;
+    return;
+  }
+  if (numeric < MIN_TARGET) targetPerDay.value = MIN_TARGET;
+  else if (numeric > MAX_TARGET) targetPerDay.value = MAX_TARGET;
+  else targetPerDay.value = numeric;
+});
+
+watch(showModal, (isOpen) => {
+  document.body.style.overflow = isOpen ? "hidden" : "";
+});
+
+// ─── Chart Options ──────────────────────────────────────
 const chartOptions = {
   chart: {
     type: "bar",
@@ -129,10 +183,7 @@ const chartOptions = {
     toolbar: { show: false },
   },
   plotOptions: {
-    bar: {
-      columnWidth: "75%",
-      borderRadius: 14,
-    },
+    bar: { columnWidth: "75%", borderRadius: 14 },
   },
   colors: ["#4FE3C1"],
   dataLabels: { enabled: false },
@@ -145,9 +196,7 @@ const chartOptions = {
     categories: ["Direct (Personal)", "Passive (Team Est.)"],
     axisBorder: { show: false },
     axisTicks: { show: false },
-    labels: {
-      style: { fontSize: "12px", colors: "#6B7280" },
-    },
+    labels: { style: { fontSize: "12px", colors: "#6B7280" } },
   },
   yaxis: {
     labels: {
@@ -169,64 +218,6 @@ const chartOptions = {
     y: { formatter: (val) => "Rp " + val.toLocaleString("id-ID") },
   },
 };
-
-const displaySizeClass = computed(() => {
-  const len = String(targetPerDay.value).length;
-  if (len >= 4) return "text-[12px]";
-  if (len === 3) return "text-[14px]";
-  return "text-[16px]";
-});
-
-const totalParameters = computed(() => {
-  if (!selectedPackage.value) return 0;
-  return selectedPackage.value.modalValues.reduce((sum, section) => {
-    return sum + section.values.length;
-  }, 0);
-});
-
-const increase = () => {
-  if (targetPerDay.value < MAX_TARGET) targetPerDay.value++;
-};
-
-const decrease = () => {
-  if (targetPerDay.value > MIN_TARGET) targetPerDay.value--;
-};
-
-watch(targetPerDay, (val) => {
-  const numeric = Number(val);
-  if (isNaN(numeric)) {
-    targetPerDay.value = MIN_TARGET;
-    return;
-  }
-  if (numeric < MIN_TARGET) targetPerDay.value = MIN_TARGET;
-  else if (numeric > MAX_TARGET) targetPerDay.value = MAX_TARGET;
-  else targetPerDay.value = numeric;
-});
-
-onMounted(async () => {
-  // Carousel whatsSelerisCare
-  interval = setInterval(() => {
-    activeIndex.value = (activeIndex.value + 1) % whatsSelerisCare.length;
-  }, 3000);
-
-  // Content heights
-  await nextTick();
-  contentHeights.value = contentRefs.value.map((el) => el.scrollHeight);
-
-  // Benefit cards mobile auto-animate
-  checkMobileView();
-  window.addEventListener("resize", checkMobileView);
-});
-
-onUnmounted(() => {
-  clearInterval(interval);
-  clearInterval(benefitInterval);
-  window.removeEventListener("resize", checkMobileView);
-});
-
-watch(showModal, (isOpen) => {
-  document.body.style.overflow = isOpen ? "hidden" : "";
-});
 </script>
 
 <template>
@@ -1295,14 +1286,18 @@ watch(showModal, (isOpen) => {
           </div>
         </div>
         <div
-          class="md:max-w-4xl lg:max-w-3xl xl:max-w-4xl md:mx-auto w-full h-auto flex flex-col sm:flex-row gap-y-10 sm:gap-x-4 xl:gap-x-8 px-4"
+          class="md:max-w-4xl lg:max-w-3xl xl:max-w-4xl md:mx-auto w-full h-auto flex flex-col sm:flex-row gap-y-5 sm:gap-x-4 xl:gap-x-8 px-4"
         >
+          <!-- Card 1 - Blue -->
           <div
             :class="[
-              'w-full h-auto p-0.5 rounded-xl overflow-hidden transition-all duration-500',
-              isMobileView && activeBenefitCard === 0
-                ? 'animated-border-wrapper-blue-active'
-                : 'animated-border-wrapper-blue',
+              'w-full h-auto p-0.5 rounded-xl overflow-hidden transition-all duration-300',
+              !isMobile
+                ? 'animated-border-wrapper-blue-mobile'
+                : [
+                    'animated-border-wrapper-blue',
+                    activeBenefitIndex === 0 && 'animated-border-wrapper-blue-active',
+                  ],
             ]"
           >
             <div
@@ -1359,10 +1354,13 @@ watch(showModal, (isOpen) => {
           </div>
           <div
             :class="[
-              'w-full h-auto p-0.5 rounded-xl overflow-hidden transition-all duration-500',
-              isMobileView && activeBenefitCard === 1
-                ? 'animated-border-wrapper-teal-active'
-                : 'animated-border-wrapper-teal',
+              'w-full h-auto p-0.5 rounded-xl overflow-hidden transition-all duration-300',
+              !isMobile
+                ? 'animated-border-wrapper-teal-mobile'
+                : [
+                    'animated-border-wrapper-teal',
+                    activeBenefitIndex === 1 && 'animated-border-wrapper-teal-active',
+                  ],
             ]"
           >
             <div
@@ -1657,9 +1655,9 @@ watch(showModal, (isOpen) => {
 </template>
 <style scoped>
 input[type="number"] {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: textfield;
+  appearance: none; /* ✅ standard */
+  -webkit-appearance: none; /* chrome, safari */
+  -moz-appearance: textfield; /* firefox */
 }
 
 input[type="number"]::-webkit-inner-spin-button,
@@ -1692,12 +1690,12 @@ input[type="number"]::-webkit-outer-spin-button {
 .zoom-enter-from,
 .zoom-leave-to {
   opacity: 0;
-  transform: scale(0.5);
+  transform: scale(0.5); /* mulai dari tengah, kecil */
 }
 .zoom-enter-to,
 .zoom-leave-from {
   opacity: 1;
-  transform: scale(1);
+  transform: scale(1); /* ukuran final */
 }
 
 @property --angle {
@@ -1712,7 +1710,6 @@ input[type="number"]::-webkit-outer-spin-button {
   }
 }
 
-/* ===== ABOUT CARD (whatsSelerisCare) ===== */
 .animated-border-wrapper {
   background: conic-gradient(
     from var(--angle),
@@ -1724,7 +1721,31 @@ input[type="number"]::-webkit-outer-spin-button {
   animation: spin-border 4s linear infinite;
 }
 
-/* ===== BENEFIT CARD - BLUE ===== */
+/* Mobile animated - Blue */
+.animated-border-wrapper-blue-mobile {
+  background: conic-gradient(
+    from var(--angle),
+    #42c5af00 0%,
+    #54b5ff 40%,
+    #54b5ff 60%,
+    #42c5af00 100%
+  );
+  animation: spin-border 4s linear infinite;
+}
+
+/* Mobile animated - Teal */
+.animated-border-wrapper-teal-mobile {
+  background: conic-gradient(
+    from calc(180deg + var(--angle)),
+    #18bfa500 0%,
+    #3be3c9 40%,
+    #3be3c9 60%,
+    #18bfa500 100%
+  );
+  animation: spin-border 4s linear infinite;
+}
+
+/* Card 1 - Blue - state normal: gradient statis dari bawah */
 .animated-border-wrapper-blue {
   background: linear-gradient(180deg, rgba(66, 198, 176, 0) 20%, #54b5ff 100%);
   animation: none;
@@ -1733,7 +1754,7 @@ input[type="number"]::-webkit-outer-spin-button {
     box-shadow 0.3s ease;
 }
 
-/* Desktop: hover */
+/* Card 1 - Blue - hover: ganti ke conic + animasi spinning */
 .animated-border-wrapper-blue:hover {
   background: conic-gradient(
     from var(--angle),
@@ -1747,24 +1768,7 @@ input[type="number"]::-webkit-outer-spin-button {
   box-shadow: 0 20px 40px rgba(84, 181, 255, 0.25);
 }
 
-/* Mobile/tablet: auto-animate aktif */
-.animated-border-wrapper-blue-active {
-  background: conic-gradient(
-    from var(--angle),
-    #42c5af00 0%,
-    #54b5ff 40%,
-    #54b5ff 60%,
-    #42c5af00 100%
-  );
-  animation: spin-border 4s linear infinite;
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(84, 181, 255, 0.25);
-  transition:
-    transform 0.5s ease,
-    box-shadow 0.5s ease;
-}
-
-/* ===== BENEFIT CARD - TEAL ===== */
+/* Card 2 - Teal - state normal: gradient statis dari atas */
 .animated-border-wrapper-teal {
   background: linear-gradient(180deg, #3be3c9 0%, rgba(24, 191, 165, 0) 100%);
   animation: none;
@@ -1773,7 +1777,7 @@ input[type="number"]::-webkit-outer-spin-button {
     box-shadow 0.3s ease;
 }
 
-/* Desktop: hover */
+/* Card 2 - Teal - hover: animasi aktif + override background */
 .animated-border-wrapper-teal:hover {
   background: conic-gradient(
     from calc(180deg + var(--angle)),
@@ -1787,24 +1791,24 @@ input[type="number"]::-webkit-outer-spin-button {
   box-shadow: 0 20px 40px rgba(59, 227, 201, 0.25);
 }
 
-/* Mobile/tablet: auto-animate aktif */
-.animated-border-wrapper-teal-active {
-  background: conic-gradient(
-    from calc(180deg + var(--angle)),
-    #18bfa500 0%,
-    #3be3c9 40%,
-    #3be3c9 60%,
-    #18bfa500 100%
-  ) !important;
-  animation: spin-border 4s linear infinite;
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(59, 227, 201, 0.25);
+/* Card 1 - Blue - state aktif (auto highlight) - hanya lift & shadow */
+.animated-border-wrapper-blue-active {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(84, 181, 255, 0.25);
   transition:
-    transform 0.5s ease,
-    box-shadow 0.5s ease;
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
-/* ===== SCROLLBAR ===== */
+/* Card 2 - Teal - state aktif (auto highlight) - hanya lift & shadow */
+.animated-border-wrapper-teal-active {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(59, 227, 201, 0.25);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
