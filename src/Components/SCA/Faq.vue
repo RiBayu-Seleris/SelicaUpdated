@@ -73,21 +73,32 @@ const faqs = ref([
   {
     question: "Apakah butuh modal besar?",
     answer:
-      "Tidak perlu modal besar untuk memulai. Bergabung sebagai SCA tidak dipungut biaya pendaftaran (Tanpa Modal). Anda bisa langsung mulai membangun bisnis Anda tanpa investasi awal.",
+      "Tidak. Bergabung sebagai SCA tidak memerlukan modal awal atau biaya pendaftaran. Anda dapat langsung mulai menjalankan bisnis dan mendapatkan komisi dari sistem yang telah disediakan.",
   },
   {
     question: "Saya tidak punya latar belakang medis, apakah bisa?",
     answer:
-      "Bergabung sebagai SCA tidak dipungut biaya pendaftaran (Tanpa Modal). Anda bisa mulai membangun bisnis Anda segera setelah disetujui.",
+      "Tentu bisa. Program SCA dirancang untuk semua orang tanpa harus memiliki latar belakang medis. Anda akan mendapatkan panduan, materi edukasi, dan sistem yang membantu proses penjualan.",
   },
   {
     question: "Berapa lama proses pendaftaran berlangsung?",
-    answer: "Proses pendaftaran berlangsung cepat dan mudah. Setelah akun Anda diverifikasi.",
+    answer:
+      "Proses pendaftaran biasanya memakan waktu tidak sampai 1 hari. Anda akan langsung mendapatkan akses penuh ke dashboard, sistem affiliate, dan fitur penjualan.",
   },
   {
     question: "Apakah ada dukungan setelah bergabung?",
     answer:
-      "Ya! Kami menyediakan tim support yang siap membantu Anda 7 hari seminggu melalui chat, email, maupun telepon.",
+      "Ya. Kami menyediakan dukungan penuh berupa tim support, materi training, serta panduan penggunaan dashboard agar Anda dapat menjalankan bisnis dengan optimal.",
+  },
+  {
+    question: "Bagaimana sistem komisi bekerja?",
+    answer:
+      "Setiap penjualan yang berhasil melalui link affiliate atau aktivitas sales Anda akan otomatis tercatat di dashboard dan komisi dihitung secara otomatis.",
+  },
+  {
+    question: "Bagaimana proses withdraw komisi?",
+    answer:
+      "Anda dapat mengajukan withdraw langsung melalui dashboard. Permintaan pencairan akan diproses sesuai waktu yang diinginkan.",
   },
 ]);
 

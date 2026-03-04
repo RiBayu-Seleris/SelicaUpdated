@@ -43,7 +43,7 @@ const DAYS_PER_MONTH = 30;
 const activeHover = ref(null);
 
 // Auto-animate benefit cards on mobile/tablet (<= md)
-const activeBenefitCard = ref(0); // 0 = blue card, 1 = teal card
+const activeBenefitCard = ref(-1); // 0 = blue card, 1 = teal card
 let benefitInterval = null;
 const isMobileView = ref(false);
 
@@ -51,8 +51,9 @@ const checkMobileView = () => {
   isMobileView.value = window.innerWidth <= 768;
   if (isMobileView.value) {
     if (!benefitInterval) {
+      activeBenefitCard.value = 0; // mulai dari card biru
       benefitInterval = setInterval(() => {
-        activeBenefitCard.value = (activeBenefitCard.value + 1) % 2;
+        activeBenefitCard.value = activeBenefitCard.value === 0 ? 1 : 0;
       }, 3000);
     }
   } else {
@@ -1540,7 +1541,8 @@ watch(showModal, (isOpen) => {
 
     <!-- FAQ -->
     <section
-      class="relative w-full h-full z-20 mx-auto max-w-[1440px] px-8 md:px-12 lg:px-16 xl:px-20 xls:px-32 mt-20 py-10 bg-[#FAFAFA]"
+      class="relative w-full h-full z-20 mx-auto max-w-[1440px] px-8 md:px-12 lg:px-16 xl:px-20 xls:px-32 mt-14 md:mt-32 pt-20 py-10 bg-[#FAFAFA]"
+      id="faq"
     >
       <Faq />
     </section>
@@ -1716,10 +1718,11 @@ input[type="number"]::-webkit-outer-spin-button {
 .animated-border-wrapper {
   background: conic-gradient(
     from var(--angle),
-    #42c5af00 0%,
-    #54b5ff 40%,
-    #54b5ff 60%,
-    #42c5af00 100%
+    #eaf8ee 0%,
+    #dff4e6 25%,
+    #bde9cb 50%,
+    #2ab857 75%,
+    #eaf8ee 100%
   );
   animation: spin-border 4s linear infinite;
 }
@@ -1766,7 +1769,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 /* ===== BENEFIT CARD - TEAL ===== */
 .animated-border-wrapper-teal {
-  background: linear-gradient(180deg, #3be3c9 0%, rgba(24, 191, 165, 0) 100%);
+  background: linear-gradient(180deg, rgba(59, 227, 201, 0) 20%, #3be3c9 100%);
   animation: none;
   transition:
     transform 0.3s ease,

@@ -1,78 +1,106 @@
 export const tabs = [
-  { id: "cardiovascular-1", label: "Kardiovaskular" },
-  { id: "metabolic-1", label: "Metabolik" },
-  { id: "metabolic-2", label: "Nutrisi & Organ" },
-  { id: "cardiovascular-2", label: "Stres & Mental" },
-  { id: "metabolic-3", label: "Fisik & Vitalitas" },
-  { id: "advanced", label: "Advanced AI" },
+  { id: "vital", label: "Vital" },
+  { id: "kardio", label: "Kardio" },
+  { id: "metabolik", label: "Metabolik" },
+  { id: "tubuh", label: "Tubuh" },
+  { id: "mental", label: "Mental" },
+  { id: "risiko-ai", label: "Risiko AI" },
 ];
 
 export const tabContents = {
-  "cardiovascular-1": {
+  vital: {
     parameters: [
-      { title: "Darah Sistolik", description: "Puncak tekanan jantung." },
-      { title: "Darah Diastolik", description: "Jantung saat istirahat." },
-      { title: "Detak Jantung", description: "Denyut per menit." },
-      { title: "Variabilitas Jantung", description: "Interval antar detak." },
-      { title: "Saturasi Oksigen", description: "Oksigen dalam darah." },
+      { title: "Detak Jantung", description: "Denyut jantung per menit." },
+      { title: "Tekanan Darah Sistolik", description: "Tekanan saat jantung memompa." },
+      { title: "Tekanan Darah Diastolik", description: "Tekanan saat jantung relaksasi." },
+      { title: "Saturasi Oksigen (SpO2)", description: "Kadar oksigen dalam darah." },
+      { title: "Tingkat Pernapasan", description: "Jumlah napas per menit." },
+      { title: "Cardiac Output", description: "Volume darah dipompa per menit." },
     ],
-    highlight: { count: 5, prefix: "Parameter", label: "Kardiovaskular" },
+    highlight: { count: 6, prefix: "Parameter", label: "Vital" },
   },
-  "metabolic-1": {
+
+  kardio: {
     parameters: [
-      { title: "Gula Darah", description: "Estimasi glukosa darah." },
-      { title: "Kolesterol Total", description: "Kadar lemak darah." },
-      { title: "Kadar Trigliserida", description: "Lemak dalam darah." },
-      { title: "Massa Tubuh", description: "Rasio berat tinggi." },
-      { title: "Metabolisme Basal", description: "Kalori saat istirahat." },
+      { title: "Variabilitas Detak Jantung (HRV)", description: "Variasi interval antar detak." },
+      { title: "Pulse-Respiratory Quotient (PRQ)", description: "Rasio denyut & pernapasan." },
     ],
-    highlight: { count: 5, prefix: "Parameter", label: "Metabolik" },
+    highlight: { count: 2, prefix: "Parameter", label: "Kardio" },
   },
-  "metabolic-2": {
+
+  metabolik: {
     parameters: [
-      { title: "Fungsi Hati", description: "Kesehatan organ hati." },
-      { title: "Fungsi Ginjal", description: "Ginjal menyaring racun." },
-      { title: "Kadar Hemoglobin", description: "Pembawa oksigen darah." },
-      { title: "Vitamin D", description: "Kecukupan vitamin D." },
-      { title: "Asam Urat", description: "Kadar asam urat." },
+      { title: "Glukosa Darah", description: "Kadar gula dalam darah." },
+      {
+        title: "Hemoglobin Terglikasi (HbA1c)",
+        description: "Rata-rata gula darah jangka panjang.",
+      },
+      { title: "Kolesterol Total", description: "Total kolesterol tubuh." },
+      { title: "Asam Urat", description: "Kadar asam urat dalam darah." },
+      { title: "Basal Metabolic Rate (BMR)", description: "Estimasi kebutuhan kalori dasar." },
+      { title: "Hemoglobin", description: "Protein pembawa oksigen darah." },
     ],
-    highlight: { count: 5, prefix: "Parameter", label: "Nutrisi & Organ" },
+    highlight: { count: 6, prefix: "Parameter", label: "Metabolik" },
   },
-  "cardiovascular-2": {
+
+  tubuh: {
     parameters: [
-      { title: "Tingkat Stres", description: "Respons stres tubuh." },
-      { title: "Indeks Kelelahan", description: "Kelelahan fisik mental." },
-      { title: "Kualitas Tidur", description: "Pemulihan saat tidur." },
-      { title: "Saraf Otonom", description: "Saraf simpatik parasimpatik." },
-      { title: "Indeks Relaksasi", description: "Kondisi tubuh tenang." },
+      { title: "Indeks Massa Tubuh (BMI)", description: "Rasio berat & tinggi badan." },
+      { title: "Indeks Bentuk Tubuh", description: "Analisis proporsi tubuh." },
+      { title: "Rasio Lingkar Pinggang / Tinggi", description: "Indikator distribusi lemak." },
+      { title: "Tingkat Otot", description: "Persentase massa otot." },
+      { title: "Rasio Lemak Tubuh", description: "Persentase lemak total." },
+      { title: "Lemak Visceral", description: "Lemak di sekitar organ vital." },
+      { title: "Lemak Subkutan", description: "Lemak di bawah kulit." },
+      { title: "Massa Otot (Kg)", description: "Total berat otot." },
+      { title: "Massa Lemak (Kg)", description: "Total berat lemak." },
+      { title: "Massa Tulang", description: "Estimasi berat tulang." },
+      { title: "Body Shape Analysis", description: "Analisis bentuk tubuh menyeluruh." },
+      { title: "Persentase Air Tubuh", description: "Kadar cairan tubuh." },
+      { title: "Tingkat Protein", description: "Komposisi protein tubuh." },
+      { title: "Massa Protein (Kg)", description: "Total berat protein tubuh." },
     ],
-    highlight: { count: 5, prefix: "Parameter", label: "Stres & Mental" },
+    highlight: { count: 14, prefix: "Parameter", label: "Tubuh" },
   },
-  "metabolic-3": {
+
+  mental: {
     parameters: [
-      { title: "Lemak Tubuh", description: "Proporsi lemak tubuh." },
-      { title: "Massa Otot", description: "Total massa otot." },
-      { title: "Usia Biologis", description: "Usia fisiologis tubuh." },
-      { title: "Kapasitas VO2", description: "Kapasitas oksigen maksimal." },
-      { title: "Indeks Vitalitas", description: "Energi tubuh keseluruhan." },
+      { title: "Tingkat Stres", description: "Indikator kondisi stres fisiologis." },
+      { title: "Usia Biologis", description: "Estimasi kondisi tubuh saat ini." },
+      { title: "Usia Kulit", description: "Estimasi kondisi kesehatan kulit." },
     ],
-    highlight: { count: 5, prefix: "Parameter", label: "Fisik & Vitalitas" },
+    highlight: { count: 3, prefix: "Parameter", label: "Mental" },
   },
-  advanced: {
+
+  "risiko-ai": {
     parameters: [
-      { title: "Risiko Jantung", description: "Risiko kardiovaskular AI." },
-      { title: "Risiko Diabetes", description: "Risiko gula darah." },
-      { title: "Risiko Hipertensi", description: "Risiko tekanan tinggi." },
-      { title: "Skor Kesehatan", description: "Skor holistik tubuh." },
-      { title: "Rekomendasi AI", description: "Saran personal AI." },
+      { title: "Risiko Hipertensi", description: "Potensi tekanan darah tinggi." },
+      { title: "Risiko Diabetes Tipe 2", description: "Potensi gangguan gula darah." },
+      {
+        title: "Risiko Penyakit Kardiovaskular",
+        description: "Potensi gangguan jantung & pembuluh darah.",
+      },
+      { title: "Risiko Hiperkolesterolemia", description: "Potensi kolesterol tinggi." },
+      { title: "Risiko Hipertrigliseridemia", description: "Potensi trigliserida tinggi." },
+      { title: "Risiko Serangan Jantung", description: "Analisis potensi gangguan jantung." },
+      { title: "Risiko Stroke", description: "Analisis potensi gangguan pembuluh otak." },
+      {
+        title: "Glukosa Darah Puasa Abnormal",
+        description: "Indikator gula darah puasa tidak normal.",
+      },
     ],
-    highlight: { count: 5, prefix: "Parameter", label: "Advanced AI" },
+    highlight: { count: 8, prefix: "Parameter", label: "Risiko AI" },
   },
 };
 
+const totalParameters = Object.values(tabContents).reduce(
+  (total, tab) => total + tab.parameters.length,
+  0,
+);
+
 export const footerInfo = {
   icon: "microscope",
-  title: "Total 30 Parameter Kesehatan",
+  title: `Total ${totalParameters} Parameter Kesehatan`,
   description: "Semua laporan disajikan dalam format yang mudah dimengerti (Bahasa Indonesia).",
   buttonLabel: "Lihat Contoh Laporan PDF",
   buttonLink: "#",

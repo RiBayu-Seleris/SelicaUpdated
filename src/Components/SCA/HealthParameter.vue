@@ -5,7 +5,7 @@
       class="lg:max-w-xl mx-auto w-full flex flex-col gap-y-2 justify-center items-center text-center px-8 sm:px-0"
     >
       <p class="text-[#374151] font-[600] text-[24px] md:text-[32px] lg:text-[40px] leading-tight">
-        30 Parameter kesehatan
+        {{ totalParameters }} Parameter Kesehatan
       </p>
       <p class="text-[#374151] font-[400] text-[14px] md:text-[16px]">
         Teknologi AI kami menganalisis spektrum kesehatan tubuh secara mendalam hanya dalam satu
@@ -94,6 +94,9 @@ import { tabs, tabContents, footerInfo } from "@/Data/Products/CareApplicator/He
 const activeTab = ref(tabs[0].id);
 
 const currentContent = computed(() => tabContents[activeTab.value] ?? null);
+const totalParameters = computed(() =>
+  Object.values(tabContents).reduce((total, tab) => total + tab.parameters.length, 0),
+);
 </script>
 
 <style scoped>
