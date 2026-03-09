@@ -2,7 +2,6 @@
 import { computed, nextTick, onMounted, onUnmounted, ref, watch } from "vue";
 import { formatRupiahSmart } from "@/Helper/numberFormat.js";
 
-import ThunderIcon from "@/assets/Products/images/Care-Applicator/thunder-icon.vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 
@@ -409,7 +408,8 @@ watch(showModal, (isOpen) => {
                 class="w-auto h-auto"
                 :class="[index === activeIndex ? 'text-white' : 'text-[#39D5BC]']"
               >
-                <ThunderIcon
+                <component
+                  :is="data.icon"
                   class="w-8 h-8 md:w-10 md:h-10 object-contain p-1 md:p-2 rounded-[8px]"
                   :class="[index === activeIndex ? 'bg-[#39D5BC]' : 'bg-[#D8F7F2]']"
                 />
@@ -930,7 +930,7 @@ watch(showModal, (isOpen) => {
                 <div
                   class="w-10 h-10 md:w-12 md:h-12 flex justify-center items-center bg-[#39D5BC] text-[#FFFFFF] rounded-[12px] p-2 md:p-3"
                 >
-                  <ThunderIcon class="w-full h-full object-contain" />
+                  <component :is="data.icon" class="w-full h-full object-contain" />
                 </div>
               </div>
               <div class="w-full h-auto flex flex-col md:gap-y-3 lg:gap-y-1.5">

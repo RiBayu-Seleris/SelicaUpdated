@@ -54,7 +54,9 @@ const stepsWithPath = careWorkSteps.map((step) => ({
   <div class="relative w-full min-h-screen overflow-hidden">
     <!-- Hero -->
     <section class="relative w-full h-full rounded-[20px] z-20" id="hero">
-      <div class="w-full h-[450px] md:h-[700px] lg:h-[650px] rounded-[20px] z-20">
+      <div
+        class="w-full flex flex-col gap-y-8 h-[480px] md:h-[720px] lg:h-[710px] rounded-[20px] z-20"
+      >
         <HeroText
           title="Smarter Corporate Health Monitoring"
           subtitle="Application"
@@ -63,6 +65,47 @@ const stepsWithPath = careWorkSteps.map((step) => ({
           description=" Empower your organization with AI-driven employee wellness, preventive insights, and health cost control."
           descriptioncolor="text-[#6F6F6F]"
         />
+        <div class="w-full max-w-lg h-auto mx-auto flex flex-row gap-x-3 md:gap-x-5 justify-center">
+          <!-- Button 1: width mengikuti teks -->
+          <a
+            href="https://sca.seleriscare.ai/register"
+            target="_blank"
+            aria-label="Daftar Jadi SCA"
+            class="w-fit h-auto"
+          >
+            <div
+              class="w-auto h-auto flex py-2 md:py-2.5 px-5 justify-center items-center bg-[#13B89C] rounded-[24px] shadow-[0px_10px_15.1px_0px_rgba(19,184,156,0.25)]"
+            >
+              <p
+                class="text-[#FFFFFF] font-[500] text-[12px] sm:text-[12px] md:text-[14px] lg:text-[16px]"
+              >
+                Daftar Seleris Applicator!
+              </p>
+            </div>
+          </a>
+
+          <!-- Button 2: width mengikuti teks -->
+          <a
+            href="https://seleris.ai/contact"
+            target="_blank"
+            aria-label="Daftar Jadi SCA"
+            class="w-fit h-auto"
+          >
+            <div
+              class="w-auto h-full p-[3px] bg-gradient-to-r from-[#13B89C] to-[#13B89C]/0 rounded-[24px]"
+            >
+              <div
+                class="w-auto h-full flex px-5 justify-center items-center bg-[#FFFFFF] rounded-[24px]"
+              >
+                <p
+                  class="text-[#7AC5B8] font-[500] text-[12px] sm:text-[12px] md:text-[14px] lg:text-[16px]"
+                >
+                  Hubungi Kami
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
       </div>
       <!-- Image Phone -->
       <div class="relative w-full h-auto flex -mt-[120px] md:-mt-[250px]">

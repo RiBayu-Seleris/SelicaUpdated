@@ -1,0 +1,27 @@
+<template>
+  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M4 4V25.3333C4 26.0406 4.28095 26.7189 4.78105 27.219C5.28115 27.719 5.95942 28 6.66667 28H28"
+      stroke="currentColor"
+      stroke-width="2.5"
+      stroke-miterlimit="5.759"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M9.3335 18.6665L14.6668 13.3332L20.0002 18.6665L28.0002 10.6665"
+      stroke="currentColor"
+      stroke-width="2.5"
+      stroke-miterlimit="5.759"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M24 10.6665H28V14.6665"
+      stroke="currentColor"
+      stroke-width="2.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+</template>
