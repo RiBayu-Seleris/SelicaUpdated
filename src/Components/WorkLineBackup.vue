@@ -43,7 +43,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div ref="lineRef" class="w-auto h-auto flex items-center bg-blue-500">
+  <div ref="lineRef" class="w-auto h-auto flex items-center">
     <div class="relative flex flex-row w-auto h-full">
       <div class="absolute w-full h-1/2 bottom-[0px] justify-center flex pt-8">
         <transition name="fade">

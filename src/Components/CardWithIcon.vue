@@ -35,14 +35,12 @@ defineProps({
       <div
         class="flex flex-col w-[85%] xl:w-full h-auto justify-start items-start space-y-1 lg:space-y-2"
       >
-        <div class="flex w-full h-auto text-[#195279] dark:text-[#FAFAFA]">
-          <p class="text-[14px] md:text-[19px] lg:text-[16px] xl:text-[20px]">
+        <div class="flex w-full h-auto lg:h-[65px] text-[#195279] dark:text-[#FAFAFA]">
+          <p class="text-[14px] md:text-[18px] lg:text-[16px] xl:text-[20px]">
             {{ title }}
           </p>
         </div>
-        <div
-          :class="`flex w-full h-auto text-[#4F90BC] dark:text-[#6F6F6F] ${subtitleClass}`"
-        >
+        <div :class="`flex w-full h-auto text-[#4F90BC] dark:text-[#6F6F6F] ${subtitleClass}`">
           <p class="text-[12px] md:text-[14px] lg:text-[16px]">
             {{ description }}
           </p>

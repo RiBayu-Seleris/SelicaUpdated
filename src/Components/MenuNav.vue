@@ -29,7 +29,7 @@ const defaultProductMenu = [
     label: "Contact",
   },
   {
-    href: "/sca",
+    href: "https://sca.seleriscare.ai/",
     label: "Seleris Care Applicator",
     target: "_blank", // ← tambahkan ini
   },
@@ -82,10 +82,8 @@ const isSelerisCareApplicator = ref(route.path === "/sca");
     :class="[
       'flex items-center text-md font-[400]',
       isScrolled
-        ? 'lg:gap-[20px] xl:gap-[50px] text-[#717171] font-[500] '
-        : isSelerisCredit
-          ? 'lg:gap-[25px] 2lg:gap-[45px] xl:gap-[63px] 2xl:gap-[70px] justify-center text-[#374151]'
-          : 'lg:gap-[25px] 2lg:gap-[45px] xl:gap-[63px] 2xl:gap-[70px] justify-center text-[#FAFAFA]',
+        ? 'lg:gap-[20px] xl:gap-[50px] text-[#717171] font-[500]'
+        : 'lg:gap-[25px] 2lg:gap-[45px] xl:gap-[63px] 2xl:gap-[70px] justify-center text-[#FAFAFA]',
     ]"
   >
     <li v-for="(menuDefault, index) in defaultProductMenu" :key="index">

@@ -1,5 +1,9 @@
 <script setup>
 defineProps({
+  title: {
+    type: String,
+    default: "How Application Work",
+  },
   productname: {
     type: String,
   },
@@ -10,23 +14,16 @@ defineProps({
 </script>
 
 <template>
-  <div
-    class="relative w-full flex flex-col justify-center items-center z-20 lg:pl-10 xls:pl-20"
-  >
+  <div class="relative w-full flex flex-col justify-center items-center z-20 lg:pl-10 xls:pl-20">
     <div class="w-full h-auto flex flex-col">
-      <div class="w-full h-auto flex px-8">
-        <p
-          class="text-[#2E504E] text-[24px] md:text-[37px] lg:text-[57px] font-[500]"
-        >
-          How Application Work
+      <div class="w-full h-auto flex px-0">
+        <p class="text-[#2E504E] text-[24px] md:text-[36px] lg:text-[50px] font-[500]">
+          <!-- How Application Work -->
+          {{ title }}
         </p>
       </div>
-      <div class="w-full h-auto flex pl-8">
-        <p
-          :class="[
-            `${textcolor} text-[19px] md:text-[23px] lg:text-[27px] font-[500]`,
-          ]"
-        >
+      <div class="w-full h-auto flex pl-0">
+        <p :class="[`${textcolor} text-[18px] md:text-[24px] lg:text-[26px] font-[500]`]">
           {{ productname }}
         </p>
       </div>

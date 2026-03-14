@@ -6,12 +6,20 @@ defineProps({
   heightClass: {
     type: String,
   },
+  mirror: {
+    type: Boolean,
+    default: false,
+  },
 });
 </script>
 
 <template>
-  <!-- w-auto -->
-  <figure :class="[`absolute sm:flex sm:absolute ${positionClass} ${heightClass}`]">
+  <figure
+    :class="[
+      `absolute sm:flex sm:absolute ${positionClass} ${heightClass}`,
+      { 'scale-x-[-1]': mirror },
+    ]"
+  >
     <img
       src="@/assets/Products/images/Care/frame-download.png"
       alt="CareOrnament"

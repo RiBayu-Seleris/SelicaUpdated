@@ -66,7 +66,7 @@ const defaultProductMenu = [
     label: "About",
   },
   {
-    href: "#testimonial",
+    href: "#testimonials",
     label: "Testimonial",
   },
   {
@@ -78,7 +78,7 @@ const defaultProductMenu = [
     label: "Contact",
   },
   {
-    href: "/sca",
+    href: "https://sca.seleriscare.ai/",
     label: "Seleris Care Applicator",
     target: "_blank", // ← tambahkan ini
   },
