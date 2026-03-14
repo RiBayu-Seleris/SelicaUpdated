@@ -754,7 +754,7 @@ onUnmounted(() => {
 
     <!-- How Register -->
     <section
-      class="relative w-full h-auto max-w-[1440px] mx-auto mt-14 lg:mt-20 xl:mt-56 px-0 md:px-12"
+      class="hidden lg:flex relative w-full h-auto max-w-[1440px] mx-auto mt-14 lg:mt-20 xl:mt-56 px-0 md:px-12"
       id="howregister"
     >
       <div class="relative w-full flex flex-col gap-y-20 z-20">
@@ -1291,7 +1291,10 @@ onUnmounted(() => {
       </div>
     </section>
 
-    <section class="relative w-full h-auto mx-auto mt-14 lg:mt-20 xl:mt-56" id="howregister">
+    <section
+      class="hidden lg:flex relative w-full h-auto mx-auto mt-14 lg:mt-20 xl:mt-56"
+      id="howregister"
+    >
       <div class="relative w-full flex flex-col gap-y-0 z-20">
         <div class="w-full h-auto flex px-12">
           <ApplicationWorkText
