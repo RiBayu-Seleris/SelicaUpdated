@@ -20,7 +20,7 @@ defineProps({
       <img :src="image" alt="" class="h-[270px] md:h-auto lg:h-auto xl:h-auto" />
     </figure>
     <div
-      class="w-full lg:w-1/2 h-auto flex flex-col pt-10 md:pt-0 space-y-2 md:space-y-4 lg:space-y-8 justify-center"
+      class="w-full lg:w-1/2 h-auto flex flex-col px-8 md:px-0 pt-10 md:pt-0 space-y-2 md:space-y-4 lg:space-y-8 justify-center"
     >
       <p class="text-[#2E504E] text-[21px] md:text-[23px] lg:text-[30px] font-[600]">
         <!-- AI Health Care Application -->

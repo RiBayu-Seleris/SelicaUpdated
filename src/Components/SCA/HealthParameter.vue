@@ -15,7 +15,7 @@
 
     <!-- Tabs -->
     <div
-      class="w-full flex flex-row justify-between lg:justify-center gap-x-3 px-0 lg:px-0 overflow-x-auto snap-x snap-mandatory lg:overflow-x-visible lg:snap-none scrollbar-hide"
+      class="w-full flex flex-row justify-between lg:justify-center gap-x-3 px-8 md:px-0 overflow-x-auto snap-x snap-mandatory lg:overflow-x-visible lg:snap-none scrollbar-hide"
     >
       <button
         v-for="tab in tabs"
@@ -33,21 +33,27 @@
     </div>
 
     <!-- Tab Content -->
-    <div v-if="currentContent" class="grid grid-cols-2 md:grid-cols-3 gap-4 px-0">
+    <div v-if="currentContent" class="grid grid-cols-2 md:grid-cols-3 gap-4 px-8 sm:px-0">
       <div
         v-for="(param, index) in currentContent.parameters"
         :key="index"
-        class="w-full h-[160px] md:h-[140px] lg:h-[150px] bg-[#EFF9F9] rounded-2xl flex justify-end p-5 flex-col"
+        class="w-full h-[180px] md:h-[170px] lg:h-[150px] bg-[#EFF9F9] rounded-2xl flex justify-end p-3 md:p-5 flex-col"
       >
-        <p class="font-bold text-[#1E293B] text-sm md:text-md lg:text-lg">{{ param.title }}</p>
-        <p class="text-gray-400 text-xs md:text-[12px] lg:text-[14px] mt-1 leading-normal">
+        <p
+          class="w-full h-10 md:h-12 lg:h-auto font-bold text-[#1E293B] text-sm md:text-md lg:text-lg flex-wrap"
+        >
+          {{ param.title }}
+        </p>
+        <p
+          class="w-full h-14 md:h-8 lg:h-auto text-gray-400 text-xs md:text-[12px] lg:text-[14px] mt-1 leading-normal"
+        >
           {{ param.description }}
         </p>
       </div>
 
       <div
         v-if="currentContent.highlight"
-        class="w-full h-[160px] md:h-[140px] lg:h-[150px] bg-gradient-to-br from-teal-400 to-teal-600 rounded-2xl flex flex-col items-center justify-center text-white"
+        class="w-full h-[180px] md:h-[170px] lg:h-[150px] bg-gradient-to-br from-teal-400 to-teal-600 rounded-2xl flex flex-col items-center justify-center text-white"
       >
         <p class="text-[28px] lg:text-[34px] font-bold">{{ currentContent.highlight.count }}</p>
         <p class="text-sm md:text-md lg:text-lg font-semibold mt-2 px-3 lg:px-0 text-center">

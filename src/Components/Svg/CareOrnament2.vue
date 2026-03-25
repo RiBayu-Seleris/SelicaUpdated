@@ -23,7 +23,7 @@ defineProps({
     <img
       src="@/assets/Products/images/CareOrnament2.png"
       alt="CareOrnament"
-      class="object-center bg-no-repeat object-cover w-full h-full opacity-40"
+      class="object-center bg-no-repeat object-contain lg:object-cover w-full h-full opacity-40"
     />
   </figure>
 </template>

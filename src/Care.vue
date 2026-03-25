@@ -42,6 +42,7 @@ import { testimonials as scaTestimonials } from "@/Data/Products/CareApplicator/
 import { whatsSCAList } from "@/Data/Products/CareApplicator/WhatsSCAList.js";
 import { benefits } from "@/Data/Products/CareApplicator/benefits.js";
 import { packages } from "@/Data/Products/CareApplicator/HealthPackage";
+import HowRegister from "@/Components/HowRegister.vue";
 
 const modules = [Navigation, Pagination, Autoplay];
 
@@ -466,7 +467,7 @@ onUnmounted(() => {
 
     <section class="relative w-full h-full max-w-[1440px] mx-auto lg:mt-20 xl:mt-56">
       <div
-        class="w-full h-auto py-10 md:py-14 px-4 md:px-12 lg:px-10 xl:px-32 flex flex-col gap-y-14 rounded-xl"
+        class="w-full h-auto py-10 md:py-14 px-8 md:px-12 lg:px-10 xl:px-32 flex flex-col gap-y-14 rounded-xl"
       >
         <div
           class="w-full h-auto grid grid-cols-2 lg:flex lg:flex-row gap-x-4 md:gap-x-8 lg:gap-x-6 xl:gap-x-5"
@@ -523,7 +524,7 @@ onUnmounted(() => {
       id="howapplicationwork"
     >
       <CareOrnament2
-        positionClass="bottom-[200px] sm:bottom-0 xl:-top-48"
+        positionClass="bottom-[200px] sm:bottom-0 md:-top-[70%] xl:-top-48"
         heightClass="w-full h-auto lg:h-full"
         :mirror="true"
       />
@@ -534,18 +535,18 @@ onUnmounted(() => {
         </div>
         <div class="relative w-full h-auto mt-10 md:mt-12 lg:mt-14">
           <div
-            class="w-full h-auto py-4 overflow-x-auto snap-x snap-mandatory scroll-pl-[15%] pl-[15%] pr-20 md:scroll-pl-12 md:pl-12 md:pr-12 xl:scroll-pl-14 xl:pl-14 xl:pr-14 hide-scrollbar"
+            class="w-full h-auto pt-4 pb-8 overflow-x-auto snap-x snap-mandatory scroll-pl-8 pl-8 pr-8 md:scroll-pl-0 md:pl-0 md:pr-0 xl:scroll-pl-14 xl:pl-14 xl:pr-14 hide-scrollbar"
           >
-            <div class="relative flex flex-row md:gap-x-14 xl:gap-x-20 w-max h-auto">
-              <div class="absolute px-[170px] top-0 w-full h-full py-4 flex">
-                <div class="w-full h-1 relative left-0 md:top-[70.5%] xl:top-[70.8%]">
+            <div class="relative flex flex-row gap-x-14 md:gap-x-14 xl:gap-x-20 w-max h-auto">
+              <div class="absolute px-[100px] sm:px-[170px] top-0 w-full h-full py-4 flex">
+                <div class="w-full h-1 relative left-0 top-[72%] md:top-[70.5%] xl:top-[70.8%]">
                   <div class="w-full h-full bg-[#B2D4CE]" />
                 </div>
               </div>
               <div
                 v-for="(workData, index) in stepApplicationWorks"
                 :key="index"
-                class="snap-start w-[350px] md:h-[550px] xl:h-[650px] flex flex-col justify-center items-center shrink-0"
+                class="snap-start w-[200px] sm:w-[350px] md:h-[550px] xl:h-[650px] flex flex-col justify-center items-center shrink-0"
               >
                 <div class="w-full h-[70%] shrink-0 flex justify-center items-start">
                   <img
@@ -557,16 +558,18 @@ onUnmounted(() => {
                 </div>
                 <div class="relative w-full h-[30%] shrink-0 flex flex-col items-center">
                   <div
-                    class="relative md:w-10 md:h-10 -top-5 flex justify-center items-center p-2 bg-[#13B89C] border-2 border-white rounded-full"
+                    class="relative w-8 h-8 md:w-10 md:h-10 -top-3 sm:-top-5 flex justify-center items-center p-2 bg-[#13B89C] border-2 border-white rounded-full"
                   >
                     <span class="text-[#FFFFFF] text-[18px]">{{ index + 1 }}</span>
                   </div>
-                  <div class="w-full h-full flex flex-col md:gap-y-3 xl:gap-y-5 items-center">
+                  <div
+                    class="w-full h-full flex flex-col gap-y-3 md:gap-y-3 xl:gap-y-5 items-center md:px-10"
+                  >
                     <p class="text-center text-[#374151] font-[600] md:text-[18px] xl:text-[24px]">
                       {{ workData.title }}
                     </p>
                     <p
-                      class="text-center text-[#515E71] font-[400] md:text-[14px] xl:text-[16px]"
+                      class="text-center text-[#515E71] font-[400] text-[12px] md:text-[14px] xl:text-[16px]"
                       v-html="workData.content"
                     ></p>
                   </div>
@@ -754,132 +757,23 @@ onUnmounted(() => {
 
     <!-- How Register -->
     <section
-      class="hidden lg:flex relative w-full h-auto max-w-[1440px] mx-auto mt-14 lg:mt-20 xl:mt-56 px-0 md:px-12"
+      class="flex relative w-full h-auto max-w-[1440px] mx-auto mt-14 lg:mt-20 xl:mt-56 px-0 lg:px-12"
       id="howregister"
     >
-      <div class="relative w-full flex flex-col gap-y-20 z-20">
-        <ApplicationWorkText
-          title="Register Seleris Care Aplicator"
-          productname="Seleris Care"
-          textcolor="text-[#42C5AF]"
-        />
-
-        <div class="w-full h-[500px] flex flex-row px-20">
-          <!-- ✅ hapus bg-purple-700 -->
-
-          <!-- Kolom kiri (untuk video/gambar) -->
-          <div class="w-[35%] shrink-0 h-auto flex">
-            <Transition name="img-fade" mode="out-in">
-              <img
-                :key="currentIndex"
-                :src="registerFlow[currentIndex].image"
-                alt=""
-                class="w-full h-full object-contain"
-              />
-            </Transition>
-          </div>
-          <!-- ✅ hapus bg-red-700 -->
-
-          <div class="w-full h-full flex flex-row">
-            <!-- ✅ hapus bg-green-700 -->
-
-            <!-- Scroll Indicator -->
-            <div class="relative w-[30%] shrink-0 h-full">
-              <div class="absolute left-0 top-0 h-full flex flex-col items-center z-10 w-full">
-                <!-- ✅ Ganti div garis lurus → SVG arc curved ke kanan -->
-                <svg
-                  class="absolute top-0 left-0 w-full h-full"
-                  viewBox="0 0 120 300"
-                  preserveAspectRatio="none"
-                  fill="none"
-                >
-                  <path
-                    d="M 30 0 C 100 40, 170 200, 30 300"
-                    stroke="#E5E7EB"
-                    stroke-width="3"
-                    stroke-linecap="round"
-                    fill="none"
-                  />
-                  <path
-                    d="M 30 0 C 100 40, 170 200, 30 300"
-                    stroke="#22C55E"
-                    stroke-width="3"
-                    stroke-linecap="round"
-                    fill="none"
-                    stroke-dasharray="420"
-                    :stroke-dashoffset="
-                      currentIndex === registerFlow.length - 1
-                        ? 0
-                        : 420 - (380 * (currentIndex + 1)) / registerFlow.length
-                    "
-                    class="transition-all duration-500 ease-out"
-                  />
-                </svg>
-
-                <!-- Titik-titik — tidak ada yang berubah dari sebelumnya -->
-                <div class="relative z-20 h-full flex flex-col justify-around py-0">
-                  <div
-                    v-for="(register, index) in registerFlow"
-                    :key="index"
-                    :class="[
-                      'w-12 h-12 rounded-full border-2 transition-all duration-300 bg-white relative flex justify-center items-center',
-                      currentIndex >= index ? 'border-green-500 scale-110' : 'border-gray-300',
-                      index === 1 ? 'ml-[200%]' : 'ml-[80%]',
-                    ]"
-                  >
-                    <div
-                      v-if="currentIndex >= index"
-                      class="absolute inset-0.5 bg-green-500 rounded-full transition-all duration-300 flex justify-center items-center"
-                    >
-                      <span class="text-[18px] font-[500] text-white">{{ index + 1 }}</span>
-                    </div>
-                    <span v-else class="text-[18px] font-[500] text-green-500">{{
-                      index + 1
-                    }}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- registerFlow carousel -->
-            <div class="flex flex-col w-full h-full gap-y-0 transition-all duration-500 ease-out">
-              <div
-                v-for="(register, index) in registerFlow"
-                :key="index"
-                class="relative w-full h-full flex flex-col items-center gap-y-0 lg:gap-y-0 transition-all lg:justify-between duration-500 ease-out"
-                :class="index === 0 || index === 2 ? 'ml-3' : 'ml-14'"
-              >
-                <div
-                  class="absolute left-0 w-full flex items-center transition-all duration-500 ease-out"
-                  :class="[
-                    index === currentIndex
-                      ? 'top-0 h-[40px] lg:h-[60px] xl:h-[90px]'
-                      : 'h-full top-1/2 -translate-y-1/2',
-                  ]"
-                >
-                  <p
-                    class="font-[500] leading-snug tracking-normal transition-all duration-500 ease-out text-[16px] sm:text-[20px] lg:text-[16px] xl:text-[24px] max-[321px]:!text-[14px] max-[376px]:!text-[14px]"
-                    :class="index === currentIndex ? 'text-[#13B89C]' : 'text-[#D6D6D6]'"
-                  >
-                    {{ register.title }}
-                  </p>
-                </div>
-                <div
-                  v-if="index === currentIndex && showDescription"
-                  class="absolute bottom-0 sm:bottom-3 lg:-bottom-3 xl:-bottom-1 xls:bottom-3 max-[321px]:!bottom-4 left-0 w-full h-auto transition-all duration-500 ease-out animate__animated animate__fadeIn"
-                  :class="{
-                    'xls:bottom-10': index === 2,
-                  }"
-                >
-                  <p
-                    class="font-[400] text-[#515E71] text-[12px] sm:text-[16px] lg:text-[12px] xl:text-[14px] xls:text-[16px] max-[321px]:!text-[10px] leading-snug tracking-wide"
-                    v-html="register.description"
-                  ></p>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class="relative w-full flex flex-col gap-y-10 lg:gap-y-20 z-20">
+        <div class="w-full h-auto flex px-8 md:px-12 lg:px-0">
+          <ApplicationWorkText
+            title="Register Seleris Care Aplicator"
+            productname="Seleris Care"
+            textcolor="text-[#42C5AF]"
+          />
         </div>
+
+        <HowRegister
+          :steps="registerFlow"
+          :current-index="currentIndex"
+          :show-description="showDescription"
+        />
       </div>
     </section>
 
@@ -1291,84 +1185,28 @@ onUnmounted(() => {
       </div>
     </section>
 
-    <section
-      class="hidden lg:flex relative w-full h-auto mx-auto mt-14 lg:mt-20 xl:mt-56"
-      id="howregister"
-    >
+    <section class="flex relative w-full h-auto mx-auto mt-14 lg:mt-20 xl:mt-44" id="downline">
       <div class="relative w-full flex flex-col gap-y-0 z-20">
-        <div class="w-full h-auto flex px-12">
+        <div class="w-full h-auto flex max-w-[1440px] mx-auto">
           <ApplicationWorkText
             title="Seleris Care Downline"
             productname="Seleris Care"
             textcolor="text-[#42C5AF]"
           />
         </div>
-        <div class="relative w-full h-auto mt-10 md:mt-12 lg:mt-14">
-          <div class="w-full h-auto py-0 flex justify-center">
-            <div class="relative w-full h-auto">
-              <div class="absolute top-[23%] left-0 w-full h-full py-0 flex">
-                <div class="w-full h-full relative" style="top: 0; left: 0">
-                  <svg
-                    class="absolute w-full"
-                    viewBox="0 0 1000 400"
-                    preserveAspectRatio="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M 0 350 Q 500 80 1000 350"
-                      stroke="#B2D4CE"
-                      stroke-width="1.5"
-                      fill="none"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <div class="w-full h-auto flex flex-row justify-between px-20">
-                <div
-                  v-for="(data, index) in downlineData"
-                  :key="index"
-                  class="w-[350px] h-[650px] flex flex-col justify-center items-center shrink-0"
-                  :class="index === 1 ? 'mt-[0%]' : 'mt-[6%]'"
-                >
-                  <div
-                    class="w-full h-[70%] shrink-0 flex justify-center"
-                    :class="index === 1 ? 'items-start' : 'items-end'"
-                  >
-                    <img :src="data.image" alt="" srcset="" class="w-full h-[90%] object-contain" />
-                  </div>
-                  <div class="relative w-full h-[30%] shrink-0 flex flex-col gap-y-10 items-center">
-                    <div
-                      class="relative w-12 h-12 top-0 flex justify-center items-center p-2 bg-[#13B89C] border-4 border-white rounded-full shadow-[0px_10px_15.1px_0px_rgba(19,184,156,0.25)]"
-                    >
-                      <span class="text-[#FFFFFF] text-[18px]">{{ index + 1 }}</span>
-                    </div>
-                    <div class="w-full h-full flex flex-col gap-y-2 items-center">
-                      <p class="text-center text-[#374151] font-[600] text-[24px]">
-                        {{ data.title }}
-                      </p>
-                      <p
-                        class="text-center text-[#515E71] font-[400] text-[16px]"
-                        v-html="data.content"
-                      ></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <Downline :items="downlineData" />
       </div>
     </section>
 
     <!-- Testimonial -->
     <section
-      class="relative w-full h-full z-20 mx-auto max-w-[1440px] lg:px-0 xls:max-w-full xls:px-14 mt-32"
+      class="relative w-full h-full z-20 mx-auto max-w-[1440px] lg:px-0 xl:max-w-[1440px] xl:px-0 mt-32"
       id="testimonials"
     >
       <div class="w-full h-auto flex flex-col gap-y-5 md:gap-y-6 lg:gap-y-8 pb-10">
         <div class="w-full h-auto flex flex-col gap-y-10 lg:gap-y-10">
           <div
-            class="w-full h-auto flex flex-col gap-y-3 lg:gap-y-4 max-[375px]:!px-6 px-8 md:px-12 lg:px-20 xls:px-32"
+            class="w-full h-auto flex flex-col gap-y-3 lg:gap-y-4 max-[375px]:!px-6 px-8 md:px-12 lg:px-20 xl:px-32"
           >
             <div class="w-full h-auto flex justify-center items-center">
               <span
@@ -1386,7 +1224,7 @@ onUnmounted(() => {
             </div>
           </div>
           <div class="relative w-full xl:h-[425px] flex justify-center items-center">
-            <div class="absolute w-full h-full z-10 top-1/2 -translate-y-1/2 px-0 lg:px-20">
+            <div class="absolute w-full h-full z-10 top-1/2 -translate-y-1/2 px-0 xl:px-0">
               <img
                 src="@/assets/Products/images/Care-Applicator/testimonial-background.png"
                 alt=""
@@ -1394,7 +1232,7 @@ onUnmounted(() => {
               />
             </div>
             <div
-              class="relative w-full h-auto group mt-10 xl:mt-6 z-20 bg-transparent px-0 lg:px-20"
+              class="relative w-full h-auto group mt-10 xl:mt-6 z-20 bg-transparent px-0 lg:px-16 xl:px-32"
             >
               <Swiper
                 :modules="modules"
