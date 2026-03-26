@@ -54,7 +54,7 @@ onUnmounted(() => clearInterval(autoSlideTimer));
       <div
         v-for="(data, index) in items"
         :key="index"
-        class="w-full shrink-0 flex flex-col items-center gap-y-5 px-6 pb-8 pt-4"
+        class="w-full shrink-0 flex flex-col items-center gap-y-5 px-6 pb-0 pt-4"
       >
         <!-- Image -->
         <div class="w-auto h-[50%] flex items-center justify-center">
@@ -63,21 +63,26 @@ onUnmounted(() => clearInterval(autoSlideTimer));
 
         <!-- Number -->
         <div
-          class="w-8 h-8 flex justify-center items-center p-2 bg-[#13B89C] border-4 border-white rounded-full shadow-[0px_10px_15.1px_0px_rgba(19,184,156,0.25)]"
+          class="w-10 h-10 flex justify-center items-center p-2 bg-[#13B89C] border-4 border-white rounded-full shadow-[0px_10px_15.1px_0px_rgba(19,184,156,0.25)]"
         >
           <span class="text-white text-[14px]">{{ index + 1 }}</span>
         </div>
 
         <!-- Text -->
         <div class="flex flex-col gap-y-2 items-center">
-          <p class="text-center text-[#374151] font-[600] text-[18px]">{{ data.title }}</p>
-          <p class="text-center text-[#515E71] font-[400] text-[14px]" v-html="data.content" />
+          <p class="text-center text-[#374151] font-[600] text-[18px] sm:text-[22px]">
+            {{ data.title }}
+          </p>
+          <p
+            class="text-center text-[#515E71] font-[400] text-[14px] sm:text-[18px]"
+            v-html="data.content"
+          />
         </div>
       </div>
     </div>
 
     <!-- Dots -->
-    <div class="flex justify-center gap-x-2 mt-4">
+    <div class="flex justify-center gap-x-2 mt-0">
       <button
         v-for="(_, i) in items"
         :key="i"

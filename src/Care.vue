@@ -1188,7 +1188,7 @@ onUnmounted(() => {
 
     <section class="flex relative w-full h-auto mx-auto mt-14 lg:mt-20 xl:mt-44" id="downline">
       <div class="relative w-full flex flex-col gap-y-0 z-20">
-        <div class="w-full h-auto flex max-w-[1440px] mx-auto">
+        <div class="w-full h-auto flex max-w-[1440px] mx-auto px-8 md:px-0">
           <ApplicationWorkText
             title="Seleris Care Downline"
             productname="Seleris Care"
