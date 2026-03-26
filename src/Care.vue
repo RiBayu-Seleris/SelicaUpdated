@@ -106,20 +106,21 @@ const stepApplicationWorks = [
 const downlineData = [
   {
     id: 1,
-    title: "Login akun",
-    content: `Masuk ke aplikasi <a href="https://sca.seleriscare.ai" target="_blank" class="text-[#01A488] hover:underline">Seleris Care</a> menggunakan email dan kata sandi yang telah Anda daftarkan sebelumnya.`,
+    title: "Register akun",
+    content: `
+    Daftarkan akun Anda melalui website <a href="https://sca.seleriscare.ai" target="_blank" class="text-[#01A488] hover:underline">sca.seleriscare.ai</a> menggunakan email aktif untuk memulai proses pendaftaran`,
     image: new URL("@/assets/Products/images/Care/downline/monitor.svg", import.meta.url).href,
   },
   {
     id: 2,
-    title: "Home page",
-    content: `Pilih layanan pemeriksaan kesehatan dan lakukan pembelian produk untuk memulai proses pengecekan.`,
+    title: "Masukkan kode referral",
+    content: `Masukkan kode referral dari SC Affiliator yang mengundang Anda untuk bergabung ke dalam jaringan Seleris Care`,
     image: new URL("@/assets/Products/images/Care/downline/referral.svg", import.meta.url).href,
   },
   {
     id: 3,
-    title: "Face scanning",
-    content: `Ikuti proses pemindaian wajah dengan mengarahkan wajah Anda ke kamera sesuai petunjuk untuk melakukan analisis kesehatan`,
+    title: "Selesai",
+    content: `Pendaftaran selesai! Anda kini resmi menjadi bagian dari SC Affiliator dan siap memulai perjalanan bersama kami`,
     image: new URL("@/assets/Products/images/Care/downline/finish.svg", import.meta.url).href,
   },
 ];
@@ -763,7 +764,7 @@ onUnmounted(() => {
       <div class="relative w-full flex flex-col gap-y-10 lg:gap-y-20 z-20">
         <div class="w-full h-auto flex px-8 md:px-12 lg:px-0">
           <ApplicationWorkText
-            title="Register Seleris Care Aplicator"
+            title="Register Seleris Care Applicator"
             productname="Seleris Care"
             textcolor="text-[#42C5AF]"
           />
