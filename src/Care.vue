@@ -1202,7 +1202,7 @@ onUnmounted(() => {
     <!-- Testimonial -->
     <section
       class="relative w-full h-full z-20 mx-auto max-w-[1440px] lg:px-0 xl:max-w-[1440px] xl:px-0 mt-32"
-      id="testimonials"
+      id="testimonial"
     >
       <div class="w-full h-auto flex flex-col gap-y-5 md:gap-y-6 lg:gap-y-8 pb-10">
         <div class="w-full h-auto flex flex-col gap-y-10 lg:gap-y-10">
