@@ -531,12 +531,12 @@ onUnmounted(() => {
       />
       <!-- Application Work Slider -->
       <div class="relative w-full flex flex-col z-20">
-        <div class="w-full h-auto px-12">
+        <div class="w-full h-auto px-8">
           <ApplicationWorkText productname="Seleris Care" textcolor="text-[#42C5AF]" />
         </div>
         <div class="relative w-full h-auto mt-10 md:mt-12 lg:mt-14">
           <div
-            class="w-full h-auto pt-4 pb-8 overflow-x-auto snap-x snap-mandatory scroll-pl-8 pl-8 pr-8 md:scroll-pl-0 md:pl-0 md:pr-0 xl:scroll-pl-14 xl:pl-14 xl:pr-14 hide-scrollbar"
+            class="w-full h-auto pt-4 pb-8 overflow-x-auto snap-x snap-mandatory scroll-pl-4 pl-4 pr-4 md:scroll-pl-0 md:pl-0 md:pr-0 xl:scroll-pl-14 xl:pl-14 xl:pr-14 hide-scrollbar"
           >
             <div class="relative flex flex-row gap-x-14 md:gap-x-14 xl:gap-x-20 w-max h-auto">
               <div class="absolute px-[100px] sm:px-[170px] top-0 w-full h-full py-4 flex">

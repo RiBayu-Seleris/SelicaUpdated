@@ -15,7 +15,7 @@ defineProps({
 
 <template>
   <div
-    class="relative w-full flex flex-col justify-center items-center z-20 pl-8 md:pl-12 lg:pl-16 xls:pl-20"
+    class="relative w-full flex flex-col justify-center items-center z-20 pl-0 md:pl-12 lg:pl-16 xls:pl-20"
   >
     <div class="w-full h-auto flex flex-col">
       <div class="w-full h-auto flex px-0">
