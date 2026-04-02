@@ -178,14 +178,14 @@ const connectColor = computed(() => {
                     Seleris Asia Pacific Technology Pte.Ltd
                   </p>
                   <a
-                    href="https://maps.app.goo.gl/8EZcoxw2NPYhc7ed8"
+                    href="https://maps.app.goo.gl/DrebGjYQbBHyY8DF8"
                     target="_blank"
                     rel="noopener noreferrer"
                     :class="[
                       `${connectColor} text-[12px] lg:text-[14px] xl:text-[16px] lg:pt-1.5 w-full`,
                     ]"
                   >
-                    16 Raffles Quay #35 - 01B Hong Leong Building SINGAPORE (048581)
+                    18 Robinson Road #15-01 Singapore 048547.
                   </a>
                 </div>
                 <div class="w-full h-auto lg:pr-5">
