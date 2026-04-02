@@ -66,7 +66,7 @@ const defaultProductMenu = [
     label: "About",
   },
   {
-    href: "#testimonials",
+    href: "#testimonial",
     label: "Testimonial",
   },
   {
