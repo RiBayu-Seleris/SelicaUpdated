@@ -26,10 +26,10 @@ defineProps({
 
 <template>
   <div class="w-full h-auto pt-[120px] md:pt-[150px] lg:pt-[120px] space-y-5 md:space-y-6">
-    <div class="w-full h-auto flex flex-col mx-auto justify-center px-10 md:px-0">
+    <div class="w-full h-auto flex flex-col mx-auto justify-center sm:px-10 md:px-0">
       <p
         :class="[
-          `text-[18px] md:text-[36px] lg:text-[40px] font-medium ${titlecolor} text-center leading-[35px] md:px-10 md:justify-center md:leading-relaxed`,
+          `max-smallest:text-[14px] text-[16px] sm:text-[18px] md:text-[36px] lg:text-[40px] font-medium ${titlecolor} text-center sm:leading-[35px] md:px-10 md:justify-center md:leading-relaxed`,
         ]"
       >
         {{ title }}
@@ -39,7 +39,7 @@ defineProps({
     <div class="xl:w-[700px] px-10 sm:px-16 h-auto flex flex-col mx-auto justify-center">
       <p
         :class="[
-          `${descriptioncolor} text-[12px] sm:text-[16px] md:text-[18px] lg:text-[20px] text-center font-[400]`,
+          `${descriptioncolor} max-smallest:text-[10px] text-[12px] sm:text-[16px] md:text-[18px] lg:text-[20px] text-center font-[400]`,
         ]"
       >
         {{ description }}

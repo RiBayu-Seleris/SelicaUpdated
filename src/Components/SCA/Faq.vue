@@ -1,7 +1,7 @@
 <template>
   <div class="max-w-3xl mx-auto space-y-4">
     <h2
-      class="text-center text-[28px] md:text-[32px] lg:text-[38px] xl:text-[48px] font-[600] text-[#374151] mb-10 tracking-tight"
+      class="text-center max-smallest:text-[20px] text-[28px] md:text-[32px] lg:text-[38px] xl:text-[48px] font-[600] text-[#374151] mb-10 tracking-tight"
     >
       Pertanyaan Umum
     </h2>
@@ -23,7 +23,7 @@
           @click="toggle(index)"
         >
           <span
-            class="text-[14px] sm:text-[16px] font-semibold transition-colors duration-200"
+            class="max-smallest:text-[12px] text-[14px] sm:text-[16px] font-semibold transition-colors duration-200"
             :class="activeIndex === index ? 'text-[#13B89C]' : 'text-[#374151]'"
           >
             {{ item.question }}
@@ -54,7 +54,7 @@
           @after-leave="onAfterLeave"
         >
           <div v-if="activeIndex === index">
-            <p class="px-6 pb-5 text-slate-500 leading-relaxed text-sm">
+            <p class="px-6 pb-5 text-slate-500 leading-relaxed max-smallest:text-xs text-sm">
               {{ item.answer }}
             </p>
           </div>

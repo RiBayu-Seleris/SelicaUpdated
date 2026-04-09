@@ -1,13 +1,15 @@
 <template>
-  <div class="w-full h-auto flex flex-col gap-y-10">
+  <div class="w-full h-auto flex flex-col over-smallest:gap-y-5 gap-y-10">
     <!-- Header -->
     <div
       class="lg:max-w-xl mx-auto w-full flex flex-col gap-y-2 justify-center items-center text-center px-8 sm:px-0"
     >
-      <p class="text-[#374151] font-[600] text-[24px] md:text-[32px] lg:text-[40px] leading-tight">
+      <p
+        class="text-[#374151] font-[600] over-smallest:text-[18px] text-[24px] md:text-[32px] lg:text-[40px] leading-tight"
+      >
         {{ totalParameters }} Parameter Kesehatan
       </p>
-      <p class="text-[#374151] font-[400] text-[14px] md:text-[16px]">
+      <p class="text-[#374151] font-[400] over-smallest:text-[12px] text-[14px] md:text-[16px]">
         Teknologi AI kami menganalisis spektrum kesehatan tubuh secara mendalam hanya dalam satu
         sesi pemindaian.
       </p>
@@ -22,7 +24,7 @@
         :key="tab.id"
         @click="activeTab = tab.id"
         :class="[
-          'px-10 xl:px-5 py-2 rounded-full text-sm font-medium transition-all shrink-0',
+          'px-10 xl:px-5 over-smallest:py-1.5 py-2 rounded-full text-sm font-medium transition-all shrink-0',
           activeTab === tab.id
             ? 'bg-teal-500 text-white font-semibold'
             : 'bg-gray-100 text-gray-600 hover:bg-gray-200',
@@ -37,15 +39,15 @@
       <div
         v-for="(param, index) in currentContent.parameters"
         :key="index"
-        class="w-full h-[180px] md:h-[170px] lg:h-[150px] bg-[#EFF9F9] rounded-2xl flex justify-end p-3 md:p-5 flex-col"
+        class="w-full min-h-[170px] bg-[#EFF9F9] rounded-2xl flex justify-end p-3 md:p-5 flex-col overflow-hidden"
       >
         <p
-          class="w-full h-10 md:h-12 lg:h-auto font-bold text-[#1E293B] text-sm md:text-md lg:text-lg flex-wrap"
+          class="w-full over-smallest:!h-24 max-smallest:h-12 h-10 md:h-12 lg:h-auto font-bold text-[#1E293B] over-smallest:text-[10px] max-smallest:text-[12px] over-smallest:leading-normal text-sm md:text-md lg:text-lg flex-wrap items-end flex"
         >
           {{ param.title }}
         </p>
         <p
-          class="w-full h-14 md:h-8 lg:h-auto text-gray-400 text-xs md:text-[12px] lg:text-[14px] mt-1 leading-normal"
+          class="w-full over-smallest:h-10 max-smallest:h-12 h-14 md:h-8 lg:h-auto text-gray-400 text-[10px] md:text-[12px] lg:text-[14px] mt-1 sm:leading-normal"
         >
           {{ param.description }}
         </p>
@@ -53,7 +55,7 @@
 
       <div
         v-if="currentContent.highlight"
-        class="w-full h-[180px] md:h-[170px] lg:h-[150px] bg-gradient-to-br from-teal-400 to-teal-600 rounded-2xl flex flex-col items-center justify-center text-white"
+        class="w-full min-h-[170px] bg-gradient-to-br from-teal-400 to-teal-600 rounded-2xl flex flex-col items-center justify-center text-white"
       >
         <p class="text-[28px] lg:text-[34px] font-bold">{{ currentContent.highlight.count }}</p>
         <p class="text-sm md:text-md lg:text-lg font-semibold mt-2 px-3 lg:px-0 text-center">

@@ -369,7 +369,7 @@ onUnmounted(() => {
     <!-- Hero -->
     <section class="relative w-full h-full rounded-[20px] z-20" id="hero">
       <div
-        class="w-full flex flex-col gap-y-8 h-[480px] md:h-[720px] lg:h-[710px] rounded-[20px] z-20"
+        class="w-full flex flex-col gap-y-8 max-smallest:h-[500px] h-[480px] md:h-[720px] lg:h-[710px] rounded-[20px] z-20"
       >
         <HeroText
           title="Smarter Corporate Health Monitoring"
@@ -379,19 +379,21 @@ onUnmounted(() => {
           description=" Empower your organization with AI-driven employee wellness, preventive insights, and health cost control."
           descriptioncolor="text-[#6F6F6F]"
         />
-        <div class="w-full max-w-lg h-auto mx-auto flex flex-row gap-x-3 md:gap-x-5 justify-center">
+        <div
+          class="w-full max-w-lg h-auto mx-auto flex flex-row max-smallest:flex-col-reverse max-smallest:gap-5 gap-3 md:gap-5 justify-center max-smallest:px-10 px-0"
+        >
           <!-- Button 1: width mengikuti teks -->
           <a
             href="https://sca.seleriscare.ai/register"
             target="_blank"
             aria-label="Daftar Jadi SCA"
-            class="w-fit h-auto"
+            class="w-fit max-smallest:w-full h-auto"
           >
             <div
               class="w-auto h-auto flex py-2 md:py-2.5 px-5 justify-center items-center bg-[#13B89C] rounded-[24px] shadow-[0px_10px_15.1px_0px_rgba(19,184,156,0.25)]"
             >
               <p
-                class="text-[#FFFFFF] font-[500] text-[12px] sm:text-[12px] md:text-[14px] lg:text-[16px]"
+                class="text-[#FFFFFF] font-[500] max-smallest:text-[10px] text-[12px] md:text-[14px] lg:text-[16px]"
               >
                 Daftar Seleris Applicator!
               </p>
@@ -403,16 +405,16 @@ onUnmounted(() => {
             href="https://seleris.ai/contact"
             target="_blank"
             aria-label="Daftar Jadi SCA"
-            class="w-fit h-auto"
+            class="w-fit max-smallest:w-full h-auto"
           >
             <div
               class="w-auto h-full p-[3px] rounded-[24px] animated-border-wrapper-contact cursor-pointer"
             >
               <div
-                class="w-auto h-full flex px-5 justify-center items-center bg-[#FFFFFF] rounded-[24px]"
+                class="w-auto h-full flex px-5 max-smallest:py-1.5 py-0 justify-center items-center bg-[#FFFFFF] rounded-[24px]"
               >
                 <p
-                  class="text-[#7AC5B8] font-[500] text-[12px] sm:text-[12px] md:text-[14px] lg:text-[16px]"
+                  class="text-[#7AC5B8] font-[500] max-smallest:text-[10px] text-[12px] md:text-[14px] lg:text-[16px]"
                 >
                   Hubungi Kami
                 </p>
@@ -455,7 +457,9 @@ onUnmounted(() => {
       <div
         class="relative w-full flex flex-col max-w-[1440px] mx-auto justify-center items-center z-20 mt-16 md:mt-20 lg:mt-40 md:px-12 xl:px-8"
       >
-        <AboutUs title="About Us" subtitle="Seleris Care" subtitleColor="text-[#42C5AF]" />
+        <div class="w-full h-auto flex justify-center max-smallest:mt-3 mt-0">
+          <AboutUs title="About Us" subtitle="Seleris Care" subtitleColor="text-[#42C5AF]" />
+        </div>
         <div class="w-full h-auto mt-10 md:mt-10 lg:mt-10">
           <AboutUsDescription
             :image="imageAbout"
@@ -471,15 +475,15 @@ onUnmounted(() => {
         class="w-full h-auto py-10 md:py-14 px-8 md:px-12 lg:px-10 xl:px-32 flex flex-col gap-y-14 rounded-xl"
       >
         <div
-          class="w-full h-auto grid grid-cols-2 lg:flex lg:flex-row gap-x-4 md:gap-x-8 lg:gap-x-6 xl:gap-x-5"
+          class="w-full h-auto grid over-smallest:grid-cols-1 grid-cols-2 lg:flex lg:flex-row over-smallest:gap-5 gap-4 md:gap-8 lg:gap-6 xl:gap-5"
         >
           <div
             v-for="(data, index) in whatsSelerisCare"
             :key="data.id"
             :class="[
-              'relative w-full h-[190px] sm:h-[150px] md:h-[180px] lg:h-[190px] xl:h-[180px] p-[2px] rounded-2xl cursor-default',
+              'relative w-full over-smallest:h-[160px] h-[190px] sm:h-[150px] md:h-[180px] lg:h-[190px] xl:h-[180px] p-[2px] rounded-2xl cursor-default',
               'transition-all duration-300 ease-out',
-              (data.id === 2 || data.id === 4) && 'mt-8 md:mt-14',
+              (data.id === 2 || data.id === 4) && 'over-smallest:mt-0 mt-8 md:mt-14',
 
               index === activeIndex
                 ? 'animated-border-wrapper -translate-y-2 shadow-[0_21px_16.9px_0_#0000001A]'
@@ -487,7 +491,7 @@ onUnmounted(() => {
             ]"
           >
             <div
-              class="w-full h-full flex flex-col justify-between bg-white rounded-2xl p-4 lg:p-3 xl:p-4"
+              class="w-full h-full flex flex-col justify-between bg-white px-4 py-4 lg:px-3 lg:py-3 xl:px-4 xl:py-4 rounded-2xl"
             >
               <div
                 class="w-auto h-auto"
@@ -502,13 +506,13 @@ onUnmounted(() => {
               <div class="w-full h-auto flex flex-col gap-y-1.5">
                 <div class="w-full h-auto flex">
                   <span
-                    class="text-[#374151] font-[600] text-[14px] md:text-[16px] lg:text-[16px] xl:text-[16px] leading-snug"
+                    class="text-[#374151] font-[600] over-smallest:text-[14px] text-[14px] md:text-[16px] lg:text-[16px] xl:text-[16px] over-smallest:leading-normal leading-snug"
                   >
                     {{ data.title }}
                   </span>
                 </div>
                 <div class="w-full h-auto flex">
-                  <span class="text-[#8E98A8] text-[10px] md:text-[12px] leading-normal font-[400]">
+                  <span class="text-[#8E98A8] text-[12px] md:text-[12px] leading-normal font-[400]">
                     {{ data.content }}
                   </span>
                 </div>
@@ -561,7 +565,9 @@ onUnmounted(() => {
                   <div
                     class="relative w-8 h-8 md:w-10 md:h-10 -top-3 sm:-top-5 flex justify-center items-center p-2 bg-[#13B89C] border-2 border-white rounded-full"
                   >
-                    <span class="text-[#FFFFFF] text-[18px]">{{ index + 1 }}</span>
+                    <span class="text-[#FFFFFF] max-smallest:text-[14px] text-[18px]">{{
+                      index + 1
+                    }}</span>
                   </div>
                   <div
                     class="w-full h-full flex flex-col gap-y-3 md:gap-y-3 xl:gap-y-5 items-center md:px-10"
@@ -604,7 +610,7 @@ onUnmounted(() => {
             <div class="w-full h-auto flex flex-col gap-y-6 md:gap-y-8 lg:gap-y-6 xl:gap-y-8">
               <div class="w-full h-auto flex">
                 <span
-                  class="text-[#FFFFFF] text-[18px] sm:text-[28px] md:text-[32px] lg:text-[24px] xl:text-[42px] xls:text-[42px] font-[600] leading-snug"
+                  class="text-[#FFFFFF] max-smallest:text-[16px] text-[18px] sm:text-[28px] md:text-[32px] lg:text-[24px] xl:text-[42px] xls:text-[42px] font-[600] leading-snug"
                 >
                   Apa itu Seleris Care <br />
                   Applicator (SCA) ?
@@ -612,7 +618,7 @@ onUnmounted(() => {
               </div>
               <div class="w-full h-auto flex">
                 <span
-                  class="text-[12px] sm:text-[14px] md:text-[16px] lg:text-[14px] xl:text-[16px] xls:text-[16px] text-[#FFFFFF] leading-snug font-[400]"
+                  class="max-smallest:text-[10px] text-[12px] sm:text-[14px] md:text-[16px] lg:text-[14px] xl:text-[16px] xls:text-[16px] text-[#FFFFFF] leading-snug font-[400]"
                 >
                   SCA adalah mitra resmi
                   <span class="font-[600]">Seleris Care</span> yang bertugas memasarkan dan
@@ -630,7 +636,7 @@ onUnmounted(() => {
                 class="w-auto h-auto flex flex-row"
               >
                 <div
-                  class="w-auto h-auto flex flex-row bg-[#47D2B4]/40 gap-x-1.5 md:gap-x-3 px-3 md:py-1.5 sm:px-5 py-2 lg:py-2.5 xl:py-3 lg:px-4 xl:px-6 rounded-full"
+                  class="w-auto h-auto flex flex-row bg-[#47D2B4]/40 max-smallest:gap-x-2 gap-x-1.5 md:gap-x-3 px-3 md:py-1.5 sm:px-5 py-2 lg:py-2.5 xl:py-3 lg:px-4 xl:px-6 rounded-full"
                 >
                   <div class="flex items-center">
                     <img
@@ -641,7 +647,7 @@ onUnmounted(() => {
                   </div>
                   <div class="flex items-center">
                     <span
-                      class="text-white text-[10px] sm:text-[14px] lg:text-[12px] xl:text-[16px] xls:text-[16px]"
+                      class="text-white over-smallest:!pr-0 max-smallest:pr-10 text-[10px] sm:text-[14px] lg:text-[12px] xl:text-[16px] xls:text-[16px]"
                     >
                       {{ data.content }}
                     </span>
@@ -652,21 +658,25 @@ onUnmounted(() => {
           </div>
           <div class="relative w-full h-auto lg:pt-[110px] xl:pt-[130px] xls:pt-[130px]">
             <div class="w-full h-auto flex flex-col gap-y-5 xls:gap-y-5 lg:pl-2 lg:pr-10">
-              <div class="w-full h-auto flex flex-row gap-5 xl:gap-5 xls:gap-5">
+              <div
+                class="w-full h-auto flex flex-row max-smallest:flex-col gap-5 xl:gap-5 xls:gap-5"
+              >
                 <div
-                  class="w-[50%] h-auto flex flex-col bg-[#DDDDDD]/40 gap-y-3 md:gap-y-5 lg:gap-y-3 xl:gap-y-5 border-[#FFFFFF]/20 border-[1px] px-5 lg:px-3 xl:px-5 py-5 md:py-10 lg:py-3 xl:py-10 rounded-[12px]"
+                  class="w-[50%] max-smallest:w-full h-auto flex flex-col max-smallest:flex-row bg-[#DDDDDD]/40 gap-3 md:gap-5 lg:gap-3 xl:gap-5 border-[#FFFFFF]/20 border-[1px] max-smallest:px-4 px-5 lg:px-3 xl:px-5 max-smallest:py-3 py-5 md:py-10 lg:py-3 xl:py-10 rounded-[12px]"
                 >
-                  <div class="w-full h-auto">
+                  <div
+                    class="w-full max-smallest:w-fit max-smallest:flex max-smallest:items-center h-auto"
+                  >
                     <img
                       src="@/assets/Products/images/Care-Applicator/mitra-resmi-icon1.png"
                       alt=""
-                      class="w-14 h-14 md:w-auto md:h-auto lg:w-12 lg:h-12 xl:w-auto xl:h-auto object-contain"
+                      class="max-smallest:w-10 max-smallest:h-10 w-14 h-14 md:w-auto md:h-auto lg:w-12 lg:h-12 xl:w-auto xl:h-auto object-contain"
                     />
                   </div>
                   <div class="w-full h-auto flex flex-col gap-y-2">
                     <div class="w-full h-auto flex">
                       <span
-                        class="text-[#FFFFFF] font-[600] text-[16px] md:text-[24px] lg:text-[16px] xl:text-[24px] leading-tight"
+                        class="text-[#FFFFFF] font-[600] max-smallest:text-[12px] text-[16px] md:text-[24px] lg:text-[16px] xl:text-[24px] leading-tight"
                       >
                         Partner Resmi
                       </span>
@@ -681,19 +691,21 @@ onUnmounted(() => {
                   </div>
                 </div>
                 <div
-                  class="w-[50%] h-auto flex flex-col bg-[#DDDDDD]/40 gap-y-3 md:gap-y-5 lg:gap-y-3 xl:gap-y-5 border-[#FFFFFF]/20 border-[1px] px-5 lg:px-3 xl:px-5 py-5 md:py-10 lg:py-3 xl:py-10 rounded-[12px]"
+                  class="w-[50%] max-smallest:w-full h-auto flex flex-col max-smallest:flex-row bg-[#DDDDDD]/40 gap-3 md:gap-5 lg:gap-3 xl:gap-5 border-[#FFFFFF]/20 border-[1px] max-smallest:px-4 px-5 lg:px-3 xl:px-5 max-smallest:py-3 py-5 md:py-10 lg:py-3 xl:py-10 rounded-[12px]"
                 >
-                  <div class="w-full h-auto">
+                  <div
+                    class="w-full max-smallest:w-fit max-smallest:flex max-smallest:items-center h-auto"
+                  >
                     <img
                       src="@/assets/Products/images/Care-Applicator/mitra-resmi-icon2.png"
                       alt=""
-                      class="w-14 h-14 md:w-auto md:h-auto lg:w-12 lg:h-12 xl:w-auto xl:h-auto object-contain"
+                      class="max-smallest:w-10 max-smallest:h-10 w-14 h-14 md:w-auto md:h-auto lg:w-12 lg:h-12 xl:w-auto xl:h-auto object-contain"
                     />
                   </div>
                   <div class="w-full h-auto flex flex-col gap-y-2">
                     <div class="w-full h-auto flex">
                       <span
-                        class="text-[#FFFFFF] font-[600] text-[16px] md:text-[24px] lg:text-[16px] xl:text-[24px] leading-tight md:whitespace-nowrap"
+                        class="text-[#FFFFFF] font-[600] max-smallest:text-[12px] text-[16px] md:text-[24px] lg:text-[16px] xl:text-[24px] leading-tight"
                       >
                         Solusi Kesehatan
                       </span>
@@ -710,7 +722,7 @@ onUnmounted(() => {
               </div>
               <div class="w-full h-auto">
                 <div
-                  class="w-full h-auto flex flex-row gap-x-5 md:gap-x-5 px-5 py-5 md:py-8 lg:py-6 xl:py-8 xls:py-8 bg-[#FFFFFF]/40 border-[1px] border-[#DDDDDD]/20 rounded-[12px]"
+                  class="w-full h-auto max-smallest:hidden flex flex-row gap-x-5 md:gap-x-5 px-5 py-5 md:py-8 lg:py-6 xl:py-8 xls:py-8 bg-[#FFFFFF]/40 border-[1px] border-[#DDDDDD]/20 rounded-[12px]"
                 >
                   <div
                     class="w-auto h-auto flex p-[1px] bg-gradient-to-br from-[#AFEFFF] from-[40%] to-[#AFEFFF]/0 rounded-[12px]"
@@ -736,6 +748,35 @@ onUnmounted(() => {
                     <div class="w-full h-auto flex">
                       <span
                         class="text-[#ECECEC] font-[400] text-[12px] md:text-[14px] lg:text-[12px] xl:text-[14px]"
+                      >
+                        Pelaporan dan pemantauan terintegrasi
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="w-full h-auto max-smallest:flex hidden flex-col max-smallest:flex-row bg-[#DDDDDD]/40 gap-3 md:gap-5 lg:gap-3 xl:gap-5 border-[#FFFFFF]/20 border-[1px] max-smallest:px-4 px-5 lg:px-3 xl:px-5 max-smallest:py-3 py-5 md:py-10 lg:py-3 xl:py-10 rounded-[12px]"
+                >
+                  <div
+                    class="w-full max-smallest:w-fit max-smallest:flex max-smallest:items-center h-auto"
+                  >
+                    <img
+                      src="@/assets/Products/images/Care-Applicator/digital-ecosystem-icon2.png"
+                      alt=""
+                      class="max-smallest:w-10 max-smallest:h-10 w-14 h-14 md:w-auto md:h-auto lg:w-12 lg:h-12 xl:w-auto xl:h-auto object-contain"
+                    />
+                  </div>
+                  <div class="w-full h-auto flex flex-col gap-y-2">
+                    <div class="w-full h-auto flex">
+                      <span
+                        class="text-[#FFFFFF] font-[600] max-smallest:text-[12px] text-[16px] md:text-[24px] lg:text-[16px] xl:text-[24px] leading-tight"
+                      >
+                        Platform Digital Pintar
+                      </span>
+                    </div>
+                    <div class="w-full h-auto flex">
+                      <span
+                        class="text-[#ECECEC] font-[400] text-[10px] md:text-[12px] lg:text-[10px] xl:text-[14px]"
                       >
                         Pelaporan dan pemantauan terintegrasi
                       </span>
@@ -885,15 +926,15 @@ onUnmounted(() => {
                 </div>
               </div>
             </div>
-            <div class="w-full h-auto flex flex-row gap-x-5">
+            <div class="w-full h-auto flex max-smallest:flex-col flex-row gap-5">
               <div
-                class="relative w-full h-[120px] md:h-[125px] bg-[#83C5FF] px-5 py-7 rounded-[18px]"
+                class="relative w-full over-smallest:h-[110px] h-[120px] md:h-[125px] bg-[#83C5FF] px-5 over-smallest:py-0 py-7 rounded-[18px]"
               >
                 <div
                   class="absolute top-0 left-0 z-10 w-full h-full opacity-30 bg-white rounded-[18px]"
                 />
                 <div
-                  class="w-full h-full absolute z-20 flex flex-col px-5 py-4 justify-between top-0 left-0 rounded-[18px]"
+                  class="w-full h-full absolute z-20 flex flex-col px-5 over-smallest:py-0 max-smallest:py-5 py-4 justify-between top-0 left-0 rounded-[18px]"
                 >
                   <div class="w-full h-auto flex">
                     <span class="text-[#195279] text-[12px] md:text-[14px] font-[500]">
@@ -911,13 +952,13 @@ onUnmounted(() => {
                 </div>
               </div>
               <div
-                class="relative w-full h-[120px] md:h-[125px] bg-[#82F9CF] px-5 py-7 rounded-[18px]"
+                class="relative w-full over-smallest:h-[110px] h-[120px] md:h-[125px] bg-[#82F9CF] px-5 over-smallest:py-0 py-7 rounded-[18px]"
               >
                 <div
                   class="absolute top-0 left-0 z-10 w-full h-full opacity-30 bg-white rounded-[18px]"
                 />
                 <div
-                  class="w-full h-full absolute z-20 flex flex-col px-5 py-4 justify-between top-0 left-0 rounded-[18px]"
+                  class="w-full h-full absolute z-20 flex flex-col px-5 over-smallest:py-0 max-smallest:py-5 py-4 justify-between top-0 left-0 rounded-[18px]"
                 >
                   <div class="w-full h-auto flex">
                     <span class="text-[#00B692] text-[12px] md:text-[14px] font-[500]">
@@ -938,7 +979,9 @@ onUnmounted(() => {
             <div
               class="w-full h-auto flex flex-col gap-y-5 px-4 xl:px-8 py-5 bg-[#114365] border-[0.3px] border-[#CCCCCC] rounded-[18px]"
             >
-              <div class="w-full h-auto flex flex-row justify-between">
+              <div
+                class="w-full h-auto flex over-smallest:flex-col over-smallest:gap-y-3 flex-row justify-between"
+              >
                 <div class="w-auto h-auto flex items-center">
                   <span
                     class="text-[12px] md:text-[18px] lg:text-[14px] xls:text-[16px] text-[#FFFFFF] font-[600]"
@@ -951,13 +994,13 @@ onUnmounted(() => {
                     class="w-full h-full grid grid-cols-3 bg-[#DFDFDF]/50 border-[0.5px] border-[#799BB2] rounded-[6px]"
                   >
                     <div
-                      class="w-[30px] md:w-[55px] lg:w-[40px] xl:w-[45px] h-full flex justify-center items-center md:pl-5 py-1 cursor-pointer"
+                      class="over-smallest:w-full w-[30px] md:w-[55px] lg:w-[40px] xl:w-[45px] h-full flex justify-center items-center md:pl-5 py-1 cursor-pointer"
                       @click="decrease"
                     >
                       <span class="text-[16px] text-[#FFFFFF] font-[500]"> - </span>
                     </div>
                     <div
-                      class="w-[30px] md:w-[55px] lg:w-[40px] xl:w-[45px] h-full flex justify-center items-center py-1"
+                      class="over-smallest:w-full w-[30px] md:w-[55px] lg:w-[40px] xl:w-[45px] h-full flex justify-center items-center py-1"
                     >
                       <input
                         type="number"
@@ -969,7 +1012,7 @@ onUnmounted(() => {
                       />
                     </div>
                     <div
-                      class="w-[30px] md:w-[55px] lg:w-[40px] xl:w-[45px] h-full flex justify-center items-center md:pr-5 py-1 cursor-pointer"
+                      class="over-smallest:w-full w-[30px] md:w-[55px] lg:w-[40px] xl:w-[45px] h-full flex justify-center items-center md:pr-5 py-1 cursor-pointer"
                       @click="increase"
                     >
                       <span class="text-[16px] text-[#FFFFFF] font-[500]"> + </span>
@@ -977,8 +1020,10 @@ onUnmounted(() => {
                   </div>
                 </div>
               </div>
-              <div class="w-full h-auto flex flex-col gap-y-1">
-                <div class="w-full h-auto flex flex-row justify-between">
+              <div class="w-full h-auto flex flex-col over-smallest:gap-y-2 gap-y-1">
+                <div
+                  class="w-full h-auto flex over-smallest:flex-col over-smallest:gap-y-2 flex-row justify-between"
+                >
                   <div class="w-full md:w-auto h-auto flex items-center">
                     <span
                       class="text-[12px] md:text-[18px] lg:text-[14px] text-[#37B3D5] font-[400]"
@@ -986,7 +1031,9 @@ onUnmounted(() => {
                       Potensi pendapatan bulanan anda
                     </span>
                   </div>
-                  <div class="w-full md:w-auto h-auto flex items-center justify-end">
+                  <div
+                    class="w-full md:w-auto h-auto flex items-center over-smallest:justify-start justify-end"
+                  >
                     <div class="w-auto h-full flex items-center">
                       <span
                         class="text-[14px] md:text-[18px] lg:text-[16px] xl:text-[18px] text-[#37D5BC] font-[600] tracking-widest"
@@ -1026,7 +1073,7 @@ onUnmounted(() => {
       id="keunggulan"
     >
       <div
-        class="w-full h-auto flex flex-col bg-[#FAFAFA] px-4 md:px-6 py-10 md:py-20 gap-y-8 md:gap-y-10 lg:gap-y-14 rounded-[20px] md:rounded-[48px]"
+        class="w-full h-auto flex flex-col bg-[#FAFAFA] max-smallest:px-2 px-4 md:px-6 py-10 md:py-20 gap-y-8 md:gap-y-10 lg:gap-y-14 rounded-[20px] md:rounded-[48px]"
       >
         <div class="w-full h-auto flex flex-col gap-y-2 md:gap-y-5">
           <div class="w-full h-auto flex justify-center items-center">
@@ -1068,13 +1115,13 @@ onUnmounted(() => {
                     <img
                       src="@/assets/Products/images/Care-Applicator/Star.png"
                       alt=""
-                      class="w-10 h-auto md:w-12 xl:w-full xl:h-full object-contain"
+                      class="max-smallest:w-8 w-10 h-auto md:w-12 xl:w-full xl:h-full object-contain"
                     />
                   </div>
                 </div>
                 <div class="w-full h-auto flex">
                   <p
-                    class="text-[18px] md:text-[14px] xl:text-[18px] font-[600] text-[#374151] leading-normal"
+                    class="max-smallest:text-[12px] text-[18px] md:text-[14px] xl:text-[18px] font-[600] text-[#374151] leading-normal"
                   >
                     Paket
                     <span class="sm:block">Keanggotaan</span>
@@ -1128,13 +1175,13 @@ onUnmounted(() => {
                     <img
                       src="@/assets/Products/images/Care-Applicator/Shield.png"
                       alt=""
-                      class="w-10 h-auto md:w-12 xl:w-full xl:h-full object-contain"
+                      class="max-smallest:w-8 w-10 h-auto md:w-12 xl:w-full xl:h-full object-contain"
                     />
                   </div>
                 </div>
                 <div class="w-full h-auto flex">
                   <p
-                    class="text-[18px] md:text-[14px] xl:text-[18px] font-[600] text-[#374151] leading-normal"
+                    class="max-smallest:text-[12px] text-[18px] md:text-[14px] xl:text-[18px] font-[600] text-[#374151] leading-normal"
                   >
                     Support
                     <span class="sm:block">Berkelanjutan</span>
@@ -1331,7 +1378,7 @@ onUnmounted(() => {
     <!-- Download App -->
     <section class="relative w-full h-auto mt-20 lg:mt-40 xl:mt-56" id="download">
       <CareOrnament4
-        positionClass="top-[150px] sm:-top-5 top-[100px] lg:-top-[130px] xl:-top-[250px]"
+        positionClass="max-smallest:top-[30px] top-[150px] sm:-top-5 top-[100px] lg:-top-[130px] xl:-top-[250px]"
         heightClass="w-full h-auto lg:h-full"
       />
       <div class="w-full h-auto md:max-w-3xl lg:max-w-6xl xl:max-w-7xl mx-auto relative z-30">
@@ -1342,7 +1389,7 @@ onUnmounted(() => {
         />
       </div>
       <CareOrnament4
-        positionClass="bottom-[150px] sm:-bottom-5 bottom-[100px] lg:-bottom-[130px] xl:-bottom-[300px]"
+        positionClass="max-smallest:bottom-[230px] bottom-[150px] sm:-bottom-5 bottom-[100px] lg:-bottom-[130px] xl:-bottom-[300px]"
         heightClass="w-full h-auto lg:h-full"
         :mirror="true"
       />

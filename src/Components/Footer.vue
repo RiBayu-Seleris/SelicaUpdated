@@ -130,7 +130,7 @@ const connectColor = computed(() => {
         <div class="flex lg:hidden w-full h-[1px] bg-[#F3F4F6] rounded-full my-3" />
         <div class="w-full h-auto">
           <!-- lg:pl-6 xl:pl-12 -->
-          <div class="flex flex-col w-full h-auto lg:pl-8 xl:px-8">
+          <div class="flex flex-col w-full h-auto lg:pl-10 xl:pl-14">
             <p class="text-[#195279] text-[24px] lg:text-[19px] xl:text-[22px] font-medium pb-2">
               Products
             </p>
@@ -218,10 +218,10 @@ const connectColor = computed(() => {
               <div class="flex flex-col w-full h-auto mb-3 lg:mt-2">
                 <p class="text-[#195279] text-[20px] lg:text-[18px]">E-Mail</p>
                 <a
-                  href="mailto:info@seleris.id"
+                  href="mailto:info@seleris.ai"
                   :class="[`${connectColor} text-sm lg:text-base xl:text-[18px] lg:pt-1.5`]"
                 >
-                  info@seleris.id
+                  info@seleris.ai
                 </a>
               </div>
             </div>

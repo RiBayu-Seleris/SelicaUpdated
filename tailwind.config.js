@@ -5,7 +5,9 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        smallest: "320px",
+        smallest: "375px",
+        "over-smallest": { max: "325px" },
+        "max-smallest": { max: "375px" },
         // Mobile breakpoints
         sm: "640px",
         // Tablet / Medium
@@ -23,8 +25,7 @@ module.exports = {
       },
       backgroundImage: {
         frameBookDemo: "url('@/assets/images/frame-about-book-demo2.png')",
-        darkFrameBookDemo:
-          "url('@/assets/images/dark-frame-about-book-demo2.png')",
+        darkFrameBookDemo: "url('@/assets/images/dark-frame-about-book-demo2.png')",
         hero2: "url('@/assets/images/hero-banner2.png')",
         touch: "url('@/assets/images/touch-bg.png')",
         touchDark: "url('@/assets/images/touch-bg-dark.png')",
@@ -35,31 +36,19 @@ module.exports = {
         differentDark: "url('@/assets/images/different-dark-background.png')",
         api: "url('@/assets/images/api-background.png')",
         darkapi: "url('@/assets/images/dark-api-background.png')",
-        leftCertBefore:
-          "url('@/assets/images/certification/left-frame-before.png')",
-        centerCertBefore:
-          "url('@/assets/images/certification/center-frame-before.png')",
-        rightCertBefore:
-          "url('@/assets/images/certification/right-frame-before.png')",
-        leftCertAfter:
-          "url('@/assets/images/certification/left-frame-after.png')",
-        centerCertAfter:
-          "url('@/assets/images/certification/center-frame-after.png')",
-        rightCertAfter:
-          "url('@/assets/images/certification/right-frame-after.png')",
+        leftCertBefore: "url('@/assets/images/certification/left-frame-before.png')",
+        centerCertBefore: "url('@/assets/images/certification/center-frame-before.png')",
+        rightCertBefore: "url('@/assets/images/certification/right-frame-before.png')",
+        leftCertAfter: "url('@/assets/images/certification/left-frame-after.png')",
+        centerCertAfter: "url('@/assets/images/certification/center-frame-after.png')",
+        rightCertAfter: "url('@/assets/images/certification/right-frame-after.png')",
         // DARK BACKGROUND
-        leftCertDarkBefore:
-          "url('@/assets/images/certification/dark-left-frame-before.png')",
-        leftCertDarkAfter:
-          "url('@/assets/images/certification/dark-left-frame-after.png')",
-        centerCertDarkBefore:
-          "url('@/assets/images/certification/dark-center-frame-before.png')",
-        centerCertDarkAfter:
-          "url('@/assets/images/certification/dark-center-frame-after.png')",
-        rightCertDarkBefore:
-          "url('@/assets/images/certification/dark-right-frame-before.png')",
-        rightCertDarkAfter:
-          "url('@/assets/images/certification/dark-right-frame-after.png')",
+        leftCertDarkBefore: "url('@/assets/images/certification/dark-left-frame-before.png')",
+        leftCertDarkAfter: "url('@/assets/images/certification/dark-left-frame-after.png')",
+        centerCertDarkBefore: "url('@/assets/images/certification/dark-center-frame-before.png')",
+        centerCertDarkAfter: "url('@/assets/images/certification/dark-center-frame-after.png')",
+        rightCertDarkBefore: "url('@/assets/images/certification/dark-right-frame-before.png')",
+        rightCertDarkAfter: "url('@/assets/images/certification/dark-right-frame-after.png')",
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],

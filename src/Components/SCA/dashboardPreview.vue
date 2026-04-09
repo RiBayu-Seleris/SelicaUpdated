@@ -65,7 +65,9 @@ const dashboardPreview = {
               </div>
             </div>
             <div class="w-full h-auto flex items-center pr-0 lg:pr-10 xl:pr-0">
-              <p class="text-[#515E71] text-[16px] lg:text-[14px] xl:text-[16px] capitalize">
+              <p
+                class="text-[#515E71] max-smallest:text-[14px] text-[16px] lg:text-[14px] xl:text-[16px] capitalize"
+              >
                 {{ feature }}
               </p>
             </div>

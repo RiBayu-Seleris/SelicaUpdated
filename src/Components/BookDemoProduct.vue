@@ -52,7 +52,7 @@ defineProps({
                 >
                   <p class="font-[500] text-[10px] md:text-[19px] lg:text-[24px]">Book a Demo</p>
                   <svg
-                    class="w-6 h-6 md:w-12 md:h-12"
+                    class="max-smallest:w-4 max-smallest:h-4 w-6 h-6 md:w-12 md:h-12"
                     viewBox="0 0 48 48"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
