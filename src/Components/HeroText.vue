@@ -29,7 +29,7 @@ defineProps({
     <div class="w-full h-auto flex flex-col mx-auto justify-center sm:px-10 md:px-0">
       <p
         :class="[
-          `max-smallest:text-[14px] text-[16px] sm:text-[18px] md:text-[36px] lg:text-[40px] font-medium ${titlecolor} text-center sm:leading-[35px] md:px-10 md:justify-center md:leading-relaxed`,
+          `max-smallest:text-[14px] text-[16px] sm:text-[26px] md:text-[36px] lg:text-[40px] font-medium ${titlecolor} text-center sm:leading-[35px] md:px-10 md:justify-center md:leading-relaxed`,
         ]"
       >
         {{ title }}

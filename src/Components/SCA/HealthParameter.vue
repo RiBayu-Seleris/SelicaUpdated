@@ -35,7 +35,7 @@
     </div>
 
     <!-- Tab Content -->
-    <div v-if="currentContent" class="grid grid-cols-2 md:grid-cols-3 gap-4 px-8 sm:px-0">
+    <div v-if="currentContent" class="grid grid-cols-2 md:grid-cols-3 gap-4 px-8 md:px-0">
       <div
         v-for="(param, index) in currentContent.parameters"
         :key="index"

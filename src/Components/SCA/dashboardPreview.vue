@@ -77,7 +77,7 @@ const dashboardPreview = {
           href="https://sca.seleriscare.ai/register"
           target="_blank"
           aria-label="Daftar Jadi SCA"
-          class="inline-flex justify-center sm:justify-between md:justify-start items-center gap-x-5 sm:gap-x-3 w-full sm:w-auto md:px-8 lg:px-8 xl:px-10 py-3 md:py-3.5 lg:py-3 xl:py-3.5 bg-[#4273C2] rounded-[12px] shadow-[0px_23px_30.8px_0px_rgba(66,115,194,0.1)]"
+          class="inline-flex justify-center sm:justify-between md:justify-start items-center gap-x-5 sm:gap-x-3 w-full sm:w-auto sm:px-8 lg:px-8 xl:px-10 py-3 md:py-3.5 lg:py-3 xl:py-3.5 bg-[#4273C2] rounded-[12px] shadow-[0px_23px_30.8px_0px_rgba(66,115,194,0.1)]"
         >
           <span
             class="text-white whitespace-nowrap text-[14px] md:text-[16px] lg:text-[14px] xl:text-[16px] font-[500]"

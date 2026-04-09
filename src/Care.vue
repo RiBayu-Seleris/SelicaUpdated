@@ -439,7 +439,7 @@ onUnmounted(() => {
         </div>
       </div>
       <!-- DownloadStore -->
-      <div class="w-full max-w-sm mx-auto h-auto mt-10 md:mt-20">
+      <div class="w-full max-w-sm mx-auto h-auto max-smallest:px-8 px-0 mt-10 md:mt-20">
         <DownloadStore />
       </div>
     </section>
@@ -540,18 +540,22 @@ onUnmounted(() => {
         </div>
         <div class="relative w-full h-auto mt-10 md:mt-12 lg:mt-14">
           <div
-            class="w-full h-auto pt-4 pb-8 overflow-x-auto snap-x snap-mandatory scroll-pl-4 pl-4 pr-4 md:scroll-pl-0 md:pl-0 md:pr-0 xl:scroll-pl-14 xl:pl-14 xl:pr-14 hide-scrollbar"
+            class="w-full h-auto pt-4 pb-8 overflow-x-auto snap-x snap-mandatory scroll-pl-4 pl-4 pr-4 md:scroll-pl-0 md:pl-0 md:pr-0 xl:scroll-pl-20 xl:pl-20 xl:pr-20 hide-scrollbar"
           >
             <div class="relative flex flex-row gap-x-14 md:gap-x-14 xl:gap-x-20 w-max h-auto">
-              <div class="absolute px-[100px] sm:px-[170px] top-0 w-full h-full py-4 flex">
-                <div class="w-full h-1 relative left-0 top-[72%] md:top-[70.5%] xl:top-[70.8%]">
+              <div
+                class="absolute px-[100px] sm:px-[130px] md:px-[170px] lg:px-[150px] top-0 w-full h-full py-4 flex"
+              >
+                <div
+                  class="w-full h-1 relative left-0 top-[72%] sm:top-[70%] md:top-[70.5%] xl:top-[70.8%]"
+                >
                   <div class="w-full h-full bg-[#B2D4CE]" />
                 </div>
               </div>
               <div
                 v-for="(workData, index) in stepApplicationWorks"
                 :key="index"
-                class="snap-start w-[200px] sm:w-[350px] md:h-[550px] xl:h-[650px] flex flex-col justify-center items-center shrink-0"
+                class="snap-start w-[200px] sm:w-[270px] md:h-[550px] xl:h-[650px] flex flex-col justify-center items-center shrink-0"
               >
                 <div class="w-full h-[70%] shrink-0 flex justify-center items-start">
                   <img
@@ -570,7 +574,7 @@ onUnmounted(() => {
                     }}</span>
                   </div>
                   <div
-                    class="w-full h-full flex flex-col gap-y-3 md:gap-y-3 xl:gap-y-5 items-center md:px-10"
+                    class="w-full h-full flex flex-col gap-y-3 md:gap-y-3 xl:gap-y-5 items-center md:px-10 lg:px-0"
                   >
                     <p class="text-center text-[#374151] font-[600] md:text-[18px] xl:text-[24px]">
                       {{ workData.title }}
@@ -1378,18 +1382,18 @@ onUnmounted(() => {
     <!-- Download App -->
     <section class="relative w-full h-auto mt-20 lg:mt-40 xl:mt-56" id="download">
       <CareOrnament4
-        positionClass="max-smallest:top-[30px] top-[150px] sm:-top-5 top-[100px] lg:-top-[130px] xl:-top-[250px]"
+        positionClass="max-smallest:top-[30px] top-[0px] sm:-top-5 top-[100px] lg:-top-[130px] xl:-top-[250px]"
         heightClass="w-full h-auto lg:h-full"
       />
       <div class="w-full h-auto md:max-w-3xl lg:max-w-6xl xl:max-w-7xl mx-auto relative z-30">
         <DownloadFrame
-          appname="Seleris Care"
+          appname="Selica"
           description="Enable smarter employee health monitoring with real-time wellness insights, AI-powered preventive analytics, and proactive health cost management — all in one secure corporate platform."
           :img="DownloadImage"
         />
       </div>
       <CareOrnament4
-        positionClass="max-smallest:bottom-[230px] bottom-[150px] sm:-bottom-5 bottom-[100px] lg:-bottom-[130px] xl:-bottom-[300px]"
+        positionClass="max-smallest:bottom-[50px] bottom-[10px] sm:bottom-5 bottom-[100px] lg:-bottom-[130px] xl:-bottom-[300px]"
         heightClass="w-full h-auto lg:h-full"
         :mirror="true"
       />
@@ -1787,7 +1791,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 /* ===== BENEFIT CARD - TEAL ===== */
 .animated-border-wrapper-teal {
-  background: linear-gradient(180deg, rgba(59, 227, 201, 0) 20%, #3be3c9 100%);
+  background: linear-gradient(0deg, rgba(59, 227, 201, 0) 20%, #3be3c9 100%);
   animation: none;
   transition:
     transform 0.3s ease,

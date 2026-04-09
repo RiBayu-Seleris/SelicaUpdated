@@ -23,7 +23,7 @@ defineProps({
     >
       <div class="w-full h-auto">
         <p
-          class="text-[#2E504E] text-[24px] md:text-[34px] lg:text-[38px] xl:text-[46px] font-[500] leading-tight text-center md:text-left"
+          class="text-[#2E504E] text-[24px] sm:text-[34px] lg:text-[38px] xl:text-[46px] font-[500] leading-tight text-center md:text-left"
         >
           Download
           <br class="hidden md:block" />
@@ -32,7 +32,7 @@ defineProps({
       </div>
       <div class="w-full h-auto">
         <p
-          class="text-[#535862] text-[12px] md:text-[14px] lg:text-[16px] xl:text-[20px] font-[400] text-center md:text-left"
+          class="text-[#535862] text-[12px] sm:text-[14px] lg:text-[16px] xl:text-[20px] font-[400] text-center md:text-left"
         >
           {{ description }}
         </p>
@@ -47,7 +47,7 @@ defineProps({
         <img
           :src="img"
           alt=""
-          class="w-full h-[250px] md:h-[400px] lg:h-[500px] xl:h-auto object-contain drop-shadow-[-5px_8px_5px_rgba(0,0,0,0.15)] md:drop-shadow-[-20px_10px_10px_rgba(0,0,0,0.25)]"
+          class="w-full h-[250px] sm:h-[350px] md:h-[400px] lg:h-[500px] xl:h-auto object-contain drop-shadow-[-5px_8px_5px_rgba(0,0,0,0.15)] md:drop-shadow-[-20px_10px_10px_rgba(0,0,0,0.25)]"
         />
       </figure>
     </div>

@@ -25,7 +25,7 @@ export const productBannerLists = [
   {
     id: 4,
     banner: "care.png",
-    product_name: "Seleris Care",
+    product_name: "Selica",
     color: "text-[#13b89c]",
     url: "/#howapplicationwork",
   },

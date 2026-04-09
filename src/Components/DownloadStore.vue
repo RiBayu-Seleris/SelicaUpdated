@@ -4,7 +4,9 @@ import appstore from "@/assets/images/appstore.png";
 </script>
 
 <template>
-  <div class="w-full h-auto flex flex-row justify-center px-8 md:px-0 gap-x-10">
+  <div
+    class="w-full h-auto flex flex-row justify-center max-smallest:px-0 px-8 sm:px-20 md:px-0 gap-x-10"
+  >
     <div class="w-full h-full flex justify-center">
       <a
         href="https://play.google.com/store/apps/developer?id=PT.+Seleris+Meditekno+Internasional"
@@ -35,9 +37,7 @@ import appstore from "@/assets/images/appstore.png";
         <div
           class="w-full h-full bg-[#FDFDFD] bg-opacity-50 flex items-center justify-center text-white cursor-pointer rounded-md"
         >
-          <span class="text-[14px] md:text-[17px] lg:text-[20px]"
-            >Coming Soon!</span
-          >
+          <span class="text-[14px] md:text-[17px] lg:text-[20px]">Coming Soon!</span>
         </div>
       </div>
     </div>

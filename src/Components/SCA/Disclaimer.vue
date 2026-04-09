@@ -20,10 +20,11 @@
     >
       <p>
         <span class="font-[600]">
-          Seleris Care merupakan aplikasi/perangkat lunak berbasis teknologi kecerdasan buatan yang
+          Selica merupakan aplikasi/perangkat lunak berbasis teknologi kecerdasan buatan yang
           dikembangkan sebagai alat skrining dan pemantauan kesehatan untuk tujuan deteksi
           dini</span
-        >, pemantauan parameter kesehatan secara berkala, serta pendukung pengambilan keputusan
+        >
+        , pemantauan parameter kesehatan secara berkala, serta pendukung pengambilan keputusan
         terkait gaya hidup dan pencegahan. Sistem ini tidak dimaksudkan, dirancang, maupun
         diposisikan sebagai alat diagnosis medis, tidak menggantikan pemeriksaan medis komprehensif,
         pemeriksaan laboratorium, tindakan diagnostik klinis, maupun konsultasi dan keputusan

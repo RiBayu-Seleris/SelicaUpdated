@@ -20,14 +20,14 @@ defineProps({
     <div class="w-full h-auto flex flex-col">
       <div class="w-full h-auto flex px-0">
         <p
-          class="text-[#2E504E] text-[20px] md:text-[36px] lg:text-[32px] xl:text-[50px] font-[500]"
+          class="text-[#2E504E] text-[20px] sm:text-[36px] lg:text-[32px] xl:text-[50px] font-[500]"
         >
           <!-- How Application Work -->
           {{ title }}
         </p>
       </div>
       <div class="w-full h-auto flex pl-0">
-        <p :class="[`${textcolor} text-[18px] md:text-[24px] lg:text-[26px] font-[500]`]">
+        <p :class="[`${textcolor} text-[18px] sm:text-[24px] lg:text-[26px] font-[500]`]">
           {{ productname }}
         </p>
       </div>

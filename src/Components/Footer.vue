@@ -34,7 +34,7 @@ const footerTitle = computed(() => {
     return "Seleris Lifins";
   }
   if (route.path === "/") {
-    return "Seleris Care";
+    return "Selica";
   }
   if (route.path === "/product/seleris-credit") {
     return "Seleris Credit";
