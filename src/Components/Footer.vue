@@ -216,7 +216,7 @@ const connectColor = computed(() => {
                 </a>
               </div>
               <div class="flex flex-col w-full h-auto mb-3 lg:mt-2">
-                <p class="text-[#195279] text-[20px] lg:text-[18px]">E-Mail</p>
+                <p class="text-[#195279] text-[20px] lg:text-[18px]">Email</p>
                 <a
                   href="mailto:info@seleris.ai"
                   :class="[`${connectColor} text-sm lg:text-base xl:text-[18px] lg:pt-1.5`]"
