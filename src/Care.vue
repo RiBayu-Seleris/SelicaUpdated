@@ -926,7 +926,7 @@ onUnmounted(() => {
                 </div>
               </div>
             </div>
-            <div class="w-full h-auto flex max-smallest:flex-col flex-row gap-5">
+            <div class="w-full h-auto flex max-smallest:flex-col flex-col sm:flex-row gap-5">
               <div
                 class="relative w-full over-smallest:h-[110px] h-[120px] md:h-[125px] bg-[#83C5FF] px-5 over-smallest:py-0 py-7 rounded-[18px]"
               >
@@ -984,7 +984,7 @@ onUnmounted(() => {
               >
                 <div class="w-auto h-auto flex items-center">
                   <span
-                    class="text-[12px] md:text-[18px] lg:text-[14px] xls:text-[16px] text-[#FFFFFF] font-[600]"
+                    class="over-smallest:text-[14px] text-[12px] md:text-[18px] lg:text-[14px] xls:text-[16px] text-[#FFFFFF] font-[600]"
                   >
                     Target skrining per Hari
                   </span>

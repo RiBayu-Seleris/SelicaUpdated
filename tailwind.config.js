@@ -6,7 +6,7 @@ module.exports = {
     extend: {
       screens: {
         smallest: "375px",
-        "over-smallest": { max: "325px" },
+        "over-smallest": { max: "360px" },
         "max-smallest": { max: "375px" },
         // Mobile breakpoints
         sm: "640px",
