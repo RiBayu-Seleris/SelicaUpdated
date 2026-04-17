@@ -64,14 +64,14 @@ const registerFlow = [
   },
   {
     id: 2,
-    title: "Download Seleris Care",
-    description: `Unduh aplikasi <a href="https://sca.seleriscare.ai" target="_blank" class="text-[#01A488] hover:underline">Seleris Care</a> melalui Google Play Store, kemudian instal aplikasi tersebut di perangkat Anda sebelum memulai proses deteksi.`,
+    title: "Download Selica",
+    description: `Unduh aplikasi <a href="https://sca.seleriscare.ai" target="_blank" class="text-[#01A488] hover:underline">Selica</a> melalui Google Play Store, kemudian instal aplikasi tersebut di perangkat Anda sebelum memulai proses deteksi.`,
     image: new URL("@/assets/Products/images/Care/download-sca.png", import.meta.url).href,
   },
   {
     id: 3,
-    title: "Login Seleris Care",
-    description: `Masuk ke aplikasi Seleris Care menggunakan akun Anda dan mulai gunakan layanan yang tersedia`,
+    title: "Login Selica",
+    description: `Masuk ke aplikasi Selica menggunakan akun Anda dan mulai gunakan layanan yang tersedia`,
     image: new URL("@/assets/Products/images/Care/login-sca.png", import.meta.url).href,
   },
 ];
@@ -80,7 +80,7 @@ const stepApplicationWorks = [
   {
     id: 1,
     title: "Login akun",
-    content: `Masuk ke aplikasi <a href="https://sca.seleriscare.ai" target="_blank" class="text-[#01A488] hover:underline">Seleris Care</a> menggunakan email dan kata sandi yang telah Anda daftarkan sebelumnya.`,
+    content: `Masuk ke aplikasi <a href="https://sca.seleriscare.ai" target="_blank" class="text-[#01A488] hover:underline">Selica</a> menggunakan email dan kata sandi yang telah Anda daftarkan sebelumnya.`,
     image: new URL("@/assets/Products/images/Care/login-work.png", import.meta.url).href,
   },
   {
@@ -114,7 +114,7 @@ const downlineData = [
   {
     id: 2,
     title: "Masukkan kode referral",
-    content: `Masukkan kode referral dari SC Affiliator yang mengundang Anda untuk bergabung ke dalam jaringan Seleris Care`,
+    content: `Masukkan kode referral dari SC Affiliator yang mengundang Anda untuk bergabung ke dalam jaringan Selica`,
     image: new URL("@/assets/Products/images/Care/downline/referral.svg", import.meta.url).href,
   },
   {
@@ -458,13 +458,13 @@ onUnmounted(() => {
         class="relative w-full flex flex-col max-w-[1440px] mx-auto justify-center items-center z-20 mt-16 md:mt-20 lg:mt-40 md:px-12 xl:px-8"
       >
         <div class="w-full h-auto flex justify-center max-smallest:mt-3 mt-0">
-          <AboutUs title="About Us" subtitle="Seleris Care" subtitleColor="text-[#42C5AF]" />
+          <AboutUs title="About Us" subtitle="Selica" subtitleColor="text-[#42C5AF]" />
         </div>
         <div class="w-full h-auto mt-10 md:mt-10 lg:mt-10">
           <AboutUsDescription
             :image="imageAbout"
             title="AI Health Metrics Assistance Application"
-            description="Seleris Care is an AI-powered platform built for corporate health and wellness. It automates employee health monitoring, delivers real-time preventive care insights, and helps companies optimize wellness programs while reducing medical costs by up to 20%"
+            description="Selica is an AI-powered platform built for corporate health and wellness. It automates employee health monitoring, delivers real-time preventive care insights, and helps companies optimize wellness programs while reducing medical costs by up to 20%"
           />
         </div>
       </div>
@@ -536,7 +536,7 @@ onUnmounted(() => {
       <!-- Application Work Slider -->
       <div class="relative w-full flex flex-col z-20">
         <div class="w-full h-auto px-8">
-          <ApplicationWorkText productname="Seleris Care" textcolor="text-[#42C5AF]" />
+          <ApplicationWorkText productname="Selica" textcolor="text-[#42C5AF]" />
         </div>
         <div class="relative w-full h-auto mt-10 md:mt-12 lg:mt-14">
           <div
@@ -625,9 +625,9 @@ onUnmounted(() => {
                   class="max-smallest:text-[10px] text-[12px] sm:text-[14px] md:text-[16px] lg:text-[14px] xl:text-[16px] xls:text-[16px] text-[#FFFFFF] leading-snug font-[400]"
                 >
                   SCA adalah mitra resmi
-                  <span class="font-[600]">Seleris Care</span> yang bertugas memasarkan dan
-                  menyediakan layanan scanning kesehatan kepada masyarakat luas menggunakan
-                  perangkat dan aplikasi digital kami.
+                  <span class="font-[600]">Selica</span> yang bertugas memasarkan dan menyediakan
+                  layanan scanning kesehatan kepada masyarakat luas menggunakan perangkat dan
+                  aplikasi digital kami.
                 </span>
               </div>
             </div>
@@ -680,7 +680,7 @@ onUnmounted(() => {
                   <div class="w-full h-auto flex flex-col gap-y-2">
                     <div class="w-full h-auto flex">
                       <span
-                        class="text-[#FFFFFF] font-[600] max-smallest:text-[12px] text-[16px] md:text-[24px] lg:text-[16px] xl:text-[24px] leading-tight"
+                        class="text-[#FFFFFF] font-[600] max-smallest:text-[12px] text-[16px] md:text-[24px] lg:text-[16px] xl:text-[22px] leading-tight"
                       >
                         Partner Resmi
                       </span>
@@ -709,7 +709,7 @@ onUnmounted(() => {
                   <div class="w-full h-auto flex flex-col gap-y-2">
                     <div class="w-full h-auto flex">
                       <span
-                        class="text-[#FFFFFF] font-[600] max-smallest:text-[12px] text-[16px] md:text-[24px] lg:text-[16px] xl:text-[24px] leading-tight"
+                        class="text-[#FFFFFF] font-[600] max-smallest:text-[12px] text-[16px] md:text-[24px] lg:text-[16px] xl:text-[22px] leading-tight"
                       >
                         Solusi Kesehatan
                       </span>
@@ -773,7 +773,7 @@ onUnmounted(() => {
                   <div class="w-full h-auto flex flex-col gap-y-2">
                     <div class="w-full h-auto flex">
                       <span
-                        class="text-[#FFFFFF] font-[600] max-smallest:text-[12px] text-[16px] md:text-[24px] lg:text-[16px] xl:text-[24px] leading-tight"
+                        class="text-[#FFFFFF] font-[600] max-smallest:text-[12px] text-[16px] md:text-[24px] lg:text-[16px] xl:text-[22px] leading-tight"
                       >
                         Platform Digital Pintar
                       </span>
@@ -810,7 +810,7 @@ onUnmounted(() => {
         <div class="w-full h-auto flex px-8 md:px-12 lg:px-0">
           <ApplicationWorkText
             title="Register Seleris Care Applicator"
-            productname="Seleris Care"
+            productname="Selica"
             textcolor="text-[#42C5AF]"
           />
         </div>
@@ -1241,8 +1241,8 @@ onUnmounted(() => {
       <div class="relative w-full flex flex-col gap-y-0 z-20">
         <div class="w-full h-auto flex max-w-[1440px] mx-auto px-8 md:px-0">
           <ApplicationWorkText
-            title="Seleris Care Downline"
-            productname="Seleris Care"
+            title="Selica Downline"
+            productname="Selica"
             textcolor="text-[#42C5AF]"
           />
         </div>
@@ -1271,7 +1271,7 @@ onUnmounted(() => {
               <span
                 class="text-[#374151] font-[400] max-[375px]:!text-[10px] text-[12px] md:text-[16px] text-center"
               >
-                Kisah sukses dari mitra Seleris Care di seluruh Indonesia
+                Kisah sukses dari mitra Selica di seluruh Indonesia
               </span>
             </div>
           </div>
@@ -1414,7 +1414,7 @@ onUnmounted(() => {
       id="bookdemo"
     >
       <BookDemoProduct
-        title="Seleris Care A Complete Solution for Your Health Needs"
+        title="Selica A Complete Solution for Your Health Needs"
         :framebookdemo="medinsframebook"
         colorarrow="text-[#42C5AF]"
       />

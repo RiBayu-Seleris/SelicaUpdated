@@ -209,7 +209,7 @@ const showPopup = ref(false);
           <div class="flex justify-between">
             <p class="text-[#515E71] text-[12px] lg:text-[16px]">
               Pendapatan <br class="block lg:hidden" />
-              tim
+              jaringan
             </p>
             <p class="text-[#515E71] text-[12px] lg:text-[16px] font-[600]">
               Rp {{ formatRupiah(pkg.commission.team) }}

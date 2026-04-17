@@ -118,7 +118,7 @@ const dashboardPreview = {
         src="@/assets/images/dashboard-preview.svg"
         alt=""
         srcset=""
-        class="w-full h-full object-fill"
+        class="w-full h-full object-fill shadow-[-19px_18px_200px_rgba(0,0,0,0.1)]"
       />
     </div>
   </div>
