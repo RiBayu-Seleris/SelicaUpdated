@@ -17,10 +17,10 @@ import CareOrnament from "@/Components/Svg/CareOrnament.vue";
 import CareOrnament2 from "@/Components/Svg/CareOrnament2.vue";
 import CareOrnament3 from "@/Components/Svg/CareOrnament3.vue";
 import CareOrnament4 from "@/Components/Svg/CareOrnament4.vue";
-import imageAbout from "@/assets/Products/images/Care/about-care.png";
+import imageAbout from "@/assets/Products/images/Care/about-care.svg";
 import FrameLineWorks from "@/Components/Svg/HealthCareDescriptionWork.vue";
 import medinsframebook from "@/assets/Products/images/bg-book-demo-care.png";
-import DownloadImage from "@/assets/Products/images/Care/download-care.png";
+import DownloadImage from "@/assets/Products/images/Care/download-care.svg";
 
 // HealthCare Data
 import { careWorkSteps } from "@/Data/Products/HealthCare/careworkSteps.js";
@@ -64,14 +64,14 @@ const registerFlow = [
   },
   {
     id: 2,
-    title: "Download Selica",
-    description: `Unduh aplikasi <a href="https://sca.seleriscare.ai" target="_blank" class="text-[#01A488] hover:underline">Selica</a> melalui Google Play Store, kemudian instal aplikasi tersebut di perangkat Anda sebelum memulai proses deteksi.`,
+    title: "Download SELICA",
+    description: `Unduh aplikasi <a href="https://sca.seleriscare.ai" target="_blank" class="text-[#01A488] hover:underline">SELICA</a> melalui Google Play Store, kemudian instal aplikasi tersebut di perangkat Anda sebelum memulai proses deteksi.`,
     image: new URL("@/assets/Products/images/Care/download-sca.png", import.meta.url).href,
   },
   {
     id: 3,
-    title: "Login Selica",
-    description: `Masuk ke aplikasi Selica menggunakan akun Anda dan mulai gunakan layanan yang tersedia`,
+    title: "Login SELICA",
+    description: `Masuk ke aplikasi SELICA menggunakan akun Anda dan mulai gunakan layanan yang tersedia`,
     image: new URL("@/assets/Products/images/Care/login-sca.png", import.meta.url).href,
   },
 ];
@@ -80,14 +80,14 @@ const stepApplicationWorks = [
   {
     id: 1,
     title: "Login akun",
-    content: `Masuk ke aplikasi <a href="https://sca.seleriscare.ai" target="_blank" class="text-[#01A488] hover:underline">Selica</a> menggunakan email dan kata sandi yang telah Anda daftarkan sebelumnya.`,
+    content: `Masuk ke aplikasi <a href="https://sca.seleriscare.ai" target="_blank" class="text-[#01A488] hover:underline">SELICA</a> menggunakan email dan kata sandi yang telah Anda daftarkan sebelumnya.`,
     image: new URL("@/assets/Products/images/Care/login-work.png", import.meta.url).href,
   },
   {
     id: 2,
     title: "Home page",
     content: `Pilih layanan pemeriksaan kesehatan dan lakukan pembelian produk untuk memulai proses pengecekan.`,
-    image: new URL("@/assets/Products/images/Care/homepage-work.png", import.meta.url).href,
+    image: new URL("@/assets/Products/images/Care/homepage-work.svg", import.meta.url).href,
   },
   {
     id: 3,
@@ -114,13 +114,13 @@ const downlineData = [
   {
     id: 2,
     title: "Masukkan kode referral",
-    content: `Masukkan kode referral dari SC Affiliator yang mengundang Anda untuk bergabung ke dalam jaringan Selica`,
+    content: `Masukkan kode referral dari SELICA Partner yang mengundang Anda untuk bergabung ke dalam jaringan SELICA`,
     image: new URL("@/assets/Products/images/Care/downline/referral.svg", import.meta.url).href,
   },
   {
     id: 3,
     title: "Selesai",
-    content: `Pendaftaran selesai! Anda kini resmi menjadi bagian dari SC Affiliator dan siap memulai perjalanan bersama kami`,
+    content: `Pendaftaran selesai! Anda kini resmi menjadi bagian dari SELICA Partner dan siap memulai perjalanan bersama kami`,
     image: new URL("@/assets/Products/images/Care/downline/finish.svg", import.meta.url).href,
   },
 ];
@@ -430,7 +430,7 @@ onUnmounted(() => {
           <div class="w-full h-auto flex justify-center items-center">
             <figure class="w-auto max-w-max h-auto flex">
               <img
-                src="/assets/images/care.png"
+                src="/assets/images/care.svg"
                 alt=""
                 class="w-full h-[190px] md:h-[300px] lg:h-[450px] object-contain drop-shadow-[-5px_8px_5px_rgba(0,0,0,0.15)] md:drop-shadow-[-10px_10px_10px_rgba(0,0,0,0.3)] lg:drop-shadow-[-20px_10px_10px_rgba(0,0,0,0.25)]"
               />
@@ -458,13 +458,13 @@ onUnmounted(() => {
         class="relative w-full flex flex-col max-w-[1440px] mx-auto justify-center items-center z-20 mt-16 md:mt-20 lg:mt-40 md:px-12 xl:px-8"
       >
         <div class="w-full h-auto flex justify-center max-smallest:mt-3 mt-0">
-          <AboutUs title="About Us" subtitle="Selica" subtitleColor="text-[#42C5AF]" />
+          <AboutUs title="About Us" subtitle="SELICA" subtitleColor="text-[#42C5AF]" />
         </div>
         <div class="w-full h-auto mt-10 md:mt-10 lg:mt-10">
           <AboutUsDescription
             :image="imageAbout"
             title="AI Health Metrics Assistance Application"
-            description="Selica is an AI-powered platform built for corporate health and wellness. It automates employee health monitoring, delivers real-time preventive care insights, and helps companies optimize wellness programs while reducing medical costs by up to 20%"
+            description="SELICA is an AI-powered platform built for corporate health and wellness. It automates employee health monitoring, delivers real-time preventive care insights, and helps companies optimize wellness programs while reducing medical costs by up to 20%"
           />
         </div>
       </div>
@@ -536,7 +536,7 @@ onUnmounted(() => {
       <!-- Application Work Slider -->
       <div class="relative w-full flex flex-col z-20">
         <div class="w-full h-auto px-8">
-          <ApplicationWorkText productname="Selica" textcolor="text-[#42C5AF]" />
+          <ApplicationWorkText productname="SELICA" textcolor="text-[#42C5AF]" />
         </div>
         <div class="relative w-full h-auto mt-10 md:mt-12 lg:mt-14">
           <div
@@ -625,7 +625,7 @@ onUnmounted(() => {
                   class="max-smallest:text-[10px] text-[12px] sm:text-[14px] md:text-[16px] lg:text-[14px] xl:text-[16px] xls:text-[16px] text-[#FFFFFF] leading-snug font-[400]"
                 >
                   SCA adalah mitra resmi
-                  <span class="font-[600]">Selica</span> yang bertugas memasarkan dan menyediakan
+                  <span class="font-[600]">SELICA</span> yang bertugas memasarkan dan menyediakan
                   layanan scanning kesehatan kepada masyarakat luas menggunakan perangkat dan
                   aplikasi digital kami.
                 </span>
@@ -810,7 +810,7 @@ onUnmounted(() => {
         <div class="w-full h-auto flex px-8 md:px-12 lg:px-0">
           <ApplicationWorkText
             title="Register Seleris Care Applicator"
-            productname="Selica"
+            productname="SELICA"
             textcolor="text-[#42C5AF]"
           />
         </div>
@@ -1240,11 +1240,7 @@ onUnmounted(() => {
     <section class="flex relative w-full h-auto mx-auto mt-14 lg:mt-20 xl:mt-44" id="downline">
       <div class="relative w-full flex flex-col gap-y-0 z-20">
         <div class="w-full h-auto flex max-w-[1440px] mx-auto px-8 md:px-0">
-          <ApplicationWorkText
-            title="Selica Downline"
-            productname="Selica"
-            textcolor="text-[#42C5AF]"
-          />
+          <ApplicationWorkText title="SELICA Downline" textcolor="text-[#42C5AF]" />
         </div>
         <Downline :items="downlineData" />
       </div>
@@ -1271,7 +1267,7 @@ onUnmounted(() => {
               <span
                 class="text-[#374151] font-[400] max-[375px]:!text-[10px] text-[12px] md:text-[16px] text-center"
               >
-                Kisah sukses dari mitra Selica di seluruh Indonesia
+                Kisah sukses dari mitra SELICA di seluruh Indonesia
               </span>
             </div>
           </div>
@@ -1387,7 +1383,7 @@ onUnmounted(() => {
       />
       <div class="w-full h-auto md:max-w-3xl lg:max-w-6xl xl:max-w-7xl mx-auto relative z-30">
         <DownloadFrame
-          appname="Selica"
+          appname="SELICA"
           description="Enable smarter employee health monitoring with real-time wellness insights, AI-powered preventive analytics, and proactive health cost management — all in one secure corporate platform."
           :img="DownloadImage"
         />
@@ -1414,7 +1410,7 @@ onUnmounted(() => {
       id="bookdemo"
     >
       <BookDemoProduct
-        title="Selica A Complete Solution for Your Health Needs"
+        title="SELICA A Complete Solution for Your Health Needs"
         :framebookdemo="medinsframebook"
         colorarrow="text-[#42C5AF]"
       />

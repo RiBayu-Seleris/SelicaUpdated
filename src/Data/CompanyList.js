@@ -1,19 +1,19 @@
 // src/data/companyList.js
 export const companyList = [
   {
-    url: "/about/company",
+    url: "https://seleris.ai/about/company",
     name: "About",
   },
   {
-    url: "/term-and-condition",
+    url: "https://seleris.ai/term-and-condition",
     name: "Terms",
   },
   {
-    url: "/privacy",
+    url: "https://seleris.ai/privacy",
     name: "Privacy",
   },
   {
-    url: "/security",
+    url: "https://seleris.ai/security",
     name: "Security",
   },
 ];

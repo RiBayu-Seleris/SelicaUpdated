@@ -24,23 +24,8 @@ const { logo } = useProductLogoColor();
 const isSelerisCredit = ref(route.path === "/product/seleris-credit");
 
 const footerTitle = computed(() => {
-  if (route.path === "/product/credit-cover") {
-    return "Seleris Credit Cover";
-  }
-  if (route.path === "/product/medins") {
-    return "Seleris Medins";
-  }
-  if (route.path === "/product/lifins") {
-    return "Seleris Lifins";
-  }
   if (route.path === "/") {
-    return "Selica";
-  }
-  if (route.path === "/product/seleris-credit") {
-    return "Seleris Credit";
-  }
-  if (route.path === "/product/seleris-care-applicator") {
-    return "Seleris Care Applicator";
+    return "SELICA";
   }
 });
 
@@ -154,11 +139,21 @@ const connectColor = computed(() => {
             <p class="text-[#195279] text-[24px] lg:text-[19px] xl:text-[22px] font-medium pb-2">
               Company
             </p>
-            <router-link v-for="(company, index) in companyList" :key="index" :to="company.url">
+            <a
+              v-for="(company, index) in companyList"
+              :key="index"
+              :href="company.url"
+              target="_blank"
+            >
               <p class="text-[#B8B8B8] lg:text-[18px] xl:text-[18px] py-1.5">
                 {{ company.name }}
               </p>
-            </router-link>
+            </a>
+            <!-- <router-link v-for="(company, index) in companyList" :key="index" :to="company.url">
+              <p class="text-[#B8B8B8] lg:text-[18px] xl:text-[18px] py-1.5">
+                {{ company.name }}
+              </p>
+            </router-link> -->
           </div>
         </div>
         <div class="flex lg:hidden w-full h-[1px] bg-[#F3F4F6] rounded-full my-3" />

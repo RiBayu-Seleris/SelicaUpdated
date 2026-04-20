@@ -20,7 +20,7 @@
     >
       <p>
         <span class="font-[600]">
-          Selica merupakan aplikasi/perangkat lunak berbasis teknologi kecerdasan buatan yang
+          SELICA merupakan aplikasi/perangkat lunak berbasis teknologi kecerdasan buatan yang
           dikembangkan sebagai alat skrining dan pemantauan kesehatan untuk tujuan deteksi
           dini</span
         >
@@ -42,10 +42,10 @@
         konfirmasi sesuai standar praktik kedokteran dan regulasi yang berlaku.
       </p>
       <p class="font-[600]">
-        Dengan menerima dan menggunakan laporan ini, pengguna memahami dan menyetujui bahwa Seleris
-        Care berfungsi sebagai alat skrining dan monitoring non-diagnostik, serta membebaskan
-        pengembang dan/atau penyedia layanan dari tanggung jawab atas penggunaan hasil di luar
-        tujuan yang dimaksudkan atau tanpa tindak lanjut medis yang semestinya.
+        Dengan menerima dan menggunakan laporan ini, pengguna memahami dan menyetujui bahwa SELICA
+        berfungsi sebagai alat skrining dan monitoring non-diagnostik, serta membebaskan pengembang
+        dan/atau penyedia layanan dari tanggung jawab atas penggunaan hasil di luar tujuan yang
+        dimaksudkan atau tanpa tindak lanjut medis yang semestinya.
       </p>
     </div>
   </div>
