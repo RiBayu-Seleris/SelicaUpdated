@@ -535,7 +535,7 @@ onUnmounted(() => {
       />
       <!-- Application Work Slider -->
       <div class="relative w-full flex flex-col z-20">
-        <div class="w-full h-auto px-8">
+        <div class="w-full h-auto px-8 sm:px-0">
           <ApplicationWorkText productname="SELICA" textcolor="text-[#42C5AF]" />
         </div>
         <div class="relative w-full h-auto mt-10 md:mt-12 lg:mt-14">
@@ -544,10 +544,10 @@ onUnmounted(() => {
           >
             <div class="relative flex flex-row gap-x-14 md:gap-x-14 xl:gap-x-20 w-max h-auto">
               <div
-                class="absolute px-[100px] sm:px-[130px] md:px-[170px] lg:px-[150px] top-0 w-full h-full py-4 flex"
+                class="absolute px-[100px] sm:px-[130px] md:px-[150px] lg:px-[150px] top-0 w-full h-full py-4 flex"
               >
                 <div
-                  class="w-full h-1 relative left-0 top-[72%] sm:top-[70%] md:top-[70.5%] xl:top-[70.8%]"
+                  class="w-full h-1 relative left-0 top-[72%] sm:top-[70%] md:top-[71%] xl:top-[70.8%]"
                 >
                   <div class="w-full h-full bg-[#B2D4CE]" />
                 </div>
@@ -574,7 +574,7 @@ onUnmounted(() => {
                     }}</span>
                   </div>
                   <div
-                    class="w-full h-full flex flex-col gap-y-3 md:gap-y-3 xl:gap-y-5 items-center md:px-10 lg:px-0"
+                    class="w-full h-full flex flex-col gap-y-3 md:gap-y-3 xl:gap-y-5 items-center md:px-5 lg:px-0"
                   >
                     <p class="text-center text-[#374151] font-[600] md:text-[18px] xl:text-[24px]">
                       {{ workData.title }}
@@ -807,7 +807,7 @@ onUnmounted(() => {
       id="howregister"
     >
       <div class="relative w-full flex flex-col gap-y-10 lg:gap-y-20 z-20">
-        <div class="w-full h-auto flex px-8 md:px-12 lg:px-0">
+        <div class="w-full h-auto flex px-8 md:px-0">
           <ApplicationWorkText
             title="Register Seleris Care Applicator"
             productname="SELICA"
