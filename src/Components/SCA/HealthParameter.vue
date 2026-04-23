@@ -5,11 +5,13 @@
       class="lg:max-w-xl mx-auto w-full flex flex-col gap-y-2 justify-center items-center text-center px-8 sm:px-0"
     >
       <p
-        class="text-[#374151] font-[600] over-smallest:text-[18px] text-[24px] md:text-[32px] lg:text-[40px] leading-tight"
+        class="text-[#374151] font-[600] over-smallest:text-[18px] text-[24px] md:text-[32px] xl:text-[40px] leading-tight"
       >
         {{ totalParameters }} Parameter Kesehatan
       </p>
-      <p class="text-[#374151] font-[400] over-smallest:text-[12px] text-[14px] md:text-[16px]">
+      <p
+        class="text-[#374151] font-[400] over-smallest:text-[12px] text-[14px] md:text-[16px] lg:text-[14px] xl:text-[16px]"
+      >
         Teknologi AI kami menganalisis spektrum kesehatan tubuh secara mendalam hanya dalam satu
         sesi pemindaian.
       </p>
@@ -42,12 +44,12 @@
         class="w-full min-h-[170px] bg-[#EFF9F9] rounded-2xl flex justify-end p-3 md:p-5 flex-col overflow-hidden"
       >
         <p
-          class="w-full over-smallest:!h-24 max-smallest:h-12 h-10 md:h-12 lg:h-auto font-bold text-[#1E293B] over-smallest:text-[10px] max-smallest:text-[12px] over-smallest:leading-normal text-sm md:text-md lg:text-lg flex-wrap items-end flex"
+          class="w-full over-smallest:!h-24 large-smallest:h-12 h-10 md:h-12 lg:h-auto font-bold text-[#1E293B] over-smallest:text-[10px] large-smallest:text-[12px] over-smallest:leading-normal text-sm md:text-md lg:text-lg flex-wrap items-end flex"
         >
           {{ param.title }}
         </p>
         <p
-          class="w-full over-smallest:h-10 max-smallest:h-12 h-14 md:h-8 lg:h-auto text-gray-400 text-[10px] md:text-[12px] lg:text-[14px] mt-1 sm:leading-normal"
+          class="w-full over-smallest:h-10 large-smallest:h-12 h-14 md:h-8 lg:h-auto text-gray-400 text-[10px] md:text-[12px] lg:text-[14px] mt-1 sm:leading-normal"
         >
           {{ param.description }}
         </p>
@@ -74,10 +76,10 @@
           <img src="@/assets/icons/microscope.svg" alt="Health Parameter Icon" />
         </div>
         <div class="w-full h-auto flex flex-col lg:gap-y-2">
-          <p class="text-white font-bold text-[14px] md:text-[16px] lg:text-[18px]">
+          <p class="text-white font-bold text-[14px] md:text-[16px] xl:text-[18px]">
             {{ footerInfo.title }}
           </p>
-          <p class="text-gray-400 text-[12px] md:text-[12px] lg:text-[16px] pr-3">
+          <p class="text-gray-400 text-[12px] md:text-[12px] lg:text-[14px] xl:text-[16px] pr-3">
             {{ footerInfo.description }}
           </p>
         </div>

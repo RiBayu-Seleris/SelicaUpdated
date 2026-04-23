@@ -278,8 +278,8 @@ const chartOptions = {
               <p
                 class="text-[#374151] text-[12px] sm:text-[14px] md:text-[16px] lg:text-[14px] xl:text-[18px] w-full"
               >
-                Jadilah Seleris Care Applicator (SCA) dan bantu masyarakat memantau kesehatan secara
-                non invasif sambil membangun penghasilan fleksibel yang berkelanjutan.
+                Jadilah SELICA Partner dan bantu masyarakat memantau kesehatan secara non invasif
+                sambil membangun penghasilan fleksibel yang berkelanjutan.
               </p>
             </div>
             <div

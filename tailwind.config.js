@@ -8,6 +8,7 @@ module.exports = {
         smallest: "375px",
         "over-smallest": { max: "360px" },
         "max-smallest": { max: "375px" },
+        "large-smallest": { max: "424px" },
         // Mobile breakpoints
         sm: "640px",
         // Tablet / Medium

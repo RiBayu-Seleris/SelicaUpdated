@@ -73,12 +73,12 @@ const faqs = ref([
   {
     question: "Apakah butuh modal besar?",
     answer:
-      "Tidak. Bergabung sebagai SCA tidak memerlukan modal awal atau biaya pendaftaran. Anda dapat langsung mulai menjalankan bisnis dan mendapatkan komisi dari sistem yang telah disediakan.",
+      "Tidak. Bergabung sebagai SELICA Partner tidak memerlukan modal awal atau biaya pendaftaran. Anda dapat langsung mulai menjalankan bisnis dan mendapatkan komisi dari sistem yang telah disediakan.",
   },
   {
     question: "Saya tidak punya latar belakang medis, apakah bisa?",
     answer:
-      "Tentu bisa. Program SCA dirancang untuk semua orang tanpa harus memiliki latar belakang medis. Anda akan mendapatkan panduan, materi edukasi, dan sistem yang membantu proses penjualan.",
+      "Tentu bisa. Program SELICA Partner dirancang untuk semua orang tanpa harus memiliki latar belakang medis. Anda akan mendapatkan panduan, materi edukasi, dan sistem yang membantu proses penjualan.",
   },
   {
     question: "Berapa lama proses pendaftaran berlangsung?",

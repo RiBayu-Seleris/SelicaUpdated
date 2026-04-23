@@ -8,7 +8,7 @@ export const benefits = [
       { content: "Kode referral pribadi" },
       { content: "Materi marketing digital" },
       { content: "Grup support komunitas" },
-      { content: "Sertifikat resmi SCA" },
+      { content: "Sertifikat resmi SELICA Partner" },
     ],
   },
   {
@@ -17,7 +17,7 @@ export const benefits = [
       { content: "Update produk dan teknologi" },
       { content: "Tips marketing dan penjualan" },
       { content: "Kompetisi dan reward berkala" },
-      { content: "Networking sesama member SCA" },
+      { content: "Networking sesama member SELICA Partner" },
     ],
   },
 ];

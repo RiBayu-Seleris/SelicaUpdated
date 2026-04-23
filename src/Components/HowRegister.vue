@@ -103,7 +103,9 @@ const strokeDashoffset = computed(() => {
               :class="[
                 'w-12 h-12 rounded-full border-2 transition-all duration-300 bg-white relative flex justify-center items-center',
                 currentIndex >= index ? 'border-[#13B89C] scale-110' : 'border-gray-300',
-                index === 1 ? 'ml-[200%]' : 'ml-[80%]',
+                index === 1
+                  ? 'ml-[200%] lg:ml-[150%] xl:ml-[200%]'
+                  : 'ml-[80%] lg:ml-[65%] xl:ml-[80%]',
               ]"
             >
               <div
@@ -123,8 +125,8 @@ const strokeDashoffset = computed(() => {
         <div
           v-for="(step, index) in steps"
           :key="index"
-          class="relative w-full h-full flex flex-col items-center gap-y-0 lg:gap-y-0 transition-all lg:justify-between duration-500 ease-out"
-          :class="index === 0 || index === 2 ? 'ml-3' : 'ml-14'"
+          class="relative w-full h-full flex flex-col items-center gap-y-0 lg:gap-y-0 transition-all xl:justify-between duration-500 ease-out"
+          :class="index === 0 || index === 2 ? 'ml-3 lg:-ml-2' : 'ml-14 lg:ml-8'"
         >
           <!-- Title -->
           <div

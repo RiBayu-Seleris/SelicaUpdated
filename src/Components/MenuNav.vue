@@ -30,7 +30,7 @@ const defaultProductMenu = [
   },
   {
     href: "https://sca.seleriscare.ai/",
-    label: "Seleris Care Applicator",
+    label: "SELICA Partner",
     target: "_blank", // ← tambahkan ini
   },
 ];

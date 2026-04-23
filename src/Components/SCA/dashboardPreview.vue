@@ -43,8 +43,9 @@ const dashboardPreview = {
             <p
               class="text-[12px] sm:text-[14px] lg:text-[12px] xl:text-[16px] font-[400] text-[#374151] leading-relaxed tracking-wider"
             >
-              Setelah terdaftar sebagai SCA, Anda akan mendapatkan akses ke dashboard eksklusif yang
-              dirancang untuk memudahkan operasional harian dan pemantauan performa tim Anda.
+              Setelah terdaftar sebagai SELICA Partner, Anda akan mendapatkan akses ke dashboard
+              eksklusif yang dirancang untuk memudahkan operasional harian dan pemantauan performa
+              tim Anda.
             </p>
           </div>
         </div>

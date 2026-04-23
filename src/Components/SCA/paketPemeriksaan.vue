@@ -194,7 +194,9 @@ const showPopup = ref(false);
 
       <!-- Commission -->
       <div class="flex flex-col gap-y-5">
-        <p class="text-[#515E71] font-semibold text-[14px] lg:text-[16px]">Potensi komisi SCA</p>
+        <p class="text-[#515E71] font-semibold text-[14px] lg:text-[16px]">
+          Potensi komisi SELICA Partner
+        </p>
 
         <div class="w-full h-auto flex flex-col gap-y-3">
           <div class="flex justify-between">

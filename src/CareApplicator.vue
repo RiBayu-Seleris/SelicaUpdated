@@ -287,8 +287,8 @@ watch(showModal, (isOpen) => {
               <p
                 class="text-[#374151] text-[12px] sm:text-[14px] md:text-[16px] lg:text-[14px] xl:text-[18px] w-full"
               >
-                Jadilah Seleris Care Applicator (SCA) dan bantu masyarakat memantau kesehatan secara
-                non invasif sambil membangun penghasilan fleksibel yang berkelanjutan.
+                Jadilah SELICA Partner dan bantu masyarakat memantau kesehatan secara non invasif
+                sambil membangun penghasilan fleksibel yang berkelanjutan.
               </p>
             </div>
             <div
@@ -458,18 +458,18 @@ watch(showModal, (isOpen) => {
                 <span
                   class="text-[#FFFFFF] text-[18px] sm:text-[28px] md:text-[32px] lg:text-[24px] xl:text-[42px] xls:text-[42px] font-[600] leading-snug"
                 >
-                  Apa itu Seleris Care <br />
-                  Applicator (SCA) ?
+                  Apa itu <br />
+                  SELICA Partner
                 </span>
               </div>
               <div class="w-full h-auto flex">
                 <span
                   class="text-[12px] sm:text-[14px] md:text-[16px] lg:text-[14px] xl:text-[16px] xls:text-[16px] text-[#FFFFFF] leading-snug font-[400]"
                 >
-                  SCA adalah mitra resmi
-                  <span class="font-[600]">Seleris Care</span> yang bertugas memasarkan dan
-                  menyediakan layanan scanning kesehatan kepada masyarakat luas menggunakan
-                  perangkat dan aplikasi digital kami.
+                  SELICA Partner adalah mitra resmi
+                  <span class="font-[600]">SELICA</span> yang bertugas memasarkan dan menyediakan
+                  layanan scanning kesehatan kepada masyarakat luas menggunakan perangkat dan
+                  aplikasi digital kami.
                 </span>
               </div>
             </div>
