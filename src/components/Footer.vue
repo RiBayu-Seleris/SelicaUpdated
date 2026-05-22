@@ -11,7 +11,7 @@ import playstore from "@/assets/images/playstore.png";
 import appstore from "@/assets/images/appstore.png";
 
 import { productList } from "@/Data/ProductList";
-import { companyList } from "@/Data/companyList";
+import { companyList } from "@/Data/CompanyList";
 import { useProductLogoColor } from "@/Data/Products/useProductLogoColor.js";
 
 import { computed, ref } from "vue";
