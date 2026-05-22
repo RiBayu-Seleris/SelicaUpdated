@@ -1148,7 +1148,7 @@ onUnmounted(() => {
                     class="w-auto h-auto bg-[#A6D8FF] rounded-[8px] md:rounded-[12px] p-1.5 md:p-2"
                   >
                     <img
-                      src="@/assets/Products/images/Care-Applicator/Star.png"
+                      src="@/assets/Products/images/Care-Applicator/star.png"
                       alt=""
                       class="max-smallest:w-8 w-10 h-auto md:w-12 xl:w-full xl:h-full object-contain"
                     />
