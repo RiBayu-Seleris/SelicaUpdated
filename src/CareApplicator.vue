@@ -1375,7 +1375,7 @@ watch(showModal, (isOpen) => {
                     class="w-auto h-auto bg-[#A3EDE1] rounded-[8px] md:rounded-[12px] p-1.5 md:p-2"
                   >
                     <img
-                      src="@/assets/Products/images/Care-Applicator/Shield.png"
+                      src="@/assets/Products/images/Care-Applicator/shield.png"
                       alt=""
                       class="w-10 h-auto md:w-12 xl:w-full xl:h-full object-contain"
                     />
