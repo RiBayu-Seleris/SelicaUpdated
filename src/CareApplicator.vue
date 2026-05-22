@@ -15,10 +15,10 @@ import { benefits } from "@/Data/Products/CareApplicator/benefits.js";
 
 import PaketPemeriksaan from "@/components/SCA/paketPemeriksaan.vue";
 import { packages } from "@/Data/Products/CareApplicator/HealthPackage";
-import HealthParameter from "@/Components/SCA/HealthParameter.vue";
-import DashboardPreview from "./Components/SCA/dashboardPreview.vue";
-import Disclaimer from "@/Components/SCA/Disclaimer.vue";
-import Faq from "@/Components/SCA/Faq.vue";
+import HealthParameter from "@/components/SCA/HealthParameter.vue";
+import DashboardPreview from "@/components/SCA/dashboardPreview.vue";
+import Disclaimer from "@/components/SCA/Disclaimer.vue";
+import Faq from "@/components/SCA/Faq.vue";
 
 const modules = [Navigation, Pagination, Autoplay];
 

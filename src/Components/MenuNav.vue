@@ -2,7 +2,7 @@
 import { ref } from "vue";
 import { useScrollStore } from "@/stores/scroll";
 import { useRoute } from "vue-router";
-import Navlink from "@/Components/Navlink.vue";
+import Navlink from "@/components/Navlink.vue";
 
 const { isScrolled } = useScrollStore();
 const route = useRoute();

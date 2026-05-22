@@ -2,7 +2,7 @@
 import { computed, watch } from "vue";
 import { useRoute } from "vue-router";
 
-import MenuNav from "@/Components/MenuNav.vue";
+import MenuNav from "@/components/MenuNav.vue";
 import MenuIcon from "@/components/icons/MenuIcon.vue";
 
 import { useSidebarStore } from "@/stores/sidebar";

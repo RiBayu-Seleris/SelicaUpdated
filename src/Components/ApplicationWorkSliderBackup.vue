@@ -1,6 +1,6 @@
 <script setup>
-import WorkPhone from "@/Components/WorkPhone.vue";
-import WorkLine from "@/Components/WorkLine.vue";
+import WorkPhone from "@/components/WorkPhone.vue";
+import WorkLine from "@/components/WorkLine.vue";
 
 defineProps({
   circleColor: {

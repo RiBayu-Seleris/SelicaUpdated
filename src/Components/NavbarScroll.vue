@@ -1,5 +1,5 @@
 <script setup>
-import MenuNav from "@/Components/MenuNav.vue";
+import MenuNav from "@/components/MenuNav.vue";
 import MenuIcon from "@/components/icons/MenuIcon.vue";
 import { ref, onMounted, onUnmounted, computed } from "vue";
 import { useScrollStore } from "@/stores/scroll";

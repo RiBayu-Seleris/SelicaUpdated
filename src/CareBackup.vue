@@ -1,34 +1,34 @@
 <script setup>
 import { onMounted, ref } from "vue";
 
-import HeroText from "@/Components/HeroText.vue";
-import PhoneHero from "@/Components/PhoneHero.vue";
-import AboutUs from "@/Components/AboutUs.vue";
-import AboutUsDescription from "@/Components/AboutUsDescription.vue";
-import DownloadStore from "@/Components/DownloadStore.vue";
-import ApplicationWorkText from "@/Components/ApplicationWorkText.vue";
-import ApplicationWorkSlider from "@/Components/ApplicationWorkSlider.vue";
-import TitleAndSubCard from "@/Components/TitleAndSubCard.vue";
-import ClientCardFrameProduct from "@/Components/ClientCardFrameProduct.vue";
-import FaqFrame from "@/Components/FaqFrame.vue";
-import DownloadFrame from "@/Components/DownloadFrame.vue";
-import BookDemoProduct from "@/Components/BookDemoProduct.vue";
+import HeroText from "@/components/HeroText.vue";
+import PhoneHero from "@/components/PhoneHero.vue";
+import AboutUs from "@/components/AboutUs.vue";
+import AboutUsDescription from "@/components/AboutUsDescription.vue";
+import DownloadStore from "@/components/DownloadStore.vue";
+import ApplicationWorkText from "@/components/ApplicationWorkText.vue";
+import ApplicationWorkSlider from "@/components/ApplicationWorkSlider.vue";
+import TitleAndSubCard from "@/components/TitleAndSubCard.vue";
+import ClientCardFrameProduct from "@/components/ClientCardFrameProduct.vue";
+import FaqFrame from "@/components/FaqFrame.vue";
+import DownloadFrame from "@/components/DownloadFrame.vue";
+import BookDemoProduct from "@/components/BookDemoProduct.vue";
 
-import TestimonialCommentFrame from "@/Components/TestimonialCommentFrame.vue";
-import Circle from "@/Components/Svg/Circle.vue";
+import TestimonialCommentFrame from "@/components/TestimonialCommentFrame.vue";
+import Circle from "@/components/Svg/Circle.vue";
 
-import CardWithIcon from "@/Components/CardWithIcon.vue";
-import EasyQuickText from "@/Components/EasyQuickText.vue";
+import CardWithIcon from "@/components/CardWithIcon.vue";
+import EasyQuickText from "@/components/EasyQuickText.vue";
 import InnovationIcon from "@/assets/icons/innovation.svg";
 import ArrowRight from "@/assets/Products/icons/arrow-right.svg";
 
-import CareOrnament from "@/Components/Svg/CareOrnament.vue";
-import CareOrnament2 from "@/Components/Svg/CareOrnament2.vue";
-import CareOrnament3 from "@/Components/Svg/CareOrnament3.vue";
-import CareOrnament4 from "@/Components/Svg/CareOrnament4.vue";
+import CareOrnament from "@/components/Svg/CareOrnament.vue";
+import CareOrnament2 from "@/components/Svg/CareOrnament2.vue";
+import CareOrnament3 from "@/components/Svg/CareOrnament3.vue";
+import CareOrnament4 from "@/components/Svg/CareOrnament4.vue";
 
 import imageAbout from "@/assets/Products/images/Care/about-care.png";
-import FrameLineWorks from "@/Components/Svg/HealthCareDescriptionWork.vue";
+import FrameLineWorks from "@/components/Svg/HealthCareDescriptionWork.vue";
 import medinsframebook from "@/assets/Products/images/bg-book-demo-care.png";
 
 import DownloadImage from "@/assets/Products/images/Care/download-care.png";

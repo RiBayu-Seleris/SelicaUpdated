@@ -1,5 +1,5 @@
 <script setup>
-import TestimonialCard from "@/Components/TestimonialCard.vue";
+import TestimonialCard from "@/components/TestimonialCard.vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";

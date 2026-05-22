@@ -1,5 +1,5 @@
 <script setup>
-import DownloadStore from "@/Components/DownloadStore.vue";
+import DownloadStore from "@/components/DownloadStore.vue";
 
 defineProps({
   appname: {

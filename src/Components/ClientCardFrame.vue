@@ -18,9 +18,7 @@ function chunkArray(array, size) {
   return result;
 }
 const columnsPerRow = 5;
-const partnerChunks = computed(() =>
-  chunkArray(props.clientLogos, columnsPerRow)
-);
+const partnerChunks = computed(() => chunkArray(props.clientLogos, columnsPerRow));
 </script>
 
 <template>
@@ -32,12 +30,12 @@ const partnerChunks = computed(() =>
       row.length === 1
         ? 'grid-cols-1 max-w-[240px] px-2 lg:px-10 xl:px-2'
         : row.length === 2
-        ? 'grid-cols-2 max-w-[600px] px-10'
-        : row.length === 3
-        ? 'grid-cols-3 max-w-[1024px]'
-        : row.length === 4
-        ? 'grid-cols-4 max-w-[1200px]'
-        : 'grid-cols-5 max-w-[1400px]',
+          ? 'grid-cols-2 max-w-[600px] px-10'
+          : row.length === 3
+            ? 'grid-cols-3 max-w-[1024px]'
+            : row.length === 4
+              ? 'grid-cols-4 max-w-[1200px]'
+              : 'grid-cols-5 max-w-[1400px]',
     ]"
   >
     <div
@@ -56,11 +54,7 @@ const partnerChunks = computed(() =>
   <div class="block lg:hidden">
     <div class="marquee-track animation-row whitespace-nowrap mt-8">
       <div class="flex gap-x-6 w-max pb-5">
-        <CardSlide
-          v-for="(logo, index) in props.clientLogos"
-          :key="index"
-          :image="logo"
-        />
+        <CardSlide v-for="(logo, index) in props.clientLogos" :key="index" :image="logo" />
       </div>
     </div>
   </div>

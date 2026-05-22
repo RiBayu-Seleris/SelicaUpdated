@@ -3,22 +3,22 @@ import { computed, nextTick, onMounted, onUnmounted, ref, watch } from "vue";
 import { formatRupiahSmart } from "@/Helper/numberFormat.js";
 
 // HealthCare Components
-import HeroText from "@/Components/HeroText.vue";
-import AboutUs from "@/Components/AboutUs.vue";
-import AboutUsDescription from "@/Components/AboutUsDescription.vue";
-import DownloadStore from "@/Components/DownloadStore.vue";
-import ApplicationWorkText from "@/Components/ApplicationWorkText.vue";
-import ApplicationWorkSlider from "@/Components/ApplicationWorkSlider.vue";
-import TitleAndSubCard from "@/Components/TitleAndSubCard.vue";
-import ClientCardFrameProduct from "@/Components/ClientCardFrameProduct.vue";
-import DownloadFrame from "@/Components/DownloadFrame.vue";
-import BookDemoProduct from "@/Components/BookDemoProduct.vue";
-import CareOrnament from "@/Components/Svg/CareOrnament.vue";
-import CareOrnament2 from "@/Components/Svg/CareOrnament2.vue";
-import CareOrnament3 from "@/Components/Svg/CareOrnament3.vue";
-import CareOrnament4 from "@/Components/Svg/CareOrnament4.vue";
+import HeroText from "@/components/HeroText.vue";
+import AboutUs from "@/components/AboutUs.vue";
+import AboutUsDescription from "@/components/AboutUsDescription.vue";
+import DownloadStore from "@/components/DownloadStore.vue";
+import ApplicationWorkText from "@/components/ApplicationWorkText.vue";
+import ApplicationWorkSlider from "@/components/ApplicationWorkSlider.vue";
+import TitleAndSubCard from "@/components/TitleAndSubCard.vue";
+import ClientCardFrameProduct from "@/components/ClientCardFrameProduct.vue";
+import DownloadFrame from "@/components/DownloadFrame.vue";
+import BookDemoProduct from "@/components/BookDemoProduct.vue";
+import CareOrnament from "@/components/Svg/CareOrnament.vue";
+import CareOrnament2 from "@/components/Svg/CareOrnament2.vue";
+import CareOrnament3 from "@/components/Svg/CareOrnament3.vue";
+import CareOrnament4 from "@/components/Svg/CareOrnament4.vue";
 import imageAbout from "@/assets/Products/images/Care/about-care.svg";
-import FrameLineWorks from "@/Components/Svg/HealthCareDescriptionWork.vue";
+import FrameLineWorks from "@/components/Svg/HealthCareDescriptionWork.vue";
 import medinsframebook from "@/assets/Products/images/bg-book-demo-care.png";
 import DownloadImage from "@/assets/Products/images/Care/download-care.svg";
 
@@ -31,18 +31,18 @@ import { clientLogos } from "@/Data/Products/HealthCare/CareClients";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import PaketPemeriksaan from "@/components/SCA/paketPemeriksaan.vue";
-import HealthParameter from "@/Components/SCA/HealthParameter.vue";
-import DashboardPreview from "./components/SCA/dashboardPreview.vue";
-import Disclaimer from "@/Components/SCA/Disclaimer.vue";
-import Faq from "@/Components/SCA/Faq.vue";
-import Downline from "@/Components/Downline.vue";
+import HealthParameter from "@/components/SCA/HealthParameter.vue";
+import DashboardPreview from "@/components/SCA/dashboardPreview.vue";
+import Disclaimer from "@/components/SCA/Disclaimer.vue";
+import Faq from "@/components/SCA/Faq.vue";
+import Downline from "@/components/Downline.vue";
 
 // SCA Data
 import { testimonials as scaTestimonials } from "@/Data/Products/CareApplicator/Testimonials.js";
 import { whatsSCAList } from "@/Data/Products/CareApplicator/WhatsSCAList.js";
 import { benefits } from "@/Data/Products/CareApplicator/benefits.js";
 import { packages } from "@/Data/Products/CareApplicator/HealthPackage";
-import HowRegister from "@/Components/HowRegister.vue";
+import HowRegister from "@/components/HowRegister.vue";
 
 const modules = [Navigation, Pagination, Autoplay];
 
