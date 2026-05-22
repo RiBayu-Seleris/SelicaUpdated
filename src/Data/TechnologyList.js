@@ -1,4 +1,4 @@
-// src/data/technologyList.js
+// src/Data/TechnologyList.js
 export const technologyList = [
   {
     url: "/seleris-chromatic-imaging",
