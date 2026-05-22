@@ -32,7 +32,7 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import PaketPemeriksaan from "@/components/SCA/paketPemeriksaan.vue";
 import HealthParameter from "@/Components/SCA/HealthParameter.vue";
-import DashboardPreview from "./Components/SCA/dashboardPreview.vue";
+import DashboardPreview from "./components/SCA/dashboardPreview.vue";
 import Disclaimer from "@/Components/SCA/Disclaimer.vue";
 import Faq from "@/Components/SCA/Faq.vue";
 import Downline from "@/Components/Downline.vue";
