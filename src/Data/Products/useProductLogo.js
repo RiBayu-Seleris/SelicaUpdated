@@ -7,11 +7,11 @@ export function useProductLogo() {
 
   const logo = computed(() => {
     if (route.path === "/") {
-      return new URL("@/assets/Products/images/Logo/Care-logo.png", import.meta.url).href;
+      return new URL("@/assets/Products/images/Logo/Care-Logo.png", import.meta.url).href;
     }
 
     if (route.path === "/sca") {
-      return new URL("@/assets/Products/images/Logo/Care-logo.png", import.meta.url).href;
+      return new URL("@/assets/Products/images/Logo/Care-Logo.png", import.meta.url).href;
     }
     return null; // fallback
   });
