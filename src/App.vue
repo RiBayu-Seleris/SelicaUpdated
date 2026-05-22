@@ -3,7 +3,7 @@
 import { ref, computed, watch, onMounted, onUnmounted, nextTick } from "vue";
 import { useRoute } from "vue-router";
 
-import Navbar from "@/components/Navbar.vue";
+import Navbar from "@/components/Navbars.vue";
 import Navbar3 from "@/components/Navbar3.vue";
 import NavbarScroll from "@/components/NavbarScroll.vue";
 import Sidebar from "@/components/Sidebar.vue";
