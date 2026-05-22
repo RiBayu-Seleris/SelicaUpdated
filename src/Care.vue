@@ -302,6 +302,52 @@ watch(showModal, (isOpen) => {
   document.body.style.overflow = isOpen ? "hidden" : "";
 });
 
+// ── Param scroll (mobile drag & arrow) ───────────────────────
+const paramScrollRef = ref(null);
+const isParamDragging = ref(false);
+const paramDragStartX = ref(0);
+const paramScrollStartX = ref(0);
+
+const CARD_WIDTH_VW = 85;
+const GAP_PX = 12;
+
+const getCardScrollWidth = () => {
+  const vw = window.innerWidth;
+  return Math.round((CARD_WIDTH_VW / 100) * vw) + GAP_PX;
+};
+
+const scrollParamLeft = () => {
+  const el = paramScrollRef.value;
+  if (!el) return;
+  el.scrollBy({ left: -getCardScrollWidth(), behavior: "smooth" });
+};
+
+const scrollParamRight = () => {
+  const el = paramScrollRef.value;
+  if (!el) return;
+  el.scrollBy({ left: getCardScrollWidth(), behavior: "smooth" });
+};
+
+const onParamMouseDown = (e) => {
+  const el = paramScrollRef.value;
+  if (!el) return;
+  isParamDragging.value = true;
+  paramDragStartX.value = e.pageX;
+  paramScrollStartX.value = el.scrollLeft;
+};
+
+const onParamMouseMove = (e) => {
+  if (!isParamDragging.value) return;
+  const el = paramScrollRef.value;
+  if (!el) return;
+  const delta = e.pageX - paramDragStartX.value;
+  el.scrollLeft = paramScrollStartX.value - delta;
+};
+
+const onParamMouseUp = () => {
+  isParamDragging.value = false;
+};
+
 // ── Lifecycle ─────────────────────────────────────────────────
 onMounted(async () => {
   // Carousel whatsSelerisCare
@@ -838,21 +884,6 @@ onUnmounted(() => {
             </span>
           </div>
           <div class="w-full h-auto flex flex-col gap-y-6">
-            <!-- <div class="flex items-center justify-center gap-6">
-              <p :class="!isSubscribe ? 'text-black' : 'text-gray-400'">Pay Per Scan</p>
-              <div
-                @click="toggle"
-                class="relative w-20 h-10 bg-white border rounded-full cursor-pointer"
-              >
-                <div
-                  :class="[
-                    'absolute w-6 h-6 top-1/2 -translate-y-1/2 left-2 bg-[#FFFFFF] rounded-full border-[2px] border-[#E6E8F0] shadow-[0px_7px_11.8px_0px_#80808026,_inset_0px_8px_6.4px_0px_#0000000F] transition-all duration-300',
-                    isSubscribe ? 'left-[calc(100%-36px)]' : 'left-2',
-                  ]"
-                />
-              </div>
-              <p :class="isSubscribe ? 'text-black' : 'text-gray-400'">Subscribe</p>
-            </div> -->
             <div class="w-full h-auto mx-auto">
               <div class="w-full h-auto flex flex-col gap-y-5 md:flex-row gap-x-5">
                 <PaketPemeriksaan
@@ -1309,7 +1340,6 @@ onUnmounted(() => {
                 class="w-full h-full !overflow-y-visible"
               >
                 <SwiperSlide v-for="(item, index) in scaTestimonials" :key="index">
-                  <!-- wrapper ini TIDAK mengubah desain -->
                   <div class="pb-6 px-8 sm:px-8 md:px-12 lg:px-0">
                     <div
                       class="w-full max-[375px]:!h-[190px] min-[1439px]:!h-[230px] h-[200px] sm:h-[230px] md:h-[210px] lg:h-[220px] xl:h-[250px] p-[1px] bg-[#D9D9D9] rounded-lg cursor-grab active:cursor-grabbing shadow-[0px_5px_15px_0px_rgba(92,92,92,0.1)]"
@@ -1394,8 +1424,6 @@ onUnmounted(() => {
         :mirror="true"
       />
     </section>
-
-    <!-- ========== SCA SECTIONS ========== -->
 
     <!-- DISCLAIMER -->
     <section
@@ -1482,7 +1510,6 @@ onUnmounted(() => {
                           Paket
                           <span class="uppercase">
                             {{ selectedPackage.label }}
-                            <!-- ✅ fix: .name → .label -->
                           </span>
                         </span>
                       </div>
@@ -1527,7 +1554,6 @@ onUnmounted(() => {
                         </del>
                         <span class="text-[20px] md:text-[28px] font-[600] text-[#374151]">
                           Rp {{ formatRupiah(selectedPackage.price) }}
-                          <!-- ✅ fix: tambah formatRupiah -->
                         </span>
                       </div>
                       <div class="w-auto h-auto flex flex-row gap-x-1.5 md:gap-x-3 rounded-full">
@@ -1609,14 +1635,62 @@ onUnmounted(() => {
                     </div>
                   </div>
                 </div>
+
+                <!-- ───────────────────────────────────────────────────── -->
+                <!-- Detail Parameter — MODIFIED SECTION                  -->
+                <!-- Added: arrow buttons (mobile only) + mouse drag      -->
+                <!-- ───────────────────────────────────────────────────── -->
                 <div class="w-full h-auto flex flex-col gap-y-3 lg:px-5">
-                  <div class="w-full h-auto flex items-center flex-shrink-0 px-10 lg:px-0">
+                  <!-- Header row: title + arrow buttons (mobile only) -->
+                  <div
+                    class="w-full h-auto flex items-center justify-between flex-shrink-0 px-10 lg:px-0"
+                  >
                     <span class="text-[20px] font-[600] text-[#374151]">
                       Detail parameter ({{ totalParameters }})
                     </span>
+                    <!-- Arrow buttons — hidden on lg and above -->
+                    <div class="flex lg:hidden items-center gap-x-2">
+                      <button
+                        @click="scrollParamLeft"
+                        class="w-8 h-8 flex justify-center items-center bg-[#F0FDFB] border border-[#2DDBBD] rounded-full text-[#2DDBBD] hover:bg-[#2DDBBD] hover:text-white transition-colors duration-200 active:scale-95"
+                        aria-label="Geser kiri"
+                      >
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none">
+                          <path
+                            d="M15 18L9 12L15 6"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                      </button>
+                      <button
+                        @click="scrollParamRight"
+                        class="w-8 h-8 flex justify-center items-center bg-[#F0FDFB] border border-[#2DDBBD] rounded-full text-[#2DDBBD] hover:bg-[#2DDBBD] hover:text-white transition-colors duration-200 active:scale-95"
+                        aria-label="Geser kanan"
+                      >
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none">
+                          <path
+                            d="M9 18L15 12L9 6"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                      </button>
+                    </div>
                   </div>
+
+                  <!-- Scrollable card row — drag enabled on desktop too -->
                   <div
-                    class="w-full h-auto flex flex-row lg:flex-col gap-x-3 lg:gap-x-0 lg:gap-y-8 pb-10 overflow-x-auto px-10 lg:px-0 snap-x snap-mandatory lg:overflow-x-visible lg:snap-none scrollbar-hide"
+                    ref="paramScrollRef"
+                    class="w-full h-auto flex flex-row lg:flex-col gap-x-3 lg:gap-x-0 lg:gap-y-8 pb-10 overflow-x-auto px-10 lg:px-0 snap-x snap-mandatory lg:overflow-x-visible lg:snap-none scrollbar-hide cursor-grab active:cursor-grabbing select-none"
+                    @mousedown="onParamMouseDown"
+                    @mousemove="onParamMouseMove"
+                    @mouseup="onParamMouseUp"
+                    @mouseleave="onParamMouseUp"
                   >
                     <div
                       v-for="data in selectedPackage.modalValues"
@@ -1649,6 +1723,7 @@ onUnmounted(() => {
                     </div>
                   </div>
                 </div>
+                <!-- ───────────────────────────────────────────────────── -->
               </div>
             </div>
           </div>
