@@ -5,7 +5,7 @@ import { useRoute } from "vue-router";
 import MenuIconClose from "@/components/icons/CloseIcon.vue";
 import Navlink from "@/components/NavLink.vue";
 
-import { aboutList } from "@/Data/aboutList";
+import { aboutList } from "@/Data/AboutList";
 import { productList } from "@/Data/ProductList";
 import { technologyList } from "@/Data/technologyList";
 import { usecaseList } from "@/Data/usecaseList";

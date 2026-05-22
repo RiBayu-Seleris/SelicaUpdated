@@ -1,4 +1,4 @@
-// src/data/aboutList.js
+// src/Data/AboutList.js
 export const aboutList = [
   {
     url: "/about/company",
