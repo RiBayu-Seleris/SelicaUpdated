@@ -23,7 +23,7 @@ import medinsframebook from "@/assets/Products/images/bg-book-demo-care.png";
 import DownloadImage from "@/assets/Products/images/Care/download-care.svg";
 
 // HealthCare Data
-import { careWorkSteps } from "@/Data/Products/HealthCare/careworkSteps.js";
+import { careWorkSteps } from "@/Data/Products/HealthCare/CareWorkSteps.js";
 import { whatsSelerisCare } from "@/Data/Products/CareApplicator/WhatsSelerisCare.js";
 import { clientLogos } from "@/Data/Products/HealthCare/CareClients";
 

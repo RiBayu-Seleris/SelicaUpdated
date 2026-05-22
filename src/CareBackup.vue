@@ -36,7 +36,7 @@ import DownloadImage from "@/assets/Products/images/Care/download-care.png";
 // HealthCare Data
 import { healthCheck } from "@/Data/Products/HealthCare/healthCheck";
 import { faq } from "@/Data/Products/HealthCare/faq.js";
-import { careWorkSteps } from "@/Data/Products/HealthCare/careworkSteps.js";
+import { careWorkSteps } from "@/Data/Products/HealthCare/CareWorkSteps.js";
 import { testimonials } from "@/Data/Products/HealthCare/testimonials";
 import { whatsSelerisCare } from "@/Data/Products/CareApplicator/WhatsSelerisCare.js";
 
