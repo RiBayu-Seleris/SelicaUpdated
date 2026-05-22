@@ -1,4 +1,4 @@
-// src/data/usecaseList.js
+// src/Data/UseCaseList.js
 export const usecaseList = [
   {
     url: "/",
