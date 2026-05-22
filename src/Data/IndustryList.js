@@ -1,4 +1,4 @@
-// src/data/industryList.js
+// src/Data/IndustryList.js
 export const industryList = [
   {
     url: "/",
