@@ -38,3 +38,10 @@ __screenshots__/
 # Vite
 *.timestamp-*-*.mjs
 # dist/
+
+# Vite build output + workflow staging dirs (added for GHA auto-deploy)
+dist/
+dist.new/
+dist.old/
+dist.previous/
+dist.backup-*/
