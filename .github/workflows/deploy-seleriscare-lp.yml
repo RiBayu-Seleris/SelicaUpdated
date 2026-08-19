@@ -62,8 +62,9 @@ jobs:
           ssh -i ~/.ssh/deploy_key -p ${{ secrets.DEPLOY_SSH_PORT }} \
             ${{ secrets.DEPLOY_SSH_USER }}@${{ secrets.DEPLOY_SSH_HOST }} \
             "rm -rf /var/www/html/selica/seleriscare-lp/dist.new && mkdir -p /var/www/html/selica/seleriscare-lp/dist.new"
-          scp -i ~/.ssh/deploy_key -P ${{ secrets.DEPLOY_SSH_PORT }} -r -q \
-            dist/. \
+          rsync -az --delete \
+            -e "ssh -i ~/.ssh/deploy_key -p ${{ secrets.DEPLOY_SSH_PORT }}" \
+            dist/ \
             ${{ secrets.DEPLOY_SSH_USER }}@${{ secrets.DEPLOY_SSH_HOST }}:/var/www/html/selica/seleriscare-lp/dist.new/
 
       - name: Atomic swap and reload nginx
