@@ -1,4 +1,5 @@
 name: Deploy Seleriscare LP to seleriscare.ai
+# Re-triggered 2026-08-18 to verify workflow with secrets in place.
 
 on:
   push:
