@@ -4,6 +4,7 @@
 // Sosmed Icon
 import Instagram from "@/components/icons/Instagram.vue";
 import Linkedin from "@/components/icons/Linkedin.vue";
+import Tiktok from "@/components/icons/Tiktok.vue";
 import Twitter from "@/components/icons/Twitter.vue";
 
 // Images
@@ -105,8 +106,15 @@ const connectColor = computed(() => {
                     <Linkedin />
                   </a>
                 </div>
-                <div class="w-auto h-[30px] lg:h-[30px] text-[#195279]">
-                  <Twitter />
+                <div class="w-auto h-[30px] lg:h-[30px] text-[#195279] dark:text-[#FAFAFA]">
+                  <a
+                    href="https://www.tiktok.com/@seleris.id"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Seleris TikTok"
+                  >
+                    <Tiktok />
+                  </a>
                 </div>
               </div>
             </div>
