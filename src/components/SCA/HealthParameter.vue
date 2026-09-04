@@ -37,7 +37,11 @@
     </div>
 
     <!-- Tab Content -->
-    <div v-if="currentContent" class="grid grid-cols-2 md:grid-cols-3 gap-4 px-8 md:px-0">
+    <div
+      v-if="currentContent"
+      ref="paramsGrid"
+      class="grid grid-cols-2 md:grid-cols-3 gap-4 px-8 md:px-0 max-h-[60vh] overflow-y-auto overflow-x-hidden scrollbar-hide xl:max-h-none xl:overflow-visible"
+    >
       <div
         v-for="(param, index) in currentContent.parameters"
         :key="index"
@@ -207,6 +211,12 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorker;
 // Tab logic
 const activeTab = ref(tabs[0].id);
 const currentContent = computed(() => tabContents[activeTab.value] ?? null);
+const paramsGrid = ref(null);
+
+// Kembali ke atas saat ganti tab supaya tidak tertinggal di posisi scroll sebelumnya
+watch(activeTab, () => {
+  paramsGrid.value?.scrollTo({ top: 0 });
+});
 const totalParameters = computed(() =>
   Object.values(tabContents).reduce((total, tab) => total + tab.parameters.length, 0),
 );

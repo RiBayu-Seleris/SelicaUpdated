@@ -11,7 +11,7 @@ export const payPerScanPackages = {
     {
       id: 1,
       packet_name: "PAKET ESSENTIAL",
-      packet_price: 179000,
+      packet_price: 300000,
       packet_description: "",
       benefits: [
         {
@@ -63,7 +63,7 @@ export const payPerScanPackages = {
     {
       id: 2,
       packet_name: "PAKET CORE",
-      packet_price: 239000,
+      packet_price: 400000,
       packet_description: "",
       benefits: [
         {
@@ -145,7 +145,7 @@ export const payPerScanPackages = {
     {
       id: 3,
       packet_name: "PAKET PRIME",
-      packet_price: 299000,
+      packet_price: 500000,
       packet_description: "",
       benefits: [
         {
