@@ -24,13 +24,13 @@ import appstore from "@/assets/images/appstore.png";
       </a>
     </div>
     <div class="relative group w-full h-full">
-      <img
+      <!-- <img
         :src="appstore"
         alt="Appstore"
         class="w-full h-full object-contain object-center shadow-2xl"
       />
 
-      <!-- Hover Overlay -->
+      Hover Overlay
       <div
         class="absolute flex w-full h-full items-center justify-center inset-0 group-hover:opacity-100 transition duration-300 bg-opacity-60 opacity-0"
       >
@@ -39,7 +39,7 @@ import appstore from "@/assets/images/appstore.png";
         >
           <span class="text-[14px] md:text-[17px] lg:text-[20px]">Coming Soon!</span>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>

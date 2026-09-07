@@ -251,7 +251,7 @@ const connectColor = computed(() => {
                   class="w-full sm:w-[200px] md:w-[200px] xl:w-[200px] h-[100px] object-contain object-center"
                 />
               </a>
-              <div
+              <!-- <div
                 class="flex w-auto h-full justify-center items-center content-center xl:justify-start xl:content-start xl:-mt-5"
               >
                 <div class="relative group w-full sm:w-[200px] md:w-[200px] xl:w-[200px] h-[100px]">
@@ -261,7 +261,7 @@ const connectColor = computed(() => {
                     class="w-full h-full object-contain object-center"
                   />
 
-                  <!-- Hover Overlay -->
+                  Hover Overlay
                   <div
                     class="absolute flex items-center justify-center inset-0 group-hover:opacity-100 transition duration-300 bg-opacity-60 opacity-0 py-5"
                   >
@@ -272,7 +272,7 @@ const connectColor = computed(() => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>

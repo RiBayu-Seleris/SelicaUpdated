@@ -17,10 +17,11 @@ import CareOrnament from "@/components/Svg/CareOrnament.vue";
 import CareOrnament2 from "@/components/Svg/CareOrnament2.vue";
 import CareOrnament3 from "@/components/Svg/CareOrnament3.vue";
 import CareOrnament4 from "@/components/Svg/CareOrnament4.vue";
-import imageAbout from "@/assets/Products/images/Care/about-care.svg";
+import imageAbout from "@/assets/Products/images/Care/about-care2.svg";
 import FrameLineWorks from "@/components/Svg/HealthCareDescriptionWork.vue";
 import medinsframebook from "@/assets/Products/images/bg-book-demo-care.png";
-import DownloadImage from "@/assets/Products/images/Care/download-care.svg";
+import DownloadImage from "@/assets/Products/images/Care/download-care2.svg";
+import playstore from "@/assets/images/playstore.png";
 
 // HealthCare Data
 import { careWorkSteps } from "@/Data/Products/HealthCare/CareWorkSteps.js";
@@ -60,19 +61,19 @@ const registerFlow = [
     id: 1,
     title: "Register Akun",
     description: `Daftarkan akun Anda melalui website <a href="https://sca.seleriscare.ai" target="_blank" class="text-[#01A488] hover:underline">sca.seleriscare.ai</a> dan lakukan pembelian produk sebagai bagian dari proses pendaftaran`,
-    image: new URL("@/assets/Products/images/Care/register-akun.png", import.meta.url).href,
+    image: new URL("@/assets/Products/images/Care/register-akun2.png", import.meta.url).href,
   },
   {
     id: 2,
     title: "Download SELICA",
     description: `Unduh aplikasi <a href="https://sca.seleriscare.ai" target="_blank" class="text-[#01A488] hover:underline">SELICA</a> melalui Google Play Store, kemudian instal aplikasi tersebut di perangkat Anda sebelum memulai proses deteksi.`,
-    image: new URL("@/assets/Products/images/Care/download-sca.png", import.meta.url).href,
+    image: new URL("@/assets/Products/images/Care/download-sca2.png", import.meta.url).href,
   },
   {
     id: 3,
     title: "Login SELICA",
     description: `Masuk ke aplikasi SELICA menggunakan akun Anda dan mulai gunakan layanan yang tersedia`,
-    image: new URL("@/assets/Products/images/Care/login-sca.png", import.meta.url).href,
+    image: new URL("@/assets/Products/images/Care/login-work.png", import.meta.url).href,
   },
 ];
 
@@ -476,7 +477,7 @@ onUnmounted(() => {
           <div class="w-full h-auto flex justify-center items-center">
             <figure class="w-auto max-w-max h-auto flex">
               <img
-                src="/assets/images/care.svg"
+                src="/assets/images/care2.svg"
                 alt=""
                 class="w-full h-[190px] md:h-[300px] lg:h-[450px] object-contain drop-shadow-[-5px_8px_5px_rgba(0,0,0,0.15)] md:drop-shadow-[-10px_10px_10px_rgba(0,0,0,0.3)] lg:drop-shadow-[-20px_10px_10px_rgba(0,0,0,0.25)]"
               />
@@ -486,7 +487,23 @@ onUnmounted(() => {
       </div>
       <!-- DownloadStore -->
       <div class="w-full max-w-sm mx-auto h-auto max-smallest:px-8 px-0 mt-10 md:mt-20">
-        <DownloadStore />
+        <div class="w-full h-[100px] flex justify-center">
+          <a
+            href="https://play.google.com/store/apps/developer?id=PT.+Seleris+Meditekno+Internasional"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex w-full h-auto justify-start"
+          >
+            <figure class="w-full h-auto">
+              <img
+                :src="playstore"
+                alt="Playstore"
+                class="w-full h-[60px] object-contain object-center"
+              />
+            </figure>
+          </a>
+        </div>
+        <!-- <DownloadStore /> -->
       </div>
     </section>
 

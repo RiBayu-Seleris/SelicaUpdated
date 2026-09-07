@@ -16,7 +16,7 @@ defineProps({
   <div
     class="w-full h-auto flex flex-col md:flex-row justify-center md:gap-x-10 xl:gap-x-16 lg:px-10"
   >
-    <figure class="w-full lg:w-[40%] justify-center h-auto flex">
+    <figure class="w-full lg:w-[35%] justify-center h-auto flex">
       <img :src="image" alt="" class="h-[270px] md:h-auto lg:h-auto xl:h-auto" />
     </figure>
     <div

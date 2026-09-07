@@ -13,10 +13,10 @@ const dashboardPreview = {
 };
 </script>
 <template>
-  <div class="relative w-full h-auto flex flex-row">
+  <div class="relative w-full h-auto flex flex-row overflow-x-clip">
     <div class="w-full h-auto pl-8 pr-8 md:pl-12 md:pr-12 lg:pl-4 lg:pr-0 xl:pl-20 xls:pl-20">
       <div
-        class="w-full h-full flex flex-col gap-y-8 lg:gap-y-5 xl:gap-y-8 items-start justify-start lg:px-10 xl:px-14 py-5"
+        class="w-full h-full flex flex-col gap-y-8 lg:gap-y-5 xl:gap-y-8 items-start justify-start lg:px-10 xl:px-14"
       >
         <div
           class="w-auto h-auto px-3 md:px-6 py-2 bg-[#3BD8BF]/20 flex flex-row gap-x-2 text-[#13B89C] font-[500] rounded-[24px] justify-center items-center"
@@ -114,12 +114,14 @@ const dashboardPreview = {
         </a>
       </div>
     </div>
-    <div class="w-[43%] xl:w-[40%] shrink-0 h-auto hidden lg:flex justify-end items-center">
+    <!-- Kolom gambar: gambarnya di-absolute supaya tidak ikut menentukan tinggi row — tinggi
+         section murni mengikuti blok teks. Tingginya persen dari tinggi kolom, lebarnya ikut
+         rasio asli sehingga menembus ke kanan dan dipotong overflow-x-clip di root. -->
+    <div class="w-[43%] xl:w-[40%] shrink-0 hidden lg:block relative">
       <img
         src="@/assets/images/dashboard-preview.svg"
-        alt=""
-        srcset=""
-        class="w-full h-full object-fill shadow-[-19px_18px_200px_rgba(0,0,0,0.1)]"
+        alt="Preview dashboard SELICA Partner"
+        class="absolute left-0 top-1/2 -translate-y-1/2 h-[105%] w-auto max-w-none object-contain drop-shadow-[-19px_18px_200px_rgba(0,0,0,0.1)]"
       />
     </div>
   </div>
