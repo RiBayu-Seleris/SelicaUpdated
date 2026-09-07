@@ -190,11 +190,11 @@ const showPopup = ref(false);
         </div>
       </div>
 
-      <div class="w-full h-[2px] bg-[#E2E7EF]" />
+      <!-- <div class="w-full h-[2px] bg-[#E2E7EF]" /> -->
 
       <!-- Commission -->
       <div class="flex flex-col gap-y-5">
-        <p class="text-[#515E71] font-semibold text-[14px] lg:text-[16px]">
+        <!-- <p class="text-[#515E71] font-semibold text-[14px] lg:text-[16px]">
           Potensi komisi SELICA Partner
         </p>
 
@@ -217,7 +217,7 @@ const showPopup = ref(false);
               Rp {{ formatRupiah(pkg.commission.team) }}
             </p>
           </div>
-        </div>
+        </div> -->
 
         <!-- Button -->
         <div
