@@ -55,6 +55,8 @@ const strokeDashoffset = computed(() => {
           :src="steps[currentIndex].image"
           alt=""
           class="w-full h-full object-contain"
+          loading="lazy"
+          decoding="async"
         />
       </Transition>
     </div>
@@ -168,6 +170,8 @@ const strokeDashoffset = computed(() => {
           :src="steps[currentIndex].image"
           alt=""
           class="w-auto h-full object-contain"
+          loading="lazy"
+          decoding="async"
         />
       </Transition>
     </div>

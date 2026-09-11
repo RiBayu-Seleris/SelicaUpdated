@@ -17,7 +17,13 @@ defineProps({
     class="w-full h-auto flex flex-col md:flex-row justify-center md:gap-x-10 xl:gap-x-16 lg:px-10"
   >
     <figure class="w-full lg:w-[35%] justify-center h-auto flex">
-      <img :src="image" alt="" class="h-[270px] md:h-auto lg:h-auto xl:h-auto" />
+      <img
+        :src="image"
+        alt=""
+        class="h-[270px] md:h-auto lg:h-auto xl:h-auto"
+        loading="lazy"
+        decoding="async"
+      />
     </figure>
     <div
       class="w-full lg:w-1/2 h-auto flex flex-col px-8 md:px-0 pt-10 md:pt-0 space-y-2 md:space-y-4 lg:space-y-8 justify-center"

@@ -141,3 +141,153 @@ input:-webkit-autofill:focus {
 }
 @keyframes autofill-fix-dark {
 }
+
+/* ============================================================
+   Cahaya yang berjalan di sirkuit layar loading
+
+   Jalurnya digambar sebagai garis putus-putus yang sangat panjang jedanya
+   (14 satuan terlihat, 86 satuan kosong), lalu offset-nya digeser terus.
+   Efeknya: satu potong garis pendek yang berjalan menyusuri jalur.
+   pathLength="100" di SVG membuat satuannya persen, jadi tidak bergantung
+   ukuran layar.
+============================================================ */
+@keyframes seleris-cahaya-sirkuit {
+  from {
+    stroke-dashoffset: 14;
+  }
+  to {
+    stroke-dashoffset: -100;
+  }
+}
+
+/* Keadaan DIAM. Pola putus-putusnya dipasang di sini, bukan ikut kelas
+   animasinya — kalau tidak, saat animasinya belum menyala jalurnya akan
+   tergambar sebagai garis penuh, bukan menghilang. */
+.sirkuit-cahaya {
+  stroke-dasharray: 14 86;
+  stroke-dashoffset: 14;
+}
+
+/* Keadaan BERJALAN. Kelas ini baru dipasang setelah gerbang benar-benar
+   tertutup. Melepas lalu memasang kembali sebuah kelas animasi membuat
+   animasinya mengulang dari awal — itulah yang menjamin cahayanya selalu
+   berangkat dari titik awal, bukan dari tengah jalur. */
+.sirkuit-cahaya-jalan {
+  animation: seleris-cahaya-sirkuit 1s linear infinite alternate;
+}
+
+/* Hormati setelan sistem "kurangi animasi" milik pengunjung. */
+@media (prefers-reduced-motion: reduce) {
+  .sirkuit-cahaya-jalan {
+    animation: none;
+  }
+  .sirkuit-cahaya {
+    opacity: 0;
+  }
+}
+
+/* ============================================================
+   Gambar besar yang memakai filter bayangan
+
+   MASALAHNYA
+   filter: drop-shadow() memaksa browser menghitung siluet gambar lalu
+   mengaburkannya. Untuk gambar besar — apalagi SVG yang di dalamnya ada foto
+   tertanam — perhitungan itu diulang setiap kali area tersebut digambar
+   ulang, yaitu terus-menerus selama halaman digulir.
+
+   SOLUSINYA
+   Elemen dinaikkan ke lapisan gambarnya sendiri. Hasil rasterisasi berikut
+   bayangannya disimpan sekali, lalu tinggal digeser oleh kartu grafis saat
+   halaman bergulir — tidak dihitung ulang.
+
+   Dipakai HEMAT: tiap lapisan memakan memori, jadi hanya untuk gambar besar
+   yang memang berfilter.
+============================================================ */
+.gambar-berat {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* ============================================================
+   Menjeda animasi di bagian halaman yang tidak terlihat
+
+   Dipasang otomatis oleh src/utils/jedaAnimasi.js. Penjelasan lengkapnya ada
+   di berkas itu; ringkasnya: animasi tepi berputar memakai conic-gradient
+   yang harus digambar ulang browser tiap gambar layar, dan tanpa jeda ini
+   penggambaran itu berjalan terus walau bagiannya sudah lewat dari layar.
+============================================================ */
+.jeda-animasi,
+.jeda-animasi * {
+  animation-play-state: paused !important;
+}
+
+/* ============================================================
+   Penyesuaian AOS
+
+   Zoom bawaan AOS mengecilkan elemen sampai 60% sebelum mendarat. Untuk
+   kartu kecil angka itu pas, tapi di sini data-aos dipasang pada SECTION —
+   bidang selebar halaman. Mengecilkan bidang selebar itu sampai 60% membuat
+   ia terlihat melompat masuk dari kejauhan, dan itu justru rupa yang paling
+   sering dipakai template murahan.
+
+   6% sudah cukup: yang terbaca hanya bidang yang mengendap ke tempatnya.
+============================================================ */
+/* Atribut ditulis dua kali dengan sengaja: itu menaikkan kekuatan pemilihnya
+   di atas milik aos.css, jadi penyesuaian ini tetap berlaku walau suatu saat
+   urutan impor di main.js berubah lagi. Cara yang sama dipakai aos.css
+   sendiri untuk aturan-aturannya. */
+[data-aos="zoom-in"][data-aos] {
+  transform: scale(0.94);
+}
+
+/* ============================================================
+   Ornamen garis yang menggambar dirinya sendiri
+
+   Ornamen di beranda semuanya berkas PNG, bukan SVG — jadi trik biasa untuk
+   "menggambar garis" (stroke-dashoffset) tidak bisa dipakai sama sekali.
+   Yang dipakai di sini: potongan (clip-path) yang bergeser, sehingga
+   gambarnya tersingkap sedikit demi sedikit ke satu arah. Karena bentuk
+   ornamennya memang sebuah garis, yang terbaca mata persis sama — garisnya
+   tumbuh.
+
+   Tepinya sengaja TAJAM, bukan memudar. Tepi tajam yang berjalan itulah yang
+   terbaca sebagai ujung pena; tepi yang memudar terbaca sebagai gambar yang
+   muncul begitu saja.
+
+   KENAPA DIPICU AOS, BUKAN PENGAMAT SENDIRI
+   Ornamennya duduk di dalam section yang sudah punya data-aos. Kalau
+   pemicunya berbeda, garisnya bisa selesai tergambar saat section-nya sendiri
+   masih tersembunyi — dan efeknya hilang tanpa pernah terlihat. AOS memang
+   mengizinkan animasi buatan sendiri: ia hanya memasang kelas `aos-animate`,
+   isinya terserah CSS di bawah ini.
+
+   Ikut gratis: kalau pengunjung menyalakan "kurangi animasi", AOS mencabut
+   atribut data-aos dari elemennya, jadi tidak ada satu pun aturan di bawah
+   yang cocok — ornamennya langsung tampil utuh.
+============================================================ */
+[data-aos^="garis-"] {
+  transition-property: clip-path;
+  transition-duration: 1.2s;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-aos="garis-kiri"] {
+  clip-path: inset(0 100% 0 0);
+}
+[data-aos="garis-kanan"] {
+  clip-path: inset(0 0 0 100%);
+}
+[data-aos="garis-atas"] {
+  clip-path: inset(0 0 100% 0);
+}
+[data-aos="garis-bawah"] {
+  clip-path: inset(100% 0 0 0);
+}
+/* Dari tengah melebar ke dua sisi sekaligus. */
+[data-aos="garis-dalam"] {
+  clip-path: inset(0 50% 0 50%);
+}
+
+[data-aos^="garis-"].aos-animate {
+  clip-path: inset(0 0 0 0);
+}

@@ -9,7 +9,7 @@ import appstore from "@/assets/images/appstore.png";
   >
     <div class="w-full h-full flex justify-center">
       <a
-        href="https://play.google.com/store/apps/developer?id=PT.+Seleris+Meditekno+Internasional"
+        href="https://play.google.com/store/search?q=blooxia&c=apps&hl=id"
         target="_blank"
         rel="noopener noreferrer"
         class="flex w-full h-auto justify-start"
@@ -19,6 +19,8 @@ import appstore from "@/assets/images/appstore.png";
             :src="playstore"
             alt="Playstore"
             class="w-full h-full object-contain object-center"
+            loading="lazy"
+            decoding="async"
           />
         </figure>
       </a>
@@ -28,7 +30,7 @@ import appstore from "@/assets/images/appstore.png";
         :src="appstore"
         alt="Appstore"
         class="w-full h-full object-contain object-center shadow-2xl"
-      />
+      loading="lazy" decoding="async" />
 
       Hover Overlay
       <div

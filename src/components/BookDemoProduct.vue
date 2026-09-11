@@ -18,6 +18,8 @@ defineProps({
       :src="framebookdemo"
       alt="FrameBookDemoSection"
       class="w-full h-full bg-no-repeat bg-cover bg-center"
+      loading="lazy"
+      decoding="async"
     />
     <div
       class="absolute w-full h-full top-0 flex flex-row justify-between items-center px-4 md:px-10 pt-2 md:pt-8 xl:pt-11"
@@ -35,7 +37,7 @@ defineProps({
             <p
               class="text-[#FAFAFA] font-[500] text-[10px] sm:text-[16px] md:text-[20px] lg:text-[24px]"
             >
-              Request Demo Now!
+              {{ $t("home.demoCta") }}
             </p>
           </div>
         </div>
@@ -53,7 +55,7 @@ defineProps({
                   ]"
                 >
                   <p class="font-[500] text-[10px] sm:text-[16px] md:text-[18px] lg:text-[24px]">
-                    Book a Demo
+                    {{ $t("home.demoTitle") }}
                   </p>
                   <svg
                     class="max-smallest:w-4 max-smallest:h-4 w-6 h-6 sm:w-10 sm:h-10 md:w-12 md:h-12"
@@ -92,7 +94,7 @@ defineProps({
           </p>
         </div>
         <div class="w-full h-auto">
-          <p class="text-[#FAFAFA] font-[500] text-[12px]">Request Demo Now!</p>
+          <p class="text-[#FAFAFA] font-[500] text-[12px]">{{ $t("home.demoCta") }}</p>
         </div>
       </div>
     </div>
@@ -104,7 +106,7 @@ defineProps({
               `w-full h-full flex items-center justify-center gap-x-2 md:gap-x-2 ${colorarrow}`,
             ]"
           >
-            <p class="font-[500] text-[12px]">Book a Demo</p>
+            <p class="font-[500] text-[12px]">{{ $t("home.demoTitle") }}</p>
             <svg class="w-6 h-6" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M28 36L40 24L28 12"

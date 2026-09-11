@@ -15,6 +15,8 @@ defineProps({
         :src="image"
         alt=""
         class="w-full h-[300px] md:h-[400px] lg:h-[500px] object-contain"
+        loading="lazy"
+        decoding="async"
       />
     </figure>
   </div>

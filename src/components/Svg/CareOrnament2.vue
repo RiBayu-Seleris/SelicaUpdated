@@ -1,5 +1,19 @@
 <script setup>
-defineProps({
+import { computed } from "vue";
+
+/**
+ * Ornamen garis.
+ *
+ * `arah` menentukan dari mana garisnya tersingkap: "kiri", "kanan", "atas",
+ * "bawah", atau "dalam" (dari tengah melebar ke dua sisi). Geraknya sendiri
+ * ditulis di src/style.css sebagai animasi AOS buatan sendiri, jadi
+ * pemicunya sama persis dengan section tempatnya berada.
+ */
+const props = defineProps({
+  arah: {
+    type: String,
+    default: "kanan",
+  },
   positionClass: {
     type: String,
   },
@@ -11,12 +25,26 @@ defineProps({
     default: false,
   },
 });
+
+/**
+ * Ornamen ini dicerminkan pada sumbu tegak (scale-y) saat `mirror` menyala.
+ *
+ * Potongan clip-path bekerja pada ruang koordinat elemen SEBELUM transform,
+ * jadi bukaan yang dimulai dari satu sisi akan TERLIHAT dimulai dari sisi
+ * seberangnya. Arahnya dibalik di sini supaya pemanggil cukup menyebut arah
+ * yang ingin dilihat, tanpa perlu ingat ornamen mana yang dicerminkan.
+ */
+const arahTampil = computed(() =>
+  props.mirror ? ({ atas: "bawah", bawah: "atas" }[props.arah] ?? props.arah) : props.arah,
+);
 </script>
 
 <template>
   <figure
+    :data-aos="`garis-${arahTampil}`"
+    data-aos-duration="1200"
     :class="[
-      `absolute sm:flex sm:absolute ${positionClass} ${heightClass}`,
+      `pointer-events-none absolute sm:flex sm:absolute ${positionClass} ${heightClass}`,
       { 'scale-y-[-1]': mirror },
     ]"
   >
@@ -24,6 +52,8 @@ defineProps({
       src="@/assets/Products/images/CareOrnament2.png"
       alt="CareOrnament"
       class="object-center bg-no-repeat object-contain lg:object-cover w-full h-full opacity-40"
+      loading="lazy"
+      decoding="async"
     />
   </figure>
 </template>

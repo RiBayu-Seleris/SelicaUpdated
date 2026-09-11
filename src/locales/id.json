@@ -1,0 +1,858 @@
+{
+  "common": {
+    "changeLanguage": "Ganti bahasa",
+    "openMenu": "Buka menu",
+    "closeMenu": "Tutup menu",
+    "scrollLeft": "Geser ke kiri",
+    "scrollRight": "Geser ke kanan",
+    "backToTop": "Kembali ke atas"
+  },
+  "nav": {
+    "home": "Beranda",
+    "about": "Tentang",
+    "testimonial": "Testimoni",
+    "faq": "FAQ",
+    "contact": "Kontak",
+    "hub": "Selica HUB",
+    "partner": "SELICA Partner",
+    "disclaimer": "Disclaimer medis"
+  },
+  "footer": {
+    "tagline": "Mengubah layanan kesehatan pribadi dan korporat melalui pemantauan kesehatan berbasis AI, deteksi dini risiko, dan optimalisasi kesehatan yang cerdas.",
+    "poweredBy": "Powered by Seleris Meditekno International",
+    "products": "Produk",
+    "company": "Perusahaan",
+    "stayConnects": "Hubungi Kami",
+    "address": "Alamat",
+    "phone": "Telepon",
+    "email": "Email",
+    "getTheApp": "Unduh Aplikasi",
+    "rights": "© 2023 Seleris Asia Pacific Technology. Seluruh hak cipta dilindungi."
+  },
+  "partner": {
+    "hero": {
+      "eyebrow": "Program kemitraan SELICA",
+      "headline": "Skrining mudah, komisi nyata",
+      "sub": "Jadi mitra resmi SELICA: pasarkan layanan skrining kesehatan digital ke masyarakat luas, dapatkan komisi 15% dari setiap skrining, dan bangun jaringan Anda menuju status Leader.",
+      "ctaPrimary": "Daftar sekarang",
+      "ctaSecondary": "Lihat cara kerjanya",
+      "badge1": "Daftar gratis",
+      "badge2": "Komisi 15% per skrining",
+      "badge3": "Tanpa pengalaman medis",
+      "ladderTitle": "Tiga tingkat status",
+      "features": {
+        "0": {
+          "judul": "Komisi kompetitif",
+          "isi": "Hingga 15% per transaksi"
+        },
+        "1": {
+          "judul": "Sistem transparan",
+          "isi": "Tracking real-time & akurat"
+        },
+        "2": {
+          "judul": "Jalur Leader jelas",
+          "isi": "Reward & bonus menarik"
+        }
+      }
+    },
+    "status": {
+      "0": {
+        "nama": "Inactive",
+        "ringkas": "Baru daftar",
+        "detail": "Anda sudah bisa melakukan skrining, untuk diri sendiri maupun orang lain. Merekrut belum tersedia."
+      },
+      "1": {
+        "nama": "Active",
+        "ringkas": "Setelah self-screening",
+        "detail": "Kode referral Anda aktif. Mulai dari sini Anda bisa mengajak orang lain bergabung."
+      },
+      "2": {
+        "nama": "Leader",
+        "ringkas": "Setelah punya downline",
+        "detail": "Anda mendapat tambahan komisi 10% dari aktivitas jaringan, sampai dua layer."
+      }
+    },
+    "about": {
+      "heading": "Apa itu SELICA Partner",
+      "intro": "SELICA Partner adalah program kemitraan resmi dari SELICA, platform skrining kesehatan digital berbasis AI. Siapa saja bisa bergabung tanpa biaya untuk menyediakan layanan skrining ke masyarakat, sambil mendapat komisi dari setiap skrining yang terjadi.",
+      "principlesHeading": "Lima hal yang kami pegang",
+      "principles": {
+        "0": {
+          "judul": "Daftar gratis",
+          "isi": "Tidak ada biaya pendaftaran sama sekali."
+        },
+        "1": {
+          "judul": "Komisi dari skrining",
+          "isi": "Penghasilan datang dari aktivitas skrining yang nyata, bukan dari merekrut semata."
+        },
+        "2": {
+          "judul": "Aktivasi lewat self-screening",
+          "isi": "Cukup lakukan skrining untuk diri sendiri, status Anda langsung aktif."
+        },
+        "3": {
+          "judul": "Maksimal dua layer",
+          "isi": "Jaringan dibatasi dua tingkat supaya strukturnya tetap sederhana dan transparan."
+        },
+        "4": {
+          "judul": "Tanpa janji penghasilan tetap",
+          "isi": "Komisi mengikuti aktivitas. Kami tidak menjanjikan angka bulanan."
+        }
+      }
+    },
+    "benefits": {
+      "heading": "Yang Anda dapat",
+      "items": {
+        "0": {
+          "judul": "Bergabung tanpa biaya",
+          "isi": "Tidak ada uang pendaftaran, tidak ada pembelian paket wajib di awal."
+        },
+        "1": {
+          "judul": "Komisi 15% per skrining",
+          "isi": "Berlaku untuk skrining yang Anda lakukan sendiri maupun untuk orang lain."
+        },
+        "2": {
+          "judul": "Komisi jaringan dua layer",
+          "isi": "Tambahan 10% dari aktivitas downline langsung dan downline mereka."
+        },
+        "3": {
+          "judul": "Panduan dari TrainingMind AI",
+          "isi": "Materi belajar tersedia di dalam sistem, tidak perlu latar belakang medis."
+        },
+        "4": {
+          "judul": "Dashboard SelicaHUB",
+          "isi": "Pantau transaksi, jaringan, dan komisi Anda dari satu tempat."
+        },
+        "5": {
+          "judul": "Waktu dan tempat bebas",
+          "isi": "Skrining dipandu AI lewat aplikasi, jadi bisa dijalankan dari mana saja."
+        }
+      }
+    },
+    "commission": {
+      "heading": "Struktur komisi",
+      "intro": "Ada dua sumber komisi. Keduanya dihitung dari harga paket skrining yang terjual.",
+      "colSource": "Sumber",
+      "colRate": "Persentase",
+      "rowDirect": "Skrining Anda sendiri atau untuk orang lain",
+      "rowLayer1": "Jaringan layer 1, downline langsung",
+      "rowLayer2": "Jaringan layer 2, downline dari downline",
+      "perTransaction": "per transaksi",
+      "simHeading": "Hitung perkiraan komisi Anda",
+      "simIntro": "Ubah angkanya untuk melihat bagaimana komisi terbentuk. Semua perhitungan memakai persentase yang sama dengan tabel di atas.",
+      "simPackage": "Harga paket skrining",
+      "simOwn": "Skrining yang Anda lakukan per bulan",
+      "simDownline": "Downline aktif di jaringan Anda",
+      "simPerDownline": "Rata-rata skrining tiap downline per bulan",
+      "simNeedsDownline": "Tambah downline dulu",
+      "simNetworkTotal": "Total skrining jaringan per bulan",
+      "simResultDirect": "Dari skrining Anda",
+      "simResultNetwork": "Dari jaringan",
+      "simResultTotal": "Perkiraan komisi bulanan",
+      "simFormulaDirect": "{jumlah} skrining × {harga} × {persen}",
+      "simFormulaNetwork": "{jumlah} skrining jaringan × {harga} × {persen}",
+      "disclaimer": "Angka di atas adalah ilustrasi dari input yang Anda pilih, bukan jaminan penghasilan. Komisi sebenarnya bergantung pada aktivitas skrining yang benar-benar terjadi."
+    },
+    "hub": {
+      "heading": "Dashboard SelicaHUB",
+      "intro": "Setelah terdaftar, Anda mendapat akses ke dashboard untuk memantau operasional harian dan performa jaringan.",
+      "features": {
+        "0": {
+          "teks": "Kelola bisnis dalam satu dashboard"
+        },
+        "1": {
+          "teks": "Pantau penjualan kapan saja"
+        },
+        "2": {
+          "teks": "Bangun jaringan otomatis"
+        },
+        "3": {
+          "teks": "Hitung komisi tanpa ribet"
+        },
+        "4": {
+          "teks": "Transaksi tercatat real-time"
+        },
+        "5": {
+          "teks": "Tarik komisi dari sistem"
+        },
+        "6": {
+          "teks": "Analisis performa tim"
+        },
+        "7": {
+          "teks": "Operasional terintegrasi"
+        }
+      },
+      "badge": "Pratinjau dashboard",
+      "title": "Kelola bisnis Anda dari mana saja"
+    },
+    "join": {
+      "heading": "Cara menjadi partner",
+      "steps": {
+        "0": {
+          "judul": "Buka link pendaftaran",
+          "isi": "Dari upline Anda, atau langsung dari halaman ini."
+        },
+        "1": {
+          "judul": "Isi formulir",
+          "isi": "Nama, nomor WhatsApp, email jika ada, dan kode referral upline."
+        },
+        "2": {
+          "judul": "Konfirmasi lewat WhatsApp",
+          "isi": "Kami menghubungi Anda untuk memastikan datanya benar."
+        },
+        "3": {
+          "judul": "Akun aktif dengan status Inactive",
+          "isi": "Anda sudah bisa masuk dan melihat isi aplikasinya."
+        },
+        "4": {
+          "judul": "Lakukan self-screening",
+          "isi": "Satu skrining untuk diri sendiri mengubah status Anda menjadi Active."
+        }
+      },
+      "note": "Tidak perlu latar belakang medis. Seluruh proses skrining dipandu sistem AI, dan materi panduan tersedia lewat TrainingMind AI."
+    },
+    "referral": {
+      "heading": "Cara pakai kode referral",
+      "intro": "Kode referral menghubungkan setiap skrining ke partner yang berhak atas komisinya. Ada dua sisi yang perlu tahu cara memakainya.",
+      "partnerTitle": "Untuk partner: membagikan kode",
+      "customerTitle": "Untuk pelanggan: memakai kode",
+      "flows": {
+        "0": {
+          "0": {
+            "judul": "Aktifkan dulu status Anda",
+            "isi": "Kode referral baru menyala setelah Anda menyelesaikan self-screening."
+          },
+          "1": {
+            "judul": "Salin kode dari dashboard",
+            "isi": "Kode dan tautan pendaftaran tersedia di SelicaHUB."
+          },
+          "2": {
+            "judul": "Bagikan ke calon pengguna",
+            "isi": "Lewat WhatsApp, media sosial, atau tatap muka. Setiap skrining dengan kode itu tercatat sebagai milik Anda."
+          }
+        },
+        "1": {
+          "0": {
+            "judul": "Minta kode dari partner Anda",
+            "isi": "Berupa deretan karakter, atau tautan yang sudah berisi kodenya."
+          },
+          "1": {
+            "judul": "Masukkan saat mendaftar",
+            "isi": "Ada kolom kode referral di formulir pendaftaran SELICA."
+          },
+          "2": {
+            "judul": "Lanjutkan skrining seperti biasa",
+            "isi": "Prosesnya sama saja. Kodenya hanya menandai partner yang mendampingi Anda."
+          }
+        }
+      }
+    },
+    "cta": {
+      "heading": "Siap mulai?",
+      "sub": "Pendaftaran gratis dan hanya butuh beberapa menit.",
+      "button": "Daftar SELICA Partner"
+    },
+    "network": {
+      "you": "Anda",
+      "layer1": "Layer 1 — downline langsung Anda",
+      "layer2": "Layer 2 — downline dari downline Anda",
+      "more": "+{jumlah} lainnya tidak digambar",
+      "note": "Jaringan berhenti di dua layer. Keduanya memberi komisi yang sama besar, jadi susunan jaringan tidak mengubah perhitungan.",
+      "alt": "Diagram jaringan partner dengan {jumlah} downline aktif",
+      "heading": "Bentuk jaringan Anda"
+    }
+  },
+  "parameters": {
+    "categories": {
+      "vital": {
+        "label": "Vital Signs",
+        "description": "Indikator inti kondisi fisiologis dasar tubuh."
+      },
+      "fisik": {
+        "label": "Fisik",
+        "description": "Proporsi tubuh dan estimasi usia biologis."
+      },
+      "fisiologis": {
+        "label": "Fisiologis",
+        "description": "Ritme jantung dan pernapasan mendetail."
+      },
+      "mental": {
+        "label": "Mental",
+        "description": "Beban stres dan keseimbangan saraf otonom."
+      },
+      "darah": {
+        "label": "Darah",
+        "description": "Kadar biokimia darah secara non-invasif."
+      },
+      "komposisi": {
+        "label": "Komposisi",
+        "description": "Susunan otot, lemak, cairan, dan metabolisme."
+      },
+      "risiko": {
+        "label": "Risiko",
+        "description": "Potensi gangguan kesehatan jangka panjang."
+      }
+    },
+    "items": {
+      "vital": {
+        "0": {
+          "title": "Detak Jantung",
+          "description": "Denyut jantung per menit."
+        },
+        "1": {
+          "title": "Saturasi Oksigen (SpO2)",
+          "description": "Kadar oksigen dalam darah."
+        },
+        "2": {
+          "title": "Tekanan Darah Sistolik",
+          "description": "Tekanan saat jantung memompa."
+        },
+        "3": {
+          "title": "Tekanan Darah Diastolik",
+          "description": "Tekanan saat jantung relaksasi."
+        },
+        "4": {
+          "title": "Cardiac Output",
+          "description": "Volume darah dipompa per menit."
+        },
+        "5": {
+          "title": "Tekanan Nadi (Pulse Pressure)",
+          "description": "Selisih tekanan sistolik & diastolik."
+        }
+      },
+      "fisik": {
+        "0": {
+          "title": "Indeks Massa Tubuh (BMI)",
+          "description": "Rasio berat & tinggi badan."
+        },
+        "1": {
+          "title": "Rasio Lingkar Pinggang / Tinggi",
+          "description": "Indikator distribusi lemak."
+        },
+        "2": {
+          "title": "Indeks Bentuk Tubuh",
+          "description": "Analisis proporsi tubuh."
+        },
+        "3": {
+          "title": "Usia Biologis",
+          "description": "Estimasi kondisi tubuh saat ini."
+        },
+        "4": {
+          "title": "Usia Kulit",
+          "description": "Estimasi kondisi kesehatan kulit."
+        },
+        "5": {
+          "title": "Usia Jantung (Heart Age)",
+          "description": "Estimasi usia fungsional jantung."
+        },
+        "6": {
+          "title": "Usia Vaskular (Vascular Age)",
+          "description": "Estimasi usia pembuluh darah."
+        },
+        "7": {
+          "title": "Body Roundness Index (BRI)",
+          "description": "Indeks kebulatan bentuk tubuh."
+        },
+        "8": {
+          "title": "Conicity Index (CI)",
+          "description": "Indeks distribusi lemak perut."
+        }
+      },
+      "fisiologis": {
+        "0": {
+          "title": "Variabilitas Detak Jantung (HRV)",
+          "description": "Variasi interval antar detak."
+        },
+        "1": {
+          "title": "Tingkat Pernapasan",
+          "description": "Jumlah napas per menit."
+        },
+        "2": {
+          "title": "Pulse-Respiratory Quotient (PRQ)",
+          "description": "Rasio denyut & pernapasan."
+        },
+        "3": {
+          "title": "HRV – VLF Power",
+          "description": "Daya HRV frekuensi sangat rendah."
+        },
+        "4": {
+          "title": "HRV – LF Power",
+          "description": "Daya HRV frekuensi rendah."
+        },
+        "5": {
+          "title": "HRV – HF Power",
+          "description": "Daya HRV frekuensi tinggi."
+        },
+        "6": {
+          "title": "HRV – SD2",
+          "description": "Variabilitas detak jangka panjang."
+        },
+        "7": {
+          "title": "HRV – S (Poincaré Area)",
+          "description": "Luas sebaran plot Poincaré."
+        }
+      },
+      "mental": {
+        "0": {
+          "title": "Tingkat Stres",
+          "description": "Indikator kondisi stres fisiologis."
+        },
+        "1": {
+          "title": "Aktivitas Parasimpatik",
+          "description": "Aktivitas saraf pemulihan tubuh."
+        },
+        "2": {
+          "title": "Aktivitas Simpatik",
+          "description": "Aktivitas saraf saat tubuh siaga."
+        },
+        "3": {
+          "title": "HRV – RMSSD",
+          "description": "Indikator variasi detak jangka pendek."
+        },
+        "4": {
+          "title": "HRV – PNN50",
+          "description": "Persentase interval selisih > 50 ms."
+        },
+        "5": {
+          "title": "HRV – Mean RR",
+          "description": "Rata-rata interval antar detak."
+        },
+        "6": {
+          "title": "HRV – CV RR",
+          "description": "Koefisien variasi interval detak."
+        },
+        "7": {
+          "title": "HRV – SDSD",
+          "description": "Simpangan selisih antar interval."
+        },
+        "8": {
+          "title": "HRV – LF/HF Ratio",
+          "description": "Keseimbangan saraf simpatik & parasimpatik."
+        },
+        "9": {
+          "title": "HRV – SD1",
+          "description": "Variabilitas detak jangka pendek."
+        }
+      },
+      "darah": {
+        "0": {
+          "title": "Glukosa Darah",
+          "description": "Kadar gula dalam darah."
+        },
+        "1": {
+          "title": "Kolesterol Total",
+          "description": "Total kolesterol tubuh."
+        },
+        "2": {
+          "title": "Hemoglobin",
+          "description": "Protein pembawa oksigen darah."
+        },
+        "3": {
+          "title": "Asam Urat",
+          "description": "Kadar asam urat dalam darah."
+        },
+        "4": {
+          "title": "Hemoglobin Terglikasi (HbA1c)",
+          "description": "Rata-rata gula darah jangka panjang."
+        }
+      },
+      "komposisi": {
+        "0": {
+          "title": "Tingkat Otot",
+          "description": "Persentase massa otot."
+        },
+        "1": {
+          "title": "Rasio Lemak Tubuh",
+          "description": "Persentase lemak total."
+        },
+        "2": {
+          "title": "Persentase Air Tubuh",
+          "description": "Kadar cairan tubuh."
+        },
+        "3": {
+          "title": "Massa Tulang",
+          "description": "Estimasi berat tulang."
+        },
+        "4": {
+          "title": "Basal Metabolic Rate (BMR)",
+          "description": "Estimasi kebutuhan kalori dasar."
+        },
+        "5": {
+          "title": "Tingkat Protein",
+          "description": "Komposisi protein tubuh."
+        },
+        "6": {
+          "title": "Lemak Visceral",
+          "description": "Lemak di sekitar organ vital."
+        },
+        "7": {
+          "title": "Lemak Subkutan",
+          "description": "Lemak di bawah kulit."
+        },
+        "8": {
+          "title": "Massa Otot (Kg)",
+          "description": "Total berat otot."
+        },
+        "9": {
+          "title": "Massa Lemak (Kg)",
+          "description": "Total berat lemak."
+        },
+        "10": {
+          "title": "Massa Protein (Kg)",
+          "description": "Total berat protein tubuh."
+        },
+        "11": {
+          "title": "TDEE (Total Daily Energy Expenditure)",
+          "description": "Estimasi total kalori harian."
+        }
+      },
+      "risiko": {
+        "0": {
+          "title": "Risiko Hipertensi",
+          "description": "Potensi tekanan darah tinggi."
+        },
+        "1": {
+          "title": "Risiko Diabetes Tipe 2",
+          "description": "Potensi gangguan gula darah."
+        },
+        "2": {
+          "title": "Risiko Penyakit Kardiovaskular",
+          "description": "Potensi gangguan jantung & pembuluh darah."
+        },
+        "3": {
+          "title": "Risiko Hiperkolesterolemia",
+          "description": "Potensi kolesterol tinggi."
+        },
+        "4": {
+          "title": "Risiko Hipertrigliseridemia",
+          "description": "Potensi trigliserida tinggi."
+        },
+        "5": {
+          "title": "Risiko Serangan Jantung",
+          "description": "Analisis potensi gangguan jantung."
+        },
+        "6": {
+          "title": "Risiko Stroke",
+          "description": "Analisis potensi gangguan pembuluh otak."
+        },
+        "7": {
+          "title": "Glukosa Darah Puasa Abnormal",
+          "description": "Indikator gula darah puasa tidak normal."
+        },
+        "8": {
+          "title": "Risiko ASCVD",
+          "description": "Potensi penyakit aterosklerosis kardiovaskular."
+        },
+        "9": {
+          "title": "Risiko Anemia / Hemoglobin Rendah",
+          "description": "Potensi kadar hemoglobin rendah."
+        },
+        "10": {
+          "title": "Risiko Gagal Jantung",
+          "description": "Potensi penurunan fungsi jantung."
+        },
+        "11": {
+          "title": "Risiko Perlemakan Hati (Fatty Liver)",
+          "description": "Potensi penumpukan lemak di hati."
+        }
+      }
+    },
+    "heading": "60+ Parameter Kesehatan",
+    "subheading": "Teknologi AI kami menganalisis spektrum kesehatan tubuh secara mendalam hanya dalam satu sesi pemindaian.",
+    "footer": {
+      "title": "Total 60+ Parameter Kesehatan",
+      "description": "Semua laporan disajikan dalam format yang mudah dimengerti.",
+      "button": "Lihat Contoh Laporan PDF",
+      "pdfFallback": "Dokumen PDF"
+    }
+  },
+  "packages": {
+    "names": {
+      "essential": "ESSENTIAL",
+      "core": "CORE",
+      "prime": "PRIME"
+    },
+    "badges": {
+      "populer": "Populer",
+      "terlengkap": "Terlengkap",
+      "dasar": "Dasar"
+    },
+    "benefitCategories": {
+      "vital": "Pemeriksaan Vital Signs",
+      "fisik": "Pemeriksaan Fisik",
+      "fisiologis": "Pemeriksaan Fisiologis",
+      "mental": "Pemeriksaan Mental",
+      "darah": "Pemeriksaan Darah",
+      "komposisi": "Pemeriksaan Komposisi Tubuh",
+      "risiko": "Analisis Risiko Penyakit"
+    },
+    "params": {
+      "0": "Detak Jantung (Heart Rate)",
+      "1": "Ketersediaan Oksigen dalam Darah (SpO2)",
+      "2": "Tekanan Darah Sistolik",
+      "3": "Tekanan Darah Diastolik",
+      "4": "Cardiac Output",
+      "5": "Indeks Massa Tubuh (BMI)",
+      "6": "Rasio Lingkar Pinggang terhadap Tinggi Badan",
+      "7": "Indeks Bentuk Tubuh",
+      "8": "Usia Biologis",
+      "9": "Usia Kulit",
+      "10": "Variabilitas Detak Jantung (HRV)",
+      "11": "Tingkat Pernapasan",
+      "12": "Pulse-Respiratory Quotient (PRQ)",
+      "13": "Tingkat Stres",
+      "14": "Glukosa Darah",
+      "15": "Kolesterol Total",
+      "16": "Hemoglobin",
+      "17": "Asam Urat",
+      "18": "Hemoglobin Terglikasi (HbA1c)",
+      "19": "Tingkat Otot",
+      "20": "Rasio Lemak Tubuh",
+      "21": "Persentase Air dalam Tubuh",
+      "22": "Massa Tulang",
+      "23": "Rentang Metabolisme Basal (BMR)",
+      "24": "Tingkat Protein",
+      "25": "Lemak Visceral",
+      "26": "Lemak Subkutan",
+      "27": "Massa Otot (Kg)",
+      "28": "Massa Lemak (Kg)",
+      "29": "Massa Protein (Kg)",
+      "30": "Body Shape Analysis",
+      "31": "Risiko Hipertensi",
+      "32": "Risiko Diabetes Tipe 2",
+      "33": "Risiko Penyakit Kardiovaskular",
+      "34": "Risiko Hiperkolesterolemia",
+      "35": "Risiko Hipertrigliseridemia",
+      "36": "Risiko Serangan Jantung",
+      "37": "Risiko Stroke",
+      "38": "Kadar Glukosa Darah Puasa Abnormal"
+    },
+    "viewPackage": "Lihat paket {nama}"
+  },
+  "home": {
+    "hero": {
+      "title": "Pemantauan Kesehatan yang Lebih Cerdas untuk Semua",
+      "badge": "Aplikasi",
+      "description": "Dari pemeriksaan pribadi sampai program kesehatan seluruh organisasi — wawasan kesehatan berbasis AI, pencegahan dini, dan kendali biaya dalam satu platform.",
+      "ctaPartner": "Daftar SELICA Partner!",
+      "ctaContact": "Hubungi Kami",
+      "badgePosition": "before"
+    },
+    "about": {
+      "eyebrow": "Tentang Kami",
+      "title": "Aplikasi Pendamping Metrik Kesehatan Berbasis AI",
+      "description": "SELICA adalah platform kesehatan berbasis AI untuk perorangan maupun organisasi. Platform ini memberi wawasan kesehatan preventif secara real-time lewat pemindaian biometrik — membantu setiap orang memantau kesehatannya sendiri, dan membantu perusahaan mengoptimalkan program kesehatan karyawan sekaligus menekan biaya medis hingga 20%."
+    },
+    "partner": {
+      "question": "Apa itu",
+      "questionName": "SELICA Partner ?",
+      "intro": "SELICA Partner adalah mitra resmi",
+      "point1Title": "Partner Resmi",
+      "point1Text": "Telah melalui proses verifikasi dan sertifikasi",
+      "point2Title": "Solusi Kesehatan",
+      "point2Text": "Didukung teknologi scanning modern",
+      "point3Title": "Platform Digital Pintar",
+      "point3Text": "Pelaporan dan pemantauan terintegrasi",
+      "introRest": "yang bertugas memasarkan dan menyediakan layanan scanning kesehatan kepada masyarakat luas menggunakan perangkat dan aplikasi digital kami."
+    },
+    "packages": {
+      "eyebrow": "Pilih paket kesehatan",
+      "titleLine1": "Paket",
+      "titleLine2": "Kesehatan anda,",
+      "subtitle": "Solusi cepat untuk pemantauan",
+      "detailPrice": "Harga detail layanan",
+      "resultTime": "Hasil keluar dalam 5 Menit",
+      "back": "Kembali ke beranda",
+      "eyebrowLine2": "sesuai kebutuhan anda",
+      "titleWord": "analisis",
+      "titleAccent": "tanpa jarum",
+      "subtitleLine2": "rutin kesehatan dasar Anda."
+    },
+    "clients": {
+      "eyebrow": "Klien Kami",
+      "title": "Seleris Meditekno Internasional"
+    },
+    "download": {
+      "description": "Aktifkan pemantauan kesehatan yang lebih cerdas — untuk diri sendiri maupun seluruh organisasi Anda — dengan wawasan real-time dan deteksi dini risiko."
+    },
+    "demo": {
+      "title": "SELICA, Solusi Lengkap untuk Kebutuhan Kesehatan Anda",
+      "cta": "Daftar SELICA Partner & mulai jualan"
+    },
+    "faq": {
+      "0": {
+        "question": "Apakah butuh modal besar?",
+        "answer": "Tidak. Bergabung sebagai SELICA Partner tidak memerlukan modal awal atau biaya pendaftaran. Anda dapat langsung mulai menjalankan bisnis dan mendapatkan komisi dari sistem yang telah disediakan."
+      },
+      "1": {
+        "question": "Saya tidak punya latar belakang medis, apakah bisa?",
+        "answer": "Tentu bisa. Program SELICA Partner dirancang untuk semua orang tanpa harus memiliki latar belakang medis. Anda akan mendapatkan panduan, materi edukasi, dan sistem yang membantu proses penjualan."
+      },
+      "2": {
+        "question": "Berapa lama proses pendaftaran berlangsung?",
+        "answer": "Proses pendaftaran biasanya memakan waktu tidak sampai 1 hari. Anda akan langsung mendapatkan akses penuh ke dashboard, sistem affiliate, dan fitur penjualan."
+      },
+      "3": {
+        "question": "Apakah ada dukungan setelah bergabung?",
+        "answer": "Ya. Kami menyediakan dukungan penuh berupa tim support, materi training, serta panduan penggunaan dashboard agar Anda dapat menjalankan bisnis dengan optimal."
+      },
+      "4": {
+        "question": "Bagaimana sistem komisi bekerja?",
+        "answer": "Setiap penjualan yang berhasil melalui link affiliate atau aktivitas sales Anda akan otomatis tercatat di dashboard dan komisi dihitung secara otomatis."
+      },
+      "5": {
+        "question": "Bagaimana proses withdraw komisi?",
+        "answer": "Anda dapat mengajukan withdraw langsung melalui dashboard. Permintaan pencairan akan diproses sesuai waktu yang diinginkan."
+      }
+    },
+    "faqHeading": "Pertanyaan Umum",
+    "demoCta": "Request Demo Now!",
+    "demoTitle": "Pesan Demo",
+    "dashboardLogin": "Login ke dashboard",
+    "pdfLoading": "Memuat PDF...",
+    "pdfFailed": "Gagal memuat PDF.",
+    "downloadButton": "Download",
+    "applicationWorkTitle": "Cara Kerja Aplikasi",
+    "registerCta": "Daftar Jadi SCA",
+    "whatsSelica": {
+      "0": {
+        "title": "Teknologi AI Medis",
+        "content": "Analisis kesehatan berbasis AI terpercaya dan akurat"
+      },
+      "1": {
+        "title": "Analisis Cepat Akurat",
+        "content": "Hasil cepat dengan akurasi tinggi dan konsisten"
+      },
+      "2": {
+        "title": "Non Invasif Aman",
+        "content": "Aman tanpa tindakan medis invasif dan nyaman"
+      },
+      "3": {
+        "title": "Mudah Praktis Digunakan",
+        "content": "Proses sederhana dan mudah digunakan oleh semua"
+      }
+    },
+    "whatsSca": {
+      "0": "Didukung sistem digital & aplikasi tracking otomatis",
+      "1": "Bukan tenaga medis? Tidak masalah!",
+      "2": "Diberikan training intensif hingga mahir"
+    },
+    "workSteps": {
+      "0": {
+        "title": "Pemindaian Wajah",
+        "description": "Pindai wajah untuk memverifikasi identitas kesehatan pengguna."
+      },
+      "1": {
+        "title": "Pemrosesan Data AI",
+        "description": "Data dianalisis otomatis oleh AI."
+      },
+      "2": {
+        "title": "Hasil",
+        "description": "Dapatkan status kesehatan yang akurat secara real-time."
+      }
+    },
+    "testimonials": {
+      "0": {
+        "name": "Bapak Andi",
+        "text": "Teknologi AI-nya sangat membantu masyarakat kecil untuk mendeteksi dini penyakit dengan biaya terjangkau."
+      },
+      "1": {
+        "name": "Ibu Siti",
+        "text": "Saya jadi lebih tenang karena bisa cek kondisi kesehatan lebih awal tanpa harus selalu ke rumah sakit."
+      },
+      "2": {
+        "name": "Bapak Rudi",
+        "text": "Prosesnya cepat dan mudah dipahami. Sangat membantu untuk orang awam seperti saya."
+      },
+      "3": {
+        "name": "Ibu Lina",
+        "text": "Aplikasinya ramah pengguna dan hasil analisisnya jelas. Cocok untuk pemantauan kesehatan keluarga."
+      },
+      "4": {
+        "name": "Bapak Dedi",
+        "text": "Dengan teknologi ini, saya bisa lebih aware terhadap kondisi tubuh sebelum penyakit menjadi parah."
+      },
+      "5": {
+        "name": "Ibu Maya",
+        "text": "Inovasi yang luar biasa. Sangat membantu terutama bagi kami yang sulit akses layanan kesehatan."
+      }
+    },
+    "benefits": {
+      "0": {
+        "title": "Paket Keanggotaan",
+        "items": {
+          "0": "Akses aplikasi SELICA",
+          "1": "Training produk dan skrining",
+          "2": "Dashboard penjualan real time",
+          "3": "Kode referral pribadi",
+          "4": "Materi marketing digital",
+          "5": "Grup support komunitas",
+          "6": "Sertifikat resmi SELICA Partner"
+        }
+      },
+      "1": {
+        "title": "Support Berkelanjutan",
+        "items": {
+          "0": "Update produk dan teknologi",
+          "1": "Tips marketing dan penjualan",
+          "2": "Kompetisi dan reward berkala",
+          "3": "Networking sesama member SELICA Partner"
+        }
+      }
+    },
+    "dashboardAlt": "Pratinjau dashboard SELICA Partner",
+    "registerFlow": {
+      "0": {
+        "title": "Register Akun",
+        "description": "Daftarkan akun Anda melalui website <a href=\"https://sca.seleriscare.ai\" target=\"_blank\" class=\"text-[#01A488] hover:underline\">sca.seleriscare.ai</a> dan lakukan pembelian produk sebagai bagian dari proses pendaftaran"
+      },
+      "1": {
+        "title": "Unduh SELICA",
+        "description": "Unduh aplikasi <a href=\"https://sca.seleriscare.ai\" target=\"_blank\" class=\"text-[#01A488] hover:underline\">SELICA</a> melalui Google Play Store, kemudian instal aplikasi tersebut di perangkat Anda sebelum memulai proses deteksi."
+      },
+      "2": {
+        "title": "Login SELICA",
+        "description": "Masuk ke aplikasi SELICA menggunakan akun Anda dan mulai gunakan layanan yang tersedia"
+      }
+    },
+    "appWork": {
+      "0": {
+        "title": "Login akun",
+        "content": "Masuk ke aplikasi <a href=\"https://sca.seleriscare.ai\" target=\"_blank\" class=\"text-[#01A488] hover:underline\">SELICA</a> menggunakan email dan kata sandi yang telah Anda daftarkan sebelumnya."
+      },
+      "1": {
+        "title": "Home page",
+        "content": "Pilih layanan pemeriksaan kesehatan dan lakukan pembelian produk untuk memulai proses pengecekan."
+      },
+      "2": {
+        "title": "Pemindaian wajah",
+        "content": "Ikuti proses pemindaian wajah dengan mengarahkan wajah Anda ke kamera sesuai petunjuk untuk melakukan analisis kesehatan"
+      },
+      "3": {
+        "title": "Hasil pemeriksaan",
+        "content": "Aplikasi akan menampilkan hasil analisis kesehatan Anda yang dapat dilihat dan diunduh langsung melalui aplikasi"
+      }
+    },
+    "downline": {
+      "0": {
+        "title": "Register akun",
+        "content": "Daftarkan akun Anda melalui website <a href=\"https://sca.seleriscare.ai\" target=\"_blank\" class=\"text-[#01A488] hover:underline\">sca.seleriscare.ai</a> menggunakan email aktif untuk memulai proses pendaftaran"
+      },
+      "1": {
+        "title": "Masukkan kode referral",
+        "content": "Masukkan kode referral dari SELICA Partner yang mengundang Anda untuk bergabung ke dalam jaringan SELICA"
+      },
+      "2": {
+        "title": "Selesai",
+        "content": "Pendaftaran selesai! Anda kini resmi menjadi bagian dari SELICA Partner dan siap memulai perjalanan bersama kami"
+      }
+    }
+  },
+  "disclaimer": {
+    "heading": "Disclaimer Medis & Ketentuan Hukum",
+    "p1Strong": "SELICA merupakan aplikasi/perangkat lunak berbasis teknologi kecerdasan buatan yang dikembangkan sebagai alat skrining dan pemantauan kesehatan untuk tujuan deteksi dini",
+    "p1Rest": ", pemantauan parameter kesehatan secara berkala, serta pendukung pengambilan keputusan terkait gaya hidup dan pencegahan. Sistem ini tidak dimaksudkan, dirancang, maupun diposisikan sebagai alat diagnosis medis, tidak menggantikan pemeriksaan medis komprehensif, pemeriksaan laboratorium, tindakan diagnostik klinis, maupun konsultasi dan keputusan profesional oleh dokter atau tenaga kesehatan berlisensi.",
+    "p2Strong": "Seluruh hasil, skor, indikator, maupun rekomendasi yang ditampilkan dalam laporan ini bersifat informatif dan indikatif berdasarkan algoritma analitik sistem, sehingga tidak dapat dijadikan sebagai satu-satunya dasar dalam penegakan diagnosis atau penentuan terapi medis",
+    "p2Rest": ". Apabila ditemukan hasil dengan kategori abnormal, berisiko, atau memerlukan perhatian khusus, pengguna wajib melakukan konsultasi dengan dokter atau tenaga kesehatan yang berwenang serta, apabila diperlukan, menjalani pemeriksaan penunjang atau laboratorium untuk konfirmasi sesuai standar praktik kedokteran dan regulasi yang berlaku.",
+    "p3": "Dengan menerima dan menggunakan laporan ini, pengguna memahami dan menyetujui bahwa SELICA berfungsi sebagai alat skrining dan monitoring non-diagnostik, serta membebaskan pengembang dan/atau penyedia layanan dari tanggung jawab atas penggunaan hasil di luar tujuan yang dimaksudkan atau tanpa tindak lanjut medis yang semestinya."
+  }
+}

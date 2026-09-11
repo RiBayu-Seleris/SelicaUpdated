@@ -1,6 +1,7 @@
 <script setup>
 import MenuNav from "@/components/MenuNav.vue";
 import MenuIcon from "@/components/icons/MenuIcon.vue";
+import LanguageSwitcher from "@/components/LanguageSwitcher.vue";
 import { ref, onMounted, onUnmounted, computed } from "vue";
 import { useScrollStore } from "@/stores/scroll";
 import { useSidebarStore } from "@/stores/sidebar";
@@ -13,25 +14,15 @@ const route = useRoute(); // ✅ Ambil route saat ini
 
 const { logo } = useProductLogoColor();
 
-const isSelerisCredit = computed(() => route.path === "/product/seleris-credit");
-const isSelerisCareApplicator = computed(() => route.path === "/product/seleris-care-applicator");
-
-const LogoLink = computed(() => {
-  if (route.path === "/") {
-    return "/";
-  }
-  if (route.path === "/sca") {
-    return "/sca";
-  }
-  return "";
-});
+// Situs ini hanya punya satu halaman, jadi logonya selalu mengarah ke beranda.
+const LogoLink = computed(() => "/");
 
 const handleScroll = () => {
   scrollStore.updateScroll();
 };
 
 onMounted(() => {
-  window.addEventListener("scroll", handleScroll);
+  window.addEventListener("scroll", handleScroll, { passive: true });
 });
 onUnmounted(() => {
   window.removeEventListener("scroll", handleScroll);
@@ -64,6 +55,10 @@ onUnmounted(() => {
                   </nav>
                 </div>
               </div>
+              <!-- Kolom ke-12: pemilih bahasa -->
+              <div class="hidden lg:flex items-center justify-end col-span-1 h-auto">
+                <LanguageSwitcher />
+              </div>
             </div>
 
             <!-- Mobile Navbar with Sidebar Button -->
@@ -80,15 +75,10 @@ onUnmounted(() => {
               <div class="w-[60%] h-auto flex items-center flex-row justify-end">
                 <div class="w-[35%] md:w-[15%] h-auto flex items-center justify-end">
                   <button
-                    aria-label="Open Sidebar Scroll Product"
+                    :aria-label="$t('common.openMenu')"
                     type="button"
                     id="sidebar-button"
-                    class="bg-white p-2 rounded-lg shadow-md"
-                    :class="
-                      isSelerisCredit || isSelerisCareApplicator
-                        ? 'text-[#1485CB]'
-                        : 'text-[#1AB24F]'
-                    "
+                    class="bg-white p-2 rounded-lg shadow-md text-[#1AB24F]"
                     @click="sidebarStore.open"
                   >
                     <MenuIcon />

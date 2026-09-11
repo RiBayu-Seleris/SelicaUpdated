@@ -4,12 +4,7 @@ import { useSidebarStore } from "@/stores/sidebar";
 import { useRoute } from "vue-router";
 import MenuIconClose from "@/components/icons/CloseIcon.vue";
 import Navlink from "@/components/NavLink.vue";
-
-import { aboutList } from "@/Data/AboutList";
-import { productList } from "@/Data/ProductList";
-import { technologyList } from "@/Data/TechnologyList";
-import { usecaseList } from "@/Data/UseCaseList";
-import { industryList } from "@/Data/IndustryList";
+import LanguageSwitcher from "@/components/LanguageSwitcher.vue";
 
 const sidebar = useSidebarStore();
 const route = useRoute();
@@ -56,63 +51,20 @@ const titleSidebar = () => {
   }
 };
 
+// Menu hanya menyimpan alamat tujuan dan KUNCI bahasanya; teksnya di locale.
 const defaultProductMenu = [
-  {
-    href: "#hero",
-    label: "Home",
-  },
-  {
-    href: "#about",
-    label: "About",
-  },
-  {
-    href: "#testimonial",
-    label: "Testimonial",
-  },
-  {
-    href: "#faq",
-    label: "FAQ",
-  },
-  {
-    href: "https://seleris.ai/book-a-demo",
-    label: "Contact",
-  },
+  { href: "#hero", labelKey: "nav.home" },
+  { href: "#about", labelKey: "nav.about" },
+  { href: "#faq", labelKey: "nav.faq" },
+  { href: "https://seleris.ai/book-a-demo", labelKey: "nav.contact" },
+  { href: "/medical-disclaimer", labelKey: "nav.disclaimer" },
+  { href: "/selica-partner", labelKey: "nav.partner" },
   {
     href: "https://sca.seleriscare.ai/",
-    label: "SELICA Partner",
-    target: "_blank", // ← tambahkan ini
+    labelKey: "nav.hub",
+    target: "_blank",
   },
 ];
-
-const careApplicatorProductMenu = [
-  {
-    href: "#tentang",
-    label: "Tentang",
-  },
-  {
-    href: "#keunggulan",
-    label: "Keunggulan",
-  },
-  {
-    href: "#komisi",
-    label: "Komisi",
-  },
-  {
-    href: "#faq",
-    label: "FAQ",
-  },
-  {
-    href: "https://seleris.ai/book-a-demo",
-    label: "Contact",
-  },
-  {
-    href: "https://sca.seleriscare.ai/register",
-    label: "Gabung SCA",
-    target: "_blank", // ← tambahkan ini
-  },
-];
-
-const isSelerisCareApplicator = ref(route.path === "/sca");
 </script>
 
 <template>
@@ -140,7 +92,7 @@ const isSelerisCareApplicator = ref(route.path === "/sca");
               </div>
               <div class="w-[20%] h-auto flex justify-end">
                 <button
-                  aria-label="Sidebar Close Product"
+                  :aria-label="$t('common.closeMenu')"
                   type="button"
                   id="sidebar-button"
                   @click="sidebar.close"
@@ -150,38 +102,7 @@ const isSelerisCareApplicator = ref(route.path === "/sca");
                 </button>
               </div>
             </div>
-            <nav
-              v-if="isSelerisCredit"
-              class="w-full flex flex-wrap mt-8 text-lg font-semibold text-gray-800 gap-y-2"
-            >
-              <div
-                class="w-full h-auto"
-                v-for="(menuDefault, index) in creditProductMenu"
-                :key="index"
-              >
-                <Navlink class="text-[11pt]" :href="menuDefault.href">
-                  {{ menuDefault.label }}
-                </Navlink>
-              </div>
-            </nav>
-            <nav
-              v-if="isSelerisCareApplicator"
-              class="w-full flex flex-wrap mt-8 text-lg font-semibold text-gray-800 gap-y-2"
-            >
-              <div
-                class="w-full h-auto"
-                v-for="(scaMenu, index) in careApplicatorProductMenu"
-                :key="index"
-              >
-                <Navlink class="text-[11pt]" :href="scaMenu.href">
-                  {{ scaMenu.label }}
-                </Navlink>
-              </div>
-            </nav>
-            <nav
-              v-else
-              class="w-full flex flex-wrap mt-8 text-lg font-semibold text-gray-800 gap-y-2"
-            >
+            <nav class="w-full flex flex-wrap mt-8 text-lg font-semibold text-gray-800 gap-y-2">
               <div
                 class="w-full h-auto"
                 v-for="(menuDefault, index) in defaultProductMenu"
@@ -192,10 +113,15 @@ const isSelerisCareApplicator = ref(route.path === "/sca");
                   :href="menuDefault.href"
                   :target="menuDefault?.target || '_self'"
                 >
-                  {{ menuDefault.label }}
+                  {{ $t(menuDefault.labelKey) }}
                 </Navlink>
               </div>
             </nav>
+
+            <!-- Pemilih bahasa untuk tampilan mobile -->
+            <div class="w-full h-auto mt-6 pt-5 border-t border-[#F3F4F6] flex justify-start">
+              <LanguageSwitcher />
+            </div>
           </div>
         </div>
       </transition>

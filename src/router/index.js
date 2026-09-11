@@ -5,13 +5,24 @@ const routes = [
     path: "/",
     name: "HealthCare",
     component: () => import("@/Care.vue"),
-    meta: { title: "Health Care" },
+    // heroGelap: bagian paling atas halaman berlatar gelap, jadi tulisan menu
+    // dibuat putih. Halaman tanpa penanda ini otomatis memakai tulisan gelap.
+    meta: { title: "Health Care", heroGelap: true },
   },
   {
-    path: "/sca",
-    name: "sca",
-    component: () => import("@/CareApplicator.vue"),
-    meta: { title: "SCA" },
+    path: "/medical-disclaimer",
+    name: "MedicalDisclaimer",
+    component: () => import("@/MedicalDisclaimer.vue"),
+    // Tanpa heroGelap: latarnya terang, jadi tulisan menu otomatis gelap.
+    meta: { title: "Medical Disclaimer" },
+  },
+  {
+    path: "/selica-partner",
+    name: "SelicaPartner",
+    component: () => import("@/SelicaPartner.vue"),
+    // Tanpa heroGelap: hero halaman ini berlatar putih, jadi tulisan menu
+    // otomatis gelap seperti di halaman disclaimer.
+    meta: { title: "SELICA Partner" },
   },
 
   // catch-all route (harus di paling bawah)

@@ -12,8 +12,8 @@ const card = ref(null);
 const transformStyle = ref("perspective(1000px)");
 
 function handleMouseMove(e) {
-  if (!card.value) return
-  
+  if (!card.value) return;
+
   const cardRect = card.value.getBoundingClientRect();
   const centerX = cardRect.left + cardRect.width / 2;
   const centerY = cardRect.top + cardRect.height / 2;

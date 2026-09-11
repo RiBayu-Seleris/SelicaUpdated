@@ -4,6 +4,7 @@ import { useRoute } from "vue-router";
 
 import MenuNav from "@/components/MenuNav.vue";
 import MenuIcon from "@/components/icons/MenuIcon.vue";
+import LanguageSwitcher from "@/components/LanguageSwitcher.vue";
 
 import { useSidebarStore } from "@/stores/sidebar";
 import { useProductLogo } from "@/Data/Products/useProductLogo.js";
@@ -53,7 +54,10 @@ const LogoLink = computed(() => {
           </nav>
         </div>
       </div>
-      <div class="flex items-center col-span-1 h-auto" />
+      <!-- Kolom terakhir dipakai untuk pemilih bahasa -->
+      <div class="flex items-center justify-end col-span-1 h-auto">
+        <LanguageSwitcher />
+      </div>
     </div>
 
     <!-- Mobile Navbar -->
@@ -64,7 +68,7 @@ const LogoLink = computed(() => {
       <div class="w-[60%] h-auto flex items-center flex-row justify-end">
         <div class="w-[30%] md:w-[15%] h-auto flex items-center justify-end">
           <button
-            aria-label="Open Sidebar Page Product"
+            :aria-label="$t('common.openMenu')"
             type="button"
             id="sidebar-button"
             class="bg-white p-2 rounded-lg shadow-md text-[#1AB24F]"

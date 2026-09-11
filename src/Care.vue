@@ -1,5 +1,6 @@
 <script setup>
 import { computed, nextTick, onMounted, onUnmounted, ref, watch } from "vue";
+import { useI18n } from "vue-i18n";
 import { formatRupiahSmart } from "@/Helper/numberFormat.js";
 
 // HealthCare Components
@@ -45,86 +46,75 @@ import { benefits } from "@/Data/Products/CareApplicator/benefits.js";
 import { packages } from "@/Data/Products/CareApplicator/HealthPackage";
 import HowRegister from "@/components/HowRegister.vue";
 
+const { t } = useI18n();
+
 const modules = [Navigation, Pagination, Autoplay];
 
 // ── HealthCare state ──────────────────────────────────────────
 let interval = null;
 const activeIndex = ref(0);
 
-const stepsWithPath = careWorkSteps.map((step) => ({
-  ...step,
-  image: new URL(`/src/assets/Products/images/Care/${step.image}`, import.meta.url).href,
-}));
+// Judul & keterangan langkah diambil dari berkas bahasa; gambarnya dari data.
+const stepsWithPath = computed(() =>
+  careWorkSteps.map((step, i) => ({
+    title: t(`home.workSteps.${i}.title`),
+    description: t(`home.workSteps.${i}.description`),
+    ...step,
+    image: new URL(`/src/assets/Products/images/Care/${step.image}`, import.meta.url).href,
+  })),
+);
 
-const registerFlow = [
-  {
-    id: 1,
-    title: "Register Akun",
-    description: `Daftarkan akun Anda melalui website <a href="https://sca.seleriscare.ai" target="_blank" class="text-[#01A488] hover:underline">sca.seleriscare.ai</a> dan lakukan pembelian produk sebagai bagian dari proses pendaftaran`,
-    image: new URL("@/assets/Products/images/Care/register-akun2.png", import.meta.url).href,
-  },
-  {
-    id: 2,
-    title: "Download SELICA",
-    description: `Unduh aplikasi <a href="https://sca.seleriscare.ai" target="_blank" class="text-[#01A488] hover:underline">SELICA</a> melalui Google Play Store, kemudian instal aplikasi tersebut di perangkat Anda sebelum memulai proses deteksi.`,
-    image: new URL("@/assets/Products/images/Care/download-sca2.png", import.meta.url).href,
-  },
-  {
-    id: 3,
-    title: "Login SELICA",
-    description: `Masuk ke aplikasi SELICA menggunakan akun Anda dan mulai gunakan layanan yang tersedia`,
-    image: new URL("@/assets/Products/images/Care/login-work.png", import.meta.url).href,
-  },
+// Gambar tiap langkah; kalimatnya diambil dari berkas bahasa.
+const gambar_registerFlow = [
+  new URL("@/assets/Products/images/Care/register-akun2.png", import.meta.url).href,
+  new URL("@/assets/Products/images/Care/download-sca2.webp", import.meta.url).href,
+  new URL("@/assets/Products/images/Care/login-work.webp", import.meta.url).href,
 ];
 
-const stepApplicationWorks = [
-  {
-    id: 1,
-    title: "Login akun",
-    content: `Masuk ke aplikasi <a href="https://sca.seleriscare.ai" target="_blank" class="text-[#01A488] hover:underline">SELICA</a> menggunakan email dan kata sandi yang telah Anda daftarkan sebelumnya.`,
-    image: new URL("@/assets/Products/images/Care/login-work.png", import.meta.url).href,
-  },
-  {
-    id: 2,
-    title: "Home page",
-    content: `Pilih layanan pemeriksaan kesehatan dan lakukan pembelian produk untuk memulai proses pengecekan.`,
-    image: new URL("@/assets/Products/images/Care/homepage-work.svg", import.meta.url).href,
-  },
-  {
-    id: 3,
-    title: "Face scanning",
-    content: `Ikuti proses pemindaian wajah dengan mengarahkan wajah Anda ke kamera sesuai petunjuk untuk melakukan analisis kesehatan`,
-    image: new URL("@/assets/Products/images/Care/face-scanning-work.png", import.meta.url).href,
-  },
-  {
-    id: 4,
-    title: "Vital result",
-    content: `Aplikasi akan menampilkan hasil analisis kesehatan Anda yang dapat dilihat dan diunduh langsung melalui aplikasi`,
-    image: new URL("@/assets/Products/images/Care/vital-result-work.png", import.meta.url).href,
-  },
+// Kalimatnya ada di berkas bahasa pada kunci `home.registerFlow.*`.
+const registerFlow = computed(() =>
+  Array.from({ length: 3 }, (_, i) => ({
+    id: i + 1,
+    title: t(`home.registerFlow.${i}.title`),
+    description: t(`home.registerFlow.${i}.description`),
+    image: gambar_registerFlow[i],
+  })),
+);
+
+// Gambar tiap langkah; kalimatnya diambil dari berkas bahasa.
+const gambar_stepApplicationWorks = [
+  new URL("@/assets/Products/images/Care/login-work.webp", import.meta.url).href,
+  new URL("@/assets/Products/images/Care/homepage-work.svg", import.meta.url).href,
+  new URL("@/assets/Products/images/Care/face-scanning-work.png", import.meta.url).href,
+  new URL("@/assets/Products/images/Care/vital-result-work.webp", import.meta.url).href,
 ];
 
-const downlineData = [
-  {
-    id: 1,
-    title: "Register akun",
-    content: `
-    Daftarkan akun Anda melalui website <a href="https://sca.seleriscare.ai" target="_blank" class="text-[#01A488] hover:underline">sca.seleriscare.ai</a> menggunakan email aktif untuk memulai proses pendaftaran`,
-    image: new URL("@/assets/Products/images/Care/downline/monitor.svg", import.meta.url).href,
-  },
-  {
-    id: 2,
-    title: "Masukkan kode referral",
-    content: `Masukkan kode referral dari SELICA Partner yang mengundang Anda untuk bergabung ke dalam jaringan SELICA`,
-    image: new URL("@/assets/Products/images/Care/downline/referral.svg", import.meta.url).href,
-  },
-  {
-    id: 3,
-    title: "Selesai",
-    content: `Pendaftaran selesai! Anda kini resmi menjadi bagian dari SELICA Partner dan siap memulai perjalanan bersama kami`,
-    image: new URL("@/assets/Products/images/Care/downline/finish.svg", import.meta.url).href,
-  },
+// Kalimatnya ada di berkas bahasa pada kunci `home.appWork.*`.
+const stepApplicationWorks = computed(() =>
+  Array.from({ length: 4 }, (_, i) => ({
+    id: i + 1,
+    title: t(`home.appWork.${i}.title`),
+    content: t(`home.appWork.${i}.content`),
+    image: gambar_stepApplicationWorks[i],
+  })),
+);
+
+// Gambar tiap langkah; kalimatnya diambil dari berkas bahasa.
+const gambar_downlineData = [
+  new URL("@/assets/Products/images/Care/downline/monitor.svg", import.meta.url).href,
+  new URL("@/assets/Products/images/Care/downline/referral.svg", import.meta.url).href,
+  new URL("@/assets/Products/images/Care/downline/finish.svg", import.meta.url).href,
 ];
+
+// Kalimatnya ada di berkas bahasa pada kunci `home.downline.*`.
+const downlineData = computed(() =>
+  Array.from({ length: 3 }, (_, i) => ({
+    id: i + 1,
+    title: t(`home.downline.${i}.title`),
+    content: t(`home.downline.${i}.content`),
+    image: gambar_downlineData[i],
+  })),
+);
 
 const currentIndex = ref(0);
 const showDescription = ref(false);
@@ -154,6 +144,7 @@ const activeHover = ref(null);
 
 const activeBenefitCard = ref(-1);
 let benefitInterval = null;
+let registerInterval = null;
 const isMobileView = ref(false);
 
 const checkMobileView = () => {
@@ -176,13 +167,17 @@ const monthlyScan = computed(() => targetPerDay.value * DAYS_PER_MONTH);
 const directIncome = computed(() => monthlyScan.value * PRICE_PER_SCAN * DIRECT_PERCENT);
 const passiveIncome = computed(() => monthlyScan.value * PRICE_PER_SCAN * PASSIVE_PERCENT);
 
-const paketKeanggotaan = computed(
-  () => benefits.find((b) => b.title === "Paket Keanggotaan")?.items || [],
-);
+// Dua kelompok benefit. Berkas data hanya menyimpan JUMLAH butirnya;
+// kalimatnya diambil dari berkas bahasa lewat nomor urut.
+const butirBenefit = (kelompok) =>
+  computed(() =>
+    Array.from({ length: benefits[kelompok].jumlah }, (_, i) => ({
+      content: t(`home.benefits.${kelompok}.items.${i}`),
+    })),
+  );
 
-const supportBerkelanjutan = computed(
-  () => benefits.find((b) => b.title === "Support Berkelanjutan")?.items || [],
-);
+const paketKeanggotaan = butirBenefit(0);
+const supportBerkelanjutan = butirBenefit(1);
 
 const pricingType = ref("payPerScan");
 const isSubscribe = computed(() => pricingType.value === "subscribe");
@@ -276,7 +271,7 @@ const displaySizeClass = computed(() => {
 const totalParameters = computed(() => {
   if (!selectedPackage.value) return 0;
   return selectedPackage.value.modalValues.reduce((sum, section) => {
-    return sum + section.values.length;
+    return sum + section.valueKeys.length;
   }, 0);
 });
 
@@ -361,9 +356,12 @@ onMounted(async () => {
   const TITLE_ANIM_DURATION = 500;
   showDescription.value = true;
 
-  setInterval(() => {
+  // Disimpan supaya bisa dihentikan saat komponen dilepas. Sebelumnya tidak
+  // disimpan sama sekali, jadi timer-nya terus berjalan setelah pindah
+  // halaman dan menumpuk tiap kali beranda dibuka lagi.
+  registerInterval = setInterval(() => {
     showDescription.value = false;
-    currentIndex.value = (currentIndex.value + 1) % registerFlow.length;
+    currentIndex.value = (currentIndex.value + 1) % registerFlow.value.length;
     setTimeout(() => {
       showDescription.value = true;
     }, TITLE_ANIM_DURATION);
@@ -374,7 +372,12 @@ onMounted(async () => {
   if (el) {
     const stepElements = el.querySelectorAll(".step");
 
-    scrollListener = () => {
+    // Diredam dengan requestAnimationFrame: tanpa ini, mengukur posisi tiap
+    // langkah dijalankan pada SETIAP kejadian gulir — bisa puluhan kali per
+    // gambar layar — dan tiap pengukuran memaksa browser menghitung ulang
+    // tata letak, sehingga gulirnya terasa tersendat.
+    let idFrameStep = null;
+    const hitungLangkah = () => {
       let current = 0;
       stepElements.forEach((step, index) => {
         const rect = step.getBoundingClientRect();
@@ -385,11 +388,17 @@ onMounted(async () => {
       currentStep.value = current;
 
       const maxScroll = el.scrollHeight - el.clientHeight;
-      scrollProgress.value = Math.min((el.scrollTop / maxScroll) * 100, 100);
+      scrollProgress.value = maxScroll > 0 ? Math.min((el.scrollTop / maxScroll) * 100, 100) : 0;
+      idFrameStep = null;
     };
 
-    el.addEventListener("scroll", scrollListener);
-    scrollListener();
+    scrollListener = () => {
+      if (idFrameStep) return;
+      idFrameStep = requestAnimationFrame(hitungLangkah);
+    };
+
+    el.addEventListener("scroll", scrollListener, { passive: true });
+    hitungLangkah();
   }
 
   // Content heights (SCA)
@@ -402,6 +411,7 @@ onMounted(async () => {
 });
 
 onUnmounted(() => {
+  clearInterval(registerInterval);
   clearInterval(interval);
   clearInterval(benefitInterval);
   if (scrollContainer.value && scrollListener) {
@@ -414,16 +424,44 @@ onUnmounted(() => {
 <template>
   <div class="relative w-full min-h-screen overflow-hidden">
     <!-- Hero -->
-    <section class="relative w-full h-full rounded-[20px] z-20" id="hero">
+    <!-- data-aos: animasi muncul saat digulir, disetel sekali untuk seluruh
+         situs di src/main.js (600 ms, ease-out-cubic, sekali jalan, dan mati
+         sendiri kalau pengunjung menyalakan "kurangi animasi").
+
+         Dipasang di tingkat SECTION, bukan di tiap elemen di dalamnya: yang
+         ingin dibaca mata adalah bagian yang berganti, bukan tiap kartu yang
+         berbaris masuk satu per satu.
+
+         GERAKNYA DIPILIH DARI BENTUK ISINYA, TIDAK SERAGAM.
+         Sebelas section dengan gerak yang sama persis membuat halaman terasa
+         mekanis — setiap kali digulir, hal yang sama terjadi lagi. Jadi ada
+         tiga pilihan, dan masing-masing punya alasan:
+
+           fade     bagian yang isinya padat, atau yang sudah terlihat sejak
+                    halaman dibuka. Geseran pada blok sepadat itu terbaca
+                    sebagai goyangan, bukan sebagai kedatangan.
+           fade-up  daftar dan alur yang dibaca dari atas ke bawah. Geraknya
+                    searah dengan arah baca, jadi menuntun, bukan melawan.
+           zoom-in  bagian yang terbaca sebagai SATU benda: satu panel, satu
+                    papan, satu bingkai. Ia mendarat sebagai kesatuan.
+
+         Dua aturan tambahan yang mudah terlewat:
+         1. Jangan dua section BERSEBELAHAN memakai gerak yang sama.
+         2. Jangan memakai varian mendatar (fade-left/fade-right) di tingkat
+            section. Section di sini selebar halaman, dan geseran 100px ke
+            samping memunculkan batang gulir mendatar — tidak ada pembungkus
+            di App.vue yang memotongnya. -->
+    <section data-aos="fade" class="relative w-full h-full rounded-[20px] z-20" id="hero">
       <div
         class="w-full flex flex-col gap-y-8 max-smallest:h-[500px] h-[480px] md:h-[720px] lg:h-[710px] rounded-[20px] z-20"
       >
         <HeroText
-          title="Smarter Corporate Health Monitoring"
-          subtitle="Application"
+          :title="$t('home.hero.title')"
+          :subtitle="$t('home.hero.badge')"
+          :subtitle-first="$t('home.hero.badgePosition') === 'before'"
           titlecolor="text-[#195279]"
           subtitlecolor="text-[#13B89C]"
-          description=" Empower your organization with AI-driven employee wellness, preventive insights, and health cost control."
+          :description="$t('home.hero.description')"
           descriptioncolor="text-[#6F6F6F]"
         />
         <div
@@ -433,7 +471,7 @@ onUnmounted(() => {
           <a
             href="https://sca.seleriscare.ai/register"
             target="_blank"
-            aria-label="Daftar Jadi SCA"
+            :aria-label="$t('home.registerCta')"
             class="w-fit max-smallest:w-full h-auto"
           >
             <div
@@ -442,7 +480,7 @@ onUnmounted(() => {
               <p
                 class="text-[#FFFFFF] font-[500] max-smallest:text-[10px] text-[12px] md:text-[14px] lg:text-[16px]"
               >
-                Daftar SELICA Partner!
+                {{ $t("home.hero.ctaPartner") }}
               </p>
             </div>
           </a>
@@ -451,7 +489,7 @@ onUnmounted(() => {
           <a
             href="https://seleris.ai/contact"
             target="_blank"
-            aria-label="Daftar Jadi SCA"
+            :aria-label="$t('home.registerCta')"
             class="w-fit max-smallest:w-full h-auto"
           >
             <div
@@ -463,7 +501,7 @@ onUnmounted(() => {
                 <p
                   class="text-[#7AC5B8] font-[500] max-smallest:text-[10px] text-[12px] md:text-[14px] lg:text-[16px]"
                 >
-                  Hubungi Kami
+                  {{ $t("home.hero.ctaContact") }}
                 </p>
               </div>
             </div>
@@ -472,14 +510,14 @@ onUnmounted(() => {
       </div>
       <!-- Image Phone -->
       <div class="relative w-full h-auto flex -mt-[120px] md:-mt-[250px]">
-        <CareOrnament positionClass="top-[10px] md:-top-[30px] xl:-top-5" />
+        <CareOrnament arah="dalam" positionClass="top-[10px] md:-top-[30px] xl:-top-5" />
         <div class="w-full h-auto flex xl:-mt-[0px]">
           <div class="w-full h-auto flex justify-center items-center">
             <figure class="w-auto max-w-max h-auto flex">
               <img
                 src="/assets/images/care2.svg"
                 alt=""
-                class="w-full h-[190px] md:h-[300px] lg:h-[450px] object-contain drop-shadow-[-5px_8px_5px_rgba(0,0,0,0.15)] md:drop-shadow-[-10px_10px_10px_rgba(0,0,0,0.3)] lg:drop-shadow-[-20px_10px_10px_rgba(0,0,0,0.25)]"
+                class="w-full h-[190px] md:h-[300px] lg:h-[450px] object-contain drop-shadow-[-5px_8px_5px_rgba(0,0,0,0.15)] md:drop-shadow-[-10px_10px_10px_rgba(0,0,0,0.3)] lg:drop-shadow-[-20px_10px_10px_rgba(0,0,0,0.25)] gambar-berat"
               />
             </figure>
           </div>
@@ -489,7 +527,7 @@ onUnmounted(() => {
       <div class="w-full max-w-sm mx-auto h-auto max-smallest:px-8 px-0 mt-10 md:mt-20">
         <div class="w-full h-[100px] flex justify-center">
           <a
-            href="https://play.google.com/store/apps/developer?id=PT.+Seleris+Meditekno+Internasional"
+            href="https://play.google.com/store/search?q=blooxia&c=apps&hl=id"
             target="_blank"
             rel="noopener noreferrer"
             class="flex w-full h-auto justify-start"
@@ -499,6 +537,8 @@ onUnmounted(() => {
                 :src="playstore"
                 alt="Playstore"
                 class="w-full h-[60px] object-contain object-center"
+                loading="lazy"
+                decoding="async"
               />
             </figure>
           </a>
@@ -508,12 +548,14 @@ onUnmounted(() => {
     </section>
 
     <!-- About Us -->
-    <section class="relative w-full h-auto" id="about">
+    <section data-aos="fade-up" class="relative w-full h-auto" id="about">
       <CareOrnament3
+        arah="kiri"
         positionClass="top-[50px] sm:-top-5 xl:-top-48"
         heightClass="w-full h-auto lg:h-full"
       />
       <CareOrnament2
+        arah="kanan"
         positionClass="bottom-[200px] sm:bottom-0 xl:top-44"
         heightClass="w-full h-auto lg:h-full"
       />
@@ -521,19 +563,26 @@ onUnmounted(() => {
         class="relative w-full flex flex-col max-w-[1440px] mx-auto justify-center items-center z-20 mt-16 md:mt-20 lg:mt-40 md:px-12 xl:px-8"
       >
         <div class="w-full h-auto flex justify-center max-smallest:mt-3 mt-0">
-          <AboutUs title="About Us" subtitle="SELICA" subtitleColor="text-[#42C5AF]" />
+          <AboutUs
+            :title="$t('home.about.eyebrow')"
+            subtitle="SELICA"
+            subtitleColor="text-[#42C5AF]"
+          />
         </div>
         <div class="w-full h-auto mt-10 md:mt-10 lg:mt-10">
           <AboutUsDescription
             :image="imageAbout"
-            title="AI Health Metrics Assistance Application"
-            description="SELICA is an AI-powered platform built for corporate health and wellness. It automates employee health monitoring, delivers real-time preventive care insights, and helps companies optimize wellness programs while reducing medical costs by up to 20%"
+            :title="$t('home.about.title')"
+            :description="$t('home.about.description')"
           />
         </div>
       </div>
     </section>
 
-    <section class="relative w-full h-full max-w-[1440px] mx-auto lg:mt-20 xl:mt-56">
+    <section
+      data-aos="zoom-in"
+      class="relative w-full h-full max-w-[1440px] mx-auto lg:mt-20 xl:mt-56"
+    >
       <div
         class="w-full h-auto py-10 md:py-14 px-8 md:px-12 lg:px-10 xl:px-32 flex flex-col gap-y-14 rounded-xl"
       >
@@ -571,12 +620,12 @@ onUnmounted(() => {
                   <span
                     class="text-[#374151] font-[600] over-smallest:text-[14px] text-[14px] md:text-[16px] lg:text-[16px] xl:text-[16px] over-smallest:leading-normal leading-snug"
                   >
-                    {{ data.title }}
+                    {{ $t(`home.whatsSelica.${index}.title`) }}
                   </span>
                 </div>
                 <div class="w-full h-auto flex">
                   <span class="text-[#8E98A8] text-[12px] md:text-[12px] leading-normal font-[400]">
-                    {{ data.content }}
+                    {{ $t(`home.whatsSelica.${index}.content`) }}
                   </span>
                 </div>
               </div>
@@ -588,10 +637,12 @@ onUnmounted(() => {
 
     <!-- How Application Work -->
     <section
+      data-aos="fade-up"
       class="relative w-full h-auto max-w-[1440px] mx-auto mt-14 lg:mt-20 xl:mt-56 scroll-mt-[80px]"
       id="howapplicationwork"
     >
       <CareOrnament2
+        arah="kiri"
         positionClass="bottom-[200px] sm:bottom-0 md:-top-[70%] xl:-top-48"
         heightClass="w-full h-auto lg:h-full"
         :mirror="true"
@@ -599,7 +650,11 @@ onUnmounted(() => {
       <!-- Application Work Slider -->
       <div class="relative w-full flex flex-col z-20">
         <div class="w-full h-auto px-8 sm:px-0">
-          <ApplicationWorkText productname="SELICA" textcolor="text-[#42C5AF]" />
+          <ApplicationWorkText
+            :title="$t('home.applicationWorkTitle')"
+            productname="SELICA"
+            textcolor="text-[#42C5AF]"
+          />
         </div>
         <div class="relative w-full h-auto mt-10 md:mt-12 lg:mt-14">
           <div
@@ -626,6 +681,8 @@ onUnmounted(() => {
                     alt=""
                     srcset=""
                     class="w-full h-[90%] object-contain"
+                    loading="lazy"
+                    decoding="async"
                   />
                 </div>
                 <div class="relative w-full h-[30%] shrink-0 flex flex-col items-center">
@@ -655,217 +712,8 @@ onUnmounted(() => {
       </div>
     </section>
 
-    <!-- APA ITU SCA -->
-    <section
-      class="relative w-full h-full z-20 mx-auto max-w-[1440px] px-8 md:px-12 lg:px-16 xl:px-20 xls:px-32 mt-20 md:mt-32 lg:mt-44"
-    >
-      <!-- Desktop -->
-      <div class="flex relative w-full h-auto">
-        <figure class="hidden lg:flex w-auto h-auto">
-          <img
-            src="@/assets/Products/images/Care-Applicator/about-care-applicator-frame.png"
-            alt=""
-            class="w-full h-auto object-cover"
-          />
-        </figure>
-        <div
-          class="lg:absolute z-20 left-0 top-0 w-full h-full flex flex-col lg:flex-row gap-y-5 md:gap-y-10 gap-x-3 p-6 md:p-10 lg:p-0 bg-gradient-to-br from-[#28B1B8] to-[#124F52] lg:bg-none rounded-[20px] lg:rounded-none"
-        >
-          <div
-            class="w-full h-auto flex flex-col lg:px-7 xl:px-10 lg:pt-10 xl:pt-12 gap-y-6 md:gap-y-8 lg:gap-y-6 xl:gap-y-8"
-          >
-            <div class="w-full h-auto flex flex-col gap-y-6 md:gap-y-8 lg:gap-y-6 xl:gap-y-8">
-              <div class="w-full h-auto flex">
-                <span
-                  class="text-[#FFFFFF] max-smallest:text-[16px] text-[18px] sm:text-[28px] md:text-[32px] lg:text-[24px] xl:text-[42px] xls:text-[42px] font-[600] leading-snug"
-                >
-                  Apa itu <br />
-                  SELICA Partner ?
-                </span>
-              </div>
-              <div class="w-full h-auto flex">
-                <span
-                  class="max-smallest:text-[10px] text-[12px] sm:text-[14px] md:text-[16px] lg:text-[14px] xl:text-[16px] xls:text-[16px] text-[#FFFFFF] leading-snug font-[400]"
-                >
-                  SELICA Partner adalah mitra resmi
-                  <span class="font-[600]">SELICA</span> yang bertugas memasarkan dan menyediakan
-                  layanan scanning kesehatan kepada masyarakat luas menggunakan perangkat dan
-                  aplikasi digital kami.
-                </span>
-              </div>
-            </div>
-            <div
-              class="w-auto h-auto flex flex-col gap-y-3 sm:gap-y-4 md:gap-y-6 lg:gap-y-4 xl:gap-y-5 xls:gap-y-5 items-start"
-            >
-              <div
-                v-for="(data, index) in whatsSCAList"
-                :key="index"
-                class="w-auto h-auto flex flex-row"
-              >
-                <div
-                  class="w-auto h-auto flex flex-row bg-[#47D2B4]/40 max-smallest:gap-x-2 gap-x-1.5 md:gap-x-3 px-3 md:py-1.5 sm:px-5 py-2 lg:py-2.5 xl:py-3 lg:px-4 xl:px-6 rounded-full"
-                >
-                  <div class="flex items-center">
-                    <img
-                      src="@/assets/Products/images/Care-Applicator/checklist.png"
-                      alt=""
-                      class="w-4 h-4 sm:w-6 sm:h-6 md:w-5 md:h-5 xls:w-5 xls:h-5 object-contain shrink-0"
-                    />
-                  </div>
-                  <div class="flex items-center">
-                    <span
-                      class="text-white over-smallest:!pr-0 max-smallest:pr-10 text-[10px] sm:text-[14px] lg:text-[12px] xl:text-[16px] xls:text-[16px]"
-                    >
-                      {{ data.content }}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="relative w-full h-auto lg:pt-[110px] xl:pt-[130px] xls:pt-[125px]">
-            <div class="w-full h-auto flex flex-col gap-y-5 xls:gap-y-5 lg:pl-2 lg:pr-10">
-              <div
-                class="w-full h-auto flex flex-row large-smallest:flex-col gap-5 xl:gap-5 xls:gap-5"
-              >
-                <div
-                  class="w-[50%] large-smallest:w-full h-auto flex flex-col large-smallest:flex-row bg-[#DDDDDD]/40 gap-3 md:gap-5 lg:gap-3 xl:gap-5 border-[#FFFFFF]/20 border-[1px] large-smallest:px-4 px-5 lg:px-3 xl:px-5 large-smallest:py-3 py-5 md:py-10 lg:py-3 xl:py-10 rounded-[12px]"
-                >
-                  <div
-                    class="w-full large-smallest:w-fit large-smallest:flex large-smallest:items-center h-auto"
-                  >
-                    <img
-                      src="@/assets/Products/images/Care-Applicator/mitra-resmi-icon1.png"
-                      alt=""
-                      class="large-smallest:w-10 large-smallest:h-10 w-14 h-14 md:w-auto md:h-auto lg:w-12 lg:h-12 xl:w-auto xl:h-auto object-contain"
-                    />
-                  </div>
-                  <div class="w-full h-auto flex flex-col gap-y-2">
-                    <div class="w-full h-auto flex">
-                      <span
-                        class="text-[#FFFFFF] font-[600] large-smallest:text-[12px] text-[16px] md:text-[24px] lg:text-[16px] xl:text-[22px] leading-tight"
-                      >
-                        Partner Resmi
-                      </span>
-                    </div>
-                    <div class="w-full h-auto flex">
-                      <span
-                        class="text-[#ECECEC] font-[400] text-[10px] md:text-[12px] lg:text-[10px] xl:text-[14px]"
-                      >
-                        Telah melalui proses verifikasi dan sertifikasi
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="w-[50%] large-smallest:w-full h-auto flex flex-col large-smallest:flex-row bg-[#DDDDDD]/40 gap-3 md:gap-5 lg:gap-3 xl:gap-5 border-[#FFFFFF]/20 border-[1px] large-smallest:px-4 px-5 lg:px-3 xl:px-5 large-smallest:py-3 py-5 md:py-10 lg:py-3 xl:py-10 rounded-[12px]"
-                >
-                  <div
-                    class="w-full large-smallest:w-fit large-smallest:flex large-smallest:items-center h-auto"
-                  >
-                    <img
-                      src="@/assets/Products/images/Care-Applicator/mitra-resmi-icon2.png"
-                      alt=""
-                      class="large-smallest:w-10 large-smallest:h-10 w-14 h-14 md:w-auto md:h-auto lg:w-12 lg:h-12 xl:w-auto xl:h-auto object-contain"
-                    />
-                  </div>
-                  <div class="w-full h-auto flex flex-col gap-y-2">
-                    <div class="w-full h-auto flex">
-                      <span
-                        class="text-[#FFFFFF] font-[600] large-smallest:text-[12px] text-[16px] md:text-[24px] lg:text-[16px] xl:text-[22px] leading-tight"
-                      >
-                        Solusi Kesehatan
-                      </span>
-                    </div>
-                    <div class="w-full h-auto flex">
-                      <span
-                        class="text-[#ECECEC] font-[400] text-[10px] md:text-[12px] lg:text-[10px] xl:text-[14px]"
-                      >
-                        Didukung teknologi scanning modern
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="w-full h-auto">
-                <div
-                  class="w-full h-auto large-smallest:hidden flex flex-row gap-x-5 md:gap-x-5 px-5 py-5 md:py-8 lg:py-6 xl:py-8 xls:py-8 bg-[#FFFFFF]/40 border-[1px] border-[#DDDDDD]/20 rounded-[12px]"
-                >
-                  <div
-                    class="w-auto h-auto flex p-[1px] bg-gradient-to-br from-[#AFEFFF] from-[40%] to-[#AFEFFF]/0 rounded-[12px]"
-                  >
-                    <div
-                      class="w-full h-full flex bg-[#70cff4] p-2 md:p-3 lg:p-2 xl:p-3 rounded-[12px]"
-                    >
-                      <img
-                        src="@/assets/Products/images/Care-Applicator/digital-ecosystem-icon2.png"
-                        alt=""
-                        class="w-full h-full object-contain"
-                      />
-                    </div>
-                  </div>
-                  <div class="w-full h-auto flex flex-col justify-center gap-y-1 md:gap-y-0">
-                    <div class="w-full h-auto flex">
-                      <span
-                        class="text-[#FFFFFF] font-[600] text-[16px] md:text-[20px] lg:text-[16px] xl:text-[20px]"
-                      >
-                        Platform Digital Pintar
-                      </span>
-                    </div>
-                    <div class="w-full h-auto flex">
-                      <span
-                        class="text-[#ECECEC] font-[400] text-[12px] md:text-[14px] lg:text-[12px] xl:text-[14px]"
-                      >
-                        Pelaporan dan pemantauan terintegrasi
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="w-full h-auto large-smallest:flex hidden flex-col large-smallest:flex-row bg-[#DDDDDD]/40 gap-3 md:gap-5 lg:gap-3 xl:gap-5 border-[#FFFFFF]/20 border-[1px] large-smallest:px-4 px-5 lg:px-3 xl:px-5 large-smallest:py-3 py-5 md:py-10 lg:py-3 xl:py-10 rounded-[12px]"
-                >
-                  <div
-                    class="w-full large-smallest:w-fit large-smallest:flex large-smallest:items-center h-auto"
-                  >
-                    <img
-                      src="@/assets/Products/images/Care-Applicator/digital-ecosystem-icon2.png"
-                      alt=""
-                      class="large-smallest:w-10 large-smallest:h-10 w-14 h-14 md:w-auto md:h-auto lg:w-12 lg:h-12 xl:w-auto xl:h-auto object-contain"
-                    />
-                  </div>
-                  <div class="w-full h-auto flex flex-col gap-y-2">
-                    <div class="w-full h-auto flex">
-                      <span
-                        class="text-[#FFFFFF] font-[600] large-smallest:text-[12px] text-[16px] md:text-[24px] lg:text-[16px] xl:text-[22px] leading-tight"
-                      >
-                        Platform Digital Pintar
-                      </span>
-                    </div>
-                    <div class="w-full h-auto flex">
-                      <span
-                        class="text-[#ECECEC] font-[400] text-[10px] md:text-[12px] lg:text-[10px] xl:text-[14px]"
-                      >
-                        Pelaporan dan pemantauan terintegrasi
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 30 Health Parameter -->
-    <section
-      class="relative w-full h-full z-20 mx-auto max-w-[1440px] px-0 md:px-12 lg:px-16 xls:px-32 mt-32 lg:mt-44"
-    >
-      <HealthParameter />
-    </section>
-
     <!-- How Register -->
-    <section
+    <!-- <section
       class="flex relative w-full h-auto max-w-[1440px] mx-auto mt-14 lg:mt-20 xl:mt-56 px-0 xl:px-12"
       id="howregister"
     >
@@ -884,10 +732,16 @@ onUnmounted(() => {
           :show-description="showDescription"
         />
       </div>
+    </section> -->
+
+    <!-- 30 Health Parameter -->
+    <section data-aos="zoom-in" class="relative w-full h-full z-20 mt-32 lg:mt-44">
+      <HealthParameter />
     </section>
 
     <!-- Paket Pemeriksaan Kesehatan -->
     <section
+      data-aos="fade"
       class="relative w-full h-full z-20 mx-auto max-w-[1440px] px-8 md:px-10 lg:px-16 xls:px-32 mt-32 lg:mt-44"
     >
       <div class="w-full h-auto flex">
@@ -896,8 +750,8 @@ onUnmounted(() => {
             <span
               class="text-[24px] md:text-[28px] lg:text-[36px] text-[#374151] font-[600] text-center leading-tight tracking-wider"
             >
-              Pilih paket kesehatan <br />
-              sesuai kebutuhan anda
+              {{ $t("home.packages.eyebrow") }} <br />
+              {{ $t("home.packages.eyebrowLine2") }}
             </span>
           </div>
           <div class="w-full h-auto flex flex-col gap-y-6">
@@ -917,15 +771,15 @@ onUnmounted(() => {
     </section>
 
     <!-- Dashboard Preview -->
-    <section
+    <!-- <section
       class="relative w-full h-full z-20 mx-auto max-w-[1440px] mt-20 md:mt-32 lg:mt-44"
       id="keunggulan"
     >
       <DashboardPreview />
-    </section>
+    </section> -->
 
     <!-- Komisi -->
-    <section
+    <!-- <section
       class="relative w-full h-full z-20 mx-auto max-w-[1440px] px-8 md:px-12 lg:px-16 xl:px-20 xls:px-32 mt-14 md:mt-32 pt-20"
       id="komisi"
     >
@@ -1117,10 +971,10 @@ onUnmounted(() => {
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- Benefit SCA -->
-    <section
+    <!-- <section
       class="relative w-full h-full z-20 mx-auto max-w-[1440px] px-8 md:px-12 lg:px-12 xl:px-20 xls:px-32 mt-20 md:mt-32 pt-20"
       id="keunggulan"
     >
@@ -1168,14 +1022,14 @@ onUnmounted(() => {
                       src="@/assets/Products/images/Care-Applicator/star.png"
                       alt=""
                       class="max-smallest:w-8 w-10 h-auto md:w-12 xl:w-full xl:h-full object-contain"
-                    />
+                    loading="lazy" decoding="async" />
                   </div>
                 </div>
                 <div class="w-full h-auto flex">
                   <p
                     class="max-smallest:text-[12px] text-[18px] md:text-[14px] xl:text-[18px] font-[600] text-[#374151] leading-normal"
                   >
-                    Paket
+                    {{ $t("home.packages.titleLine1") }}
                     <span class="sm:block">Keanggotaan</span>
                   </p>
                 </div>
@@ -1194,7 +1048,7 @@ onUnmounted(() => {
                         src="@/assets/Products/images/Care-Applicator/checklist-icon2.png"
                         alt=""
                         class="w-5 h-5 md:w-5 md:h-5 xl:w-5 xl:h-5 object-contain"
-                      />
+                      loading="lazy" decoding="async" />
                     </div>
                     <div class="flex items-center">
                       <span
@@ -1228,7 +1082,7 @@ onUnmounted(() => {
                       src="@/assets/Products/images/Care-Applicator/shield.png"
                       alt=""
                       class="max-smallest:w-8 w-10 h-auto md:w-12 xl:w-full xl:h-full object-contain"
-                    />
+                    loading="lazy" decoding="async" />
                   </div>
                 </div>
                 <div class="w-full h-auto flex">
@@ -1254,7 +1108,7 @@ onUnmounted(() => {
                         src="@/assets/Products/images/Care-Applicator/checklist-icon2.png"
                         alt=""
                         class="w-5 h-5 md:w-5 md:h-5 xl:w-5 xl:h-5 object-contain"
-                      />
+                      loading="lazy" decoding="async" />
                     </div>
                     <div class="flex items-center">
                       <span
@@ -1283,19 +1137,19 @@ onUnmounted(() => {
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
-    <section class="flex relative w-full h-auto mx-auto mt-14 lg:mt-20 xl:mt-44" id="downline">
+    <!-- <section class="flex relative w-full h-auto mx-auto mt-14 lg:mt-20 xl:mt-44" id="downline">
       <div class="relative w-full flex flex-col gap-y-0 z-20">
         <div class="w-full h-auto flex max-w-[1440px] mx-auto px-8 md:px-0">
           <ApplicationWorkText title="SELICA Downline" textcolor="text-[#42C5AF]" />
         </div>
         <Downline :items="downlineData" />
       </div>
-    </section>
+    </section> -->
 
     <!-- Testimonial -->
-    <section
+    <!-- <section
       class="relative w-full h-full z-20 mx-auto max-w-[1440px] lg:px-0 xl:max-w-[1440px] xl:px-0 pt-32"
       id="testimonial"
     >
@@ -1325,7 +1179,7 @@ onUnmounted(() => {
                 src="@/assets/Products/images/Care-Applicator/testimonial-background.png"
                 alt=""
                 class="w-full h-[300px] sm:h-[340px] md:h-[300px] lg:h-[345px] xl:h-[430px] object-fill object-top"
-              />
+              loading="lazy" decoding="async" />
             </div>
             <div
               class="relative w-full h-auto group mt-10 xl:mt-6 z-20 bg-transparent px-0 lg:px-16 xl:px-32"
@@ -1368,7 +1222,7 @@ onUnmounted(() => {
                           <h3
                             class="max-[375px]:!text-[16px] text-[18px] sm:text-[18px] md:text-[18px] lg:text-[18px] font-[500] text-[#195279]"
                           >
-                            {{ item.name }}
+                            {{ $t(`home.testimonials.${index}.name`) }}
                           </h3>
                           <p
                             class="max-[375px]:!text-[12px] text-[12px] sm:text-[14px] md:text-[14px] lg:text-[14px] text-[#717276]"
@@ -1380,7 +1234,7 @@ onUnmounted(() => {
                           <p
                             class="max-[375px]:!text-[12px] text-[14px] sm:text-[14px] md:text-[14px] lg:text-[14px] xl:text-[16px] text-[#535862] leading-relaxed"
                           >
-                            "{{ item.text }}"
+                            "{{ $t(`home.testimonials.${index}.text`) }}"
                           </p>
                         </div>
                       </div>
@@ -1395,17 +1249,231 @@ onUnmounted(() => {
           </div>
         </div>
       </div>
+    </section> -->
+
+    <!-- APA ITU SCA -->
+    <section
+      data-aos="fade-up"
+      class="relative w-full h-full z-20 mx-auto max-w-[1440px] px-8 md:px-12 lg:px-16 xl:px-20 xls:px-32 mt-20 md:mt-32 lg:mt-44"
+    >
+      <!-- Desktop -->
+      <div class="flex relative w-full h-auto">
+        <figure class="hidden lg:flex w-auto h-auto">
+          <img
+            src="@/assets/Products/images/Care-Applicator/about-care-applicator-frame.png"
+            alt=""
+            class="w-full h-auto object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+        <div
+          class="lg:absolute z-20 left-0 top-0 w-full h-full flex flex-col lg:flex-row gap-y-5 md:gap-y-10 gap-x-3 p-6 md:p-10 lg:p-0 bg-gradient-to-br from-[#28B1B8] to-[#124F52] lg:bg-none rounded-[20px] lg:rounded-none"
+        >
+          <div
+            class="w-full h-auto flex flex-col lg:px-7 xl:px-10 lg:pt-10 xl:pt-12 gap-y-6 md:gap-y-8 lg:gap-y-6 xl:gap-y-8"
+          >
+            <div class="w-full h-auto flex flex-col gap-y-6 md:gap-y-8 lg:gap-y-6 xl:gap-y-8">
+              <div class="w-full h-auto flex">
+                <span
+                  class="text-[#FFFFFF] max-smallest:text-[16px] text-[18px] sm:text-[28px] md:text-[32px] lg:text-[24px] xl:text-[42px] xls:text-[42px] font-[600] leading-snug"
+                >
+                  {{ $t("home.partner.question") }} <br />
+                  {{ $t("home.partner.questionName") }}
+                </span>
+              </div>
+              <div class="w-full h-auto flex">
+                <span
+                  class="max-smallest:text-[10px] text-[12px] sm:text-[14px] md:text-[16px] lg:text-[14px] xl:text-[16px] xls:text-[16px] text-[#FFFFFF] leading-snug font-[400]"
+                >
+                  {{ $t("home.partner.intro") }}
+                  <span class="font-[600]">SELICA</span> {{ $t("home.partner.introRest") }}
+                </span>
+              </div>
+            </div>
+            <div
+              class="w-auto h-auto flex flex-col gap-y-3 sm:gap-y-4 md:gap-y-6 lg:gap-y-4 xl:gap-y-5 xls:gap-y-5 items-start"
+            >
+              <div
+                v-for="(data, index) in whatsSCAList"
+                :key="index"
+                class="w-auto h-auto flex flex-row"
+              >
+                <div
+                  class="w-auto h-auto flex flex-row bg-[#47D2B4]/40 max-smallest:gap-x-2 gap-x-1.5 md:gap-x-3 px-3 md:py-1.5 sm:px-5 py-2 lg:py-2.5 xl:py-3 lg:px-4 xl:px-6 rounded-full"
+                >
+                  <div class="flex items-center">
+                    <img
+                      src="@/assets/Products/images/Care-Applicator/checklist.png"
+                      alt=""
+                      class="w-4 h-4 sm:w-6 sm:h-6 md:w-5 md:h-5 xls:w-5 xls:h-5 object-contain shrink-0"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="flex items-center">
+                    <span
+                      class="text-white over-smallest:!pr-0 max-smallest:pr-10 text-[10px] sm:text-[14px] lg:text-[12px] xl:text-[16px] xls:text-[16px]"
+                    >
+                      {{ $t(`home.whatsSca.${index}`) }}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="relative w-full h-auto lg:pt-[110px] xl:pt-[130px] xls:pt-[125px]">
+            <div class="w-full h-auto flex flex-col gap-y-5 xls:gap-y-5 lg:pl-2 lg:pr-10">
+              <div
+                class="w-full h-auto flex flex-row large-smallest:flex-col gap-5 xl:gap-5 xls:gap-5"
+              >
+                <div
+                  class="w-[50%] large-smallest:w-full h-auto flex flex-col large-smallest:flex-row bg-[#DDDDDD]/40 gap-3 md:gap-5 lg:gap-3 xl:gap-5 border-[#FFFFFF]/20 border-[1px] large-smallest:px-4 px-5 lg:px-3 xl:px-5 large-smallest:py-3 py-5 md:py-10 lg:py-3 xl:py-10 rounded-[12px]"
+                >
+                  <div
+                    class="w-full large-smallest:w-fit large-smallest:flex large-smallest:items-center h-auto"
+                  >
+                    <img
+                      src="@/assets/Products/images/Care-Applicator/mitra-resmi-icon1.png"
+                      alt=""
+                      class="large-smallest:w-10 large-smallest:h-10 w-14 h-14 md:w-auto md:h-auto lg:w-12 lg:h-12 xl:w-auto xl:h-auto object-contain"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="w-full h-auto flex flex-col gap-y-2">
+                    <div class="w-full h-auto flex">
+                      <span
+                        class="text-[#FFFFFF] font-[600] large-smallest:text-[12px] text-[16px] md:text-[24px] lg:text-[16px] xl:text-[22px] leading-tight"
+                      >
+                        {{ $t("home.partner.point1Title") }}
+                      </span>
+                    </div>
+                    <div class="w-full h-auto flex">
+                      <span
+                        class="text-[#ECECEC] font-[400] text-[10px] md:text-[12px] lg:text-[10px] xl:text-[14px]"
+                      >
+                        {{ $t("home.partner.point1Text") }}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="w-[50%] large-smallest:w-full h-auto flex flex-col large-smallest:flex-row bg-[#DDDDDD]/40 gap-3 md:gap-5 lg:gap-3 xl:gap-5 border-[#FFFFFF]/20 border-[1px] large-smallest:px-4 px-5 lg:px-3 xl:px-5 large-smallest:py-3 py-5 md:py-10 lg:py-3 xl:py-10 rounded-[12px]"
+                >
+                  <div
+                    class="w-full large-smallest:w-fit large-smallest:flex large-smallest:items-center h-auto"
+                  >
+                    <img
+                      src="@/assets/Products/images/Care-Applicator/mitra-resmi-icon2.png"
+                      alt=""
+                      class="large-smallest:w-10 large-smallest:h-10 w-14 h-14 md:w-auto md:h-auto lg:w-12 lg:h-12 xl:w-auto xl:h-auto object-contain"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="w-full h-auto flex flex-col gap-y-2">
+                    <div class="w-full h-auto flex">
+                      <span
+                        class="text-[#FFFFFF] font-[600] large-smallest:text-[12px] text-[16px] md:text-[24px] lg:text-[16px] xl:text-[22px] leading-tight"
+                      >
+                        {{ $t("home.partner.point2Title") }}
+                      </span>
+                    </div>
+                    <div class="w-full h-auto flex">
+                      <span
+                        class="text-[#ECECEC] font-[400] text-[10px] md:text-[12px] lg:text-[10px] xl:text-[14px]"
+                      >
+                        {{ $t("home.partner.point2Text") }}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="w-full h-auto">
+                <div
+                  class="w-full h-auto large-smallest:hidden flex flex-row gap-x-5 md:gap-x-5 px-5 py-5 md:py-8 lg:py-6 xl:py-8 xls:py-8 bg-[#FFFFFF]/40 border-[1px] border-[#DDDDDD]/20 rounded-[12px]"
+                >
+                  <div
+                    class="w-auto h-auto flex p-[1px] bg-gradient-to-br from-[#AFEFFF] from-[40%] to-[#AFEFFF]/0 rounded-[12px]"
+                  >
+                    <div
+                      class="w-full h-full flex bg-[#70cff4] p-2 md:p-3 lg:p-2 xl:p-3 rounded-[12px]"
+                    >
+                      <img
+                        src="@/assets/Products/images/Care-Applicator/digital-ecosystem-icon2.png"
+                        alt=""
+                        class="w-full h-full object-contain"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                  </div>
+                  <div class="w-full h-auto flex flex-col justify-center gap-y-1 md:gap-y-0">
+                    <div class="w-full h-auto flex">
+                      <span
+                        class="text-[#FFFFFF] font-[600] text-[16px] md:text-[20px] lg:text-[16px] xl:text-[20px]"
+                      >
+                        {{ $t("home.partner.point3Title") }}
+                      </span>
+                    </div>
+                    <div class="w-full h-auto flex">
+                      <span
+                        class="text-[#ECECEC] font-[400] text-[12px] md:text-[14px] lg:text-[12px] xl:text-[14px]"
+                      >
+                        {{ $t("home.partner.point3Text") }}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="w-full h-auto large-smallest:flex hidden flex-col large-smallest:flex-row bg-[#DDDDDD]/40 gap-3 md:gap-5 lg:gap-3 xl:gap-5 border-[#FFFFFF]/20 border-[1px] large-smallest:px-4 px-5 lg:px-3 xl:px-5 large-smallest:py-3 py-5 md:py-10 lg:py-3 xl:py-10 rounded-[12px]"
+                >
+                  <div
+                    class="w-full large-smallest:w-fit large-smallest:flex large-smallest:items-center h-auto"
+                  >
+                    <img
+                      src="@/assets/Products/images/Care-Applicator/digital-ecosystem-icon2.png"
+                      alt=""
+                      class="large-smallest:w-10 large-smallest:h-10 w-14 h-14 md:w-auto md:h-auto lg:w-12 lg:h-12 xl:w-auto xl:h-auto object-contain"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="w-full h-auto flex flex-col gap-y-2">
+                    <div class="w-full h-auto flex">
+                      <span
+                        class="text-[#FFFFFF] font-[600] large-smallest:text-[12px] text-[16px] md:text-[24px] lg:text-[16px] xl:text-[22px] leading-tight"
+                      >
+                        {{ $t("home.partner.point3Title") }}
+                      </span>
+                    </div>
+                    <div class="w-full h-auto flex">
+                      <span
+                        class="text-[#ECECEC] font-[400] text-[10px] md:text-[12px] lg:text-[10px] xl:text-[14px]"
+                      >
+                        {{ $t("home.partner.point3Text") }}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Client -->
     <section
+      data-aos="zoom-in"
       class="relative w-full h-auto max-w-[1440px] mx-auto lg:px-8 mt-20 xl:mt-32"
       id="client"
     >
       <div class="w-full h-auto flex flex-col">
         <TitleAndSubCard
-          title="Our Client"
-          subtitle="Seleris Meditekno Internasional"
+          :title="$t('home.clients.eyebrow')"
+          sub:title="$t('home.clients.title')"
           subtitleColor="text-[#42C5AF]"
         />
         <div class="mt-10 lg:px-12">
@@ -1416,26 +1484,48 @@ onUnmounted(() => {
 
     <!-- FAQ -->
     <section
+      data-aos="fade-up"
       class="relative w-full h-full z-20 mx-auto max-w-[1440px] px-8 md:px-12 lg:px-16 xl:px-20 xls:px-32 mt-14 md:mt-32 pt-20 py-10"
       id="faq"
     >
+      <!-- Ornamen pemisah antara daftar klien dan FAQ.
+
+           Ditulis di sini, bukan sebagai blok tersendiri di antara kedua
+           section: ornamen di halaman ini tidak pernah memakan tingginya
+           sendiri, ia selalu melayang menumpang di atas ruang yang sudah ada.
+           Kalau dibuat sebagai blok sungguhan, jarak antarsection ikut
+           bertambah dan ritme halaman berubah — padahal yang diminta cuma
+           hiasannya.
+
+           `left-0` ditulis eksplisit karena section ini punya padding samping.
+           Tanpa itu, elemen yang diposisikan mutlak berangkat dari tepi DALAM
+           padding tapi lebarnya mengikuti tepi LUAR, jadi ujung kanannya
+           menyembul keluar section. -->
+      <CareOrnament2
+        arah="kanan"
+        :mirror="true"
+        positionClass="left-0 -top-10 md:-top-20 xl:-top-28"
+        heightClass="w-full h-auto"
+      />
       <Faq />
     </section>
 
     <!-- Download App -->
-    <section class="relative w-full h-auto mt-20 lg:mt-40 xl:mt-56" id="download">
+    <section data-aos="fade" class="relative w-full h-auto mt-20 lg:mt-40 xl:mt-56" id="download">
       <CareOrnament4
+        arah="kiri"
         positionClass="max-smallest:top-[30px] top-[0px] sm:-top-5 top-[100px] lg:-top-[130px] xl:-top-[250px]"
         heightClass="w-full h-auto lg:h-full"
       />
       <div class="w-full h-auto md:max-w-3xl lg:max-w-6xl xl:max-w-7xl mx-auto relative z-30">
         <DownloadFrame
           appname="SELICA"
-          description="Enable smarter employee health monitoring with real-time wellness insights, AI-powered preventive analytics, and proactive health cost management — all in one secure corporate platform."
+          :description="$t('home.download.description')"
           :img="DownloadImage"
         />
       </div>
       <CareOrnament4
+        arah="kanan"
         positionClass="max-smallest:bottom-[50px] bottom-[10px] sm:bottom-5 bottom-[100px] lg:-bottom-[130px] xl:-bottom-[300px]"
         heightClass="w-full h-auto lg:h-full"
         :mirror="true"
@@ -1443,19 +1533,22 @@ onUnmounted(() => {
     </section>
 
     <!-- DISCLAIMER -->
-    <section
+    <!-- Isinya kini punya halaman sendiri di /medical-disclaimer.
+         Blok ini sengaja dibiarkan terkomentar, bukan dihapus. -->
+    <!-- <section
       class="relative w-full h-full z-20 mx-auto max-w-[1440px] px-8 md:px-12 lg:px-16 xl:px-20 xls:px-32 mt-20 xl:mt-52 py-10 bg-[#FAFAFA]"
     >
       <Disclaimer />
-    </section>
+    </section> -->
 
     <!-- Book Demo -->
     <section
+      data-aos="zoom-in"
       class="relative w-full h-auto max-w-7xl mx-auto mt-20 lg:mt-40 px-8 lg:px-16 xl:px-10"
       id="bookdemo"
     >
       <BookDemoProduct
-        title="SELICA A Complete Solution for Your Health Needs"
+        :title="$t('home.demo.title')"
         :framebookdemo="medinsframebook"
         colorarrow="text-[#42C5AF]"
       />
@@ -1505,9 +1598,9 @@ onUnmounted(() => {
                   </svg>
                 </div>
                 <div class="w-auto pl-3 pr-4 h-auto flex justify-center items-center">
-                  <span class="text-[#FFFFFF] font-[500] text-[14px] md:text-[16px]"
-                    >Kembali ke beranda</span
-                  >
+                  <span class="text-[#FFFFFF] font-[500] text-[14px] md:text-[16px]">{{
+                    $t("home.packages.back")
+                  }}</span>
                 </div>
               </button>
             </div>
@@ -1524,7 +1617,7 @@ onUnmounted(() => {
                     >
                       <div class="w-auto h-auto bg-[#C4EAFF] px-10 py-2 rounded-full">
                         <span class="text-[#4273C2] font-[600] text-[14px] lg:text-[16px]">
-                          Paket
+                          {{ $t("home.packages.titleLine1") }}
                           <span class="uppercase">
                             {{ selectedPackage.label }}
                           </span>
@@ -1538,12 +1631,12 @@ onUnmounted(() => {
                         <span
                           class="text-[20px] md:text-[28px] lg:text-[38px] text-[#374151] font-[600] leading-tight tracking-wider"
                         >
-                          Kesehatan anda, <br />
-                          analisis
+                          {{ $t("home.packages.titleLine2") }} <br />
+                          {{ $t("home.packages.titleWord") }}
                           <span
                             class="text-transparent bg-clip-text bg-gradient-to-br from-[#13B89C] to-[#2EDFC1]"
                           >
-                            tanpa <br class="hidden sm:block" />jarum
+                            {{ $t("home.packages.titleAccent") }}
                           </span>
                         </span>
                       </div>
@@ -1551,7 +1644,9 @@ onUnmounted(() => {
                         <span
                           class="text-[#8E98A8] font-[400] text-[16px] leading-relaxed tracking-wide"
                         >
-                          Solusi cepat untuk pemantauan <br />rutin kesehatan dasar Anda.
+                          {{ $t("home.packages.subtitle") }} <br />{{
+                            $t("home.packages.subtitleLine2")
+                          }}
                         </span>
                       </div>
                     </div>
@@ -1559,9 +1654,9 @@ onUnmounted(() => {
                       class="w-full sm:w-[70%] h-auto flex flex-col gap-y-2 items-start bg-[#FAFAFA] px-5 py-4 rounded-[24px]"
                     >
                       <div class="w-full h-auto flex">
-                        <span class="text-[16px] font-[500] text-[#374151]"
-                          >Harga detail layanan</span
-                        >
+                        <span class="text-[16px] font-[500] text-[#374151]">{{
+                          $t("home.packages.detailPrice")
+                        }}</span>
                       </div>
                       <div class="w-full h-auto flex flex-col">
                         <del class="text-[#9CA3AF] decoration-[#E22F4A]">
@@ -1579,11 +1674,13 @@ onUnmounted(() => {
                             src="@/assets/Products/images/Care-Applicator/checklist-icon2.png"
                             alt=""
                             class="w-4 h-4 sm:w-6 sm:h-6 md:w-5 md:h-5 object-contain shrink-0"
+                            loading="lazy"
+                            decoding="async"
                           />
                         </div>
                         <div class="flex items-center">
                           <span class="text-[#374151] text-[14px] lg:text-[12px] xl:text-[16px]">
-                            Hasil keluar dalam 5 Menit
+                            {{ $t("home.packages.resultTime") }}
                           </span>
                         </div>
                       </div>
@@ -1591,13 +1688,13 @@ onUnmounted(() => {
                   </div>
                   <a
                     href="https://sca.seleriscare.ai/register"
-                    aria-label="Daftar Jadi SCA"
+                    :aria-label="$t('home.registerCta')"
                     class="w-full lg:w-[83%] h-auto inline-flex justify-center items-center gap-x-3 py-2.5 md:py-2 lg:py-3 bg-[#3DDAC1] rounded-[8px]"
                   >
                     <span
                       class="text-white whitespace-nowrap text-[14px] md:text-[16px] lg:text-[18px] font-[500]"
                     >
-                      Daftar SELICA Partner & mulai jualan
+                      {{ $t("home.demo.cta") }}
                     </span>
                     <div class="w-auto h-auto text-[#FFFFFF] flex items-end justify-center">
                       <svg
@@ -1642,11 +1739,15 @@ onUnmounted(() => {
                       <div
                         class="w-5 h-5 lg:w-6 lg:h-6 shrink-0 flex justify-center items-center bg-[#10F492]/20 rounded-full p-1"
                       >
-                        <img src="@/assets/icons/green-checklist.svg" />
+                        <img
+                          src="@/assets/icons/green-checklist.svg"
+                          loading="lazy"
+                          decoding="async"
+                        />
                       </div>
                       <div class="w-full h-auto flex items-center">
                         <p class="text-[#515E71] text-[14px] lg:text-[16px]">
-                          {{ capitalizeFirst(feature.name) }}
+                          {{ $t(feature.nameKey) }}
                         </p>
                       </div>
                     </div>
@@ -1670,7 +1771,7 @@ onUnmounted(() => {
                       <button
                         @click="scrollParamLeft"
                         class="w-8 h-8 flex justify-center items-center bg-[#F0FDFB] border border-[#2DDBBD] rounded-full text-[#2DDBBD] hover:bg-[#2DDBBD] hover:text-white transition-colors duration-200 active:scale-95"
-                        aria-label="Geser kiri"
+                        :aria-label="$t('common.scrollLeft')"
                       >
                         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none">
                           <path
@@ -1685,7 +1786,7 @@ onUnmounted(() => {
                       <button
                         @click="scrollParamRight"
                         class="w-8 h-8 flex justify-center items-center bg-[#F0FDFB] border border-[#2DDBBD] rounded-full text-[#2DDBBD] hover:bg-[#2DDBBD] hover:text-white transition-colors duration-200 active:scale-95"
-                        aria-label="Geser kanan"
+                        :aria-label="$t('common.scrollRight')"
                       >
                         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none">
                           <path
@@ -1711,17 +1812,17 @@ onUnmounted(() => {
                   >
                     <div
                       v-for="data in selectedPackage.modalValues"
-                      :key="data.name"
+                      :key="data.nameKey"
                       class="shrink-0 snap-center w-[85vw] lg:w-full h-full lg:h-auto flex flex-col bg-[#FFFFFF] gap-3 px-6 py-6 border-[0.5px] border-[#DADADA] rounded-[16px] shadow-lg"
                     >
                       <div class="w-full h-auto flex">
                         <span class="text-[#374151] font-[600] text-[18px]">
-                          {{ capitalizeFirst(data.name) }}
+                          {{ $t(data.nameKey) }}
                         </span>
                       </div>
                       <div class="w-full h-auto flex flex-wrap gap-4">
                         <div
-                          v-for="item in data.values"
+                          v-for="item in data.valueKeys"
                           :key="item"
                           class="w-auto h-auto flex flex-row gap-x-1.5 md:gap-x-2 rounded-full"
                         >
@@ -1732,7 +1833,7 @@ onUnmounted(() => {
                             <span
                               class="text-[#374151] text-[12px] sm:text-[14px] lg:text-[12px] xl:text-[14px]"
                             >
-                              {{ item }}
+                              {{ $t(item) }}
                             </span>
                           </div>
                         </div>

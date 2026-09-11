@@ -25,7 +25,7 @@ defineProps({
         <p
           class="text-[#2E504E] text-[24px] sm:text-[34px] lg:text-[38px] xl:text-[46px] font-[500] leading-tight text-center md:text-left"
         >
-          Download
+          {{ $t("home.downloadButton") }}
           <br class="hidden md:block" />
           {{ appname }}
         </p>
@@ -47,7 +47,9 @@ defineProps({
         <img
           :src="img"
           alt=""
-          class="w-full h-[250px] sm:h-[350px] md:h-[400px] lg:h-[500px] xl:h-auto object-contain drop-shadow-[-5px_8px_5px_rgba(0,0,0,0.15)] md:drop-shadow-[-20px_10px_10px_rgba(0,0,0,0.25)]"
+          class="w-full h-[250px] sm:h-[350px] md:h-[400px] lg:h-[500px] xl:h-auto object-contain drop-shadow-[-5px_8px_5px_rgba(0,0,0,0.15)] md:drop-shadow-[-20px_10px_10px_rgba(0,0,0,0.25)] gambar-berat"
+          loading="lazy"
+          decoding="async"
         />
       </figure>
     </div>

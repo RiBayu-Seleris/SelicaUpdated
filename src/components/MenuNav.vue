@@ -1,94 +1,50 @@
 <script setup>
-import { ref } from "vue";
-import { useScrollStore } from "@/stores/scroll";
+import { computed } from "vue";
 import { useRoute } from "vue-router";
+import { useScrollStore } from "@/stores/scroll";
 import Navlink from "@/components/NavLink.vue";
 
 const { isScrolled } = useScrollStore();
 const route = useRoute();
 
+// Saat halaman digulir, navbar berganti jadi versi berlatar putih sehingga
+// tulisannya selalu gelap. Yang perlu diputuskan hanya keadaan paling atas:
+// tulisan putih kalau hero halamannya gelap, selain itu gelap.
+const tulisanTerang = computed(() => route.meta.heroGelap === true);
+
+// Menu hanya menyimpan alamat tujuan dan KUNCI bahasanya.
+// Teksnya sendiri ada di src/locales/en.json dan id.json, jadi ikut berganti
+// saat pengunjung menukar bahasa.
 const defaultProductMenu = [
-  {
-    href: "#hero",
-    label: "Home",
-  },
-  {
-    href: "#about",
-    label: "About",
-  },
-  {
-    href: "#testimonial",
-    label: "Testimonial",
-  },
-  {
-    href: "#faq",
-    label: "FAQ",
-  },
-  {
-    href: "https://seleris.ai/contact",
-    label: "Contact",
-  },
+  { href: "#hero", labelKey: "nav.home" },
+  { href: "#about", labelKey: "nav.about" },
+  { href: "#faq", labelKey: "nav.faq" },
+  { href: "https://seleris.ai/contact", labelKey: "nav.contact" },
+  { href: "/medical-disclaimer", labelKey: "nav.disclaimer" },
+  { href: "/selica-partner", labelKey: "nav.partner" },
   {
     href: "https://sca.seleriscare.ai/",
-    label: "SELICA Partner",
-    target: "_blank", // ← tambahkan ini
+    labelKey: "nav.hub",
+    target: "_blank",
   },
 ];
-
-const careApplicatorProductMenu = [
-  {
-    href: "#tentang",
-    label: "Tentang",
-  },
-  {
-    href: "#keunggulan",
-    label: "Keunggulan",
-  },
-  {
-    href: "#komisi",
-    label: "Komisi",
-  },
-  {
-    href: "#faq",
-    label: "FAQ",
-  },
-  {
-    href: "https://seleris.ai/contact",
-    label: "Contact",
-  },
-];
-
-const isSelerisCareApplicator = ref(route.path === "/sca");
 </script>
 
 <template>
   <ul
-    v-if="isSelerisCareApplicator"
-    :class="[
-      'flex items-center text-md font-[400]',
-      isScrolled
-        ? 'lg:gap-[20px] xl:gap-[50px] text-[#717171] font-[500] '
-        : 'lg:gap-[25px] 2lg:gap-[45px] xl:gap-[63px] 2xl:gap-[70px] justify-center text-[#374151]',
-    ]"
-  >
-    <li v-for="(scaMenu, index) in careApplicatorProductMenu" :key="index">
-      <Navlink class="text-[11pt]" :href="scaMenu.href">
-        {{ scaMenu.label }}
-      </Navlink>
-    </li>
-  </ul>
-  <ul
-    v-else
     :class="[
       'flex items-center text-md font-[400]',
       isScrolled
         ? 'lg:gap-[20px] xl:gap-[50px] text-[#717171] font-[500]'
-        : 'lg:gap-[25px] 2lg:gap-[45px] xl:gap-[63px] 2xl:gap-[70px] justify-center text-[#FAFAFA]',
+        : [
+            'lg:gap-[25px] 2lg:gap-[45px] xl:gap-[63px] 2xl:gap-[70px] justify-center',
+            tulisanTerang ? 'text-[#FAFAFA]' : 'text-[#374151]',
+          ],
     ]"
   >
     <li v-for="(menuDefault, index) in defaultProductMenu" :key="index">
       <Navlink class="text-[11pt]" :href="menuDefault.href" :target="menuDefault.target ?? null">
-        {{ menuDefault.label }}
+        {{ $t(menuDefault.labelKey) }}
       </Navlink>
     </li>
   </ul>

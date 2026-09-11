@@ -1,16 +1,15 @@
 <script setup>
-const dashboardPreview = {
-  features: [
-    "Kelola bisnis satu dashboard",
-    "Pantau penjualan kapan saja",
-    "Bangun jaringan affiliate otomatis",
-    "Hitung komisi tanpa ribet",
-    "Transaksi tercatat real-time",
-    "Withdraw komisi dari sistem",
-    "Analisis performa tim sales",
-    "Operasional bisnis terintegrasi",
-  ],
-};
+import { computed } from "vue";
+import { useI18n } from "vue-i18n";
+import { hubFeatures } from "@/Data/Products/SelicaPartner/PartnerContent";
+import { useLocalizedList } from "@/utils/i18nList";
+
+// Komponen ini dipakai di dua halaman: beranda dan halaman SELICA Partner.
+// Teksnya diambil dari berkas bahasa supaya cukup ditulis sekali dan ikut
+// berganti saat pengunjung menukar bahasa.
+const { t } = useI18n();
+const fitur = useLocalizedList("partner.hub.features", hubFeatures, ["teks"]);
+const judul = computed(() => t("partner.hub.title"));
 </script>
 <template>
   <div class="relative w-full h-auto flex flex-row overflow-x-clip">
@@ -25,9 +24,11 @@ const dashboardPreview = {
             src="@/assets/icons/preview-icon.svg"
             alt=""
             class="w-5 h-5 sm:w-auto sm:h-auto lg:w-5 lg:h-5 xl:w-auto xl:h-auto object-contain"
+            loading="lazy"
+            decoding="async"
           />
           <span class="text-[12px] sm:text-[14px] md:text-[14px] lg:text-[14px] xl:text-[16px]">
-            Dashboard Preview
+            {{ $t("partner.hub.badge") }}
           </span>
         </div>
         <div class="w-full h-auto flex flex-col gap-y-3 lg:gap-y-5">
@@ -35,23 +36,20 @@ const dashboardPreview = {
             <p
               class="text-[28px] md:text-[32px] lg:text-[28px] xl:text-[42px] font-[600] text-[#374151] leading-snug"
             >
-              Kelola bisnis anda <br />
-              dalam satu genggaman
+              {{ judul }}
             </p>
           </div>
           <div class="w-full h-auto flex xl:pr-10">
             <p
               class="text-[12px] sm:text-[14px] lg:text-[12px] xl:text-[16px] font-[400] text-[#374151] leading-relaxed tracking-wider"
             >
-              Setelah terdaftar sebagai SELICA Partner, Anda akan mendapatkan akses ke dashboard
-              eksklusif yang dirancang untuk memudahkan operasional harian dan pemantauan performa
-              tim Anda.
+              {{ $t("partner.hub.intro") }}
             </p>
           </div>
         </div>
         <div class="w-full h-auto grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-3 xl:gap-5">
           <div
-            v-for="(feature, index) in dashboardPreview.features"
+            v-for="(feature, index) in fitur"
             :key="index"
             class="flex flex-row items-start gap-x-2 lg:gap-x-3"
           >
@@ -62,6 +60,8 @@ const dashboardPreview = {
                 <img
                   src="@/assets/icons/green-checklist.svg"
                   class="w-full h-full object-contain"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             </div>
@@ -69,7 +69,7 @@ const dashboardPreview = {
               <p
                 class="text-[#515E71] max-smallest:text-[14px] text-[16px] lg:text-[14px] xl:text-[16px] capitalize"
               >
-                {{ feature }}
+                {{ feature.teks }}
               </p>
             </div>
           </div>
@@ -77,13 +77,13 @@ const dashboardPreview = {
         <a
           href="https://sca.seleriscare.ai/register"
           target="_blank"
-          aria-label="Daftar Jadi SCA"
+          :aria-label="$t('home.registerCta')"
           class="inline-flex justify-center sm:justify-between md:justify-start items-center gap-x-5 sm:gap-x-3 w-full sm:w-auto sm:px-8 lg:px-8 xl:px-10 py-3 md:py-3.5 lg:py-3 xl:py-3.5 bg-[#4273C2] rounded-[12px] shadow-[0px_23px_30.8px_0px_rgba(66,115,194,0.1)]"
         >
           <span
             class="text-white whitespace-nowrap text-[14px] md:text-[16px] lg:text-[14px] xl:text-[16px] font-[500]"
           >
-            Login ke dashboard
+            {{ $t("home.dashboardLogin") }}
           </span>
 
           <div class="w-auto h-auto text-[#FFFFFF] flex items-end justify-center">
@@ -120,8 +120,10 @@ const dashboardPreview = {
     <div class="w-[43%] xl:w-[40%] shrink-0 hidden lg:block relative">
       <img
         src="@/assets/images/dashboard-preview.svg"
-        alt="Preview dashboard SELICA Partner"
-        class="absolute left-0 top-1/2 -translate-y-1/2 h-[105%] w-auto max-w-none object-contain drop-shadow-[-19px_18px_200px_rgba(0,0,0,0.1)]"
+        :alt="$t('home.dashboardAlt')"
+        class="absolute left-0 h-[90%] w-auto max-w-none object-contain drop-shadow-[-8px_10px_28px_rgba(0,0,0,0.12)] gambar-berat"
+        loading="lazy"
+        decoding="async"
       />
     </div>
   </div>

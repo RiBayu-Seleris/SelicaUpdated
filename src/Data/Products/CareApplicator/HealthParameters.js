@@ -1,286 +1,169 @@
 // Sumber: Parameters.pdf — 62 parameter, 7 kategori.
+//
+// BERKAS INI HANYA MENYIMPAN STRUKTURNYA: id, ikon, warna, dan tier.
+// Semua judul dan keterangannya ada di src/locales/en.json dan id.json pada
+// kunci `parameters.*`, digabungkan di komponen memakai useLocalizedList().
+// Urutan di sini HARUS sama dengan urutan di berkas bahasa.
+//
 // `tier` = paket terendah yang sudah mencakup parameter tsb (insight ⊂ intellect ⊂ oracle).
 export const tabs = [
-  { id: "vital", label: "Vital Signs" },
-  { id: "fisik", label: "Fisik" },
-  { id: "fisiologis", label: "Fisiologis" },
-  { id: "mental", label: "Mental" },
-  { id: "darah", label: "Darah" },
-  { id: "komposisi", label: "Komposisi" },
-  { id: "risiko", label: "Risiko" },
+  {
+    id: "vital",
+    icon: "heart",
+    iconColor: "#EF4444",
+  },
+  {
+    id: "fisik",
+    icon: "ruler",
+    iconColor: "#6366F1",
+  },
+  {
+    id: "fisiologis",
+    icon: "activity",
+    iconColor: "#06B6D4",
+  },
+  {
+    id: "mental",
+    icon: "brain",
+    iconColor: "#8B5CF6",
+  },
+  {
+    id: "darah",
+    icon: "droplet",
+    iconColor: "#F43F5E",
+  },
+  {
+    id: "komposisi",
+    icon: "layers",
+    iconColor: "#F59E0B",
+  },
+  {
+    id: "risiko",
+    icon: "shield",
+    iconColor: "#F97316",
+  },
 ];
 
 export const tabContents = {
   vital: {
     parameters: [
-      { title: "Detak Jantung", description: "Denyut jantung per menit.", tier: "insight" },
-      {
-        title: "Saturasi Oksigen (SpO2)",
-        description: "Kadar oksigen dalam darah.",
-        tier: "insight",
-      },
-      {
-        title: "Tekanan Darah Sistolik",
-        description: "Tekanan saat jantung memompa.",
-        tier: "insight",
-      },
-      {
-        title: "Tekanan Darah Diastolik",
-        description: "Tekanan saat jantung relaksasi.",
-        tier: "insight",
-      },
-      {
-        title: "Cardiac Output",
-        description: "Volume darah dipompa per menit.",
-        tier: "intellect",
-      },
-      {
-        title: "Tekanan Nadi (Pulse Pressure)",
-        description: "Selisih tekanan sistolik & diastolik.",
-        tier: "oracle",
-      },
+      { icon: "detak-jantung", tier: "insight" },
+      { icon: "spo2", tier: "insight" },
+      { icon: "sistolik", tier: "insight" },
+      { icon: "diastolik", tier: "insight" },
+      { icon: "cardiac-output", tier: "intellect" },
+      { icon: "tekanan-nadi", tier: "oracle" },
     ],
-    highlight: { count: 6, prefix: "Parameter", label: "Vital Signs" },
   },
 
   fisik: {
     parameters: [
+      { icon: "bmi", tier: "insight" },
+      { icon: "rasio-pinggang", tier: "insight" },
+      { icon: "index-bentuk-tubuh", tier: "insight" },
+      { icon: "usia-biologis", tier: "insight" },
+      { icon: "usia-kulit", tier: "insight" },
+      { icon: "usia-jantung", tier: "intellect" },
+      { icon: "usia-vaskular", tier: "intellect" },
+      { icon: "body-roundness-index", tier: "intellect" },
       {
-        title: "Indeks Massa Tubuh (BMI)",
-        description: "Rasio berat & tinggi badan.",
-        tier: "insight",
-      },
-      {
-        title: "Rasio Lingkar Pinggang / Tinggi",
-        description: "Indikator distribusi lemak.",
-        tier: "insight",
-      },
-      { title: "Indeks Bentuk Tubuh", description: "Analisis proporsi tubuh.", tier: "insight" },
-      {
-        title: "Usia Biologis",
-        description: "Estimasi kondisi tubuh saat ini.",
-        tier: "insight",
-      },
-      {
-        title: "Usia Kulit",
-        description: "Estimasi kondisi kesehatan kulit.",
-        tier: "insight",
-      },
-      {
-        title: "Usia Jantung (Heart Age)",
-        description: "Estimasi usia fungsional jantung.",
-        tier: "intellect",
-      },
-      {
-        title: "Usia Vaskular (Vascular Age)",
-        description: "Estimasi usia pembuluh darah.",
-        tier: "intellect",
-      },
-      {
-        title: "Body Roundness Index (BRI)",
-        description: "Indeks kebulatan bentuk tubuh.",
-        tier: "intellect",
-      },
-      {
-        title: "Conicity Index (CI)",
-        description: "Indeks distribusi lemak perut.",
         tier: "oracle",
       },
     ],
-    highlight: { count: 9, prefix: "Parameter", label: "Fisik" },
   },
 
   fisiologis: {
     parameters: [
-      {
-        title: "Variabilitas Detak Jantung (HRV)",
-        description: "Variasi interval antar detak.",
-        tier: "insight",
-      },
-      { title: "Tingkat Pernapasan", description: "Jumlah napas per menit.", tier: "insight" },
-      {
-        title: "Pulse-Respiratory Quotient (PRQ)",
-        description: "Rasio denyut & pernapasan.",
-        tier: "insight",
-      },
-      {
-        title: "HRV – VLF Power",
-        description: "Daya HRV frekuensi sangat rendah.",
-        tier: "intellect",
-      },
-      { title: "HRV – LF Power", description: "Daya HRV frekuensi rendah.", tier: "oracle" },
-      { title: "HRV – HF Power", description: "Daya HRV frekuensi tinggi.", tier: "oracle" },
-      { title: "HRV – SD2", description: "Variabilitas detak jangka panjang.", tier: "oracle" },
-      {
-        title: "HRV – S (Poincaré Area)",
-        description: "Luas sebaran plot Poincaré.",
-        tier: "oracle",
-      },
+      { icon: "hrv", tier: "insight" },
+      { icon: "respirotary-rate", tier: "insight" },
+      { icon: "prq", tier: "insight" },
+      { icon: "hrv-vlf", tier: "intellect" },
+      { icon: "hrv-lf", tier: "oracle" },
+      { icon: "hrv-hf", tier: "oracle" },
+      { icon: "hrv-sd2", tier: "oracle" },
+      { icon: "hrv-pointarea", tier: "oracle" },
     ],
-    highlight: { count: 8, prefix: "Parameter", label: "Fisiologis" },
   },
 
   mental: {
     parameters: [
-      {
-        title: "Tingkat Stres",
-        description: "Indikator kondisi stres fisiologis.",
-        tier: "insight",
-      },
-      {
-        title: "Aktivitas Parasimpatik",
-        description: "Aktivitas saraf pemulihan tubuh.",
-        tier: "insight",
-      },
-      {
-        title: "Aktivitas Simpatik",
-        description: "Aktivitas saraf saat tubuh siaga.",
-        tier: "insight",
-      },
-      {
-        title: "HRV – RMSSD",
-        description: "Indikator variasi detak jangka pendek.",
-        tier: "intellect",
-      },
-      {
-        title: "HRV – PNN50",
-        description: "Persentase interval selisih > 50 ms.",
-        tier: "intellect",
-      },
-      { title: "HRV – Mean RR", description: "Rata-rata interval antar detak.", tier: "oracle" },
-      { title: "HRV – CV RR", description: "Koefisien variasi interval detak.", tier: "oracle" },
-      { title: "HRV – SDSD", description: "Simpangan selisih antar interval.", tier: "oracle" },
-      {
-        title: "HRV – LF/HF Ratio",
-        description: "Keseimbangan saraf simpatik & parasimpatik.",
-        tier: "oracle",
-      },
-      { title: "HRV – SD1", description: "Variabilitas detak jangka pendek.", tier: "oracle" },
+      { icon: "tingkat-stres", tier: "insight" },
+      { icon: "aktifitas-parasimpatis", tier: "insight" },
+      { icon: "aktifitas-simpatis", tier: "insight" },
+      { icon: "hrv-rmssd", tier: "intellect" },
+      { icon: "hrv-pnn50", tier: "intellect" },
+      { icon: "hrv-meanrr", tier: "oracle" },
+      { icon: "hrv-meanrr-1", tier: "oracle" },
+      { tier: "oracle" },
+      { icon: "hrv-lfhf-ratio", tier: "oracle" },
+      { tier: "oracle" },
     ],
-    highlight: { count: 10, prefix: "Parameter", label: "Mental" },
   },
 
   darah: {
     parameters: [
-      { title: "Glukosa Darah", description: "Kadar gula dalam darah.", tier: "insight" },
-      { title: "Kolesterol Total", description: "Total kolesterol tubuh.", tier: "insight" },
-      { title: "Hemoglobin", description: "Protein pembawa oksigen darah.", tier: "insight" },
-      { title: "Asam Urat", description: "Kadar asam urat dalam darah.", tier: "intellect" },
-      {
-        title: "Hemoglobin Terglikasi (HbA1c)",
-        description: "Rata-rata gula darah jangka panjang.",
-        tier: "intellect",
-      },
+      { icon: "glukosa-darah", tier: "insight" },
+      { icon: "klorestrol-total", tier: "insight" },
+      { icon: "hemogoblin", tier: "insight" },
+      { icon: "asam-urat", tier: "intellect" },
+      { icon: "hba1c", tier: "intellect" },
     ],
-    highlight: { count: 5, prefix: "Parameter", label: "Darah" },
   },
 
   komposisi: {
     parameters: [
-      { title: "Tingkat Otot", description: "Persentase massa otot.", tier: "insight" },
-      { title: "Rasio Lemak Tubuh", description: "Persentase lemak total.", tier: "insight" },
-      { title: "Persentase Air Tubuh", description: "Kadar cairan tubuh.", tier: "insight" },
-      { title: "Massa Tulang", description: "Estimasi berat tulang.", tier: "insight" },
+      { icon: "tinggat-otot", tier: "insight" },
+      { icon: "rasio-lemak-tubuh", tier: "insight" },
+      { icon: "persentase-air", tier: "insight" },
+      { icon: "massa-tulang", tier: "insight" },
+      { icon: "bmr", tier: "insight" },
+      { icon: "tingkar-protein", tier: "insight" },
+      { icon: "lemak-viscal", tier: "intellect" },
+      { icon: "lemak-subkutan", tier: "intellect" },
+      { icon: "massa-otot", tier: "oracle" },
+      { icon: "massa-lemak", tier: "oracle" },
+      { icon: "massa-protein", tier: "oracle" },
       {
-        title: "Basal Metabolic Rate (BMR)",
-        description: "Estimasi kebutuhan kalori dasar.",
-        tier: "insight",
-      },
-      { title: "Tingkat Protein", description: "Komposisi protein tubuh.", tier: "insight" },
-      {
-        title: "Lemak Visceral",
-        description: "Lemak di sekitar organ vital.",
-        tier: "intellect",
-      },
-      { title: "Lemak Subkutan", description: "Lemak di bawah kulit.", tier: "intellect" },
-      { title: "Massa Otot (Kg)", description: "Total berat otot.", tier: "oracle" },
-      { title: "Massa Lemak (Kg)", description: "Total berat lemak.", tier: "oracle" },
-      { title: "Massa Protein (Kg)", description: "Total berat protein tubuh.", tier: "oracle" },
-      {
-        title: "TDEE (Total Daily Energy Expenditure)",
-        description: "Estimasi total kalori harian.",
         tier: "oracle",
       },
     ],
-    highlight: { count: 12, prefix: "Parameter", label: "Komposisi" },
   },
 
   risiko: {
     parameters: [
+      { icon: "risiko-hipertensi", tier: "insight" },
+      { icon: "risiko-diabetes-2", tier: "insight" },
+      { icon: "risiko-kardiovaskular", tier: "insight" },
+      { icon: "risiko-hiperkolestor", tier: "insight" },
+      { icon: "risiko-hipertrigliseridemia", tier: "insight" },
+      { icon: "risiko-serangan-jantung", tier: "intellect" },
+      { icon: "risiko-stroke", tier: "intellect" },
+      { icon: "glukosa-abnormal", tier: "intellect" },
+      { icon: "risiko-ascvd", tier: "oracle" },
       {
-        title: "Risiko Hipertensi",
-        description: "Potensi tekanan darah tinggi.",
-        tier: "insight",
-      },
-      {
-        title: "Risiko Diabetes Tipe 2",
-        description: "Potensi gangguan gula darah.",
-        tier: "insight",
-      },
-      {
-        title: "Risiko Penyakit Kardiovaskular",
-        description: "Potensi gangguan jantung & pembuluh darah.",
-        tier: "insight",
-      },
-      {
-        title: "Risiko Hiperkolesterolemia",
-        description: "Potensi kolesterol tinggi.",
-        tier: "insight",
-      },
-      {
-        title: "Risiko Hipertrigliseridemia",
-        description: "Potensi trigliserida tinggi.",
-        tier: "insight",
-      },
-      {
-        title: "Risiko Serangan Jantung",
-        description: "Analisis potensi gangguan jantung.",
-        tier: "intellect",
-      },
-      {
-        title: "Risiko Stroke",
-        description: "Analisis potensi gangguan pembuluh otak.",
-        tier: "intellect",
-      },
-      {
-        title: "Glukosa Darah Puasa Abnormal",
-        description: "Indikator gula darah puasa tidak normal.",
-        tier: "intellect",
-      },
-      {
-        title: "Risiko ASCVD",
-        description: "Potensi penyakit aterosklerosis kardiovaskular.",
         tier: "oracle",
       },
       {
-        title: "Risiko Anemia / Hemoglobin Rendah",
-        description: "Potensi kadar hemoglobin rendah.",
         tier: "oracle",
       },
       {
-        title: "Risiko Gagal Jantung",
-        description: "Potensi penurunan fungsi jantung.",
-        tier: "oracle",
-      },
-      {
-        title: "Risiko Perlemakan Hati (Fatty Liver)",
-        description: "Potensi penumpukan lemak di hati.",
         tier: "oracle",
       },
     ],
-    highlight: { count: 12, prefix: "Parameter", label: "Risiko" },
   },
 };
 
-const totalParameters = Object.values(tabContents).reduce(
-  (total, tab) => total + tab.parameters.length,
-  0,
-);
-
+// Hanya strukturnya. Judul, keterangan, dan label tombolnya ada di berkas
+// bahasa pada kunci `parameters.footer.*`.
 export const footerInfo = {
   icon: "microscope",
-  title: `Total ${totalParameters} Parameter Kesehatan`,
-  description: "Semua laporan disajikan dalam format yang mudah dimengerti (Bahasa Indonesia).",
-  buttonLabel: "Lihat Contoh Laporan PDF",
   buttonLink: "#",
 };
+
+// Daftar kartu parameter: metadata kategori digabung dengan isi parameternya.
+export const parameterCategories = tabs.map((tab, index) => ({
+  ...tab,
+  order: String(index + 1).padStart(2, "0"),
+  parameters: tabContents[tab.id]?.parameters ?? [],
+  total: tabContents[tab.id]?.parameters.length ?? 0,
+}));

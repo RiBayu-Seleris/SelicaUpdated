@@ -18,11 +18,6 @@ const getPriceDeleted = (price) => {
   return Math.ceil((price / 0.6 + 1000) / 1000) * 1000;
 };
 
-const capitalizeFirst = (str) => {
-  if (!str) return "";
-  return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
-};
-
 const isEssential = computed(() => props.pkg.id === "essential");
 const isCore = computed(() => props.pkg.id === "core");
 const isPrime = computed(() => props.pkg.id === "prime");
@@ -59,7 +54,7 @@ const showPopup = ref(false);
         <div class="flex justify-between px-5 pt-5 pb-3">
           <div>
             <p class="text-[12px] text-[#374151]">
-              {{ pkg.badgeMobile }}
+              {{ $t(pkg.badgeMobileKey) }}
             </p>
             <p
               class="text-[20px] font-[600] uppercase"
@@ -67,7 +62,7 @@ const showPopup = ref(false);
                 isEssential ? 'text-[#42A2C2]' : isCore ? 'text-[#21CBAF]' : 'text-[#4273C2]',
               ]"
             >
-              {{ pkg.label }}
+              {{ $t(pkg.labelKey) }}
             </p>
           </div>
           <div class="flex flex-col items-end">
@@ -108,8 +103,8 @@ const showPopup = ref(false);
           <ul
             class="px-5 py-5 mx-5 list-disc list-outside pl-5 flex flex-col gap-y-3 text-[14px] md:text-[16px]"
           >
-            <li v-for="feature in pkg.features" :key="feature.name">
-              {{ capitalizeFirst(feature.name) }}
+            <li v-for="feature in pkg.features" :key="feature.nameKey">
+              {{ $t(feature.nameKey) }}
             </li>
           </ul>
         </div>
@@ -127,7 +122,9 @@ const showPopup = ref(false);
             ]"
             @click="emit('show-detail', pkg)"
           >
-            <span class="font-[600] text-[14px]">Lihat paket {{ pkg.label }}</span>
+            <span class="font-[600] text-[14px]">{{
+              $t("packages.viewPackage", { nama: $t(pkg.labelKey) })
+            }}</span>
           </div>
         </div>
       </div>
@@ -151,8 +148,10 @@ const showPopup = ref(false);
         class="flex items-center gap-x-1 font-[600]"
         :class="[isEssential ? 'text-[#42A2C2]' : isCore ? 'text-[#21CBAF]' : 'text-[#4273C2]']"
       >
-        <p class="text-[16px] lg:text-[20px]">{{ pkg.label }}</p>
-        <span v-if="pkg.badge" class="text-[12px] lg:text-[14px]"> ({{ pkg.badge }}) </span>
+        <p class="text-[16px] lg:text-[20px]">{{ $t(pkg.labelKey) }}</p>
+        <span v-if="pkg.badgeKey" class="text-[12px] lg:text-[14px]">
+          ({{ $t(pkg.badgeKey) }})
+        </span>
       </div>
 
       <!-- Price -->
@@ -180,11 +179,11 @@ const showPopup = ref(false);
           <div
             class="w-5 h-5 lg:w-6 lg:h-6 shrink-0 flex justify-center items-center bg-[#10F492]/20 rounded-full p-1"
           >
-            <img src="@/assets/icons/green-checklist.svg" />
+            <img src="@/assets/icons/green-checklist.svg" loading="lazy" decoding="async" />
           </div>
           <div class="w-full h-full flex items-center">
             <p class="text-[#515E71] text-[14px] lg:text-[16px] capitalize">
-              {{ capitalizeFirst(feature.name) }}
+              {{ $t(feature.nameKey) }}
             </p>
           </div>
         </div>
@@ -231,7 +230,9 @@ const showPopup = ref(false);
                 : 'bg-[#4273C2] text-[#FFFFFF]',
           ]"
         >
-          <span class="text-[14px] lg:text-[16px]">Lihat paket {{ pkg.label }}</span>
+          <span class="text-[14px] lg:text-[16px]">{{
+            $t("packages.viewPackage", { nama: $t(pkg.labelKey) })
+          }}</span>
         </div>
       </div>
     </div>

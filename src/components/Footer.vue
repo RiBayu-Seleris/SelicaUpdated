@@ -75,7 +75,7 @@ const connectColor = computed(() => {
                   <p
                     class="text-base md:text-[18px] lg:text-[16px] text-[#195279] font-[400] lg:leading-snug"
                   >
-                    Powered by Seleris Meditekno International
+                    {{ $t("footer.poweredBy") }}
                   </p>
                 </div>
               </div>
@@ -84,8 +84,7 @@ const connectColor = computed(() => {
               <p
                 class="text-[#B8B8B8] text-base xl:text-[16px] text-justify lg:text-left xl:text-left"
               >
-                Transform corporate healthcare management through AI-driven wellness monitoring,
-                preventive risk detection, and intelligent health cost optimization.
+                {{ $t("footer.tagline") }}
               </p>
             </div>
             <div class="w-full h-auto mt-4">
@@ -125,7 +124,7 @@ const connectColor = computed(() => {
           <!-- lg:pl-6 xl:pl-12 -->
           <div class="flex flex-col w-full h-auto lg:pl-10 xl:pl-14">
             <p class="text-[#195279] text-[24px] lg:text-[19px] xl:text-[22px] font-medium pb-2">
-              Products
+              {{ $t("footer.products") }}
             </p>
             <div>
               <a
@@ -145,7 +144,7 @@ const connectColor = computed(() => {
         <div class="flex relative w-full h-auto">
           <div class="flex flex-col w-full h-auto lg:pl-8 xl:pl-5">
             <p class="text-[#195279] text-[24px] lg:text-[19px] xl:text-[22px] font-medium pb-2">
-              Company
+              {{ $t("footer.company") }}
             </p>
             <a
               v-for="(company, index) in companyList"
@@ -168,11 +167,13 @@ const connectColor = computed(() => {
         <div class="w-full h-auto xl:w-[170%]">
           <div class="flex flex-col">
             <p class="text-[#195279] text-[24px] lg:text-[19px] xl:text-[22px] font-medium pb-2">
-              Stay Connects
+              {{ $t("footer.stayConnects") }}
             </p>
 
             <div class="mb-3">
-              <p class="text-[#195279] text-[18px] lg:text-[18px] xl:text-[22px] pb-2">Address</p>
+              <p class="text-[#195279] text-[18px] lg:text-[18px] xl:text-[22px] pb-2">
+                {{ $t("footer.address") }}
+              </p>
               <div class="w-full h-auto flex flex-col xl:flex-row">
                 <div class="w-full h-auto pb-2 lg:pr-5">
                   <p
@@ -210,7 +211,7 @@ const connectColor = computed(() => {
             </div>
             <div class="flex flex-col xl:flex-row w-full h-auto">
               <div class="flex flex-col w-full h-auto mb-3 lg:mt-2">
-                <p class="text-[#195279] text-[20px] lg:text-[18px]">Phone</p>
+                <p class="text-[#195279] text-[20px] lg:text-[18px]">{{ $t("footer.phone") }}</p>
                 <a
                   href="tel:+62215265235"
                   :class="[`${connectColor} text-sm lg:text-base xl:text-[18px] lg:pt-1.5`]"
@@ -219,7 +220,7 @@ const connectColor = computed(() => {
                 </a>
               </div>
               <div class="flex flex-col w-full h-auto mb-3 lg:mt-2">
-                <p class="text-[#195279] text-[20px] lg:text-[18px]">Email</p>
+                <p class="text-[#195279] text-[20px] lg:text-[18px]">{{ $t("footer.email") }}</p>
                 <a
                   href="mailto:info@seleris.ai"
                   :class="[`${connectColor} text-sm lg:text-base xl:text-[18px] lg:pt-1.5`]"
@@ -236,11 +237,11 @@ const connectColor = computed(() => {
             <p
               class="text-[#195279] dark:text-[#FAFAFA] text-[24px] lg:text-[18px] xl:text-[22px] font-medium pb-0"
             >
-              Get The App
+              {{ $t("footer.getTheApp") }}
             </p>
             <div class="flex flex-row lg:flex-col gap-10 lg:gap-0">
               <a
-                href="https://play.google.com/store/apps/developer?id=PT.+Seleris+Meditekno+Internasional"
+                href="https://play.google.com/store/search?q=blooxia&c=apps&hl=id"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="flex w-auto h-full md:justify-start justify-center items-center content-center xl:justify-start xl:content-start"
@@ -249,6 +250,8 @@ const connectColor = computed(() => {
                   :src="playstore"
                   alt="Playstore"
                   class="w-full sm:w-[200px] md:w-[200px] xl:w-[200px] h-[100px] object-contain object-center"
+                  loading="lazy"
+                  decoding="async"
                 />
               </a>
               <!-- <div
@@ -259,7 +262,7 @@ const connectColor = computed(() => {
                     :src="appstore"
                     alt="Appstore"
                     class="w-full h-full object-contain object-center"
-                  />
+                  loading="lazy" decoding="async" />
 
                   Hover Overlay
                   <div
@@ -283,7 +286,7 @@ const connectColor = computed(() => {
           PT Seleris Meditekno Internasional
         </p>
         <p class="text-[12px] lg:text-[14px] xl:text-[16px] dark:text-[#FAFAFA]/40 font-[400]">
-          © 2023 Seleris Asia Pacific Technology. All rights reserved
+          {{ $t("footer.rights") }}
         </p>
       </div>
     </div>

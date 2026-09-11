@@ -58,7 +58,13 @@ onUnmounted(() => clearInterval(autoSlideTimer));
       >
         <!-- Image -->
         <div class="w-auto h-[50%] flex items-center justify-center">
-          <img :src="data.image" :alt="data.title" class="w-full h-full object-contain" />
+          <img
+            :src="data.image"
+            :alt="data.title"
+            class="w-full h-full object-contain"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
 
         <!-- Number -->
@@ -156,6 +162,8 @@ onUnmounted(() => clearInterval(autoSlideTimer));
                 :src="data.image"
                 :alt="data.title"
                 class="w-full h-full xl:h-full object-contain"
+                loading="lazy"
+                decoding="async"
               />
             </div>
 

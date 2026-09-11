@@ -3,7 +3,7 @@
     <h2
       class="text-center max-smallest:text-[20px] text-[28px] md:text-[32px] lg:text-[38px] xl:text-[48px] font-[600] text-[#374151] mb-10 tracking-tight"
     >
-      Pertanyaan Umum
+      {{ $t("home.faqHeading") }}
     </h2>
     <div
       v-for="(item, index) in faqs"
@@ -65,42 +65,20 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { useI18n } from "vue-i18n";
+import { computed, ref } from "vue";
+
+const { t } = useI18n();
 
 const activeIndex = ref(null);
 
-const faqs = ref([
-  {
-    question: "Apakah butuh modal besar?",
-    answer:
-      "Tidak. Bergabung sebagai SELICA Partner tidak memerlukan modal awal atau biaya pendaftaran. Anda dapat langsung mulai menjalankan bisnis dan mendapatkan komisi dari sistem yang telah disediakan.",
-  },
-  {
-    question: "Saya tidak punya latar belakang medis, apakah bisa?",
-    answer:
-      "Tentu bisa. Program SELICA Partner dirancang untuk semua orang tanpa harus memiliki latar belakang medis. Anda akan mendapatkan panduan, materi edukasi, dan sistem yang membantu proses penjualan.",
-  },
-  {
-    question: "Berapa lama proses pendaftaran berlangsung?",
-    answer:
-      "Proses pendaftaran biasanya memakan waktu tidak sampai 1 hari. Anda akan langsung mendapatkan akses penuh ke dashboard, sistem affiliate, dan fitur penjualan.",
-  },
-  {
-    question: "Apakah ada dukungan setelah bergabung?",
-    answer:
-      "Ya. Kami menyediakan dukungan penuh berupa tim support, materi training, serta panduan penggunaan dashboard agar Anda dapat menjalankan bisnis dengan optimal.",
-  },
-  {
-    question: "Bagaimana sistem komisi bekerja?",
-    answer:
-      "Setiap penjualan yang berhasil melalui link affiliate atau aktivitas sales Anda akan otomatis tercatat di dashboard dan komisi dihitung secara otomatis.",
-  },
-  {
-    question: "Bagaimana proses withdraw komisi?",
-    answer:
-      "Anda dapat mengajukan withdraw langsung melalui dashboard. Permintaan pencairan akan diproses sesuai waktu yang diinginkan.",
-  },
-]);
+// Enam pertanyaan; kalimatnya ada di berkas bahasa pada kunci home.faq.*
+const faqs = computed(() =>
+  Array.from({ length: 6 }, (_, i) => ({
+    question: t(`home.faq.${i}.question`),
+    answer: t(`home.faq.${i}.answer`),
+  })),
+);
 
 function toggle(index) {
   activeIndex.value = activeIndex.value === index ? null : index;

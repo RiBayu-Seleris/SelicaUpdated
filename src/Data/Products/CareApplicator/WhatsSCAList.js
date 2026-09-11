@@ -1,11 +1,3 @@
-export const whatsSCAList = [
-  {
-    content: "Didukung sistem digital & aplikasi tracking otomatis",
-  },
-  {
-    content: "Bukan tenaga medis? Tidak masalah!",
-  },
-  {
-    content: "Diberikan training intensif hingga mahir",
-  },
-];
+// Kalimatnya ada di berkas bahasa pada kunci `home.whatsSca.*`.
+// Berkas ini hanya menentukan ADA BERAPA butir yang ditampilkan.
+export const whatsSCAList = [{}, {}, {}];

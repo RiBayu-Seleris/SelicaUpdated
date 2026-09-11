@@ -1,0 +1,858 @@
+{
+  "common": {
+    "changeLanguage": "Change language",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "scrollLeft": "Scroll left",
+    "scrollRight": "Scroll right",
+    "backToTop": "Back to top"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "testimonial": "Testimonial",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "hub": "Selica HUB",
+    "partner": "SELICA Partner",
+    "disclaimer": "Medical disclaimer"
+  },
+  "footer": {
+    "tagline": "Transform personal and corporate healthcare through AI-driven wellness monitoring, preventive risk detection, and intelligent health optimization.",
+    "poweredBy": "Powered by Seleris Meditekno International",
+    "products": "Products",
+    "company": "Company",
+    "stayConnects": "Stay Connects",
+    "address": "Address",
+    "phone": "Phone",
+    "email": "Email",
+    "getTheApp": "Get The App",
+    "rights": "© 2023 Seleris Asia Pacific Technology. All rights reserved"
+  },
+  "partner": {
+    "hero": {
+      "eyebrow": "SELICA partnership program",
+      "headline": "Simple screening, real commission",
+      "sub": "Become an official SELICA partner: bring AI health screening to your community, earn 15% on every screening, and grow a network of your own toward Leader status.",
+      "ctaPrimary": "Join now",
+      "ctaSecondary": "See how it works",
+      "badge1": "Free to join",
+      "badge2": "15% per screening",
+      "badge3": "No medical background needed",
+      "ladderTitle": "Three status levels",
+      "features": {
+        "0": {
+          "judul": "Competitive commission",
+          "isi": "Up to 15% per transaction"
+        },
+        "1": {
+          "judul": "A transparent system",
+          "isi": "Real-time, accurate tracking"
+        },
+        "2": {
+          "judul": "A clear path to Leader",
+          "isi": "Rewards and bonuses as you grow"
+        }
+      }
+    },
+    "status": {
+      "0": {
+        "nama": "Inactive",
+        "ringkas": "Right after signing up",
+        "detail": "You can already run screenings, for yourself or for other people. Recruiting is not open yet."
+      },
+      "1": {
+        "nama": "Active",
+        "ringkas": "After your self-screening",
+        "detail": "Your referral code goes live. From here you can invite other people to join."
+      },
+      "2": {
+        "nama": "Leader",
+        "ringkas": "Once you have a downline",
+        "detail": "You earn an extra 10% from network activity, across two layers."
+      }
+    },
+    "about": {
+      "heading": "What SELICA Partner is",
+      "intro": "SELICA Partner is the official partnership program of SELICA, an AI-based digital health screening platform. Anyone can join at no cost to offer screening services to their community, and earn a commission on every screening that happens.",
+      "principlesHeading": "Five things we hold to",
+      "principles": {
+        "0": {
+          "judul": "Free to join",
+          "isi": "There is no registration fee of any kind."
+        },
+        "1": {
+          "judul": "Commission from screening",
+          "isi": "Income comes from real screening activity, not from recruiting alone."
+        },
+        "2": {
+          "judul": "Activate by screening yourself",
+          "isi": "One screening for yourself is all it takes to turn your status active."
+        },
+        "3": {
+          "judul": "Two layers at most",
+          "isi": "The network stops at two levels, which keeps the structure simple and transparent."
+        },
+        "4": {
+          "judul": "No fixed income promised",
+          "isi": "Commission follows activity. We do not promise a monthly figure."
+        }
+      }
+    },
+    "benefits": {
+      "heading": "What you get",
+      "items": {
+        "0": {
+          "judul": "Join at no cost",
+          "isi": "No joining fee, and no mandatory package purchase upfront."
+        },
+        "1": {
+          "judul": "15% per screening",
+          "isi": "Applies to screenings you run for yourself and for other people."
+        },
+        "2": {
+          "judul": "Two-layer network commission",
+          "isi": "An extra 10% from your direct downline and from theirs."
+        },
+        "3": {
+          "judul": "TrainingMind AI guidance",
+          "isi": "Learning material sits inside the system. No medical background required."
+        },
+        "4": {
+          "judul": "SelicaHUB dashboard",
+          "isi": "Track your transactions, your network, and your commission in one place."
+        },
+        "5": {
+          "judul": "Work on your own terms",
+          "isi": "Screening is AI-guided through the app, so you can run it from anywhere."
+        }
+      }
+    },
+    "commission": {
+      "heading": "How commission works",
+      "intro": "There are two sources of commission. Both are calculated from the price of the screening package sold.",
+      "colSource": "Source",
+      "colRate": "Rate",
+      "rowDirect": "Screening you run, for yourself or others",
+      "rowLayer1": "Network layer 1, your direct downline",
+      "rowLayer2": "Network layer 2, their downline",
+      "perTransaction": "per transaction",
+      "simHeading": "Estimate your commission",
+      "simIntro": "Move the numbers to see how the commission adds up. Every calculation uses the same rates as the table above.",
+      "simPackage": "Screening package price",
+      "simOwn": "Screenings you run per month",
+      "simDownline": "Active downline in your network",
+      "simPerDownline": "Average screenings per downline per month",
+      "simNeedsDownline": "Add downline first",
+      "simNetworkTotal": "Total network screenings per month",
+      "simResultDirect": "From your screenings",
+      "simResultNetwork": "From your network",
+      "simResultTotal": "Estimated monthly commission",
+      "simFormulaDirect": "{jumlah} screenings × {harga} × {persen}",
+      "simFormulaNetwork": "{jumlah} network screenings × {harga} × {persen}",
+      "disclaimer": "These figures illustrate the inputs you chose. They are not a guarantee of income. Actual commission depends on screening activity that genuinely takes place."
+    },
+    "hub": {
+      "heading": "The SelicaHUB dashboard",
+      "intro": "Once you are registered, you get access to a dashboard for tracking day-to-day activity and how your network is doing.",
+      "features": {
+        "0": {
+          "teks": "Run everything from one dashboard"
+        },
+        "1": {
+          "teks": "Check sales whenever you want"
+        },
+        "2": {
+          "teks": "Grow your network automatically"
+        },
+        "3": {
+          "teks": "Commission worked out for you"
+        },
+        "4": {
+          "teks": "Transactions recorded in real time"
+        },
+        "5": {
+          "teks": "Withdraw commission from the system"
+        },
+        "6": {
+          "teks": "See how your team is performing"
+        },
+        "7": {
+          "teks": "Day-to-day operations in one place"
+        }
+      },
+      "badge": "Dashboard preview",
+      "title": "Run your business from anywhere"
+    },
+    "join": {
+      "heading": "How to become a partner",
+      "steps": {
+        "0": {
+          "judul": "Open the sign-up link",
+          "isi": "From your upline, or straight from this page."
+        },
+        "1": {
+          "judul": "Fill in the form",
+          "isi": "Name, WhatsApp number, email if you have one, and your upline's referral code."
+        },
+        "2": {
+          "judul": "Confirm over WhatsApp",
+          "isi": "We reach out to check that your details are right."
+        },
+        "3": {
+          "judul": "Your account opens as Inactive",
+          "isi": "You can sign in and look around the app straight away."
+        },
+        "4": {
+          "judul": "Run your self-screening",
+          "isi": "One screening for yourself turns your status to Active."
+        }
+      },
+      "note": "No medical background is needed. The whole screening process is AI-guided, and study material is available through TrainingMind AI."
+    },
+    "referral": {
+      "heading": "Using a referral code",
+      "intro": "A referral code links each screening to the partner it belongs to. Two sides need to know how it works.",
+      "partnerTitle": "For partners: sharing your code",
+      "customerTitle": "For customers: using a code",
+      "flows": {
+        "0": {
+          "0": {
+            "judul": "Activate your status first",
+            "isi": "Your referral code only goes live after you finish your self-screening."
+          },
+          "1": {
+            "judul": "Copy the code from your dashboard",
+            "isi": "Both the code and a ready-made sign-up link sit in SelicaHUB."
+          },
+          "2": {
+            "judul": "Share it with people",
+            "isi": "Over WhatsApp, social media, or face to face. Every screening under that code is recorded as yours."
+          }
+        },
+        "1": {
+          "0": {
+            "judul": "Ask your partner for the code",
+            "isi": "It is either a short string of characters, or a link that already carries the code."
+          },
+          "1": {
+            "judul": "Enter it when you register",
+            "isi": "There is a referral code field on the SELICA sign-up form."
+          },
+          "2": {
+            "judul": "Carry on with your screening",
+            "isi": "Nothing else changes. The code only marks which partner is looking after you."
+          }
+        }
+      }
+    },
+    "cta": {
+      "heading": "Ready to start?",
+      "sub": "Signing up is free and takes a few minutes.",
+      "button": "Join SELICA Partner"
+    },
+    "network": {
+      "you": "You",
+      "layer1": "Layer 1 — your direct downline",
+      "layer2": "Layer 2 — their downline",
+      "more": "+{jumlah} more not drawn",
+      "note": "The network stops at two layers. Both pay the same rate, so how your network is arranged does not change the maths.",
+      "alt": "Partner network diagram with {jumlah} active downline",
+      "heading": "How your network looks"
+    }
+  },
+  "parameters": {
+    "categories": {
+      "vital": {
+        "label": "Vital signs",
+        "description": "Core indicators of your basic physiology."
+      },
+      "fisik": {
+        "label": "Body",
+        "description": "Body proportions and estimated biological age."
+      },
+      "fisiologis": {
+        "label": "Physiological",
+        "description": "Heart rhythm and breathing in detail."
+      },
+      "mental": {
+        "label": "Mental",
+        "description": "Stress load and autonomic nervous balance."
+      },
+      "darah": {
+        "label": "Blood",
+        "description": "Blood chemistry estimated non-invasively."
+      },
+      "komposisi": {
+        "label": "Composition",
+        "description": "Muscle, fat, fluid, and metabolism."
+      },
+      "risiko": {
+        "label": "Risk",
+        "description": "Potential long-term health conditions."
+      }
+    },
+    "items": {
+      "vital": {
+        "0": {
+          "title": "Heart rate",
+          "description": "Beats per minute."
+        },
+        "1": {
+          "title": "Oxygen saturation (SpO2)",
+          "description": "Oxygen level in the blood."
+        },
+        "2": {
+          "title": "Systolic blood pressure",
+          "description": "Pressure as the heart pumps."
+        },
+        "3": {
+          "title": "Diastolic blood pressure",
+          "description": "Pressure as the heart relaxes."
+        },
+        "4": {
+          "title": "Cardiac output",
+          "description": "Blood volume pumped per minute."
+        },
+        "5": {
+          "title": "Pulse pressure",
+          "description": "Gap between systolic and diastolic."
+        }
+      },
+      "fisik": {
+        "0": {
+          "title": "Body mass index (BMI)",
+          "description": "Weight to height ratio."
+        },
+        "1": {
+          "title": "Waist-to-height ratio",
+          "description": "Indicator of fat distribution."
+        },
+        "2": {
+          "title": "Body shape index",
+          "description": "Analysis of body proportions."
+        },
+        "3": {
+          "title": "Biological age",
+          "description": "Estimate of your current condition."
+        },
+        "4": {
+          "title": "Skin age",
+          "description": "Estimate of your skin's condition."
+        },
+        "5": {
+          "title": "Heart age",
+          "description": "Estimated functional age of the heart."
+        },
+        "6": {
+          "title": "Vascular age",
+          "description": "Estimated age of your blood vessels."
+        },
+        "7": {
+          "title": "Body roundness index (BRI)",
+          "description": "Index of body roundness."
+        },
+        "8": {
+          "title": "Conicity index (CI)",
+          "description": "Index of abdominal fat distribution."
+        }
+      },
+      "fisiologis": {
+        "0": {
+          "title": "Heart rate variability (HRV)",
+          "description": "Variation between heartbeats."
+        },
+        "1": {
+          "title": "Respiratory rate",
+          "description": "Breaths per minute."
+        },
+        "2": {
+          "title": "Pulse-respiratory quotient (PRQ)",
+          "description": "Ratio of pulse to breathing."
+        },
+        "3": {
+          "title": "HRV – VLF power",
+          "description": "HRV power at very low frequency."
+        },
+        "4": {
+          "title": "HRV – LF power",
+          "description": "HRV power at low frequency."
+        },
+        "5": {
+          "title": "HRV – HF power",
+          "description": "HRV power at high frequency."
+        },
+        "6": {
+          "title": "HRV – SD2",
+          "description": "Long-term beat variability."
+        },
+        "7": {
+          "title": "HRV – S (Poincaré area)",
+          "description": "Spread of the Poincaré plot."
+        }
+      },
+      "mental": {
+        "0": {
+          "title": "Stress level",
+          "description": "Indicator of physiological stress."
+        },
+        "1": {
+          "title": "Parasympathetic activity",
+          "description": "Nerve activity during recovery."
+        },
+        "2": {
+          "title": "Sympathetic activity",
+          "description": "Nerve activity when the body is alert."
+        },
+        "3": {
+          "title": "HRV – RMSSD",
+          "description": "Indicator of short-term beat variation."
+        },
+        "4": {
+          "title": "HRV – PNN50",
+          "description": "Share of intervals differing by over 50 ms."
+        },
+        "5": {
+          "title": "HRV – Mean RR",
+          "description": "Average interval between beats."
+        },
+        "6": {
+          "title": "HRV – CV RR",
+          "description": "Coefficient of variation between beats."
+        },
+        "7": {
+          "title": "HRV – SDSD",
+          "description": "Deviation of differences between intervals."
+        },
+        "8": {
+          "title": "HRV – LF/HF ratio",
+          "description": "Balance of sympathetic and parasympathetic."
+        },
+        "9": {
+          "title": "HRV – SD1",
+          "description": "Short-term beat variability."
+        }
+      },
+      "darah": {
+        "0": {
+          "title": "Blood glucose",
+          "description": "Sugar level in the blood."
+        },
+        "1": {
+          "title": "Total cholesterol",
+          "description": "Total cholesterol in the body."
+        },
+        "2": {
+          "title": "Haemoglobin",
+          "description": "The blood's oxygen-carrying protein."
+        },
+        "3": {
+          "title": "Uric acid",
+          "description": "Uric acid level in the blood."
+        },
+        "4": {
+          "title": "Glycated haemoglobin (HbA1c)",
+          "description": "Long-term average blood sugar."
+        }
+      },
+      "komposisi": {
+        "0": {
+          "title": "Muscle level",
+          "description": "Percentage of muscle mass."
+        },
+        "1": {
+          "title": "Body fat ratio",
+          "description": "Percentage of total fat."
+        },
+        "2": {
+          "title": "Body water percentage",
+          "description": "Fluid level in the body."
+        },
+        "3": {
+          "title": "Bone mass",
+          "description": "Estimated bone weight."
+        },
+        "4": {
+          "title": "Basal metabolic rate (BMR)",
+          "description": "Estimated baseline calorie need."
+        },
+        "5": {
+          "title": "Protein level",
+          "description": "Protein makeup of the body."
+        },
+        "6": {
+          "title": "Visceral fat",
+          "description": "Fat around the vital organs."
+        },
+        "7": {
+          "title": "Subcutaneous fat",
+          "description": "Fat beneath the skin."
+        },
+        "8": {
+          "title": "Muscle mass (kg)",
+          "description": "Total muscle weight."
+        },
+        "9": {
+          "title": "Fat mass (kg)",
+          "description": "Total fat weight."
+        },
+        "10": {
+          "title": "Protein mass (kg)",
+          "description": "Total protein weight."
+        },
+        "11": {
+          "title": "Total daily energy expenditure (TDEE)",
+          "description": "Estimated total daily calories."
+        }
+      },
+      "risiko": {
+        "0": {
+          "title": "Hypertension risk",
+          "description": "Potential for high blood pressure."
+        },
+        "1": {
+          "title": "Type 2 diabetes risk",
+          "description": "Potential for blood sugar problems."
+        },
+        "2": {
+          "title": "Cardiovascular disease risk",
+          "description": "Potential heart and vessel problems."
+        },
+        "3": {
+          "title": "Hypercholesterolaemia risk",
+          "description": "Potential for high cholesterol."
+        },
+        "4": {
+          "title": "Hypertriglyceridaemia risk",
+          "description": "Potential for high triglycerides."
+        },
+        "5": {
+          "title": "Heart attack risk",
+          "description": "Analysis of potential heart events."
+        },
+        "6": {
+          "title": "Stroke risk",
+          "description": "Analysis of potential brain vessel events."
+        },
+        "7": {
+          "title": "Abnormal fasting glucose",
+          "description": "Indicator of abnormal fasting blood sugar."
+        },
+        "8": {
+          "title": "ASCVD risk",
+          "description": "Potential atherosclerotic cardiovascular disease."
+        },
+        "9": {
+          "title": "Anaemia / low haemoglobin risk",
+          "description": "Potential for low haemoglobin."
+        },
+        "10": {
+          "title": "Heart failure risk",
+          "description": "Potential decline in heart function."
+        },
+        "11": {
+          "title": "Fatty liver risk",
+          "description": "Potential fat build-up in the liver."
+        }
+      }
+    },
+    "heading": "60+ health parameters",
+    "subheading": "Our AI reads a broad spectrum of your health in a single scanning session.",
+    "footer": {
+      "title": "60+ health parameters in total",
+      "description": "Every report comes in a format that is easy to follow.",
+      "button": "See a sample PDF report",
+      "pdfFallback": "PDF document"
+    }
+  },
+  "packages": {
+    "names": {
+      "essential": "ESSENTIAL",
+      "core": "CORE",
+      "prime": "PRIME"
+    },
+    "badges": {
+      "populer": "Popular",
+      "terlengkap": "Most complete",
+      "dasar": "Basic"
+    },
+    "benefitCategories": {
+      "vital": "Vital signs screening",
+      "fisik": "Physical screening",
+      "fisiologis": "Physiological screening",
+      "mental": "Mental screening",
+      "darah": "Blood screening",
+      "komposisi": "Body composition screening",
+      "risiko": "Disease risk analysis"
+    },
+    "params": {
+      "0": "Heart rate",
+      "1": "Blood oxygen availability (SpO2)",
+      "2": "Systolic blood pressure",
+      "3": "Diastolic blood pressure",
+      "4": "Cardiac output",
+      "5": "Body mass index (BMI)",
+      "6": "Waist-to-height ratio",
+      "7": "Body shape index",
+      "8": "Biological age",
+      "9": "Skin age",
+      "10": "Heart rate variability (HRV)",
+      "11": "Respiratory rate",
+      "12": "Pulse-respiratory quotient (PRQ)",
+      "13": "Stress level",
+      "14": "Blood glucose",
+      "15": "Total cholesterol",
+      "16": "Haemoglobin",
+      "17": "Uric acid",
+      "18": "Glycated haemoglobin (HbA1c)",
+      "19": "Muscle level",
+      "20": "Body fat ratio",
+      "21": "Body water percentage",
+      "22": "Bone mass",
+      "23": "Basal metabolic rate (BMR)",
+      "24": "Protein level",
+      "25": "Visceral fat",
+      "26": "Subcutaneous fat",
+      "27": "Muscle mass (kg)",
+      "28": "Fat mass (kg)",
+      "29": "Protein mass (kg)",
+      "30": "Body shape analysis",
+      "31": "Hypertension risk",
+      "32": "Type 2 diabetes risk",
+      "33": "Cardiovascular disease risk",
+      "34": "Hypercholesterolaemia risk",
+      "35": "Hypertriglyceridaemia risk",
+      "36": "Heart attack risk",
+      "37": "Stroke risk",
+      "38": "Abnormal fasting blood glucose"
+    },
+    "viewPackage": "View the {nama} package"
+  },
+  "home": {
+    "hero": {
+      "title": "Smarter Health Monitoring for Everyone",
+      "badge": "Application",
+      "description": "From personal check-ups to organization-wide wellness — AI-driven health insights, preventive care, and cost control in one platform.",
+      "ctaPartner": "Become a SELICA Partner",
+      "ctaContact": "Contact us",
+      "badgePosition": "after"
+    },
+    "about": {
+      "eyebrow": "About Us",
+      "title": "AI Health Metrics Assistance Application",
+      "description": "SELICA is an AI-powered health platform for individuals and organizations. It delivers real-time preventive health insights and biometric scanning — helping people monitor their own health, and helping companies optimize employee wellness programs while reducing medical costs by up to 20%"
+    },
+    "partner": {
+      "question": "What is",
+      "questionName": "SELICA Partner?",
+      "intro": "SELICA Partner is an official partner of",
+      "point1Title": "Verified partner",
+      "point1Text": "Has been through verification and certification",
+      "point2Title": "Health solution",
+      "point2Text": "Backed by modern scanning technology",
+      "point3Title": "Smart digital platform",
+      "point3Text": "Reporting and monitoring in one place",
+      "introRest": "whose job is to market and deliver health scanning services to the wider public using our devices and digital app."
+    },
+    "packages": {
+      "eyebrow": "Choose a health package",
+      "titleLine1": "Your health",
+      "titleLine2": "packages,",
+      "subtitle": "A fast way to keep track",
+      "detailPrice": "Detailed service pricing",
+      "resultTime": "Results in 5 minutes",
+      "back": "Back to home",
+      "eyebrowLine2": "that fits what you need",
+      "titleWord": "analysis",
+      "titleAccent": "without needles",
+      "subtitleLine2": "of your basic health."
+    },
+    "clients": {
+      "eyebrow": "Our Client",
+      "title": "Seleris Meditekno Internasional"
+    },
+    "download": {
+      "description": "Enable smarter health monitoring — for yourself or your entire organization — with real-time insights and preventive risk detection."
+    },
+    "demo": {
+      "title": "SELICA A Complete Solution for Your Health Needs",
+      "cta": "Become a SELICA Partner and start selling"
+    },
+    "faq": {
+      "0": {
+        "question": "Do I need a lot of capital?",
+        "answer": "No. Joining as a SELICA Partner requires no upfront capital and no registration fee. You can start running the business straight away and earn commission through the system provided."
+      },
+      "1": {
+        "question": "I have no medical background. Can I still join?",
+        "answer": "Yes. The SELICA Partner programme is built for everyone, with no medical background required. You get guidance, learning material, and a system that supports the selling process."
+      },
+      "2": {
+        "question": "How long does registration take?",
+        "answer": "Registration usually takes less than a day. You get full access to the dashboard, the affiliate system, and the selling features right away."
+      },
+      "3": {
+        "question": "Is there support after joining?",
+        "answer": "Yes. We provide full support: a support team, training material, and a guide to using the dashboard so you can run the business well."
+      },
+      "4": {
+        "question": "How does the commission system work?",
+        "answer": "Every successful sale through your affiliate link or your own sales activity is recorded in the dashboard automatically, and the commission is calculated for you."
+      },
+      "5": {
+        "question": "How do I withdraw commission?",
+        "answer": "You can request a withdrawal directly from the dashboard. Payouts are processed according to the schedule you choose."
+      }
+    },
+    "faqHeading": "Common questions",
+    "demoCta": "Request a demo",
+    "demoTitle": "Book a Demo",
+    "dashboardLogin": "Sign in to the dashboard",
+    "pdfLoading": "Loading the PDF…",
+    "pdfFailed": "The PDF could not be loaded.",
+    "downloadButton": "Download",
+    "applicationWorkTitle": "How the App Works",
+    "registerCta": "Register as an SCA",
+    "whatsSelica": {
+      "0": {
+        "title": "Medical AI technology",
+        "content": "Health analysis driven by AI you can rely on"
+      },
+      "1": {
+        "title": "Fast, accurate analysis",
+        "content": "Quick results with high, consistent accuracy"
+      },
+      "2": {
+        "title": "Non-invasive and safe",
+        "content": "Safe and comfortable, with no invasive procedure"
+      },
+      "3": {
+        "title": "Simple to use",
+        "content": "A straightforward process anyone can follow"
+      }
+    },
+    "whatsSca": {
+      "0": "Backed by a digital system with automatic tracking",
+      "1": "Not a medical professional? That is fine",
+      "2": "Intensive training until you are confident"
+    },
+    "workSteps": {
+      "0": {
+        "title": "Face scanning",
+        "description": "Scan a face to verify the user's health identity."
+      },
+      "1": {
+        "title": "AI data processing",
+        "description": "The data is analysed automatically by AI."
+      },
+      "2": {
+        "title": "Result",
+        "description": "Get an accurate health status in real time."
+      }
+    },
+    "testimonials": {
+      "0": {
+        "name": "Bapak Andi",
+        "text": "The AI really helps ordinary people catch illness early at a price they can afford."
+      },
+      "1": {
+        "name": "Ibu Siti",
+        "text": "I feel calmer knowing I can check my health early without always going to hospital."
+      },
+      "2": {
+        "name": "Bapak Rudi",
+        "text": "The process is quick and easy to follow. It helps a lot for someone like me."
+      },
+      "3": {
+        "name": "Ibu Lina",
+        "text": "The app is friendly and the results are clear. It suits keeping an eye on the family."
+      },
+      "4": {
+        "name": "Bapak Dedi",
+        "text": "With this technology I am far more aware of my body before anything gets serious."
+      },
+      "5": {
+        "name": "Ibu Maya",
+        "text": "A remarkable innovation. It helps most for those of us far from health services."
+      }
+    },
+    "benefits": {
+      "0": {
+        "title": "Membership package",
+        "items": {
+          "0": "Access to the SELICA app",
+          "1": "Product and screening training",
+          "2": "Real-time sales dashboard",
+          "3": "Your own referral code",
+          "4": "Digital marketing material",
+          "5": "Community support group",
+          "6": "Official SELICA Partner certificate"
+        }
+      },
+      "1": {
+        "title": "Ongoing support",
+        "items": {
+          "0": "Product and technology updates",
+          "1": "Marketing and sales tips",
+          "2": "Regular contests and rewards",
+          "3": "Networking with other SELICA Partners"
+        }
+      }
+    },
+    "dashboardAlt": "Preview of the SELICA Partner dashboard",
+    "registerFlow": {
+      "0": {
+        "title": "Create an account",
+        "description": "Register through <a href=\"https://sca.seleriscare.ai\" target=\"_blank\" class=\"text-[#01A488] hover:underline\">sca.seleriscare.ai</a> and buy a product as part of the sign-up process"
+      },
+      "1": {
+        "title": "Download SELICA",
+        "description": "Get the <a href=\"https://sca.seleriscare.ai\" target=\"_blank\" class=\"text-[#01A488] hover:underline\">SELICA</a> app from the Google Play Store and install it on your device before you start."
+      },
+      "2": {
+        "title": "Sign in to SELICA",
+        "description": "Sign in to the SELICA app with your account and start using the services available"
+      }
+    },
+    "appWork": {
+      "0": {
+        "title": "Sign in",
+        "content": "Sign in to the <a href=\"https://sca.seleriscare.ai\" target=\"_blank\" class=\"text-[#01A488] hover:underline\">SELICA</a> app with the email and password you registered."
+      },
+      "1": {
+        "title": "Home page",
+        "content": "Choose a health screening service and buy the product to begin the check."
+      },
+      "2": {
+        "title": "Face scanning",
+        "content": "Follow the face scanning process, pointing your face at the camera as instructed, so the health analysis can run"
+      },
+      "3": {
+        "title": "Vital result",
+        "content": "The app shows your health analysis, which you can view and download straight from the app"
+      }
+    },
+    "downline": {
+      "0": {
+        "title": "Create an account",
+        "content": "Register through <a href=\"https://sca.seleriscare.ai\" target=\"_blank\" class=\"text-[#01A488] hover:underline\">sca.seleriscare.ai</a> with an active email address to start the sign-up process"
+      },
+      "1": {
+        "title": "Enter a referral code",
+        "content": "Enter the referral code from the SELICA Partner who invited you into the SELICA network"
+      },
+      "2": {
+        "title": "Done",
+        "content": "You are registered. You are now officially part of SELICA Partner and ready to begin with us"
+      }
+    }
+  },
+  "disclaimer": {
+    "heading": "Medical Disclaimer & Legal Notice",
+    "p1Strong": "SELICA is an artificial-intelligence application developed as a health screening and monitoring tool intended for early detection",
+    "p1Rest": ", periodic monitoring of health parameters, and support for lifestyle and prevention decisions. The system is not intended, designed, or positioned as a medical diagnostic tool. It does not replace a comprehensive medical examination, laboratory testing, clinical diagnostic procedures, or the consultation and professional judgement of a licensed doctor or health professional.",
+    "p2Strong": "All results, scores, indicators, and recommendations shown in this report are informative and indicative, produced by the system's analytical algorithms, and therefore cannot serve as the sole basis for establishing a diagnosis or determining medical treatment",
+    "p2Rest": ". Where a result falls into an abnormal or at-risk category, or otherwise calls for attention, the user must consult a doctor or an authorised health professional and, where necessary, undergo supporting or laboratory examinations for confirmation in line with medical practice standards and applicable regulations.",
+    "p3": "By accepting and using this report, the user understands and agrees that SELICA functions as a non-diagnostic screening and monitoring tool, and releases the developer and/or service provider from liability for any use of the results beyond their intended purpose or without appropriate medical follow-up."
+  }
+}

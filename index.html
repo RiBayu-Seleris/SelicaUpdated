@@ -1,9 +1,49 @@
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="en">
   <head>
     <!-- Basic -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Warna dasar halaman. Ditulis langsung di sini (bukan di style.css)
+         supaya sudah berlaku pada gambar PERTAMA browser, sebelum berkas CSS
+         dan JavaScript selesai diunduh. Dua hal bergantung padanya:
+         1. Tanpa ini halaman sempat putih polos beberapa saat, lalu warnanya
+            melompat begitu layar loading tampil.
+         2. Pencegat tombol refresh di App.vue menutup gerbang lebih dulu baru
+            memuat ulang. Dokumen barunya harus menggambar latar dengan warna
+            yang sama persis, kalau tidak muat ulangnya justru terlihat
+            sebagai kedipan di balik gerbang yang seharusnya menutupinya. -->
+    <style>
+      html {
+        background-color: #f9f9f9;
+      }
+      html.dark {
+        background-color: #17181a;
+      }
+    </style>
+
+    <!-- Tema tersimpan diterapkan sebelum halaman digambar, supaya tidak ada
+         kedipan gelap-ke-terang saat refresh. Sebelumnya kelas "dark" ditulis
+         mati di tag <html>, jadi pengunjung mode terang — yaitu semua orang,
+         karena situs ini tidak punya tombol ganti tema — selalu melihat
+         kilatan gelap sepersekian detik sampai loadTheme() di App.vue sempat
+         membetulkannya. Yang paling kentara justru di layar loadingnya, yang
+         memang tampil dua detik penuh.
+
+         Aturannya HARUS sama persis dengan loadTheme() di
+         src/stores/theme.js — kalau berbeda, kedipannya cuma berpindah
+         tempat. -->
+    <script>
+      (function () {
+        try {
+          var gelap = localStorage.getItem("isDark") === "true";
+          document.documentElement.classList.toggle("dark", gelap);
+        } catch (e) {
+          /* localStorage diblokir (mode penyamaran) — biarkan mode terang */
+        }
+      })();
+    </script>
 
     <!-- Title & Description (WAJIB SEO) -->
     <!-- <title>SMI AI Solution – AI Innovation for the Future of Technology</title> -->
@@ -42,7 +82,6 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
     <link rel="manifest" href="/manifest.webmanifest" />
     <meta name="theme-color" content="#0B0B0B" />
@@ -65,8 +104,5 @@
 
     <!-- App -->
     <script type="module" src="/src/main.js"></script>
-
-    <!-- AOS -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   </body>
 </html>
