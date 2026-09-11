@@ -4,7 +4,7 @@
  * KENAPA TIDAK MEMAKAI AOS
  * AOS sudah dipakai di halaman lain dan tetap di sana. Tapi AOS menempelkan
  * transisinya sendiri (translate + opacity, durasi seragam) dan tidak bisa
- * menahan animasi sampai elemen INDUKNYA siap. Halaman SELICA Partner
+ * menahan animasi sampai elemen INDUKNYA siap. Halaman Selica Partner
  * memerlukan dua hal yang tidak disediakan AOS:
  *
  * 1. Beberapa macam gerak masuk yang berbeda peran — garis yang MELEBAR,

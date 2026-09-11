@@ -4,9 +4,9 @@
  *
  * KENAPA BENTUKNYA BEGINI
  * Dua alasan, bukan sekadar hiasan:
- * 1. Logo SELICA memakai motif kepala dengan simpul-simpul yang terhubung —
+ * 1. Logo Selica memakai motif kepala dengan simpul-simpul yang terhubung —
  *    ornamen ini mengulang bahasa visual yang sama.
- * 2. Program SELICA Partner strukturnya memang jaringan (upline, downline,
+ * 2. Program Selica Partner strukturnya memang jaringan (upline, downline,
  *    dua layer). Jadi bentuknya ikut menjelaskan isi halamannya.
  *
  * Digambar sebagai SVG langsung, bukan berkas gambar, supaya ringan dan

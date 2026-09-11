@@ -26,7 +26,7 @@ const isSelerisCredit = ref(route.path === "/product/seleris-credit");
 
 const footerTitle = computed(() => {
   if (route.path === "/") {
-    return "SELICA";
+    return "Selica";
   }
 });
 

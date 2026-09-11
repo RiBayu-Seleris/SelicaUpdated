@@ -154,7 +154,7 @@ const strokeDashoffset = computed(() => {
             :class="{ 'xls:bottom-10': index === steps.length - 1 }"
           >
             <p
-              class="font-[400] text-[#515E71] text-[12px] sm:text-[16px] lg:text-[12px] xl:text-[14px] xls:text-[16px] leading-snug tracking-wide"
+              class="keterangan-langkah font-[400] text-[#515E71] text-[12px] sm:text-[16px] lg:text-[12px] xl:text-[14px] xls:text-[16px] leading-snug tracking-wide"
               v-html="step.description"
             />
           </div>
@@ -242,7 +242,7 @@ const strokeDashoffset = computed(() => {
 
         <!-- Description -->
         <p
-          class="font-[400] text-[#515E71] text-[12px] md:text-[16px] leading-normal tracking-wide text-center h-10 md:h-16"
+          class="keterangan-langkah font-[400] text-[#515E71] text-[12px] md:text-[16px] leading-normal tracking-wide text-center h-10 md:h-16"
           v-html="steps[currentIndex].description"
         />
       </div>
@@ -251,6 +251,38 @@ const strokeDashoffset = computed(() => {
 </template>
 
 <style scoped>
+/* ============================================================
+   TAUTAN DI DALAM KETERANGAN LANGKAH
+
+   Keterangannya datang dari berkas bahasa dan dipasang lewat v-html, jadi
+   isinya membawa tag <a> sendiri.
+
+   KENAPA GAYANYA DI SINI, BUKAN DI BERKAS BAHASA
+   Dulu tag <a> itu membawa kelas Tailwind sendiri
+   (`text-[#01A488] hover:underline`). Kelas itu TIDAK PERNAH TERBENTUK:
+   glob Tailwind hanya memindai .vue/.js/.ts, sehingga apa pun yang ditulis
+   di dalam JSON tidak pernah ikut dihasilkan. Ditambah preflight Tailwind
+   yang menghapus warna dan garis bawah bawaan <a>, tautannya selama ini
+   tampil persis seperti teks biasa — tidak ada tanda sama sekali bahwa ia
+   bisa diklik.
+
+   Diletakkan di sini, gayanya tidak bergantung pada apa yang dipindai
+   Tailwind, dan berkas bahasa kembali berisi kalimat saja tanpa urusan rupa.
+
+   :deep() diperlukan karena isinya disisipkan lewat v-html, jadi elemen <a>
+   tidak membawa penanda scoped milik komponen ini.
+============================================================ */
+.keterangan-langkah :deep(a) {
+  color: #2d71dd;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+.keterangan-langkah :deep(a:hover) {
+  color: #195279;
+}
+
 .img-fade-enter-active,
 .img-fade-leave-active {
   transition:

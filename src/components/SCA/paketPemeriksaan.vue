@@ -156,11 +156,11 @@ const showPopup = ref(false);
 
       <!-- Price -->
       <div class="flex flex-col justify-center">
-        <del class="text-[#9CA3AF] decoration-[#E22F4A]">
+        <!-- <del class="text-[#9CA3AF] decoration-[#E22F4A]">
           <p class="text-[#CDCDCD] font-[400] text-[12px] lg:text-[16px]">
             Rp {{ formatRupiah(getPriceDeleted(pkg.price)) }}
           </p>
-        </del>
+        </del> -->
         <div class="w-full h-auto flex flex-row items-center gap-x-1">
           <p class="text-[#374151] font-semibold md:text-[18px] lg:text-[26px]">
             Rp {{ formatRupiah(pkg.price) }}
@@ -194,7 +194,7 @@ const showPopup = ref(false);
       <!-- Commission -->
       <div class="flex flex-col gap-y-5">
         <!-- <p class="text-[#515E71] font-semibold text-[14px] lg:text-[16px]">
-          Potensi komisi SELICA Partner
+          Potensi komisi Selica Partner
         </p>
 
         <div class="w-full h-auto flex flex-col gap-y-3">

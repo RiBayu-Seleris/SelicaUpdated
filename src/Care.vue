@@ -565,7 +565,7 @@ onUnmounted(() => {
         <div class="w-full h-auto flex justify-center max-smallest:mt-3 mt-0">
           <AboutUs
             :title="$t('home.about.eyebrow')"
-            subtitle="SELICA"
+            subtitle="Selica"
             subtitleColor="text-[#42C5AF]"
           />
         </div>
@@ -652,7 +652,7 @@ onUnmounted(() => {
         <div class="w-full h-auto px-8 sm:px-0">
           <ApplicationWorkText
             :title="$t('home.applicationWorkTitle')"
-            productname="SELICA"
+            productname="Selica"
             textcolor="text-[#42C5AF]"
           />
         </div>
@@ -720,8 +720,8 @@ onUnmounted(() => {
       <div class="relative w-full flex flex-col gap-y-10 lg:gap-y-20 z-20">
         <div class="w-full h-auto flex px-8 md:px-0">
           <ApplicationWorkText
-            title="Register SELICA Partner"
-            productname="SELICA"
+            title="Register Selica Partner"
+            productname="Selica"
             textcolor="text-[#42C5AF]"
           />
         </div>
@@ -986,7 +986,7 @@ onUnmounted(() => {
             <span
               class="text-[#374151] text-[20px] sm:text-[32px] lg:text-[40px] xl:text-[44px] font-[600] text-center"
             >
-              Benefit menjadi SELICA Partner
+              Benefit menjadi Selica Partner
             </span>
           </div>
           <div class="w-full h-auto flex justify-center items-center px-6 md:px-0">
@@ -1142,7 +1142,7 @@ onUnmounted(() => {
     <!-- <section class="flex relative w-full h-auto mx-auto mt-14 lg:mt-20 xl:mt-44" id="downline">
       <div class="relative w-full flex flex-col gap-y-0 z-20">
         <div class="w-full h-auto flex max-w-[1440px] mx-auto px-8 md:px-0">
-          <ApplicationWorkText title="SELICA Downline" textcolor="text-[#42C5AF]" />
+          <ApplicationWorkText title="Selica Downline" textcolor="text-[#42C5AF]" />
         </div>
         <Downline :items="downlineData" />
       </div>
@@ -1169,7 +1169,7 @@ onUnmounted(() => {
               <span
                 class="text-[#374151] font-[400] max-[375px]:!text-[10px] text-[12px] md:text-[16px] text-center"
               >
-                Kisah sukses dari mitra SELICA di seluruh Indonesia
+                Kisah sukses dari mitra Selica di seluruh Indonesia
               </span>
             </div>
           </div>
@@ -1287,7 +1287,7 @@ onUnmounted(() => {
                   class="max-smallest:text-[10px] text-[12px] sm:text-[14px] md:text-[16px] lg:text-[14px] xl:text-[16px] xls:text-[16px] text-[#FFFFFF] leading-snug font-[400]"
                 >
                   {{ $t("home.partner.intro") }}
-                  <span class="font-[600]">SELICA</span> {{ $t("home.partner.introRest") }}
+                  <span class="font-[600]">Selica</span> {{ $t("home.partner.introRest") }}
                 </span>
               </div>
             </div>
@@ -1519,7 +1519,7 @@ onUnmounted(() => {
       />
       <div class="w-full h-auto md:max-w-3xl lg:max-w-6xl xl:max-w-7xl mx-auto relative z-30">
         <DownloadFrame
-          appname="SELICA"
+          appname="Selica"
           :description="$t('home.download.description')"
           :img="DownloadImage"
         />
@@ -1659,11 +1659,11 @@ onUnmounted(() => {
                         }}</span>
                       </div>
                       <div class="w-full h-auto flex flex-col">
-                        <del class="text-[#9CA3AF] decoration-[#E22F4A]">
+                        <!-- <del class="text-[#9CA3AF] decoration-[#E22F4A]">
                           <p class="text-[#CDCDCD] font-[400] text-[12px] lg:text-[16px]">
                             Rp {{ formatRupiah(getPriceDeleted(selectedPackage.price)) }}
                           </p>
-                        </del>
+                        </del> -->
                         <span class="text-[20px] md:text-[28px] font-[600] text-[#374151]">
                           Rp {{ formatRupiah(selectedPackage.price) }}
                         </span>

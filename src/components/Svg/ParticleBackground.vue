@@ -5,7 +5,7 @@ import { onBeforeUnmount, onMounted, ref } from "vue";
  * Latar partikel yang saling terhubung dan bergerak sendiri.
  *
  * KENAPA BENTUKNYA TITIK-TERHUBUNG
- * Sama seperti ornamen lain di halaman ini: logo SELICA memakai motif simpul
+ * Sama seperti ornamen lain di halaman ini: logo Selica memakai motif simpul
  * yang tersambung, dan program Partner strukturnya memang jaringan. Jadi
  * latarnya ikut mengatakan hal yang sama, bukan hiasan yang bisa ditempel di
  * halaman mana pun.

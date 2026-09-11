@@ -2,7 +2,7 @@
 import { onBeforeUnmount, onMounted, ref } from "vue";
 
 /**
- * Medan jaringan: latar hidup untuk halaman SELICA Partner.
+ * Medan jaringan: latar hidup untuk halaman Selica Partner.
  *
  * APA YANG DIGAMBARKAN — DAN KENAPA JUSTRU INI
  * Aturan paling penting di program ini satu kalimat: komisi menyebar dari

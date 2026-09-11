@@ -13,9 +13,9 @@
     "testimonial": "Testimonial",
     "faq": "FAQ",
     "contact": "Contact",
-    "hub": "Selica HUB",
-    "partner": "SELICA Partner",
-    "disclaimer": "Medical disclaimer"
+    "hub": "Selica Hub",
+    "partner": "Selica Partner",
+    "disclaimer": "Medical Disclaimer"
   },
   "footer": {
     "tagline": "Transform personal and corporate healthcare through AI-driven wellness monitoring, preventive risk detection, and intelligent health optimization.",
@@ -31,9 +31,9 @@
   },
   "partner": {
     "hero": {
-      "eyebrow": "SELICA partnership program",
+      "eyebrow": "Selica partnership program",
       "headline": "Simple screening, real commission",
-      "sub": "Become an official SELICA partner: bring AI health screening to your community, earn 15% on every screening, and grow a network of your own toward Leader status.",
+      "sub": "Become an official Selica partner: bring AI health screening to your community, earn 15% on every screening, and grow a network of your own toward Leader status.",
       "ctaPrimary": "Join now",
       "ctaSecondary": "See how it works",
       "badge1": "Free to join",
@@ -73,8 +73,8 @@
       }
     },
     "about": {
-      "heading": "What SELICA Partner is",
-      "intro": "SELICA Partner is the official partnership program of SELICA, an AI-based digital health screening platform. Anyone can join at no cost to offer screening services to their community, and earn a commission on every screening that happens.",
+      "heading": "What Selica Partner is",
+      "intro": "Selica Partner is the official partnership program of Selica, an AI-based digital health screening platform. Anyone can join at no cost to offer screening services to their community, and earn a commission on every screening that happens.",
       "principlesHeading": "Five things we hold to",
       "principles": {
         "0": {
@@ -119,7 +119,7 @@
           "isi": "Learning material sits inside the system. No medical background required."
         },
         "4": {
-          "judul": "SelicaHUB dashboard",
+          "judul": "Selica Hub dashboard",
           "isi": "Track your transactions, your network, and your commission in one place."
         },
         "5": {
@@ -153,7 +153,7 @@
       "disclaimer": "These figures illustrate the inputs you chose. They are not a guarantee of income. Actual commission depends on screening activity that genuinely takes place."
     },
     "hub": {
-      "heading": "The SelicaHUB dashboard",
+      "heading": "The Selica Hub dashboard",
       "intro": "Once you are registered, you get access to a dashboard for tracking day-to-day activity and how your network is doing.",
       "features": {
         "0": {
@@ -185,7 +185,7 @@
       "title": "Run your business from anywhere"
     },
     "join": {
-      "heading": "How to become a partner",
+      "heading": "How to become Selica Partner",
       "steps": {
         "0": {
           "judul": "Open the sign-up link",
@@ -223,7 +223,7 @@
           },
           "1": {
             "judul": "Copy the code from your dashboard",
-            "isi": "Both the code and a ready-made sign-up link sit in SelicaHUB."
+            "isi": "Both the code and a ready-made sign-up link sit in Selica Hub."
           },
           "2": {
             "judul": "Share it with people",
@@ -237,7 +237,7 @@
           },
           "1": {
             "judul": "Enter it when you register",
-            "isi": "There is a referral code field on the SELICA sign-up form."
+            "isi": "There is a referral code field on the Selica sign-up form."
           },
           "2": {
             "judul": "Carry on with your screening",
@@ -249,7 +249,7 @@
     "cta": {
       "heading": "Ready to start?",
       "sub": "Signing up is free and takes a few minutes.",
-      "button": "Join SELICA Partner"
+      "button": "Join Selica Partner"
     },
     "network": {
       "you": "You",
@@ -591,40 +591,63 @@
       "2": "Systolic blood pressure",
       "3": "Diastolic blood pressure",
       "4": "Cardiac output",
-      "5": "Body mass index (BMI)",
-      "6": "Waist-to-height ratio",
-      "7": "Body shape index",
-      "8": "Biological age",
-      "9": "Skin age",
-      "10": "Heart rate variability (HRV)",
-      "11": "Respiratory rate",
-      "12": "Pulse-respiratory quotient (PRQ)",
-      "13": "Stress level",
-      "14": "Blood glucose",
-      "15": "Total cholesterol",
-      "16": "Haemoglobin",
-      "17": "Uric acid",
-      "18": "Glycated haemoglobin (HbA1c)",
-      "19": "Muscle level",
-      "20": "Body fat ratio",
-      "21": "Body water percentage",
-      "22": "Bone mass",
-      "23": "Basal metabolic rate (BMR)",
-      "24": "Protein level",
-      "25": "Visceral fat",
-      "26": "Subcutaneous fat",
-      "27": "Muscle mass (kg)",
-      "28": "Fat mass (kg)",
-      "29": "Protein mass (kg)",
-      "30": "Body shape analysis",
-      "31": "Hypertension risk",
-      "32": "Type 2 diabetes risk",
-      "33": "Cardiovascular disease risk",
-      "34": "Hypercholesterolaemia risk",
-      "35": "Hypertriglyceridaemia risk",
-      "36": "Heart attack risk",
-      "37": "Stroke risk",
-      "38": "Abnormal fasting blood glucose"
+      "5": "Pulse pressure",
+      "6": "Body mass index (BMI)",
+      "7": "Waist-to-height ratio",
+      "8": "Body shape index",
+      "9": "Biological age",
+      "10": "Skin age",
+      "11": "Heart age",
+      "12": "Vascular age",
+      "13": "Body roundness index (BRI)",
+      "14": "Conicity index (CI)",
+      "15": "Heart rate variability (HRV)",
+      "16": "Respiratory rate",
+      "17": "Pulse-respiratory quotient (PRQ)",
+      "18": "HRV – VLF power",
+      "19": "HRV – LF power",
+      "20": "HRV – HF power",
+      "21": "HRV – SD2",
+      "22": "HRV – S (Poincaré area)",
+      "23": "Stress level",
+      "24": "Parasympathetic activity",
+      "25": "Sympathetic activity",
+      "26": "HRV – RMSSD",
+      "27": "HRV – PNN50",
+      "28": "HRV – mean RR",
+      "29": "HRV – CV RR",
+      "30": "HRV – SDSD",
+      "31": "HRV – LF/HF ratio",
+      "32": "HRV – SD1",
+      "33": "Blood glucose",
+      "34": "Total cholesterol",
+      "35": "Haemoglobin",
+      "36": "Uric acid",
+      "37": "Glycated haemoglobin (HbA1c)",
+      "38": "Muscle level",
+      "39": "Body fat ratio",
+      "40": "Body water percentage",
+      "41": "Bone mass",
+      "42": "Basal metabolic rate (BMR)",
+      "43": "Protein level",
+      "44": "Visceral fat",
+      "45": "Subcutaneous fat",
+      "46": "Muscle mass (kg)",
+      "47": "Fat mass (kg)",
+      "48": "Protein mass (kg)",
+      "49": "TDEE (total daily energy expenditure)",
+      "50": "Hypertension risk",
+      "51": "Type 2 diabetes risk",
+      "52": "Cardiovascular disease risk",
+      "53": "Hypercholesterolaemia risk",
+      "54": "Hypertriglyceridaemia risk",
+      "55": "Heart attack risk",
+      "56": "Stroke risk",
+      "57": "Abnormal fasting blood glucose",
+      "58": "ASCVD risk",
+      "59": "Anaemia / low haemoglobin risk",
+      "60": "Heart failure risk",
+      "61": "Fatty liver risk"
     },
     "viewPackage": "View the {nama} package"
   },
@@ -633,19 +656,19 @@
       "title": "Smarter Health Monitoring for Everyone",
       "badge": "Application",
       "description": "From personal check-ups to organization-wide wellness — AI-driven health insights, preventive care, and cost control in one platform.",
-      "ctaPartner": "Become a SELICA Partner",
+      "ctaPartner": "Become a Selica Partner",
       "ctaContact": "Contact us",
       "badgePosition": "after"
     },
     "about": {
       "eyebrow": "About Us",
       "title": "AI Health Metrics Assistance Application",
-      "description": "SELICA is an AI-powered health platform for individuals and organizations. It delivers real-time preventive health insights and biometric scanning — helping people monitor their own health, and helping companies optimize employee wellness programs while reducing medical costs by up to 20%"
+      "description": "Selica is an AI-powered health platform for individuals and organizations. It delivers real-time preventive health insights and biometric scanning — helping people monitor their own health, and helping companies optimize employee wellness programs while reducing medical costs by up to 20%"
     },
     "partner": {
       "question": "What is",
-      "questionName": "SELICA Partner?",
-      "intro": "SELICA Partner is an official partner of",
+      "questionName": "Selica Partner?",
+      "intro": "Selica Partner is an official partner of",
       "point1Title": "Verified partner",
       "point1Text": "Has been through verification and certification",
       "point2Title": "Health solution",
@@ -675,17 +698,17 @@
       "description": "Enable smarter health monitoring — for yourself or your entire organization — with real-time insights and preventive risk detection."
     },
     "demo": {
-      "title": "SELICA A Complete Solution for Your Health Needs",
-      "cta": "Become a SELICA Partner and start selling"
+      "title": "Selica A Complete Solution for Your Health Needs",
+      "cta": "Become a Selica Partner and start selling"
     },
     "faq": {
       "0": {
         "question": "Do I need a lot of capital?",
-        "answer": "No. Joining as a SELICA Partner requires no upfront capital and no registration fee. You can start running the business straight away and earn commission through the system provided."
+        "answer": "No. Joining as a Selica Partner requires no upfront capital and no registration fee. You can start running the business straight away and earn commission through the system provided."
       },
       "1": {
         "question": "I have no medical background. Can I still join?",
-        "answer": "Yes. The SELICA Partner programme is built for everyone, with no medical background required. You get guidance, learning material, and a system that supports the selling process."
+        "answer": "Yes. The Selica Partner programme is built for everyone, with no medical background required. You get guidance, learning material, and a system that supports the selling process."
       },
       "2": {
         "question": "How long does registration take?",
@@ -780,13 +803,13 @@
       "0": {
         "title": "Membership package",
         "items": {
-          "0": "Access to the SELICA app",
+          "0": "Access to the Selica app",
           "1": "Product and screening training",
           "2": "Real-time sales dashboard",
           "3": "Your own referral code",
           "4": "Digital marketing material",
           "5": "Community support group",
-          "6": "Official SELICA Partner certificate"
+          "6": "Official Selica Partner certificate"
         }
       },
       "1": {
@@ -795,29 +818,29 @@
           "0": "Product and technology updates",
           "1": "Marketing and sales tips",
           "2": "Regular contests and rewards",
-          "3": "Networking with other SELICA Partners"
+          "3": "Networking with other Selica Partners"
         }
       }
     },
-    "dashboardAlt": "Preview of the SELICA Partner dashboard",
+    "dashboardAlt": "Preview of the Selica Partner dashboard",
     "registerFlow": {
       "0": {
         "title": "Create an account",
-        "description": "Register through <a href=\"https://sca.seleriscare.ai\" target=\"_blank\" class=\"text-[#01A488] hover:underline\">sca.seleriscare.ai</a> and buy a product as part of the sign-up process"
+        "description": "Register through <a href=\"https://sca.seleriscare.ai\" target=\"_blank\">sca.seleriscare.ai</a> and buy a product as part of the sign-up process"
       },
       "1": {
-        "title": "Download SELICA",
-        "description": "Get the <a href=\"https://sca.seleriscare.ai\" target=\"_blank\" class=\"text-[#01A488] hover:underline\">SELICA</a> app from the Google Play Store and install it on your device before you start."
+        "title": "Download Selica",
+        "description": "Get the <a href=\"https://sca.seleriscare.ai\" target=\"_blank\">Selica</a> app from the Google Play Store and install it on your device before you start."
       },
       "2": {
-        "title": "Sign in to SELICA",
-        "description": "Sign in to the SELICA app with your account and start using the services available"
+        "title": "Sign in to Selica",
+        "description": "Sign in to the Selica app with your account and start using the services available"
       }
     },
     "appWork": {
       "0": {
         "title": "Sign in",
-        "content": "Sign in to the <a href=\"https://sca.seleriscare.ai\" target=\"_blank\" class=\"text-[#01A488] hover:underline\">SELICA</a> app with the email and password you registered."
+        "content": "Sign in to the <a href=\"https://sca.seleriscare.ai\" target=\"_blank\" class=\"text-[#01A488] hover:underline\">Selica</a> app with the email and password you registered."
       },
       "1": {
         "title": "Home page",
@@ -839,20 +862,20 @@
       },
       "1": {
         "title": "Enter a referral code",
-        "content": "Enter the referral code from the SELICA Partner who invited you into the SELICA network"
+        "content": "Enter the referral code from the Selica Partner who invited you into the Selica network"
       },
       "2": {
         "title": "Done",
-        "content": "You are registered. You are now officially part of SELICA Partner and ready to begin with us"
+        "content": "You are registered. You are now officially part of Selica Partner and ready to begin with us"
       }
     }
   },
   "disclaimer": {
     "heading": "Medical Disclaimer & Legal Notice",
-    "p1Strong": "SELICA is an artificial-intelligence application developed as a health screening and monitoring tool intended for early detection",
+    "p1Strong": "Selica is an artificial-intelligence application developed as a health screening and monitoring tool intended for early detection",
     "p1Rest": ", periodic monitoring of health parameters, and support for lifestyle and prevention decisions. The system is not intended, designed, or positioned as a medical diagnostic tool. It does not replace a comprehensive medical examination, laboratory testing, clinical diagnostic procedures, or the consultation and professional judgement of a licensed doctor or health professional.",
     "p2Strong": "All results, scores, indicators, and recommendations shown in this report are informative and indicative, produced by the system's analytical algorithms, and therefore cannot serve as the sole basis for establishing a diagnosis or determining medical treatment",
     "p2Rest": ". Where a result falls into an abnormal or at-risk category, or otherwise calls for attention, the user must consult a doctor or an authorised health professional and, where necessary, undergo supporting or laboratory examinations for confirmation in line with medical practice standards and applicable regulations.",
-    "p3": "By accepting and using this report, the user understands and agrees that SELICA functions as a non-diagnostic screening and monitoring tool, and releases the developer and/or service provider from liability for any use of the results beyond their intended purpose or without appropriate medical follow-up."
+    "p3": "By accepting and using this report, the user understands and agrees that Selica functions as a non-diagnostic screening and monitoring tool, and releases the developer and/or service provider from liability for any use of the results beyond their intended purpose or without appropriate medical follow-up."
   }
 }

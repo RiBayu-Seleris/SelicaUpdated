@@ -4,7 +4,7 @@ import { useI18n } from "vue-i18n";
 import { hubFeatures } from "@/Data/Products/SelicaPartner/PartnerContent";
 import { useLocalizedList } from "@/utils/i18nList";
 
-// Komponen ini dipakai di dua halaman: beranda dan halaman SELICA Partner.
+// Komponen ini dipakai di dua halaman: beranda dan halaman Selica Partner.
 // Teksnya diambil dari berkas bahasa supaya cukup ditulis sekali dan ikut
 // berganti saat pengunjung menukar bahasa.
 const { t } = useI18n();

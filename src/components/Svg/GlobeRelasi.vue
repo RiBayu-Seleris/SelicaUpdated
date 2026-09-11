@@ -14,7 +14,7 @@
  * KENAPA SETENGAH
  * Seluruh gambar ini bulat dan terpusat, lalu pemanggilnya menggesernya
  * setengah badan keluar tepi kanan — persis cara pratinjau dashboard di
- * bagian SelicaHUB menembus ke kanan. Yang memotong adalah `overflow-hidden`
+ * bagian Selica Hub menembus ke kanan. Yang memotong adalah `overflow-hidden`
  * milik section, bukan bingkai SVG-nya, jadi potongannya jatuh tepat di tepi
  * layar dan bukan di garis tak terlihat di tengah halaman.
  *

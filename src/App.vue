@@ -23,7 +23,8 @@ import {
 
 import AOS from "aos";
 
-import loadingAnimation from "@/assets/videos/loading.webm";
+import loadingWebm from "@/assets/videos/loading.webm";
+import loadingTerang from "@/assets/videos/loading-terang.mp4";
 
 // Swiper CSS
 import "swiper/css";
@@ -35,6 +36,38 @@ const route = useRoute();
 const router = useRouter();
 const scrollStore = useScrollStore();
 const themeStore = useThemeStore();
+
+/* Animasi loading dipilih menurut MESIN PERAMBANNYA.
+
+   WebM VP9 membawa kanal alpha sungguhan, jadi satu berkas cukup untuk tema
+   terang maupun gelap — dan itu yang dipakai di Blink dan Gecko.
+
+   WebKit — Safari, dan SEMUA peramban di iOS termasuk Chrome dan Firefox di
+   sana — bisa memutar WebM-nya tapi MENGABAIKAN bidang alpha-nya, sehingga
+   yang tampil hanya data warnanya: latar hitam pekat. Untuk mesin itu dipakai
+   MP4 H.264 yang latarnya sudah disatukan dengan #F9F9F9.
+
+   Karena latar berkasnya dipatok satu warna, piringan di bawahnya ikut
+   dipatok #F9F9F9 di WebKit — termasuk saat tema gelap. Kalau piringannya
+   dibiarkan ikut tema, di mode gelap latar terang milik videonya akan
+   tergambar sebagai persegi panjang terang di atas piringan gelap.
+
+   KENAPA HARUS DIDETEKSI, BUKAN CUKUP URUTAN <source>
+   Peramban memilih <source> PERTAMA yang sanggup ia putar. Safari 14.1+
+   sanggup memutar WebM VP9, jadi ia akan mengambilnya lebih dulu dan kembali
+   menampilkan latar hitam. Urutan sumber tidak bisa membedakan "bisa
+   memutar" dari "menghormati alpha".
+
+   `navigator.vendor` dipakai karena ia menandai MESINNYA, bukan mereknya:
+   WebKit selalu melaporkan "Apple Computer, Inc.", termasuk pada Chrome di
+   iOS yang di dalamnya memang WebKit. Kalau yang diperiksa nama peramban,
+   Chrome di iOS akan salah dikira Blink dan kebagian WebM yang hitam. */
+const mesinWebkit = typeof navigator !== "undefined" && /apple/i.test(navigator.vendor || "");
+
+const loadingAnimation = mesinWebkit ? loadingTerang : loadingWebm;
+
+const tipeLoading = mesinWebkit ? "video/mp4" : "video/webm";
+
 const sidebarStore = useSidebarStore();
 const pageLoading = usePageLoadingStore();
 
@@ -44,7 +77,7 @@ const isLoad = ref(false);
 /* ------------------------------------------------------------
    Kapan logo di dalam lingkaran boleh tampil
 
-   Berkas animasinya (webm ±700 KB) perlu waktu untuk diunduh. Pada kunjungan
+   Berkas animasinya perlu waktu untuk diunduh. Pada kunjungan
    PERTAMA, kalau langsung ditampilkan, kotaknya kosong dulu lalu logonya
    muncul mendadak. Karena itu ada efek memudar masuk.
 
@@ -564,19 +597,28 @@ watch(
            tapi badannya milik daun KIRI, bukan elemen berdiri sendiri. Itu
            sebabnya dia tetap utuh dan bergeser penuh mengikuti daun kiri.
 
-           Tugasnya: jadi ALAS bagi animasi webm yang latarnya transparan, dan
-           membingkainya lewat bayangan lembut. -->
+           Tugasnya: jadi ALAS bagi animasi loading, dan membingkainya lewat
+           bayangan lembut. -->
       <div
         :class="[
-          'absolute left-1/2 bottom-0 lg:left-auto lg:bottom-auto lg:top-1/2 lg:right-0 flex items-center justify-center w-[170px] h-[170px] md:w-[240px] md:h-[240px] lg:w-[280px] lg:h-[280px] rounded-full bg-[#F9F9F9] dark:bg-[#17181A] shadow-2xl -translate-x-1/2 translate-y-1/2 lg:translate-x-1/2 lg:-translate-y-1/2 transition-transform duration-700 ease-[cubic-bezier(.16,1,.3,1)]',
+          'absolute left-1/2 bottom-0 lg:left-auto lg:bottom-auto lg:top-1/2 lg:right-0 flex items-center justify-center w-[170px] h-[170px] md:w-[240px] md:h-[240px] lg:w-[280px] lg:h-[280px] rounded-full shadow-2xl -translate-x-1/2 translate-y-1/2 lg:translate-x-1/2 lg:-translate-y-1/2 transition-transform duration-700 ease-[cubic-bezier(.16,1,.3,1)]',
+          mesinWebkit ? 'bg-[#F9F9F9]' : 'bg-[#F9F9F9] dark:bg-[#17181A]',
           garisTumbuh && !gerbangMembuka ? 'scale-100' : 'scale-95',
         ]"
       >
-        <!-- Animasi loading. WebM ini punya kanal alpha (transparan), jadi satu
-             berkas cocok untuk mode terang maupun gelap. Memudarnya sengaja
-             cepat (0,2 detik) dan preload="auto" menyuruh browser mengunduhnya
-             sesegera mungkin. -->
+        <!-- Animasi loading. Memudarnya sengaja cepat (0,2 detik) dan
+             preload="auto" menyuruh peramban mengunduhnya sesegera mungkin.
+
+             Berkasnya berbeda menurut mesin peramban — WebM yang tembus
+             pandang untuk Blink dan Gecko, MP4 sewarna piringan untuk WebKit.
+             Alasan lengkapnya ada di bagian `mesinWebkit` di atas.
+
+             `:key` dipasang pada elemennya supaya video benar-benar dimuat
+             ulang saat sumbernya berganti. Tanpa itu, mengganti tema di
+             WebKit hanya menukar atribut src sementara video yang lama tetap
+             diputar. -->
         <video
+          :key="loadingAnimation"
           autoplay
           loop
           muted
@@ -591,7 +633,7 @@ watch(
             animasiLoadingSiap ? 'opacity-100' : 'opacity-0',
           ]"
         >
-          <source :src="loadingAnimation" type="video/webm" />
+          <source :src="loadingAnimation" :type="tipeLoading" />
         </video>
       </div>
 

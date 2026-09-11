@@ -1,6 +1,6 @@
 <script setup>
 /**
- * Halaman SELICA Partner.
+ * Halaman Selica Partner.
  *
  * ARAH RANCANGANNYA: "PERAMBATAN YANG BERHENTI"
  *
@@ -34,7 +34,7 @@
  * kalimat tetap dari berkas bahasa. Tidak ada satu pun angka atau kalimat
  * yang ditulis ulang di berkas ini.
  */
-import { computed, reactive, ref } from "vue";
+import { computed, onBeforeUnmount, onMounted, reactive, ref } from "vue";
 import { useI18n } from "vue-i18n";
 
 import MedanJaringan from "@/components/SelicaPartner/MedanJaringan.vue";
@@ -42,6 +42,8 @@ import IkonPartner from "@/components/SelicaPartner/IkonPartner.vue";
 import JaringanPartner from "@/components/Svg/JaringanPartner.vue";
 import GlobeRelasi from "@/components/Svg/GlobeRelasi.vue";
 import DashboardPreview from "@/components/SCA/dashboardPreview.vue";
+import HowRegister from "@/components/HowRegister.vue";
+import ApplicationWorkText from "@/components/ApplicationWorkText.vue";
 
 import { vMuncul } from "@/utils/munculSaatTerlihat";
 import { vMagnet } from "@/utils/magnet";
@@ -54,7 +56,6 @@ import {
   statusLevels,
   principles,
   benefits,
-  joinSteps,
   referralFlows,
   heroFeatures,
   bagiJaringan,
@@ -84,7 +85,6 @@ const manfaat = useLocalizedList("partner.benefits.items", benefits, ["judul", "
  */
 const manfaatUtama = computed(() => manfaat.value.slice(0, 2));
 const manfaatLain = computed(() => manfaat.value.slice(2));
-const langkah = useLocalizedList("partner.join.steps", joinSteps, ["judul", "isi"]);
 const alurReferral = computed(() =>
   referralFlows.map((alur, i) => ({
     ...alur,
@@ -249,6 +249,61 @@ const rapikanAngka = (kontrol) => {
     : 0;
 };
 
+/* ================= ALUR PENDAFTARAN =================
+
+   Bagian "cara menjadi partner" memakai komponen dan isi yang sama dengan
+   bagian <!-- How Register --> di Care.vue. Di sana bagian itu memang sudah
+   dikomentari, dan judulnya pun berbunyi "Register Selica Partner" — isinya
+   memang milik halaman ini, cuma belum pernah dipindah.
+
+   Gambar dan kalimatnya dibaca dari sumber yang sama persis dengan yang
+   dipakai Care.vue (`home.registerFlow.*`), jadi kalau kalimatnya diperbarui
+   di berkas bahasa, kedua halaman ikut berubah bersama-sama.
+=================================================================== */
+const gambarAlurDaftar = [
+  new URL("@/assets/Products/images/Care/register-akun2.png", import.meta.url).href,
+  new URL("@/assets/Products/images/Care/download-sca2.webp", import.meta.url).href,
+  new URL("@/assets/Products/images/Care/login-work.webp", import.meta.url).href,
+];
+
+const alurDaftar = computed(() =>
+  gambarAlurDaftar.map((gambar, i) => ({
+    id: i + 1,
+    title: t(`home.registerFlow.${i}.title`),
+    description: t(`home.registerFlow.${i}.description`),
+    image: gambar,
+  })),
+);
+
+const langkahAktif = ref(0);
+const tampilkanKeterangan = ref(false);
+let idAlurDaftar = null;
+
+/* Carousel-nya berputar sendiri: keterangan disembunyikan dulu, langkahnya
+   maju, lalu keterangannya muncul lagi — jadi tulisannya tidak terlihat
+   berganti mendadak di tengah perpindahan.
+
+   Penghitung waktunya DISIMPAN supaya bisa dihentikan saat halaman
+   ditinggalkan. Tanpa itu ia terus berjalan dan menumpuk tiap kali halaman
+   ini dibuka lagi. */
+const DURASI_SLIDE = 4000;
+const DURASI_JUDUL = 500;
+
+onMounted(() => {
+  tampilkanKeterangan.value = true;
+  idAlurDaftar = setInterval(() => {
+    tampilkanKeterangan.value = false;
+    langkahAktif.value = (langkahAktif.value + 1) % alurDaftar.value.length;
+    setTimeout(() => {
+      tampilkanKeterangan.value = true;
+    }, DURASI_JUDUL);
+  }, DURASI_SLIDE);
+});
+
+onBeforeUnmount(() => {
+  if (idAlurDaftar) clearInterval(idAlurDaftar);
+});
+
 /* ================= GRAFIK PERBANDINGAN =================
 
    Bentuk dan setelannya mengikuti grafik kalkulator di halaman Care: batang
@@ -371,9 +426,7 @@ const opsiGrafik = computed(() => {
 
 /* ================= GERAK YANG MENGIKUTI GULIRAN ================= */
 const relStatus = ref(null);
-const relGabung = ref(null);
 pasangKemajuan(relStatus);
-pasangKemajuan(relGabung);
 pasangParallax();
 
 /* ================= NAVIGASI ================= */
@@ -1178,7 +1231,7 @@ const keBagian = (id) =>
     </section>
 
     <!-- ============================================================
-         06 — SELICAHUB
+         06 — Selica Hub
          Satu-satunya bagian terang di halaman gelap, dan itu disengaja:
          dashboard-nya memang layar yang menyala. Perpindahan gelap ke
          terang di sini menjadi jeda napas sekaligus penanda bahwa yang
@@ -1198,47 +1251,33 @@ const keBagian = (id) =>
 
     <!-- ============================================================
          07 — CARA MENDAFTAR
-         Lima langkah berurutan, jadi digambar sebagai satu garis yang
-         terisi mengikuti guliran: sejauh mana pembacanya membaca, sejauh
-         itu pula garisnya sampai.
+
+         Memakai komponen dan isi yang sama dengan bagian <!== How Register ==>
+         di Care.vue. Di sana bagian itu sudah dikomentari dan tidak aktif,
+         padahal judulnya sendiri berbunyi "Register Selica Partner" — isinya
+         memang milik halaman ini.
+
+         Susunan lama di sini (lima langkah bernomor pada satu garis tegak
+         yang terisi mengikuti guliran) diganti seluruhnya, termasuk rel
+         kemajuan tegaknya.
     ============================================================ -->
-    <section id="gabung" ref="relGabung" class="garis relative w-full border-t bg-[#FFFFFF]">
-      <div class="mx-auto max-w-[1440px] px-8 py-24 md:px-12 md:py-32 lg:px-16 xls:px-32">
-        <div class="grid gap-y-14 lg:grid-cols-12 lg:gap-x-16">
-          <div class="lg:col-span-4">
-            <div class="lg:sticky lg:top-36">
-              <h2 v-muncul class="judul">{{ $t("partner.join.heading") }}</h2>
-              <p v-muncul="120" class="tubuh mt-7 max-w-[42ch] text-[14px] md:text-[15px]">
-                {{ $t("partner.join.note") }}
-              </p>
-            </div>
-          </div>
-
-          <div class="lg:col-span-8">
-            <ol class="relative pl-10 md:pl-14">
-              <span class="rel-tegak absolute inset-y-0 left-2" aria-hidden="true" />
-              <span class="isi-maju-y absolute left-2 top-0 w-px bg-[#14B89B]" aria-hidden="true" />
-
-              <li
-                v-for="(l, i) in langkah"
-                :key="i"
-                v-muncul="i * 80"
-                class="relative pb-10 last:pb-0 md:pb-12"
-              >
-                <span
-                  class="absolute -left-10 top-1 flex h-4 w-4 items-center justify-center md:-left-14"
-                >
-                  <span class="h-[7px] w-[7px] bg-[#14B89B]" aria-hidden="true" />
-                </span>
-                <p class="mono text-[11px] tracking-[0.2em] text-[#0E9A82]">{{ nol(i + 1) }}</p>
-                <h3 class="mt-2.5 text-[18px] font-semibold text-[#0E3B4D] md:text-[21px]">
-                  {{ l.judul }}
-                </h3>
-                <p class="tubuh mt-2 max-w-[48ch] text-[14px] md:text-[15px]">{{ l.isi }}</p>
-              </li>
-            </ol>
-          </div>
+    <section id="gabung" class="garis relative w-full border-t bg-[#FFFFFF]">
+      <div
+        class="mx-auto flex max-w-[1440px] flex-col gap-y-10 px-0 py-24 md:py-32 lg:gap-y-20 xl:px-12"
+      >
+        <div class="flex h-auto w-full px-8 md:px-0">
+          <ApplicationWorkText
+            :title="$t('partner.join.heading')"
+            productname="Selica"
+            textcolor="text-[#42C5AF]"
+          />
         </div>
+
+        <HowRegister
+          :steps="alurDaftar"
+          :current-index="langkahAktif"
+          :show-description="tampilkanKeterangan"
+        />
       </div>
     </section>
 
@@ -1248,7 +1287,18 @@ const keBagian = (id) =>
          bentuk yang paling jujur untuk isinya: yang satu membagikan, yang
          satu memakai.
     ============================================================ -->
-    <section id="referral" class="garis relative w-full border-t bg-[#F4FBF9]">
+    <!-- ============================================================
+         SEMENTARA DISEMBUNYIKAN — CARA PAKAI KODE REFERRAL
+
+         Dimatikan lewat `v-if="false"`, bukan dibungkus komentar: di dalam
+         section ini ada beberapa komentar HTML, dan komentar tidak bisa
+         disarangkan — pembungkusnya akan tertutup lebih awal di komentar
+         pertama dan sisa markup-nya bocor keluar sebagai tag rusak.
+
+         Isinya dibiarkan utuh supaya bisa dinyalakan lagi cukup dengan
+         membuang satu baris ini.
+    ============================================================ -->
+    <section v-if="false" id="referral" class="garis relative w-full border-t bg-[#F4FBF9]">
       <div class="mx-auto max-w-[1440px] px-8 py-24 md:px-12 md:py-32 lg:px-16 xls:px-32">
         <div class="grid gap-y-8 lg:grid-cols-12 lg:gap-x-16">
           <div class="lg:col-span-5">
@@ -1972,10 +2022,6 @@ const keBagian = (id) =>
   height: 1px;
   background: var(--garis);
 }
-.rel-tegak {
-  width: 1px;
-  background: var(--garis);
-}
 .isi-maju {
   width: calc(var(--maju, 0) * 100%);
 }
@@ -2053,9 +2099,6 @@ const keBagian = (id) =>
 .penanda-nyala .penanda-inti {
   opacity: 1;
   box-shadow: 0 0 0 4px rgba(var(--warna-rgb), 0.18);
-}
-.isi-maju-y {
-  height: calc(var(--maju, 0) * 100%);
 }
 
 /* Garis fokus bawaan browser bertumpukan dengan garis rambut di halaman ini

@@ -22,7 +22,7 @@ const routes = [
     component: () => import("@/SelicaPartner.vue"),
     // Tanpa heroGelap: hero halaman ini berlatar putih, jadi tulisan menu
     // otomatis gelap seperti di halaman disclaimer.
-    meta: { title: "SELICA Partner" },
+    meta: { title: "Selica Partner" },
   },
 
   // catch-all route (harus di paling bawah)

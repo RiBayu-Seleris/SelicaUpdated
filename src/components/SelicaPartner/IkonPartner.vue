@@ -2,7 +2,7 @@
 import { computed } from "vue";
 
 /**
- * Kumpulan ikon garis untuk halaman SELICA Partner.
+ * Kumpulan ikon garis untuk halaman Selica Partner.
  *
  * KENAPA DIGAMBAR SENDIRI, BUKAN BERKAS GAMBAR
  * Semuanya memakai `currentColor`, jadi satu ikon yang sama bisa dipakai di

@@ -1,7 +1,7 @@
 import { emptyItems } from "@/utils/i18nList";
 
 /**
- * Struktur isi halaman SELICA Partner.
+ * Struktur isi halaman Selica Partner.
  *
  * POLA YANG DIPAKAI
  * Berkas ini HANYA menyimpan strukturnya: warna, ikon, angka, dan berapa
@@ -10,7 +10,7 @@ import { emptyItems } from "@/utils/i18nList";
  * kalimat cuma ditulis sekali dan otomatis ikut berganti saat pengunjung
  * menukar bahasa.
  *
- * Sumber isi: SELICA Partner & Leader Manual v1.0 (2025), Bab 1-5.
+ * Sumber isi: Selica Partner & Leader Manual v1.0 (2025), Bab 1-5.
  */
 
 /**
@@ -58,7 +58,7 @@ export const referralFlows = [
   { key: "customer", warna: "#195279", langkah: emptyItems(3) },
 ];
 
-/** Delapan kemampuan dashboard SelicaHUB. */
+/** Delapan kemampuan dashboard Selica Hub. */
 export const hubFeatures = emptyItems(8);
 
 /**

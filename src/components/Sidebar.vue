@@ -5,6 +5,7 @@ import { useRoute } from "vue-router";
 import MenuIconClose from "@/components/icons/CloseIcon.vue";
 import Navlink from "@/components/NavLink.vue";
 import LanguageSwitcher from "@/components/LanguageSwitcher.vue";
+import { useProductLogo } from "@/Data/Products/useProductLogo.js";
 
 const sidebar = useSidebarStore();
 const route = useRoute();
@@ -30,26 +31,9 @@ const handleTechnology = () => {
   isProductOpen.value = false;
 };
 
-const titleSidebar = () => {
-  if (route.path === "/product/lifins") {
-    return "Lifins";
-  }
-  if (route.path === "/product/credit-cover") {
-    return "Credit Cover";
-  }
-  if (route.path === "/product/medins") {
-    return "Medins";
-  }
-  if (route.path === "/") {
-    return "Care";
-  }
-  if (route.path === "/product/seleris-credit") {
-    return "Credit";
-  }
-  if (route.path === "/product/seleris-care-applicator") {
-    return "Credit Applicator";
-  }
-};
+// Logo yang sama dengan yang dipakai navbar, jadi kepala sidebar dan navbar
+// tidak bisa menampilkan identitas yang berbeda.
+const { logo } = useProductLogo();
 
 // Menu hanya menyimpan alamat tujuan dan KUNCI bahasanya; teksnya di locale.
 const defaultProductMenu = [
@@ -83,12 +67,19 @@ const defaultProductMenu = [
             class="w-full h-full bg-white dark:bg-[#17181A] relative z-50 flex flex-col items-center py-6 px-5 rounded-xl"
           >
             <div class="flex flex-row w-full h-auto justify-between items-center">
-              <div class="w-[80%] h-auto">
-                <p
-                  class="text-[#195279] dark:text-[#FAFAFA] font-semibold text-md md:text-[1.7rem]"
-                >
-                  Seleris {{ titleSidebar() }}
-                </p>
+              <!-- Dulu di sini tertulis "Seleris {nama halaman}", disusun dari
+                   daftar rute yang ditulis tangan. Di rute yang tidak ada di
+                   daftar itu — Selica Partner dan Medical Disclaimer — yang
+                   tampil cuma kata "Seleris" menggantung tanpa lanjutan.
+                   Logo tidak punya masalah itu, dan sekaligus menyamakan
+                   kepala sidebar dengan navbar. -->
+              <div class="h-auto w-[80%]">
+                <img
+                  v-if="logo"
+                  :src="logo"
+                  alt="Logo"
+                  class="h-[44px] w-auto object-contain md:h-[52px]"
+                />
               </div>
               <div class="w-[20%] h-auto flex justify-end">
                 <button
@@ -102,14 +93,17 @@ const defaultProductMenu = [
                 </button>
               </div>
             </div>
-            <nav class="w-full flex flex-wrap mt-8 text-lg font-semibold text-gray-800 gap-y-2">
+            <!-- Tiap menu diberi ruang napas sendiri dan dipisah garis rambut.
+                 Sebelumnya ketujuhnya berjarak 8px saja, jadi terbaca sebagai
+                 satu blok tulisan, bukan sebagai daftar yang bisa dipilih. -->
+            <nav class="mt-7 flex w-full flex-col font-semibold text-gray-800">
               <div
-                class="w-full h-auto"
                 v-for="(menuDefault, index) in defaultProductMenu"
                 :key="index"
+                class="h-auto w-full border-b border-[#F3F4F6] py-3.5 last:border-b-0 dark:border-white/10"
               >
                 <Navlink
-                  class="text-[11pt]"
+                  class="text-[15px]"
                   :href="menuDefault.href"
                   :target="menuDefault?.target || '_self'"
                 >
