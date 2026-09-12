@@ -33,7 +33,6 @@ function resetTransform() {
 </script>
 
 <template>
-  <!-- shadow-md -->
   <div
     ref="card"
     class="group w-[222px] h-[80px] p-[1px] rounded-xl bg-[#D9D9D9] dark:bg-gradient-to-tr dark:from-[#17181A] dark:from-45% dark:to-[#565656] hover:dark:bg-none hover:dark:bg-[#D9D9D9] transition-all duration-300 ease-out"

@@ -3,7 +3,6 @@ import { computed, nextTick, onMounted, onUnmounted, ref, watch } from "vue";
 import { useI18n } from "vue-i18n";
 import { formatRupiahSmart } from "@/Helper/numberFormat.js";
 
-// HealthCare Components
 import HeroText from "@/components/HeroText.vue";
 import AboutUs from "@/components/AboutUs.vue";
 import AboutUsDescription from "@/components/AboutUsDescription.vue";
@@ -24,12 +23,10 @@ import medinsframebook from "@/assets/Products/images/bg-book-demo-care.png";
 import DownloadImage from "@/assets/Products/images/Care/download-care2.svg";
 import playstore from "@/assets/images/playstore.png";
 
-// HealthCare Data
 import { careWorkSteps } from "@/Data/Products/HealthCare/CareWorkSteps.js";
 import { whatsSelerisCare } from "@/Data/Products/CareApplicator/WhatsSelerisCare.js";
 import { clientLogos } from "@/Data/Products/HealthCare/CareClients";
 
-// SCA Components
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import PaketPemeriksaan from "@/components/SCA/paketPemeriksaan.vue";
@@ -39,7 +36,6 @@ import Disclaimer from "@/components/SCA/Disclaimer.vue";
 import Faq from "@/components/SCA/Faq.vue";
 import Downline from "@/components/Downline.vue";
 
-// SCA Data
 import { testimonials as scaTestimonials } from "@/Data/Products/CareApplicator/Testimonials.js";
 import { whatsSCAList } from "@/Data/Products/CareApplicator/WhatsSCAList.js";
 import { benefits } from "@/Data/Products/CareApplicator/benefits.js";
@@ -50,11 +46,9 @@ const { t } = useI18n();
 
 const modules = [Navigation, Pagination, Autoplay];
 
-// ── HealthCare state ──────────────────────────────────────────
 let interval = null;
 const activeIndex = ref(0);
 
-// Judul & keterangan langkah diambil dari berkas bahasa; gambarnya dari data.
 const stepsWithPath = computed(() =>
   careWorkSteps.map((step, i) => ({
     title: t(`home.workSteps.${i}.title`),
@@ -64,14 +58,12 @@ const stepsWithPath = computed(() =>
   })),
 );
 
-// Gambar tiap langkah; kalimatnya diambil dari berkas bahasa.
 const gambar_registerFlow = [
   new URL("@/assets/Products/images/Care/register-akun2.png", import.meta.url).href,
   new URL("@/assets/Products/images/Care/download-sca2.webp", import.meta.url).href,
   new URL("@/assets/Products/images/Care/login-work.webp", import.meta.url).href,
 ];
 
-// Kalimatnya ada di berkas bahasa pada kunci `home.registerFlow.*`.
 const registerFlow = computed(() =>
   Array.from({ length: 3 }, (_, i) => ({
     id: i + 1,
@@ -81,7 +73,6 @@ const registerFlow = computed(() =>
   })),
 );
 
-// Gambar tiap langkah; kalimatnya diambil dari berkas bahasa.
 const gambar_stepApplicationWorks = [
   new URL("@/assets/Products/images/Care/login-work.webp", import.meta.url).href,
   new URL("@/assets/Products/images/Care/homepage-work.svg", import.meta.url).href,
@@ -89,7 +80,6 @@ const gambar_stepApplicationWorks = [
   new URL("@/assets/Products/images/Care/vital-result-work.webp", import.meta.url).href,
 ];
 
-// Kalimatnya ada di berkas bahasa pada kunci `home.appWork.*`.
 const stepApplicationWorks = computed(() =>
   Array.from({ length: 4 }, (_, i) => ({
     id: i + 1,
@@ -99,14 +89,12 @@ const stepApplicationWorks = computed(() =>
   })),
 );
 
-// Gambar tiap langkah; kalimatnya diambil dari berkas bahasa.
 const gambar_downlineData = [
   new URL("@/assets/Products/images/Care/downline/monitor.svg", import.meta.url).href,
   new URL("@/assets/Products/images/Care/downline/referral.svg", import.meta.url).href,
   new URL("@/assets/Products/images/Care/downline/finish.svg", import.meta.url).href,
 ];
 
-// Kalimatnya ada di berkas bahasa pada kunci `home.downline.*`.
 const downlineData = computed(() =>
   Array.from({ length: 3 }, (_, i) => ({
     id: i + 1,
@@ -125,7 +113,6 @@ const scrollProgress = ref(0);
 
 let scrollListener = null;
 
-// ── SCA state ─────────────────────────────────────────────────
 const contentRefs = ref([]);
 const contentHeights = ref([]);
 
@@ -298,7 +285,6 @@ watch(showModal, (isOpen) => {
   document.body.style.overflow = isOpen ? "hidden" : "";
 });
 
-// ── Param scroll (mobile drag & arrow) ───────────────────────
 const paramScrollRef = ref(null);
 const isParamDragging = ref(false);
 const paramDragStartX = ref(0);
@@ -344,21 +330,15 @@ const onParamMouseUp = () => {
   isParamDragging.value = false;
 };
 
-// ── Lifecycle ─────────────────────────────────────────────────
 onMounted(async () => {
-  // Carousel whatsSelerisCare
   interval = setInterval(() => {
     activeIndex.value = (activeIndex.value + 1) % whatsSelerisCare.length;
   }, 3000);
 
-  // registerFlow carousel
   const SLIDE_DURATION = 4000;
   const TITLE_ANIM_DURATION = 500;
   showDescription.value = true;
 
-  // Disimpan supaya bisa dihentikan saat komponen dilepas. Sebelumnya tidak
-  // disimpan sama sekali, jadi timer-nya terus berjalan setelah pindah
-  // halaman dan menumpuk tiap kali beranda dibuka lagi.
   registerInterval = setInterval(() => {
     showDescription.value = false;
     currentIndex.value = (currentIndex.value + 1) % registerFlow.value.length;
@@ -367,15 +347,10 @@ onMounted(async () => {
     }, TITLE_ANIM_DURATION);
   }, SLIDE_DURATION);
 
-  // scroll indicator logic
   const el = scrollContainer.value;
   if (el) {
     const stepElements = el.querySelectorAll(".step");
 
-    // Diredam dengan requestAnimationFrame: tanpa ini, mengukur posisi tiap
-    // langkah dijalankan pada SETIAP kejadian gulir — bisa puluhan kali per
-    // gambar layar — dan tiap pengukuran memaksa browser menghitung ulang
-    // tata letak, sehingga gulirnya terasa tersendat.
     let idFrameStep = null;
     const hitungLangkah = () => {
       let current = 0;
@@ -401,11 +376,9 @@ onMounted(async () => {
     hitungLangkah();
   }
 
-  // Content heights (SCA)
   await nextTick();
   contentHeights.value = contentRefs.value.map((el) => el.scrollHeight);
 
-  // Benefit cards mobile auto-animate (SCA)
   checkMobileView();
   window.addEventListener("resize", checkMobileView);
 });
@@ -423,34 +396,6 @@ onUnmounted(() => {
 
 <template>
   <div class="relative w-full min-h-screen overflow-hidden">
-    <!-- Hero -->
-    <!-- data-aos: animasi muncul saat digulir, disetel sekali untuk seluruh
-         situs di src/main.js (600 ms, ease-out-cubic, sekali jalan, dan mati
-         sendiri kalau pengunjung menyalakan "kurangi animasi").
-
-         Dipasang di tingkat SECTION, bukan di tiap elemen di dalamnya: yang
-         ingin dibaca mata adalah bagian yang berganti, bukan tiap kartu yang
-         berbaris masuk satu per satu.
-
-         GERAKNYA DIPILIH DARI BENTUK ISINYA, TIDAK SERAGAM.
-         Sebelas section dengan gerak yang sama persis membuat halaman terasa
-         mekanis — setiap kali digulir, hal yang sama terjadi lagi. Jadi ada
-         tiga pilihan, dan masing-masing punya alasan:
-
-           fade     bagian yang isinya padat, atau yang sudah terlihat sejak
-                    halaman dibuka. Geseran pada blok sepadat itu terbaca
-                    sebagai goyangan, bukan sebagai kedatangan.
-           fade-up  daftar dan alur yang dibaca dari atas ke bawah. Geraknya
-                    searah dengan arah baca, jadi menuntun, bukan melawan.
-           zoom-in  bagian yang terbaca sebagai SATU benda: satu panel, satu
-                    papan, satu bingkai. Ia mendarat sebagai kesatuan.
-
-         Dua aturan tambahan yang mudah terlewat:
-         1. Jangan dua section BERSEBELAHAN memakai gerak yang sama.
-         2. Jangan memakai varian mendatar (fade-left/fade-right) di tingkat
-            section. Section di sini selebar halaman, dan geseran 100px ke
-            samping memunculkan batang gulir mendatar — tidak ada pembungkus
-            di App.vue yang memotongnya. -->
     <section data-aos="fade" class="relative w-full h-full rounded-[20px] z-20" id="hero">
       <div
         class="w-full flex flex-col gap-y-8 max-smallest:h-[500px] h-[480px] md:h-[720px] lg:h-[710px] rounded-[20px] z-20"
@@ -508,7 +453,6 @@ onUnmounted(() => {
           </a>
         </div>
       </div>
-      <!-- Image Phone -->
       <div class="relative w-full h-auto flex -mt-[120px] md:-mt-[250px]">
         <CareOrnament arah="dalam" positionClass="top-[10px] md:-top-[30px] xl:-top-5" />
         <div class="w-full h-auto flex xl:-mt-[0px]">
@@ -523,7 +467,6 @@ onUnmounted(() => {
           </div>
         </div>
       </div>
-      <!-- DownloadStore -->
       <div class="w-full max-w-sm mx-auto h-auto max-smallest:px-8 px-0 mt-10 md:mt-20">
         <div class="w-full h-[100px] flex justify-center">
           <a
@@ -547,7 +490,6 @@ onUnmounted(() => {
       </div>
     </section>
 
-    <!-- About Us -->
     <section data-aos="fade-up" class="relative w-full h-auto" id="about">
       <CareOrnament3
         arah="kiri"
@@ -635,7 +577,6 @@ onUnmounted(() => {
       </div>
     </section>
 
-    <!-- How Application Work -->
     <section
       data-aos="fade-up"
       class="relative w-full h-auto max-w-[1440px] mx-auto mt-14 lg:mt-20 xl:mt-56 scroll-mt-[80px]"
@@ -647,7 +588,6 @@ onUnmounted(() => {
         heightClass="w-full h-auto lg:h-full"
         :mirror="true"
       />
-      <!-- Application Work Slider -->
       <div class="relative w-full flex flex-col z-20">
         <div class="w-full h-auto px-8 sm:px-0">
           <ApplicationWorkText
@@ -734,12 +674,10 @@ onUnmounted(() => {
       </div>
     </section> -->
 
-    <!-- 30 Health Parameter -->
     <section data-aos="zoom-in" class="relative w-full h-full z-20 mt-32 lg:mt-44">
       <HealthParameter />
     </section>
 
-    <!-- Paket Pemeriksaan Kesehatan -->
     <section
       data-aos="fade"
       class="relative w-full h-full z-20 mx-auto max-w-[1440px] px-8 md:px-10 lg:px-16 xls:px-32 mt-32 lg:mt-44"
@@ -1251,12 +1189,10 @@ onUnmounted(() => {
       </div>
     </section> -->
 
-    <!-- APA ITU SCA -->
     <section
       data-aos="fade-up"
       class="relative w-full h-full z-20 mx-auto max-w-[1440px] px-8 md:px-12 lg:px-16 xl:px-20 xls:px-32 mt-20 md:mt-32 lg:mt-44"
     >
-      <!-- Desktop -->
       <div class="flex relative w-full h-auto">
         <figure class="hidden lg:flex w-auto h-auto">
           <img
@@ -1501,7 +1437,6 @@ onUnmounted(() => {
       </div>
     </section>
 
-    <!-- Client -->
     <section
       data-aos="zoom-in"
       class="relative w-full h-auto max-w-[1440px] mx-auto lg:px-8 mt-20 xl:mt-32"
@@ -1519,25 +1454,11 @@ onUnmounted(() => {
       </div>
     </section>
 
-    <!-- FAQ -->
     <section
       data-aos="fade-up"
       class="relative w-full h-full z-20 mx-auto max-w-[1440px] px-8 md:px-12 lg:px-16 xl:px-20 xls:px-32 mt-14 md:mt-32 pt-20 py-10"
       id="faq"
     >
-      <!-- Ornamen pemisah antara daftar klien dan FAQ.
-
-           Ditulis di sini, bukan sebagai blok tersendiri di antara kedua
-           section: ornamen di halaman ini tidak pernah memakan tingginya
-           sendiri, ia selalu melayang menumpang di atas ruang yang sudah ada.
-           Kalau dibuat sebagai blok sungguhan, jarak antarsection ikut
-           bertambah dan ritme halaman berubah — padahal yang diminta cuma
-           hiasannya.
-
-           `left-0` ditulis eksplisit karena section ini punya padding samping.
-           Tanpa itu, elemen yang diposisikan mutlak berangkat dari tepi DALAM
-           padding tapi lebarnya mengikuti tepi LUAR, jadi ujung kanannya
-           menyembul keluar section. -->
       <CareOrnament2
         arah="kanan"
         :mirror="true"
@@ -1547,7 +1468,6 @@ onUnmounted(() => {
       <Faq />
     </section>
 
-    <!-- Download App -->
     <section data-aos="fade" class="relative w-full h-auto mt-20 lg:mt-40 xl:mt-56" id="download">
       <CareOrnament4
         arah="kiri"
@@ -1569,16 +1489,12 @@ onUnmounted(() => {
       />
     </section>
 
-    <!-- DISCLAIMER -->
-    <!-- Isinya kini punya halaman sendiri di /medical-disclaimer.
-         Blok ini sengaja dibiarkan terkomentar, bukan dihapus. -->
     <!-- <section
       class="relative w-full h-full z-20 mx-auto max-w-[1440px] px-8 md:px-12 lg:px-16 xl:px-20 xls:px-32 mt-20 xl:mt-52 py-10 bg-[#FAFAFA]"
     >
       <Disclaimer />
     </section> -->
 
-    <!-- Book Demo -->
     <section
       data-aos="zoom-in"
       class="relative w-full h-auto max-w-7xl mx-auto mt-20 lg:mt-40 px-8 lg:px-16 xl:px-10"
@@ -1591,7 +1507,6 @@ onUnmounted(() => {
       />
     </section>
 
-    <!-- MODALS -->
     <transition name="fade">
       <div
         v-if="showModal"
@@ -1645,7 +1560,6 @@ onUnmounted(() => {
             <div
               class="w-full h-auto xls:h-auto flex flex-col lg:flex-row gap-y-5 lg:gap-y-0 gap-x-0"
             >
-              <!-- LEFT -->
               <div class="w-full lg:w-[45%] shrink-0 h-auto relative px-10 lg:px-0">
                 <div class="sticky top-10 w-full h-auto flex flex-col gap-y-5 items-start">
                   <div class="w-full h-[45px] flex items-start">
@@ -1762,7 +1676,6 @@ onUnmounted(() => {
                 </div>
               </div>
 
-              <!-- RIGHT -->
               <div class="w-full h-auto overflow-y-auto flex flex-col gap-y-8">
                 <div class="w-full h-auto flex px-10 lg:px-5">
                   <div
@@ -1791,10 +1704,8 @@ onUnmounted(() => {
                   </div>
                 </div>
 
-                <!-- ───────────────────────────────────────────────────── -->
                 <!-- Detail Parameter — MODIFIED SECTION                  -->
                 <!-- Added: arrow buttons (mobile only) + mouse drag      -->
-                <!-- ───────────────────────────────────────────────────── -->
                 <div class="w-full h-auto flex flex-col gap-y-3 lg:px-5">
                   <!-- Header row: title + arrow buttons (mobile only) -->
                   <div
@@ -1803,7 +1714,6 @@ onUnmounted(() => {
                     <span class="text-[20px] font-[600] text-[#374151]">
                       Detail parameter ({{ totalParameters }})
                     </span>
-                    <!-- Arrow buttons — hidden on lg and above -->
                     <div class="flex lg:hidden items-center gap-x-2">
                       <button
                         @click="scrollParamLeft"
@@ -1838,7 +1748,6 @@ onUnmounted(() => {
                     </div>
                   </div>
 
-                  <!-- Scrollable card row — drag enabled on desktop too -->
                   <div
                     ref="paramScrollRef"
                     class="w-full h-auto flex flex-row lg:flex-col gap-x-3 lg:gap-x-0 lg:gap-y-8 pb-10 overflow-x-auto px-10 lg:px-0 snap-x snap-mandatory lg:overflow-x-visible lg:snap-none scrollbar-hide cursor-grab active:cursor-grabbing select-none"
@@ -1878,7 +1787,6 @@ onUnmounted(() => {
                     </div>
                   </div>
                 </div>
-                <!-- ───────────────────────────────────────────────────── -->
               </div>
             </div>
           </div>
@@ -1901,7 +1809,6 @@ input[type="number"]::-webkit-outer-spin-button {
   margin: 0;
 }
 
-/* Overlay fade in/out */
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.3s ease;
@@ -1915,7 +1822,6 @@ input[type="number"]::-webkit-outer-spin-button {
   opacity: 1;
 }
 
-/* Zoom modal dari tengah */
 .zoom-enter-active {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }

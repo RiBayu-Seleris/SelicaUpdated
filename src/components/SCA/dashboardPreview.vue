@@ -4,9 +4,6 @@ import { useI18n } from "vue-i18n";
 import { hubFeatures } from "@/Data/Products/SelicaPartner/PartnerContent";
 import { useLocalizedList } from "@/utils/i18nList";
 
-// Komponen ini dipakai di dua halaman: beranda dan halaman Selica Partner.
-// Teksnya diambil dari berkas bahasa supaya cukup ditulis sekali dan ikut
-// berganti saat pengunjung menukar bahasa.
 const { t } = useI18n();
 const fitur = useLocalizedList("partner.hub.features", hubFeatures, ["teks"]);
 const judul = computed(() => t("partner.hub.title"));
@@ -114,9 +111,6 @@ const judul = computed(() => t("partner.hub.title"));
         </a>
       </div>
     </div>
-    <!-- Kolom gambar: gambarnya di-absolute supaya tidak ikut menentukan tinggi row — tinggi
-         section murni mengikuti blok teks. Tingginya persen dari tinggi kolom, lebarnya ikut
-         rasio asli sehingga menembus ke kanan dan dipotong overflow-x-clip di root. -->
     <div class="w-[43%] xl:w-[40%] shrink-0 hidden lg:block relative">
       <img
         src="@/assets/images/dashboard-preview.svg"

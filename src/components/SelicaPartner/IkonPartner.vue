@@ -1,24 +1,10 @@
 <script setup>
 import { computed } from "vue";
 
-/**
- * Kumpulan ikon garis untuk halaman Selica Partner.
- *
- * KENAPA DIGAMBAR SENDIRI, BUKAN BERKAS GAMBAR
- * Semuanya memakai `currentColor`, jadi satu ikon yang sama bisa dipakai di
- * atas ubin teal, di dalam tombol gelap, atau di keterangan abu-abu tanpa
- * perlu berkas terpisah untuk tiap warna. Ukurannya juga ditentukan dari
- * kelas pemanggil (h-5 w-5 dan seterusnya), bukan dari isi berkasnya.
- *
- * Semua digambar pada kanvas 24x24 dengan tebal garis yang sama, supaya
- * bobotnya seragam saat berjejer.
- */
-
 const props = defineProps({
   nama: { type: String, required: true },
 });
 
-/* Dipakai dua kali di bawah: sebagai `lapis` dan sebagai `jaringan`. */
 const LAPIS = [
   "M12 3.2 3.4 7.7 12 12.2l8.6-4.5L12 3.2Z",
   "m3.4 12.3 8.6 4.5 8.6-4.5",
@@ -60,9 +46,6 @@ const IKON = {
   },
   // Tumpukan lapis: bentuk paling langsung untuk "maksimal dua layer".
   lapis: { garis: LAPIS },
-  // Manfaat "komisi jaringan dua layer" menggambarkan hal yang persis sama,
-  // jadi memakai gambar yang sama pula — bukan gambar kedua yang artinya
-  // sama tapi bentuknya beda sedikit.
   jaringan: { garis: LAPIS },
 
   // Label harga dengan lubang gantungannya: bicara soal biaya. Dipakai butir
@@ -106,7 +89,6 @@ const IKON = {
   putar: {
     isi: ["M9.6 7.4 16.4 12l-6.8 4.6V7.4Z"],
   },
-  // Tetikus dengan roda yang bergerak turun — isyarat gulir.
   tetikus: {
     garis: [
       "M12 2.9c-2.3 0-4.1 1.9-4.1 4.2v9.8c0 2.3 1.8 4.2 4.1 4.2s4.1-1.9 4.1-4.2V7.1c0-2.3-1.8-4.2-4.1-4.2Z",
@@ -137,8 +119,6 @@ const ikon = computed(() => IKON[props.nama] ?? IKON.panah);
 </template>
 
 <style scoped>
-/* Roda tetikusnya turun berulang. Ini satu-satunya bagian ikon yang bergerak,
-   dan hanya karena tugasnya memang memberi tahu bahwa halaman bisa digulir. */
 .roda {
   animation: roda 2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
 }

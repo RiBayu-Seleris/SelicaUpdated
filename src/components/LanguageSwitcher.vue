@@ -16,7 +16,6 @@ const selectLanguage = (code) => {
   isOpen.value = false;
 };
 
-// Menutup daftar saat pengunjung mengklik di luar kotaknya.
 const handleClickOutside = (event) => {
   if (!isOpen.value) return;
   if (rootEl.value && !rootEl.value.contains(event.target)) isOpen.value = false;
@@ -47,7 +46,6 @@ onUnmounted(() => {
       @click="toggleMenu"
       class="h-9 lg:h-10 px-2.5 sm:px-3 rounded-lg bg-white border-[0.5px] border-[#DEDEDE] shadow-[inset_0px_0px_17px_-3px_rgba(0,0,0,0.1)] cursor-pointer flex items-center gap-1.5 transition-all duration-300 hover:border-[#13B89C]/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#13B89C]/60"
     >
-      <!-- Ikon globe -->
       <svg
         class="hidden sm:block w-[18px] h-[18px] text-[#13B89C]"
         fill="none"
@@ -65,7 +63,6 @@ onUnmounted(() => {
         {{ languageStore.current.short }}
       </span>
 
-      <!-- Panah -->
       <svg
         class="w-3.5 h-3.5 text-[#878787] transition-transform duration-300"
         :class="isOpen ? 'rotate-180' : 'rotate-0'"
@@ -80,7 +77,6 @@ onUnmounted(() => {
       </svg>
     </button>
 
-    <!-- Daftar bahasa -->
     <transition
       enter-active-class="transition ease-out duration-200"
       enter-from-class="opacity-0 -translate-y-1"

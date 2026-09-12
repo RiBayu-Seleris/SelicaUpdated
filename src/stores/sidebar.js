@@ -1,4 +1,3 @@
-// src/stores/sidebar.js
 import { defineStore } from "pinia";
 import { ref, watch } from "vue";
 
@@ -22,7 +21,6 @@ export const useSidebarStore = defineStore("sidebar", () => {
     document.body.style.overflow = val ? "hidden" : "";
   });
 
-  // ✅ Fungsi ini akan dipanggil di main.js
   function initRouterGuard(router) {
     router.beforeEach(() => {
       close(); // tutup sidebar sebelum navigasi halaman

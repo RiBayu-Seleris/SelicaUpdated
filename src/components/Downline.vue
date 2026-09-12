@@ -5,7 +5,6 @@ const props = defineProps({
   items: {
     type: Array,
     required: true,
-    // [{ image, title, content }]
   },
 });
 
@@ -41,7 +40,6 @@ onUnmounted(() => clearInterval(autoSlideTimer));
 </script>
 
 <template>
-  <!-- Mobile Slider (< md) -->
   <div
     class="md:hidden relative w-full overflow-hidden mt-10"
     @touchstart="onTouchStart"
@@ -56,7 +54,6 @@ onUnmounted(() => clearInterval(autoSlideTimer));
         :key="index"
         class="w-full shrink-0 flex flex-col items-center gap-y-5 px-6 pb-0 pt-4"
       >
-        <!-- Image -->
         <div class="w-auto h-[50%] flex items-center justify-center">
           <img
             :src="data.image"
@@ -67,14 +64,12 @@ onUnmounted(() => clearInterval(autoSlideTimer));
           />
         </div>
 
-        <!-- Number -->
         <div
           class="w-10 h-10 flex justify-center items-center p-2 bg-[#13B89C] border-4 border-white rounded-full shadow-[0px_10px_15.1px_0px_rgba(19,184,156,0.25)]"
         >
           <span class="text-white text-[14px]">{{ index + 1 }}</span>
         </div>
 
-        <!-- Text -->
         <div class="flex flex-col gap-y-2 items-center">
           <p class="text-center text-[#374151] font-[600] text-[18px] sm:text-[22px]">
             {{ data.title }}
@@ -87,7 +82,6 @@ onUnmounted(() => clearInterval(autoSlideTimer));
       </div>
     </div>
 
-    <!-- Dots -->
     <div class="flex justify-center gap-x-2 mt-0">
       <button
         v-for="(_, i) in items"
@@ -108,7 +102,6 @@ onUnmounted(() => clearInterval(autoSlideTimer));
   >
     <div class="w-full h-auto py-0 flex justify-center">
       <div class="relative w-full h-[400px] xl:h-[600px]">
-        <!-- SVG Arc Line -->
         <div class="absolute -top-[3%] xl:top-[0%] left-0 w-full h-full py-0 flex">
           <div class="w-full h-full relative" style="top: 0; left: 0">
             <svg
@@ -137,7 +130,6 @@ onUnmounted(() => clearInterval(autoSlideTimer));
           </div>
         </div>
 
-        <!-- Cards -->
         <div class="w-full h-auto flex flex-row justify-between px-12 lg:px-16 xl:px-28">
           <div
             v-for="(data, index) in items"
@@ -149,7 +141,6 @@ onUnmounted(() => clearInterval(autoSlideTimer));
                 : 'md:mt-[6.5%] lg:mt-[4%] xl:mt-[7.8%]'
             "
           >
-            <!-- Image -->
             <div
               class="w-auto shrink-0 flex justify-center"
               :class="
@@ -167,7 +158,6 @@ onUnmounted(() => clearInterval(autoSlideTimer));
               />
             </div>
 
-            <!-- Number + Text -->
             <div
               class="relative w-full h-[30%] shrink-0 flex flex-col gap-y-8 xl:gap-y-12 items-center"
             >

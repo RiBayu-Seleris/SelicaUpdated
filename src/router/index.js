@@ -25,7 +25,6 @@ const routes = [
     meta: { title: "Selica Partner" },
   },
 
-  // catch-all route (harus di paling bawah)
   {
     path: "/:pathMatch(.*)*",
     name: "NotFound",
@@ -51,7 +50,6 @@ const router = createRouter({
     //   return savedPosition;
     // }
 
-    // Jika ada hash (#howapplicationwork)
     if (to.hash) {
       return {
         el: to.hash,
@@ -59,7 +57,6 @@ const router = createRouter({
       };
     }
 
-    // Default scroll ke atas
     return { top: 0 };
   },
 });

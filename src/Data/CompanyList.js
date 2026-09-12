@@ -1,4 +1,3 @@
-// src/Data/CompanyList.js
 export const companyList = [
   {
     url: "https://seleris.ai/about/company",

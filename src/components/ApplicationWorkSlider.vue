@@ -27,9 +27,7 @@ defineProps({
     class="relative flex flex-row w-full h-auto pb-8 overflow-x-auto snap-x snap-mandatory scroll-pl-[15%] pl-[15%] pr-20 md:scroll-pl-[20%] md:pl-[50%] md:pr-20 xl:scroll-pl-0 xl:pl-[50%] xl:pr-[50%] hide-scrollbar"
   >
     <template v-for="(step, index) in steps" :key="index">
-      <!-- Phone -->
       <WorkPhone :image="step.image" />
-      <!-- Line Frame -->
       <WorkLine
         :circleColor="circleColor"
         :textcolor="textcolor"

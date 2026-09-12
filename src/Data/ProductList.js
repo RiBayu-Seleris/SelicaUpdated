@@ -1,4 +1,3 @@
-// src/Data/ProductList.js
 export const productList = [
   { url: "https://seleris.ai/product/credit-cover", name: "Credit Cover" },
   { url: "https://seleris.ai/product/lifins", name: "Lifins" },

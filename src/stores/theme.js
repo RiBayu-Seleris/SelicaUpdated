@@ -1,4 +1,3 @@
-// stores/theme.js
 import { defineStore } from "pinia";
 import { ref, watch } from "vue";
 

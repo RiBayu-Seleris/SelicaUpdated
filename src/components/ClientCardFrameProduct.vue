@@ -50,10 +50,8 @@ const partnerChunks = computed(() => chunkArray(props.clientLogos, columnsPerRow
   <div class="block lg:hidden overflow-hidden">
     <div class="marquee-track animation-row mt-8">
       <div class="flex gap-x-6 w-max pb-5">
-        <!-- SET PERTAMA -->
         <CardSlide v-for="(logo, index) in props.clientLogos" :key="'a-' + index" :image="logo" />
 
-        <!-- SET KEDUA (DUPLIKAT) -->
         <CardSlide v-for="(logo, index) in props.clientLogos" :key="'b-' + index" :image="logo" />
       </div>
     </div>

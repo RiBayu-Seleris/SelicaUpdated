@@ -15,9 +15,7 @@
           : 'bg-transparent border border-slate-200'
       "
     >
-      <!-- Inner white card -->
       <div class="bg-white rounded-[10px] overflow-hidden">
-        <!-- Header button -->
         <button
           class="w-full flex items-center justify-between px-6 py-4 text-left focus:outline-none group"
           @click="toggle(index)"
@@ -45,7 +43,6 @@
           </span>
         </button>
 
-        <!-- Answer animated -->
         <transition
           name="accordion"
           @enter="onEnter"
@@ -72,7 +69,6 @@ const { t } = useI18n();
 
 const activeIndex = ref(null);
 
-// Enam pertanyaan; kalimatnya ada di berkas bahasa pada kunci home.faq.*
 const faqs = computed(() =>
   Array.from({ length: 6 }, (_, i) => ({
     question: t(`home.faq.${i}.question`),
@@ -84,7 +80,6 @@ function toggle(index) {
   activeIndex.value = activeIndex.value === index ? null : index;
 }
 
-// Smooth height animation handlers
 function onEnter(el) {
   el.style.height = "0";
   el.style.overflow = "hidden";

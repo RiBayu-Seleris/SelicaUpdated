@@ -1,11 +1,3 @@
-// Sumber: Parameters.pdf — 62 parameter, 7 kategori.
-//
-// BERKAS INI HANYA MENYIMPAN STRUKTURNYA: id, ikon, warna, dan tier.
-// Semua judul dan keterangannya ada di src/locales/en.json dan id.json pada
-// kunci `parameters.*`, digabungkan di komponen memakai useLocalizedList().
-// Urutan di sini HARUS sama dengan urutan di berkas bahasa.
-//
-// `tier` = paket terendah yang sudah mencakup parameter tsb (insight ⊂ intellect ⊂ oracle).
 export const tabs = [
   {
     id: "vital",
@@ -153,8 +145,6 @@ export const tabContents = {
   },
 };
 
-// Hanya strukturnya. Judul, keterangan, dan label tombolnya ada di berkas
-// bahasa pada kunci `parameters.footer.*`.
 export const footerInfo = {
   icon: "microscope",
   buttonLink: "#",

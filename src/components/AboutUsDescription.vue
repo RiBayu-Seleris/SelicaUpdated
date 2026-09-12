@@ -31,7 +31,6 @@ defineProps({
       <p
         class="text-[#2E504E] max-smallest:text-[18px] text-[22px] md:text-[24px] lg:text-[30px] font-[600]"
       >
-        <!-- AI Health Care Application -->
         {{ title }}
       </p>
       <p

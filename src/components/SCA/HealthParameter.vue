@@ -1,6 +1,5 @@
 <template>
   <div class="w-full h-auto flex flex-col over-smallest:gap-y-5 gap-y-10">
-    <!-- Header -->
     <div class="w-full max-w-[1440px] mx-auto px-8 md:px-12 lg:px-16 xls:px-32">
       <div
         class="lg:max-w-xl mx-auto w-full flex flex-col gap-y-2 justify-center items-center text-center"
@@ -18,9 +17,7 @@
       </div>
     </div>
 
-    <!-- Carousel Kartu Parameter -->
     <div class="relative w-full">
-      <!-- Tombol panah kiri -->
       <button
         type="button"
         :aria-label="$t('common.scrollLeft')"
@@ -50,7 +47,6 @@
         </svg>
       </button>
 
-      <!-- Tombol panah kanan -->
       <button
         type="button"
         :aria-label="$t('common.scrollRight')"
@@ -80,7 +76,6 @@
         </svg>
       </button>
 
-      <!-- Track kartu -->
       <div
         ref="scroller"
         @scroll.passive="updateArrows"
@@ -95,7 +90,6 @@
           data-param-card
           class="snap-start shrink-0 relative w-[350px] h-[560px] md:h-[640px] rounded-2xl bg-white border border-[#DCF2E4] shadow-[0_6px_24px_rgba(16,74,45,0.08)] overflow-hidden"
         >
-          <!-- Gradasi hijau tipis seperti pada desain referensi -->
           <div
             class="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_75%_at_100%_0%,#EAF9F0_0%,transparent_62%)]"
           ></div>
@@ -112,7 +106,6 @@
               {{ category.description }}
             </p>
 
-            <!-- Daftar parameter, scroll sendiri bila melebihi tinggi kartu -->
             <div class="relative mt-5 flex-1 min-h-0">
               <ul
                 :ref="(el) => registerList(el, category.id)"
@@ -160,7 +153,6 @@
                   </div>
                 </li>
               </ul>
-              <!-- Petunjuk bahwa daftar masih berlanjut; hilang begitu sampai dasar -->
               <div
                 v-show="listCanScroll[category.id]"
                 class="pointer-events-none absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-white via-white/80 to-transparent transition-opacity duration-200"
@@ -181,7 +173,6 @@
       </div>
     </div>
 
-    <!-- Footer Banner -->
     <div class="w-full max-w-[1440px] mx-auto px-4 md:px-12 lg:px-16 xls:px-32">
       <div
         class="bg-[#0F2744] rounded-2xl flex flex-col gap-y-5 md:flex-row items-center justify-between px-4 py-5"
@@ -200,7 +191,6 @@
           </div>
         </div>
 
-        <!-- Button membuka modal PDF -->
         <button
           @click="openModal"
           class="w-full md:w-auto justify-center flex bg-white text-[#0F2744] font-semibold px-3 lg:px-6 py-3 rounded-xl text-sm whitespace-nowrap hover:bg-gray-100 transition"
@@ -210,13 +200,11 @@
       </div>
     </div>
 
-    <!-- PDF Preview Modal -->
     <Teleport to="body">
       <Transition name="fade">
         <div v-if="isPdfModalOpen" class="modal-backdrop" @click.self="closeModal">
           <Transition name="slide-up">
             <div v-if="isPdfModalOpen" class="modal">
-              <!-- Modal Header -->
               <div class="modal-header">
                 <div class="header-left">
                   <svg
@@ -249,7 +237,6 @@
                 </button>
               </div>
 
-              <!-- Modal Toolbar -->
               <div class="modal-toolbar">
                 <div class="toolbar-center" v-if="totalPages > 0">
                   <button class="nav-btn" @click="prevPage" :disabled="currentPage <= 1">
@@ -279,7 +266,6 @@
                 </div>
               </div>
 
-              <!-- Modal Body -->
               <div class="modal-body">
                 <div v-if="loading" class="loading-state">
                   <div class="spinner"></div>
@@ -329,19 +315,12 @@ import {
 import * as pdfjsLib from "pdfjs-dist";
 import pdfjsWorker from "pdfjs-dist/build/pdf.worker?url";
 
-// Ganti path sesuai lokasi PDF Anda di src/assets/
 import pdfAsset from "@/assets/pdf/example-result.pdf";
 
-// Set worker dari npm, tidak perlu CDN
 pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorker;
 
 const { t } = useI18n();
 
-/**
- * Daftar kartu kategori: strukturnya dari src/Data, kalimatnya dari berkas
- * bahasa. Digabung di sini supaya template tinggal memakainya seperti daftar
- * biasa, dan ikut berganti sendiri saat pengunjung menukar bahasa.
- */
 const categories = computed(() =>
   parameterCategories.map((kategori) => ({
     ...kategori,
@@ -370,7 +349,6 @@ const paramIcons = Object.fromEntries(
   ]),
 );
 
-// Ikon per kategori — cadangan untuk parameter yang belum punya gambar sendiri.
 const iconMarkup = {
   heart:
     '<path d="M12 20.3 4.5 13a4.5 4.5 0 1 1 6.4-6.3l1.1 1.1 1.1-1.1A4.5 4.5 0 1 1 19.5 13l-7.5 7.3Z"/>',
@@ -385,7 +363,6 @@ const iconMarkup = {
     '<path d="M12 21s7-3.2 7-8.6V5.9l-7-2.6-7 2.6v6.5C5 17.8 12 21 12 21Z"/><path d="M12 8.5v4"/><path d="M12 15.6v.01"/>',
 };
 
-// Fade di dasar daftar hanya muncul selama masih ada isi di bawahnya.
 const listCanScroll = reactive({});
 const listEls = new Map();
 
@@ -399,7 +376,6 @@ function registerList(el, id) {
 function syncFade(id) {
   const el = listEls.get(id);
   if (!el) return;
-  // toleransi 2px untuk pembulatan sub-pixel saat sudah mentok bawah
   const next = el.scrollHeight - el.scrollTop - el.clientHeight > 2;
   if (listCanScroll[id] !== next) listCanScroll[id] = next;
 }
@@ -408,7 +384,6 @@ function syncAllFades() {
   listEls.forEach((_, id) => syncFade(id));
 }
 
-// Scroll horizontal + status tombol panah
 const scroller = ref(null);
 const canScrollLeft = ref(false);
 const canScrollRight = ref(false);
@@ -427,8 +402,6 @@ function updateArrows() {
   canScrollRight.value = el.scrollLeft < maxScroll - 4;
 }
 
-// Posisi tujuan dilacak sendiri supaya klik beruntun tetap menumpuk
-// (scrollBy saat animasi smooth masih berjalan menghitung ulang dari posisi saat itu).
 let targetLeft = null;
 
 function scrollCards(direction) {
@@ -443,7 +416,6 @@ function scrollCards(direction) {
   el.scrollTo({ left: targetLeft, behavior: "smooth" });
 }
 
-// Begitu pengguna menggeser sendiri, tujuan yang dilacak tidak berlaku lagi.
 function resetTarget() {
   targetLeft = null;
 }
@@ -464,7 +436,6 @@ onBeforeUnmount(() => {
   window.removeEventListener("resize", onResize);
 });
 
-// Modal & PDF state
 const isPdfModalOpen = ref(false);
 const pdfCanvas = ref(null);
 const pdfDoc = shallowRef(null);
@@ -475,7 +446,6 @@ const loading = ref(false);
 const error = ref(false);
 const inputPage = ref(1);
 
-// Lock body scroll saat modal terbuka
 watch(isPdfModalOpen, (val) => {
   document.body.style.overflow = val ? "hidden" : "";
 });
@@ -483,7 +453,6 @@ watch(isPdfModalOpen, (val) => {
 async function openModal() {
   isPdfModalOpen.value = true;
 
-  // Hanya load sekali, tidak perlu load ulang
   if (pdfDoc.value) return;
 
   loading.value = true;

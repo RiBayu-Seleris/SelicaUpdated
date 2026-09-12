@@ -21,15 +21,6 @@ defineProps({
     type: String,
     default: "text-[#FAFAFA]",
   },
-  /**
-   * Menaruh subtitle DI ATAS judul, bukan di bawahnya.
-   *
-   * Urutan katanya memang berbeda antar bahasa: dalam Bahasa Indonesia
-   * "Aplikasi" jadi kepala frasa ("Aplikasi Pemantauan Kesehatan..."),
-   * sementara dalam Bahasa Inggris justru jadi ekor ("Smarter Health
-   * Monitoring... Application"). Karena itu urutannya ditentukan berkas
-   * bahasa, bukan dikunci di sini.
-   */
   subtitleFirst: {
     type: Boolean,
     default: false,

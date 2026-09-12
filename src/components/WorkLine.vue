@@ -49,7 +49,6 @@ onMounted(() => {
         <transition name="fade">
           <div class="relative w-full h-full md:w-auto md:h-auto" v-if="showContent">
             <slot />
-            <!-- INI FRAME DIBAWAH LINGKARAN -->
             <div
               class="absolute w-full h-full top-0 flex flex-col justify-center items-center px-6 lg:px-8 gap-y-2.5 lg:gap-y-2 pt-8 sm:pt-9 md:pt-7 lg:pt-8"
             >
@@ -69,11 +68,9 @@ onMounted(() => {
           </div>
         </transition>
       </div>
-      <!-- LineStart -->
       <div class="w-[90px] md:w-36 lg:w-44 h-auto flex items-center">
         <div class="w-full h-[2.5px] bg-[#868686] rounded-full" />
       </div>
-      <!-- Circle -->
       <div class="relative w-auto h-auto rounded-full flex items-center" @click="toggleContent">
         <div
           :class="[
@@ -90,7 +87,6 @@ onMounted(() => {
           />
         </div>
       </div>
-      <!-- LineEnd -->
       <div class="w-[90px] md:w-36 lg:w-44 h-auto flex items-center">
         <div v-if="!isLast" class="w-full h-[2.5px] bg-[#868686] rounded-full" />
       </div>

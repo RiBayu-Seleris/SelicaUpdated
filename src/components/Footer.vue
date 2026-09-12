@@ -1,13 +1,11 @@
 <script setup>
 // import DarkLogo from "@/assets/images/darklogo.png";
 
-// Sosmed Icon
 import Instagram from "@/components/icons/Instagram.vue";
 import Linkedin from "@/components/icons/Linkedin.vue";
 import Tiktok from "@/components/icons/Tiktok.vue";
 import Twitter from "@/components/icons/Twitter.vue";
 
-// Images
 import playstore from "@/assets/images/playstore.png";
 import qrSelica from "@/assets/images/qr-selica.svg";
 import appstore from "@/assets/images/appstore.png";
@@ -240,17 +238,6 @@ const connectColor = computed(() => {
             >
               {{ $t("footer.getTheApp") }}
             </p>
-            <!-- Tiga perilaku, bukan dua.
-
-                 Dulu wadah ini `flex-row` di SEMUA lebar di bawah lg, dengan
-                 jarak 40px. Susunan itu masih masuk akal waktu isinya cuma
-                 badge Play Store, tapi begitu QR ikut masuk, di ponsel sempit
-                 keduanya berebut ruang: badge-nya `w-full`, QR-nya 104px, dan
-                 jaraknya 40px.
-
-                 Sekarang: menumpuk di ponsel, berdampingan mulai sm, dan
-                 kembali menumpuk rata kiri di lg tempat kolomnya memang
-                 sempit. -->
             <div
               class="flex flex-col items-start gap-6 sm:flex-row sm:justify-center sm:gap-8 lg:flex-col lg:items-start lg:gap-4"
             >
@@ -269,19 +256,6 @@ const connectColor = computed(() => {
                 />
               </a>
 
-              <!-- Kode QR menuju https://selica.app/ — jalan pintas untuk
-                   membuka aplikasinya dari layar komputer.
-
-                   Dipakai SVG, bukan PNG: kode QR seluruhnya bidang tajam
-                   bersudut siku, dan versi bitmap akan kabur di layar
-                   berkerapatan tinggi — kabur sedikit saja sudah cukup
-                   membuat pemindaian gagal. Logonya ikut tertanam di dalam
-                   berkasnya, jadi tidak ada rujukan keluar.
-
-                   Latarnya sengaja putih pekat walau di mode gelap: pemindai
-                   membaca beda terang antara modul gelap dan latar terang,
-                   dan QR di atas latar gelap sering tidak terbaca sama
-                   sekali. -->
               <div class="flex w-auto shrink-0 flex-col items-start gap-y-2 lg:items-start">
                 <a
                   href="https://selica.app/"

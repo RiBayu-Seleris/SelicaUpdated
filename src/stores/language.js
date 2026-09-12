@@ -1,15 +1,7 @@
-// stores/language.js
 import { defineStore } from "pinia";
 import { computed, ref, watch } from "vue";
 import i18n, { DEFAULT_LOCALE } from "@/i18n";
 
-// Daftar bahasa yang tampil di switcher navbar.
-// Tambah bahasa baru cukup dengan menambah objek di array ini.
-//
-// Bahasa bawaannya TIDAK ditulis ulang di sini melainkan diambil dari i18n.js.
-// Sebelumnya nilainya disalin sebagai konstanta tersendiri, dan itu membuat
-// perubahan bawaan di i18n.js tidak berpengaruh sama sekali: store ini
-// menimpanya kembali lewat applyLanguage() begitu halaman dimuat.
 export const LANGUAGES = [
   { code: "en", short: "EN", label: "English" },
   { code: "id", short: "ID", label: "Bahasa Indonesia" },

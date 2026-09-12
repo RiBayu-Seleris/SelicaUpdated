@@ -22,7 +22,6 @@ defineProps({
         <p
           class="text-[#2E504E] text-[20px] sm:text-[36px] lg:text-[32px] xl:text-[50px] font-[500]"
         >
-          <!-- How Application Work -->
           {{ title }}
         </p>
       </div>

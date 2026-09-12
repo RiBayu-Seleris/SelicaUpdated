@@ -29,10 +29,8 @@ const dashConfig = computed(() => {
   if (w < 768) {
     return { initial: 550, total: 700, range: 450 };
   } else if (w < 1024) {
-    // md
     return { initial: 600, total: 700, range: 430 };
   } else {
-    // lg ke atas
     return { initial: 650, total: 700, range: 450 };
   }
 });
@@ -62,17 +60,14 @@ const strokeDashoffset = computed(() => {
     </div>
 
     <div class="w-full h-full flex flex-row">
-      <!-- Scroll Indicator (SVG arc + dots) -->
       <div class="relative w-[30%] shrink-0 h-full">
         <div class="absolute left-0 top-0 h-full flex flex-col items-center z-10 w-full">
-          <!-- SVG arc curved ke kanan -->
           <svg
             class="absolute top-0 left-0 w-full h-full"
             viewBox="0 0 120 300"
             preserveAspectRatio="none"
             fill="none"
           >
-            <!-- Track abu -->
             <path
               d="M 30 0 C 100 40, 170 200, 30 300"
               stroke="#E5E7EB"
@@ -80,7 +75,6 @@ const strokeDashoffset = computed(() => {
               stroke-linecap="round"
               fill="none"
             />
-            <!-- Progress hijau -->
             <path
               d="M 30 0 C 100 40, 170 200, 30 300"
               stroke="#13B89C"
@@ -97,7 +91,6 @@ const strokeDashoffset = computed(() => {
             />
           </svg>
 
-          <!-- Dots -->
           <div class="relative z-20 h-full flex flex-col justify-around py-0">
             <div
               v-for="(step, index) in steps"
@@ -122,7 +115,6 @@ const strokeDashoffset = computed(() => {
         </div>
       </div>
 
-      <!-- Step titles + description -->
       <div class="flex flex-col w-full h-full gap-y-0 transition-all duration-500 ease-out">
         <div
           v-for="(step, index) in steps"
@@ -130,7 +122,6 @@ const strokeDashoffset = computed(() => {
           class="relative w-full h-full flex flex-col items-center gap-y-0 lg:gap-y-0 transition-all xl:justify-between duration-500 ease-out"
           :class="index === 0 || index === 2 ? 'ml-3 lg:-ml-2' : 'ml-14 lg:ml-8'"
         >
-          <!-- Title -->
           <div
             class="absolute left-0 w-full flex items-center transition-all duration-500 ease-out"
             :class="[
@@ -147,7 +138,6 @@ const strokeDashoffset = computed(() => {
             </p>
           </div>
 
-          <!-- Description (hanya step aktif) -->
           <div
             v-if="index === currentIndex && showDescription"
             class="absolute bottom-0 sm:bottom-3 lg:-bottom-3 xl:-bottom-1 xls:bottom-3 left-0 w-full h-auto transition-all duration-500 ease-out animate__animated animate__fadeIn"
@@ -176,7 +166,6 @@ const strokeDashoffset = computed(() => {
       </Transition>
     </div>
 
-    <!-- ✅ relative agar SVG absolute bisa mengikuti parent -->
     <div class="relative w-full h-[100px] md:h-[200px] flex">
       <svg
         class="absolute top-0 left-0 w-full h-full"
@@ -184,7 +173,6 @@ const strokeDashoffset = computed(() => {
         preserveAspectRatio="none"
         fill="none"
       >
-        <!-- Track abu -->
         <path
           d="M 0 290 Q 220 -70, 440 290"
           stroke="#E5E7EB"
@@ -192,7 +180,6 @@ const strokeDashoffset = computed(() => {
           stroke-linecap="round"
           fill="none"
         />
-        <!-- Progress hijau -->
         <path
           d="M 0 290 Q 220 -70, 440 290"
           stroke="#13B89C"
@@ -233,14 +220,12 @@ const strokeDashoffset = computed(() => {
         :key="currentIndex"
         class="animate__animated animate__fadeIn flex flex-col items-center w-full px-10 md:px-24 gap-y-5 transition-all duration-500"
       >
-        <!-- Title -->
         <p
           class="font-[500] leading-snug tracking-normal text-[20px] md:text-[26px] text-[#13B89C] text-center"
         >
           {{ steps[currentIndex].title }}
         </p>
 
-        <!-- Description -->
         <p
           class="keterangan-langkah font-[400] text-[#515E71] text-[12px] md:text-[16px] leading-normal tracking-wide text-center min-h-10 md:min-h-16"
           v-html="steps[currentIndex].description"
@@ -251,27 +236,6 @@ const strokeDashoffset = computed(() => {
 </template>
 
 <style scoped>
-/* ============================================================
-   TAUTAN DI DALAM KETERANGAN LANGKAH
-
-   Keterangannya datang dari berkas bahasa dan dipasang lewat v-html, jadi
-   isinya membawa tag <a> sendiri.
-
-   KENAPA GAYANYA DI SINI, BUKAN DI BERKAS BAHASA
-   Dulu tag <a> itu membawa kelas Tailwind sendiri
-   (`text-[#01A488] hover:underline`). Kelas itu TIDAK PERNAH TERBENTUK:
-   glob Tailwind hanya memindai .vue/.js/.ts, sehingga apa pun yang ditulis
-   di dalam JSON tidak pernah ikut dihasilkan. Ditambah preflight Tailwind
-   yang menghapus warna dan garis bawah bawaan <a>, tautannya selama ini
-   tampil persis seperti teks biasa — tidak ada tanda sama sekali bahwa ia
-   bisa diklik.
-
-   Diletakkan di sini, gayanya tidak bergantung pada apa yang dipindai
-   Tailwind, dan berkas bahasa kembali berisi kalimat saja tanpa urusan rupa.
-
-   :deep() diperlukan karena isinya disisipkan lewat v-html, jadi elemen <a>
-   tidak membawa penanda scoped milik komponen ini.
-============================================================ */
 .keterangan-langkah :deep(a) {
   color: #2d71dd;
   text-decoration: underline;

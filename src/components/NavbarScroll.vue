@@ -14,7 +14,6 @@ const route = useRoute(); // ✅ Ambil route saat ini
 
 const { logo } = useProductLogoColor();
 
-// Situs ini hanya punya satu halaman, jadi logonya selalu mengarah ke beranda.
 const LogoLink = computed(() => "/");
 
 const handleScroll = () => {
@@ -61,10 +60,8 @@ onUnmounted(() => {
               </div>
             </div>
 
-            <!-- Mobile Navbar with Sidebar Button -->
             <div class="flex lg:hidden flex-row w-full h-auto justify-between px-4 md:px-8">
               <router-link to="/" class="w-[40%] h-auto flex">
-                <!-- Logo terang (light mode) -->
                 <img
                   v-if="logo"
                   :src="logo"

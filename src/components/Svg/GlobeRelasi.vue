@@ -1,63 +1,16 @@
 <script setup>
-/**
- * Bola dunia dengan cincin relasi, dipotong tepi kanan layar.
- *
- * KENAPA BENTUKNYA BEGINI
- * Dua hal yang dijanjikan bagian ini, digabung jadi satu gambar:
- * 1. Kerjanya tidak terikat tempat — "bisa dijalankan dari mana saja". Itu
- *    bola dunianya.
- * 2. Penghasilannya datang dari orang di sekeliling Anda, dan makin jauh
- *    lingkarannya makin sedikit yang sampai. Itu cincin-cincinnya: simpul
- *    duduk di cincin yang berbeda-beda jaraknya, dan cincin yang lebih luar
- *    digambar lebih samar.
- *
- * KENAPA SETENGAH
- * Seluruh gambar ini bulat dan terpusat, lalu pemanggilnya menggesernya
- * setengah badan keluar tepi kanan — persis cara pratinjau dashboard di
- * bagian Selica Hub menembus ke kanan. Yang memotong adalah `overflow-hidden`
- * milik section, bukan bingkai SVG-nya, jadi potongannya jatuh tepat di tepi
- * layar dan bukan di garis tak terlihat di tengah halaman.
- *
- * Karena itu seluruh isinya muat utuh di dalam bingkai dan dipusatkan: begitu
- * separuh kanannya keluar layar, yang tersisa adalah separuh kiri yang rapi,
- * bukan potongan yang kebetulan.
- *
- * SEMUANYA LINGKARAN DAN ELIPS, TIDAK ADA KURVA YANG DIGAMBAR TANGAN
- * Bentuk bola diturunkan dari rumus, jadi tiap garis lintangnya benar-benar
- * duduk di permukaan bola yang sama — bukan didekati dengan kurva yang
- * "kira-kira mirip". Itu yang membuatnya tidak terlihat penyok.
- */
 defineProps({
-  // Kelas posisi dari komponen pemanggil, mis. "inset-y-0 right-[-25%] w-1/2".
   positionClass: { type: String, default: "" },
-  // Dibuat sebagai prop supaya satu ornamen ini bisa dipakai di atas latar
-  // terang maupun gelap.
   warna: { type: String, default: "#14B89B" },
   opasitas: { type: Number, default: 0.2 },
 });
 
-/* Bingkai bujur sangkar, semuanya berbagi satu titik pusat di tengahnya.
-   Cincin terluar sengaja masih di dalam bingkai — kalau ia melebihi bingkai,
-   ia akan terpotong lurus oleh tepi SVG, dan potongan lurus di tengah halaman
-   itu yang membuat ornamen terlihat seperti gambar yang salah ukur. */
 const PUSAT = 480;
 const JARI = 210;
 
 const SIN = 0.342; // sin 20°, sudut pandang di atas khatulistiwa
 const COS = 0.94; // cos 20°
 
-/* ------------------------------------------------------------
-   Bola dunia
-
-   Dari satu sudut pandang 20 derajat itu semuanya mengikuti:
-   - garis lintang pada ketinggian h punya jari-jari √(R² − h²);
-   - ia tergambar sebagai elips setinggi jari-jari × sin 20°;
-   - dan pusatnya bergeser sejauh h × cos 20°.
-
-   Karena ketiganya diturunkan dari sudut yang sama, tidak ada garis lintang
-   yang menyembul keluar batas bolanya — kesalahan yang paling cepat membuat
-   gambar bola terlihat salah.
------------------------------------------------------------- */
 const lintang = [0, 105, 170].flatMap((h) => {
   const jari = Math.sqrt(JARI * JARI - h * h);
   const rx = +jari.toFixed(1);
@@ -71,20 +24,8 @@ const lintang = [0, 105, 170].flatMap((h) => {
       ];
 });
 
-// Garis bujur: elips setinggi penuh dengan lebar yang menyempit ke tengah.
 const bujur = [+(JARI * 0.667).toFixed(1), +(JARI * 0.333).toFixed(1)];
 
-/* ------------------------------------------------------------
-   Cincin relasi dan simpulnya
-
-   Sudut simpul dipilih di rentang 90°–270°, yaitu separuh KIRI lingkaran.
-   Separuh kanan berada di luar layar, jadi simpul yang diletakkan di sana
-   tidak akan pernah terlihat siapa pun.
-
-   Koordinatnya dihitung di sini dari sudut dan jari-jarinya. Kalau ditulis
-   tangan satu per satu, satu salah ketik cukup untuk membuat sebuah simpul
-   melayang lepas dari cincinnya.
------------------------------------------------------------- */
 const cincin = [
   { r: 280, tebal: 1.5, alpha: 0.55 },
   { r: 350, tebal: 1.4, alpha: 0.4 },
@@ -112,9 +53,6 @@ const simpul = [
 </script>
 
 <template>
-  <!-- `meet` (bawaan): seluruh gambar dikecilkan sampai muat, tidak dipotong
-       sama sekali dari dalam. Pemotongannya diserahkan sepenuhnya pada tepi
-       section — itulah yang membuat bolanya terbelah tepat di tepi layar. -->
   <svg
     :class="['pointer-events-none absolute select-none', positionClass]"
     viewBox="0 0 960 960"
@@ -123,7 +61,6 @@ const simpul = [
     aria-hidden="true"
     :style="{ opacity: opasitas }"
   >
-    <!-- Cincin relasi. Digambar lebih dulu supaya bola dunianya duduk di atas. -->
     <g :stroke="warna" fill="none">
       <circle
         v-for="(c, i) in cincin"
@@ -147,8 +84,6 @@ const simpul = [
       />
     </g>
 
-    <!-- Bola dunia. Permukaannya ditutup lebih dulu supaya cincin yang lewat
-         di belakangnya tidak terlihat menembusnya. -->
     <circle :cx="PUSAT" :cy="PUSAT" :r="JARI" :fill="warna" opacity="0.07" />
 
     <g :stroke="warna" fill="none">

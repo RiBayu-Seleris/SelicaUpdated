@@ -22,7 +22,6 @@ const isEssential = computed(() => props.pkg.id === "essential");
 const isCore = computed(() => props.pkg.id === "core");
 const isPrime = computed(() => props.pkg.id === "prime");
 
-// ── Mobile expand/collapse ────────────────────────────────
 const expanded = ref(false);
 const contentRef = ref(null);
 const contentHeight = ref(0);
@@ -32,7 +31,6 @@ const toggleExpand = () => {
   expanded.value = !expanded.value;
 };
 
-// ── Mobile popup ──────────────────────────────────────────
 const showPopup = ref(false);
 </script>
 
@@ -44,13 +42,11 @@ const showPopup = ref(false);
       :class="isCore ? 'bg-gradient-to-b from-[#26DBBD] from-[20%] to-[#26DBBD]/0' : 'bg-[#DADADA]'"
     >
       <div class="relative bg-white rounded-[10px] flex flex-col">
-        <!-- Top accent bar untuk CORE -->
         <div
           v-if="isCore"
           class="w-[50%] h-1.5 absolute top-0 left-1/2 -translate-x-1/2 bg-[#27DBBD] rounded-b-full"
         />
 
-        <!-- HEADER -->
         <div class="flex justify-between px-5 pt-5 pb-3">
           <div>
             <p class="text-[12px] text-[#374151]">
@@ -84,7 +80,6 @@ const showPopup = ref(false);
 
         <div class="h-[1px] bg-[#DADADA]" />
 
-        <!-- CONTENT -->
         <div
           ref="contentRef"
           class="relative overflow-hidden transition-[max-height] duration-300 ease-in-out will-change-[max-height]"
@@ -92,7 +87,6 @@ const showPopup = ref(false);
             maxHeight: expanded ? contentHeight + 'px' : '160px',
           }"
         >
-          <!-- Gradient overlay saat collapsed -->
           <Transition name="fade-gradient">
             <div
               v-if="!expanded"
@@ -115,7 +109,6 @@ const showPopup = ref(false);
           </ul>
         </div>
 
-        <!-- BUTTON -->
         <div class="px-5 py-3">
           <div
             class="rounded-[8px] py-2 text-center cursor-pointer"
@@ -149,7 +142,6 @@ const showPopup = ref(false);
     ]"
   >
     <div class="w-full flex flex-col gap-y-5 bg-white rounded-xl px-3 lg:px-5 py-5">
-      <!-- Title -->
       <div
         class="flex items-center gap-x-1 font-[600]"
         :class="[isEssential ? 'text-[#42A2C2]' : isCore ? 'text-[#21CBAF]' : 'text-[#4273C2]']"
@@ -160,7 +152,6 @@ const showPopup = ref(false);
         </span>
       </div>
 
-      <!-- Price -->
       <div class="flex flex-col justify-center">
         <!-- <del class="text-[#9CA3AF] decoration-[#E22F4A]">
           <p class="text-[#CDCDCD] font-[400] text-[12px] lg:text-[16px]">
@@ -175,7 +166,6 @@ const showPopup = ref(false);
         </div>
       </div>
 
-      <!-- Features -->
       <div class="flex flex-col gap-y-4 lg:gap-y-5 h-[280px] lg:h-[300px]">
         <div
           v-for="feature in pkg.features"
@@ -191,9 +181,6 @@ const showPopup = ref(false);
             <p class="text-[#515E71] text-[14px] lg:text-[16px] capitalize">
               {{ $t(feature.nameKey) }}
             </p>
-            <!-- Jumlah parameter kategori ini. Angkanya datang dari daftar
-                 parameter yang sama dengan yang dipakai modal rincian, jadi
-                 kartu dan modalnya tidak mungkin menyebut jumlah berbeda. -->
             <p class="jumlah-param shrink-0">
               {{ feature.count }}
               <span class="satuan-param">{{ $t("packages.paramUnit") }}</span>
@@ -204,7 +191,6 @@ const showPopup = ref(false);
 
       <!-- <div class="w-full h-[2px] bg-[#E2E7EF]" /> -->
 
-      <!-- Commission -->
       <div class="flex flex-col gap-y-5 mt-4">
         <!-- <p class="text-[#515E71] font-semibold text-[14px] lg:text-[16px]">
           Potensi komisi Selica Partner
@@ -231,7 +217,6 @@ const showPopup = ref(false);
           </div>
         </div> -->
 
-        <!-- Button -->
         <div
           @click="emit('show-detail', pkg)"
           :class="[
@@ -253,9 +238,6 @@ const showPopup = ref(false);
 </template>
 
 <style scoped>
-/* Angka jumlah parameter per kategori. Angkanya yang ditonjolkan, satuannya
-   dibuat kecil dan redup — yang dibandingkan pembaca antarpaket memang
-   angkanya, bukan kata "parameter" yang berulang di tiap baris. */
 .jumlah-param {
   font-size: 15px;
   font-weight: 600;

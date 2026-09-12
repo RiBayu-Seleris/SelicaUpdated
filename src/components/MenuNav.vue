@@ -7,14 +7,8 @@ import Navlink from "@/components/NavLink.vue";
 const { isScrolled } = useScrollStore();
 const route = useRoute();
 
-// Saat halaman digulir, navbar berganti jadi versi berlatar putih sehingga
-// tulisannya selalu gelap. Yang perlu diputuskan hanya keadaan paling atas:
-// tulisan putih kalau hero halamannya gelap, selain itu gelap.
 const tulisanTerang = computed(() => route.meta.heroGelap === true);
 
-// Menu hanya menyimpan alamat tujuan dan KUNCI bahasanya.
-// Teksnya sendiri ada di src/locales/en.json dan id.json, jadi ikut berganti
-// saat pengunjung menukar bahasa.
 const defaultProductMenu = [
   { href: "#hero", labelKey: "nav.home" },
   { href: "#about", labelKey: "nav.about" },

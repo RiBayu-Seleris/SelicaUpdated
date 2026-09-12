@@ -1,30 +1,8 @@
 <script setup>
 import { onBeforeUnmount, onMounted, ref } from "vue";
 
-/**
- * Latar partikel yang saling terhubung dan bergerak sendiri.
- *
- * KENAPA BENTUKNYA TITIK-TERHUBUNG
- * Sama seperti ornamen lain di halaman ini: logo Selica memakai motif simpul
- * yang tersambung, dan program Partner strukturnya memang jaringan. Jadi
- * latarnya ikut mengatakan hal yang sama, bukan hiasan yang bisa ditempel di
- * halaman mana pun.
- *
- * KENAPA TIDAK MEMAKAI THREE.JS
- * Kedalamannya dibuat dengan cara lama: tiap partikel punya nilai "z" yang
- * menentukan besar, kepekatan, dan KECEPATANNYA. Partikel jauh bergerak
- * lambat, yang dekat bergerak cepat — itulah yang membuat mata membaca
- * kedalaman, persis seperti memandang ke luar jendela kereta. Hasilnya mirip
- * 3D, tapi tanpa menambah ratusan kilobyte ke halaman.
- *
- * Gerakannya berjalan sendiri, tidak menunggu mouse.
- */
-
 const props = defineProps({
-  // Warna titik dan garis. Dibuat prop supaya bisa dipakai di latar gelap
-  // maupun terang.
   warna: { type: String, default: "#13B89C" },
-  // Seberapa rapat partikelnya. Angka acuan untuk layar lebar 1440px.
   kerapatan: { type: Number, default: 70 },
 });
 
@@ -54,10 +32,6 @@ function buatPartikel() {
     y: acak(0, tinggi),
     // z: 0 = paling jauh, 1 = paling dekat.
     z: acak(0, 1),
-    // Arah acak, dengan kecepatan yang nanti dikalikan kedalamannya. Angka ini
-    // sengaja tidak terlalu kecil: pada percobaan sebelumnya 0,18 membuat
-    // partikelnya bergerak sekitar 10 piksel per detik, dan itu terbaca
-    // sebagai diam.
     vx: acak(-0.55, 0.55),
     vy: acak(-0.55, 0.55),
   }));
@@ -71,9 +45,6 @@ function ukurUlang() {
   lebar = kotak.width;
   tinggi = kotak.height;
 
-  // Layar retina menggambar dua piksel untuk tiap satu piksel CSS. Tanpa
-  // penyesuaian ini gambarnya terlihat buram. Dibatasi 2 supaya layar dengan
-  // kerapatan sangat tinggi tidak membuat kanvasnya terlalu berat.
   const rasio = Math.min(window.devicePixelRatio || 1, 2);
   el.width = Math.round(lebar * rasio);
   el.height = Math.round(tinggi * rasio);
@@ -85,17 +56,6 @@ function ukurUlang() {
 function gambar() {
   ctx.clearRect(0, 0, lebar, tinggi);
 
-  /* Garis digambar lebih dulu supaya berada di bawah titiknya.
-
-     KENAPA DIKELOMPOKKAN
-     Sebelumnya tiap garis digambar sendiri-sendiri: mengubah kepekatan,
-     warna, dan ketebalan, lalu menggambar — empat perintah per garis, dan
-     ada ratusan garis tiap gambar layar. Mengubah keadaan kanvas jauh lebih
-     mahal daripada menggambarnya.
-
-     Sekarang garis dibagi ke beberapa kelompok kepekatan, dan tiap kelompok
-     digambar sekali sebagai satu jalur. Perintah pengubah keadaan turun dari
-     ratusan menjadi lima. */
   const TINGKAT = 5;
   const kelompok = Array.from({ length: TINGKAT }, () => new Path2D());
   const kuadratJarak = JARAK_SAMBUNG * JARAK_SAMBUNG;
@@ -104,8 +64,6 @@ function gambar() {
     for (let j = i + 1; j < partikel.length; j++) {
       const dx = partikel[i].x - partikel[j].x;
       const dy = partikel[i].y - partikel[j].y;
-      // Dibandingkan dalam bentuk kuadrat supaya tidak perlu akar kuadrat,
-      // yang dihitung ribuan kali tiap gambar layar.
       const kuadrat = dx * dx + dy * dy;
       if (kuadrat > kuadratJarak) continue;
 
@@ -142,8 +100,6 @@ function langkah() {
     p.x += p.vx * (0.4 + p.z);
     p.y += p.vy * (0.4 + p.z);
 
-    // Keluar di satu sisi, masuk lagi di sisi seberangnya. Diberi kelonggaran
-    // supaya tidak terlihat "muncul" tepat di tepi.
     const batas = 40;
     if (p.x < -batas) p.x = lebar + batas;
     if (p.x > lebar + batas) p.x = -batas;
@@ -171,16 +127,12 @@ onMounted(() => {
   ukurUlang();
 
   if (kurangiGerak) {
-    // Tetap digambar sekali supaya latarnya tidak kosong, hanya tidak bergerak.
     gambar();
     return;
   }
 
   window.addEventListener("resize", ukurUlang);
 
-  // Berhenti menggambar saat bagian ini tidak terlihat di layar. Tanpa ini,
-  // partikelnya tetap dihitung sepanjang pengunjung membaca bagian bawah
-  // halaman — membuang daya baterai tanpa ada yang melihat.
   pengamat = new IntersectionObserver(([masuk]) => (masuk.isIntersecting ? jalan() : berhenti()), {
     threshold: 0,
   });
