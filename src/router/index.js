@@ -7,7 +7,7 @@ const routes = [
     component: () => import("@/Care.vue"),
     // heroGelap: bagian paling atas halaman berlatar gelap, jadi tulisan menu
     // dibuat putih. Halaman tanpa penanda ini otomatis memakai tulisan gelap.
-    meta: { title: "Health Care", heroGelap: true },
+    meta: { title: "Seleris", heroGelap: true },
   },
   {
     path: "/medical-disclaimer",

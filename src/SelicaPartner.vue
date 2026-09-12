@@ -702,68 +702,93 @@ const keBagian = (id) =>
       <div class="mx-auto max-w-[1440px] px-8 py-24 md:px-12 md:py-32 lg:px-16 xls:px-32">
         <h2 v-muncul class="judul max-w-[16ch]">{{ $t("partner.hero.ladderTitle") }}</h2>
 
-        <!-- Rel kemajuan. Lebarnya dihitung CSS dari `--maju` yang ditulis
-             langsung ke elemen section, jadi menggulir halaman tidak
-             membuat Vue menggambar ulang apa pun. -->
-        <div class="rel-jalur mt-14 hidden w-full md:mt-16 md:block">
-          <div class="rel">
-            <span
-              class="isi-maju block h-px bg-gradient-to-r from-[#94A3B8] via-[#14B89B] to-[#0E9A82]"
-            />
-          </div>
+        <!-- ---------- TANGGA TAHAPAN ----------
 
-          <!-- Penanda tiap tingkat status, digambar DUA LAPIS yang bertumpuk
-               tepat sama. Lapis redup selalu tampil; lapis menyala dipotong
-               `clip-path` selebar kemajuan garisnya.
+             Tiga status ini BUKAN tiga pilihan yang setara — ia urutan yang
+             harus dinaiki: Inactive dulu, lalu Active sesudah self-screening,
+             baru Leader sesudah punya downline. Susunan lama menggambarnya
+             sebagai tiga kolom sejajar, dan bentuk itu justru mengatakan
+             kebalikannya: ketiganya terbaca sebagai pilihan yang bisa diambil
+             mana saja.
 
-               KENAPA BEGINI, BUKAN MENGHITUNG POSISI TIAP PENANDA
-               Penanda duduk di awal tiap kolom, jadi letaknya bergantung pada
-               lebar layar DAN jarak antarkolom yang berubah di lg. Menghitung
-               "penanda ini ada di 34,7% rel" berarti menghitung ulang tiap
-               kali jendela berubah ukuran, dan meleset sedikit saja membuat
-               lampunya menyala sebelum garisnya sampai. Dengan dipotong,
-               tidak ada angka yang dihitung sama sekali: lapis menyala
-               terungkap persis sejauh garisnya maju, berapa pun lebarnya. -->
-          <div
-            v-for="lapis in ['redup', 'nyala']"
-            :key="lapis"
-            class="penanda-lapis gap-x-12 lg:gap-x-16"
-            :class="`penanda-${lapis}`"
-            aria-hidden="true"
-          >
-            <span
-              v-for="(s, i) in status"
-              :key="i"
-              class="penanda"
-              :style="{ '--warna': s.warna, '--warna-rgb': keRgb(s.warna) }"
-            >
-              <span class="penanda-inti" />
-            </span>
-          </div>
-        </div>
-
-        <ol class="mt-12 grid gap-y-12 md:mt-0 md:grid-cols-3 md:gap-x-12 lg:gap-x-16">
+             Sebagai tangga, urutannya terbaca sebelum satu kata pun dibaca.
+             Tiap kartu duduk di anak tangga yang makin tinggi, dan anak
+             tangganya saling menempel (tanpa jarak antarkolom) supaya
+             siluetnya menerus seperti tangga sungguhan — bukan tiga balok
+             yang kebetulan berbeda tinggi.
+        -->
+        <ol class="tangga mt-12 md:mt-16">
           <li
             v-for="(s, i) in status"
             :key="i"
             v-muncul="i * 110"
-            class="garis border-t pt-8 md:border-t-0 md:pt-10"
+            class="anak"
+            :style="{
+              '--warna': s.warna,
+              '--warna-rgb': keRgb(s.warna),
+              '--ambang': i / status.length,
+              '--tinggi-tapak': `${i * 64}px`,
+            }"
           >
-            <p class="mono text-[11px] tracking-[0.2em] text-[#557782]">
-              {{ nol(i + 1) }} / {{ nol(status.length) }}
-            </p>
-            <p
-              class="mt-4 text-[30px] font-bold leading-none tracking-[-0.02em] md:text-[36px]"
-              :style="{ color: s.warna }"
-            >
-              {{ s.nama }}
-            </p>
-            <p class="mono mt-3 text-[11px] uppercase tracking-[0.14em] text-[#557782]">
-              {{ s.ringkas }}
-            </p>
-            <p class="tubuh mt-5 max-w-[36ch] text-[14px] md:text-[15px]">{{ s.detail }}</p>
+            <div class="kartu-putih anak-kartu">
+              <div class="flex items-center gap-x-3">
+                <span class="anak-penanda" aria-hidden="true">
+                  <span class="anak-inti" />
+                </span>
+                <span class="anak-urut">{{ nol(i + 1) }} / {{ nol(status.length) }}</span>
+              </div>
+
+              <p class="anak-nama">{{ s.nama }}</p>
+              <p class="anak-ringkas">{{ s.ringkas }}</p>
+              <p class="tubuh mt-4 text-[13px] md:text-[14px]">{{ s.detail }}</p>
+            </div>
+
+            <!-- Badan anak tangganya. Tingginya bertambah tiap tingkat, dan
+                 karena seluruh baris disejajarkan di DASARNYA, yang naik
+                 adalah kartunya. -->
+            <span class="anak-tapak" aria-hidden="true" />
           </li>
         </ol>
+      </div>
+    </section>
+
+    <section id="manfaat" class="garis relative isolate w-full overflow-hidden border-t">
+      <GlobeRelasi
+        position-class="hidden sm:block sm:right-[-55%] sm:top-1/2 sm:h-[170%] sm:w-[110%] sm:-translate-y-1/2"
+        warna="#14B89B"
+        :opasitas="0.18"
+      />
+
+      <div class="relative mx-auto max-w-[1440px] px-8 py-24 md:px-12 md:py-32 lg:px-16 xls:px-32">
+        <h2 v-muncul class="judul max-w-[18ch]">{{ $t("partner.benefits.heading") }}</h2>
+        <div class="mt-10 grid gap-5 md:mt-14 lg:grid-cols-2">
+          <div
+            v-for="(b, i) in manfaatUtama"
+            :key="i"
+            v-muncul="i * 90"
+            class="kartu-putih p-6 md:p-9"
+          >
+            <span class="ubin"><IkonPartner :nama="b.ikon" class="h-5 w-5" /></span>
+            <p
+              class="mt-6 text-[19px] font-[600] leading-tight tracking-[-0.015em] text-[#0E3B4D] md:text-[22px]"
+            >
+              {{ b.judul }}
+            </p>
+            <p class="tubuh mt-2.5 max-w-[42ch] text-[14px] md:text-[15px]">{{ b.isi }}</p>
+          </div>
+        </div>
+
+        <div class="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div v-for="(b, i) in manfaatLain" :key="i" v-muncul="i * 70" class="kartu-putih p-6">
+            <span class="ubin ubin-kecil">
+              <IkonPartner :nama="b.ikon" class="h-[1.05rem] w-[1.05rem]" />
+            </span>
+            <p class="mt-5 text-[15px] font-[600] leading-snug text-[#0E3B4D] md:text-[16px]">
+              {{ b.judul }}
+            </p>
+            <p class="tubuh mt-2 text-[13px] md:text-[14px]">{{ b.isi }}</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -773,7 +798,7 @@ const keBagian = (id) =>
          pengantar simulasi merujuknya, tapi bentuknya bacaan alat: dua
          kolom, bergaris rambut, angka rata kanan.
     ============================================================ -->
-    <section id="komisi" class="garis relative w-full border-t bg-[#FFFFFF]">
+    <section id="komisi" class="garis relative w-full border-t bg-[#F4FBF9]">
       <div class="mx-auto max-w-[1440px] px-8 py-24 md:px-12 md:py-32 lg:px-16 xls:px-32">
         <div class="grid gap-y-8 lg:grid-cols-12 lg:gap-x-16">
           <div class="lg:col-span-5">
@@ -834,7 +859,7 @@ const keBagian = (id) =>
              label huruf kapital renggang, angka berimbuh nol — yang tidak
              dipakai di mana pun lagi di situs ini.
         -->
-        <div v-muncul class="mt-8 rounded-[16px] bg-[#FAFAFA] p-4 md:mt-10 md:p-8 xl:p-10">
+        <div v-muncul class="mt-8 rounded-[16px] p-4 md:mt-10 md:p-8 xl:p-10">
           <h3 class="text-[16px] font-[600] text-[#374151] lg:text-[24px] xl:text-[26px]">
             {{ $t("partner.commission.simHeading") }}
           </h3>
@@ -1144,107 +1169,14 @@ const keBagian = (id) =>
       </div>
     </section>
 
-    <!-- ============================================================
-         05 — MANFAAT
-         Enam butir, TAPI tidak sama berat. Dua yang pertama — gratis dan
-         15% — paling menentukan orang mau membaca terus atau tidak, jadi
-         keduanya mendapat ukuran besar dan barisnya sendiri; empat sisanya
-         berbaris di bawahnya seukuran keterangan. Susunan bertingkat ini
-         juga yang membedakannya dari daftar prinsip di bagian 02: kalau
-         keduanya dibuat sebagai daftar bernomor yang seragam, halaman ini
-         akan terasa mengulang dirinya sendiri.
-    ============================================================ -->
-    <section
-      id="manfaat"
-      class="garis relative isolate w-full overflow-hidden border-t bg-[#F4FBF9]"
-    >
-      <!-- Bola dunia dengan relasi yang mengorbit, di ruang kosong sebelah
-           kanan judul. Dua hal yang dijanjikan bagian ini sekaligus: kerja
-           yang tidak terikat tempat, dan penghasilan yang datang dari orang
-           di sekeliling Anda.
-
-           Sengaja dibiarkan menyembul keluar tepi kanan lalu dipotong oleh
-           `overflow-hidden` milik section. Ornamen yang muat utuh di dalam
-           bidang terbaca sebagai gambar yang ditempel; yang terpotong tepi
-           terbaca sebagai sesuatu yang menerus di balik halaman.
-
-           Di layar kecil tidak ditampilkan sama sekali: di sana judul dan
-           kartunya sudah memenuhi lebar, jadi ornamen ini cuma akan jadi
-           kesibukan di belakang tulisan. -->
-      <GlobeRelasi
-        position-class="hidden sm:block sm:right-[-55%] sm:top-1/2 sm:h-[170%] sm:w-[110%] sm:-translate-y-1/2"
-        warna="#14B89B"
-        :opasitas="0.18"
-      />
-
-      <div class="relative mx-auto max-w-[1440px] px-8 py-24 md:px-12 md:py-32 lg:px-16 xls:px-32">
-        <h2 v-muncul class="judul max-w-[18ch]">{{ $t("partner.benefits.heading") }}</h2>
-
-        <!-- ---------- ENAM MANFAAT ----------
-
-             Dulu bagian ini deretan garis rambut dengan satu setrip kecil di
-             atas tiap butir. Bentuk itu tidak salah, tapi ia bahasa rupa yang
-             tidak dipakai di mana pun lagi di situs ini — dan sesudah
-             kalkulator komisi pindah ke kartu putih bersudut membulat,
-             halaman ini jadi terbaca separuh-separuh.
-
-             Sekarang tiap butir jadi kartu, dengan ubin ikon di kepalanya —
-             pola yang sama dengan daftar manfaat di halaman Care. Ikonnya
-             sendiri sudah lama disebut di berkas data (`gratis`, `komisi`,
-             `jaringan`, dan seterusnya) tapi belum pernah ada gambarnya, jadi
-             semuanya diam-diam jatuh ke ikon panah. Gambarnya baru ditambahkan
-             di IkonPartner.vue.
-
-             Dua butir pertama tetap diberi kartu yang lebih besar: "gratis"
-             dan "15%" adalah dua keberatan terbesar calon partner, dan
-             keduanya dijawab di situ.
-        -->
-        <div class="mt-10 grid gap-5 md:mt-14 lg:grid-cols-2">
-          <div
-            v-for="(b, i) in manfaatUtama"
-            :key="i"
-            v-muncul="i * 90"
-            class="kartu-putih p-6 md:p-9"
-          >
-            <span class="ubin"><IkonPartner :nama="b.ikon" class="h-5 w-5" /></span>
-            <p
-              class="mt-6 text-[19px] font-[600] leading-tight tracking-[-0.015em] text-[#0E3B4D] md:text-[22px]"
-            >
-              {{ b.judul }}
-            </p>
-            <p class="tubuh mt-2.5 max-w-[42ch] text-[14px] md:text-[15px]">{{ b.isi }}</p>
-          </div>
-        </div>
-
-        <div class="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          <div v-for="(b, i) in manfaatLain" :key="i" v-muncul="i * 70" class="kartu-putih p-6">
-            <span class="ubin ubin-kecil">
-              <IkonPartner :nama="b.ikon" class="h-[1.05rem] w-[1.05rem]" />
-            </span>
-            <p class="mt-5 text-[15px] font-[600] leading-snug text-[#0E3B4D] md:text-[16px]">
-              {{ b.judul }}
-            </p>
-            <p class="tubuh mt-2 text-[13px] md:text-[14px]">{{ b.isi }}</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         06 — Selica Hub
-         Satu-satunya bagian terang di halaman gelap, dan itu disengaja:
-         dashboard-nya memang layar yang menyala. Perpindahan gelap ke
-         terang di sini menjadi jeda napas sekaligus penanda bahwa yang
-         ditunjukkan berikutnya adalah produknya sendiri.
-    ============================================================ -->
-    <section id="hub" class="garis relative w-full overflow-hidden border-t bg-[#FFFFFF]">
+    <section id="hub" class="garis relative w-full overflow-hidden border-t">
       <div
         class="mx-auto max-w-[1440px] px-8 pb-14 pt-24 md:px-12 md:pb-16 md:pt-32 lg:px-16 xls:px-32"
       >
         <h2 v-muncul class="judul max-w-[18ch]">{{ $t("partner.hub.heading") }}</h2>
       </div>
 
-      <div v-muncul class="layar relative mx-auto max-w-[1440px] pb-16 pt-14 md:pb-20 md:pt-16">
+      <div v-muncul class="relative mx-auto max-w-[1440px] pb-16 pt-14 md:pb-20 md:pt-0">
         <DashboardPreview />
       </div>
     </section>
@@ -2015,90 +1947,129 @@ const keBagian = (id) =>
    dibaca di sini. Karena CSS yang membacanya, menggulir halaman tidak
    membuat satu komponen Vue pun digambar ulang.
 ============================================================ */
-/* Rel tempat kemajuan digambar. Dibuat sebagai latar setebal satu piksel,
-   bukan sebagai border, supaya tinggi relnya benar-benar satu piksel dan
-   isian di dalamnya duduk tepat di atasnya. */
-.rel {
-  height: 1px;
-  background: var(--garis);
-}
-.isi-maju {
-  width: calc(var(--maju, 0) * 100%);
-}
-
 /* ============================================================
-   PENANDA TINGKAT STATUS
+   TANGGA TAHAPAN
 
-   Lingkaran ganda: cincin tipis berwarna tingkatnya, dengan inti kecil di
-   tengah. Sebelumnya ini kotak masif 7px — bentuk yang tidak mengatakan
-   apa-apa selain "ada penanda di sini". Cincin dengan inti terbaca sebagai
-   SIMPUL pada sebuah jalur, bentuk yang sama dengan simpul jaringan di
-   seluruh halaman ini, dan intinya memberi satu hal yang bisa dinyalakan.
+   Tiga status partner adalah urutan yang dinaiki, bukan tiga pilihan yang
+   setara. Bentuk tangga mengatakan itu sebelum satu kata pun dibaca.
+
+   Anak tangganya SALING MENEMPEL — tidak ada jarak antarkolom — supaya
+   siluetnya menerus seperti tangga sungguhan. Jarak antarkartu diberikan
+   lewat margin kartunya sendiri, bukan lewat celah kolom, justru supaya
+   badan tangganya tetap utuh.
 ============================================================ */
-.rel-jalur {
-  position: relative;
-}
-
-/* Dua lapis penanda bertumpuk tepat di atas relnya. Kolomnya menyalin
-   `md:grid-cols-3` milik daftar status di bawahnya, supaya tiap penanda
-   jatuh persis di awal kolom butirnya. */
-.penanda-lapis {
-  position: absolute;
-  inset: 0;
+.tangga {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  align-items: center;
-  pointer-events: none;
+  gap: 1.5rem 0;
+}
+@media (min-width: 1024px) {
+  .tangga {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    /* Disejajarkan di DASARNYA. Karena tiap anak tangga punya tinggi
+       berbeda, yang naik justru kartunya — itulah tangganya. */
+    align-items: end;
+    gap: 0;
+  }
 }
 
-/* Lapis menyala dipotong selebar kemajuan garis. Karena potongannya memakai
-   persen dari lebar relnya sendiri, tepi potongan dan ujung garis selalu
-   berada di titik yang sama — intinya menyala tepat saat garisnya tiba. */
-.penanda-nyala {
-  clip-path: inset(0 calc(100% - var(--maju, 0) * 100%) 0 0);
+.anak {
+  display: flex;
+  flex-direction: column;
+  /* Seberapa terang tingkat ini, 0..1.
+
+     Dihitung dari `--maju` (kemajuan guliran yang ditulis pasangKemajuan ke
+     elemen section) dikurangi ambang milik tingkat ini, lalu dikali besar
+     supaya peralihannya tegas tapi tidak mengejut. clamp() menjepitnya ke
+     0..1, jadi tingkat yang belum terlewati tetap redup dan yang sudah
+     terlewati tidak pernah lebih terang dari penuh.
+
+     Ambangnya angka tetap (0, 1/3, 2/3) yang dikirim dari template, bukan
+     hasil mengukur tata letak — jadi tidak ada yang perlu dihitung ulang
+     saat jendela berubah ukuran. */
+  --nyala: clamp(0, calc((var(--maju, 0) - var(--ambang)) * 26), 1);
 }
 
-.penanda {
+.anak-kartu {
+  padding: 1.4rem 1.25rem 1.5rem;
+}
+@media (min-width: 1024px) {
+  .anak-kartu {
+    /* Margin inilah yang memberi jarak antarkartu, menggantikan celah kolom
+       yang sengaja dinolkan demi keutuhan badan tangganya. */
+    margin: 0 0.6rem;
+    padding: 1.6rem 1.5rem 1.75rem;
+  }
+}
+
+/* Badan anak tangga. Tingginya bertambah tiap tingkat; yang pertama nol,
+   karena ia memang berdiri di permukaan tanah. */
+.anak-tapak {
+  display: none;
+}
+@media (min-width: 1024px) {
+  .anak-tapak {
+    display: block;
+    height: var(--tinggi-tapak, 0px);
+    margin-top: 1.25rem;
+    background: rgba(var(--warna-rgb), 0.1);
+    /* Garis atas penuh warna: itu permukaan tapak yang diinjak. */
+    border-top: 3px solid var(--warna);
+    opacity: calc(0.4 + var(--nyala) * 0.6);
+    transition: opacity 0.45s ease;
+  }
+}
+
+/* Penanda lingkaran ganda di kepala tiap kartu. Bentuknya sama dengan simpul
+   jaringan di seluruh halaman ini; intinya menyala saat guliran mencapai
+   tingkat tersebut. */
+.anak-penanda {
   position: relative;
   display: grid;
+  flex: none;
   place-items: center;
-  justify-self: start;
-  width: 15px;
-  height: 15px;
-}
-
-/* Cincin luar. Latarnya sewarna latar section supaya garis rel tidak
-   terlihat menembus lingkarannya — tanpa itu, cincinnya terbaca seperti
-   manik yang ditusuk benang, bukan seperti perhentian pada jalur. */
-.penanda::before {
-  content: "";
-  position: absolute;
-  inset: 0;
+  width: 16px;
+  height: 16px;
   border-radius: 999px;
   border: 1.5px solid var(--warna);
-  background: #f4fbf9;
-  opacity: 0.38;
+  opacity: calc(0.35 + var(--nyala) * 0.65);
+  transition: opacity 0.45s ease;
 }
-
-.penanda-inti {
-  position: relative;
-  width: 5px;
-  height: 5px;
+.anak-inti {
+  width: 6px;
+  height: 6px;
   border-radius: 999px;
   background: var(--warna);
-  opacity: 0.32;
+  opacity: calc(0.3 + var(--nyala) * 0.7);
+  box-shadow: 0 0 0 calc(var(--nyala) * 4px) rgba(var(--warna-rgb), 0.16);
+  transition:
+    opacity 0.45s ease,
+    box-shadow 0.45s ease;
 }
 
-/* Keadaan menyala. Cincinnya dibuat tembus pandang, bukan diberi latar
-   lagi: latar milik lapis redup di bawahnya sudah menutup garisnya, dan
-   latar kedua yang ditumpuk di atasnya justru menutupi cahaya intinya. */
-.penanda-nyala .penanda::before {
-  opacity: 0.9;
-  background: transparent;
+.anak-urut {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: #8aa2ab;
+  font-variant-numeric: tabular-nums;
 }
-.penanda-nyala .penanda-inti {
-  opacity: 1;
-  box-shadow: 0 0 0 4px rgba(var(--warna-rgb), 0.18);
+.anak-nama {
+  margin-top: 0.9rem;
+  color: var(--warna);
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+@media (min-width: 768px) {
+  .anak-nama {
+    font-size: 30px;
+  }
+}
+.anak-ringkas {
+  margin-top: 0.55rem;
+  font-size: 12.5px;
+  color: #6f6f6f;
 }
 
 /* Garis fokus bawaan browser bertumpukan dengan garis rambut di halaman ini

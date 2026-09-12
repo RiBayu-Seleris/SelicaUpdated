@@ -27,6 +27,7 @@
     "phone": "Telepon",
     "email": "Email",
     "getTheApp": "Unduh Aplikasi",
+    "scanQr": "Pindai untuk membuka Selica",
     "rights": "© 2023 Seleris Asia Pacific Technology. Seluruh hak cipta dilindungi."
   },
   "partner": {
@@ -585,6 +586,7 @@
       "komposisi": "Pemeriksaan Komposisi Tubuh",
       "risiko": "Analisis Risiko Penyakit"
     },
+    "paramUnit": "parameter",
     "params": {
       "0": "Detak Jantung (Heart Rate)",
       "1": "Ketersediaan Oksigen dalam Darah (SpO2)",
@@ -736,6 +738,7 @@
     "downloadButton": "Download",
     "applicationWorkTitle": "Cara Kerja Aplikasi",
     "registerCta": "Daftar Jadi SCA",
+    "learnMoreCta": "Penjelasan lebih lanjut",
     "whatsSelica": {
       "0": {
         "title": "Teknologi AI Medis",
@@ -825,16 +828,16 @@
     "dashboardAlt": "Pratinjau dashboard Selica Partner",
     "registerFlow": {
       "0": {
-        "title": "Register Akun",
-        "description": "Daftarkan akun Anda melalui website <a href=\"https://sca.seleriscare.ai\" target=\"_blank\">sca.seleriscare.ai</a> dan lakukan pembelian produk sebagai bagian dari proses pendaftaran"
+        "title": "Langkah 1 — Daftar Akun",
+        "description": "Buat akun Partner kamu melalui <a href=\"https://sca.seleriscare.ai\" target=\"_blank\" rel=\"noopener\">sca.seleriscare.ai</a> atau langsung lewat <a href=\"https://selica.app\" target=\"_blank\" rel=\"noopener\">selica.app</a>. Isi data yang diperlukan dan ikuti proses pendaftaran hingga selesai."
       },
       "1": {
-        "title": "Unduh Selica",
-        "description": "Unduh aplikasi <a href=\"https://sca.seleriscare.ai\" target=\"_blank\">Selica</a> melalui Google Play Store, kemudian instal aplikasi tersebut di perangkat Anda sebelum memulai proses deteksi."
+        "title": "Langkah 2 — Buka Selica",
+        "description": "Setelah akun berhasil dibuat, akses Selica melalui:<br>Aplikasi Selica (download dan buka di perangkatmu), atau<br>Web App langsung dari browser"
       },
       "2": {
-        "title": "Login Selica",
-        "description": "Masuk ke aplikasi Selica menggunakan akun Anda dan mulai gunakan layanan yang tersedia"
+        "title": "Langkah 3 — Sign In",
+        "description": "Masuk menggunakan akun Partner yang sudah kamu daftarkan sebelumnya, dan kamu siap mulai menggunakan Selica sebagai Partner."
       }
     },
     "appWork": {

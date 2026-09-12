@@ -92,9 +92,13 @@ export const packages = paketData.map((pkg) => ({
   badgeMobileKey: `packages.badges.${pkg.badgeMobile}`,
   price: pkg.price,
   parameterTotal: pkg.benefits.reduce((sum, b) => sum + b.param.length, 0),
-  // Nama kategori pemeriksaan yang tampil di kartu paket.
+  // Nama kategori pemeriksaan yang tampil di kartu paket, beserta BERAPA
+  // parameter yang masuk kategori itu. Angkanya dihitung dari daftar yang
+  // sama dengan yang dipakai modal rincian, jadi kartu dan modalnya tidak
+  // mungkin menyebut jumlah yang berbeda.
   features: pkg.benefits.map((b) => ({
     nameKey: `packages.benefitCategories.${b.kategori}`,
+    count: b.param.length,
   })),
   commission: {
     direct: pkg.price * DIRECT_PERCENT,

@@ -9,6 +9,7 @@ import Twitter from "@/components/icons/Twitter.vue";
 
 // Images
 import playstore from "@/assets/images/playstore.png";
+import qrSelica from "@/assets/images/qr-selica.svg";
 import appstore from "@/assets/images/appstore.png";
 
 import { productList } from "@/Data/ProductList";
@@ -239,21 +240,67 @@ const connectColor = computed(() => {
             >
               {{ $t("footer.getTheApp") }}
             </p>
-            <div class="flex flex-row lg:flex-col gap-10 lg:gap-0">
+            <!-- Tiga perilaku, bukan dua.
+
+                 Dulu wadah ini `flex-row` di SEMUA lebar di bawah lg, dengan
+                 jarak 40px. Susunan itu masih masuk akal waktu isinya cuma
+                 badge Play Store, tapi begitu QR ikut masuk, di ponsel sempit
+                 keduanya berebut ruang: badge-nya `w-full`, QR-nya 104px, dan
+                 jaraknya 40px.
+
+                 Sekarang: menumpuk di ponsel, berdampingan mulai sm, dan
+                 kembali menumpuk rata kiri di lg tempat kolomnya memang
+                 sempit. -->
+            <div
+              class="flex flex-col items-start gap-6 sm:flex-row sm:justify-center sm:gap-8 lg:flex-col lg:items-start lg:gap-4"
+            >
               <a
                 href="https://play.google.com/store/search?q=blooxia&c=apps&hl=id"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="flex w-auto h-full md:justify-start justify-center items-center content-center xl:justify-start xl:content-start"
+                class="flex w-full max-w-[220px] shrink-0 items-center justify-center sm:w-auto lg:justify-start"
               >
                 <img
                   :src="playstore"
                   alt="Playstore"
-                  class="w-full sm:w-[200px] md:w-[200px] xl:w-[200px] h-[100px] object-contain object-center"
+                  class="h-[88px] w-full object-contain object-center sm:h-[100px] sm:w-[200px]"
                   loading="lazy"
                   decoding="async"
                 />
               </a>
+
+              <!-- Kode QR menuju https://selica.app/ — jalan pintas untuk
+                   membuka aplikasinya dari layar komputer.
+
+                   Dipakai SVG, bukan PNG: kode QR seluruhnya bidang tajam
+                   bersudut siku, dan versi bitmap akan kabur di layar
+                   berkerapatan tinggi — kabur sedikit saja sudah cukup
+                   membuat pemindaian gagal. Logonya ikut tertanam di dalam
+                   berkasnya, jadi tidak ada rujukan keluar.
+
+                   Latarnya sengaja putih pekat walau di mode gelap: pemindai
+                   membaca beda terang antara modul gelap dan latar terang,
+                   dan QR di atas latar gelap sering tidak terbaca sama
+                   sekali. -->
+              <div class="flex w-auto shrink-0 flex-col items-start gap-y-2 lg:items-start">
+                <a
+                  href="https://selica.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="rounded-[12px] bg-white p-2 shadow-sm ring-1 ring-black/5"
+                >
+                  <img
+                    :src="qrSelica"
+                    :alt="$t('footer.scanQr')"
+                    class="h-[100px] w-[100px] object-contain sm:h-[104px] sm:w-[104px]"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </a>
+                <span class="text-[11px] text-[#7C8A99] dark:text-[#9AA5B1]">
+                  {{ $t("footer.scanQr") }}
+                </span>
+              </div>
               <!-- <div
                 class="flex w-auto h-full justify-center items-center content-center xl:justify-start xl:content-start xl:-mt-5"
               >
@@ -280,7 +327,7 @@ const connectColor = computed(() => {
           </div>
         </div>
       </div>
-      <div class="w-full h-[1px] bg-[#d8dee4] rounded-full" />
+      <div class="w-full h-[1px] bg-[#d8dee4] rounded-full mt-5 lg:mt-0" />
       <div class="flex flex-col w-full justify-center text-center items-center pb-6 pt-4 gap-y-2">
         <p class="text-[16px] lg:text-[18px] xl:text-[20px] dark:text-[#FAFAFA]/40 font-[400]">
           PT Seleris Meditekno Internasional

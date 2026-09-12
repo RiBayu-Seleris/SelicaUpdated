@@ -104,7 +104,13 @@ const showPopup = ref(false);
             class="px-5 py-5 mx-5 list-disc list-outside pl-5 flex flex-col gap-y-3 text-[14px] md:text-[16px]"
           >
             <li v-for="feature in pkg.features" :key="feature.nameKey">
-              {{ $t(feature.nameKey) }}
+              <span class="flex items-baseline justify-between gap-x-3">
+                <span>{{ $t(feature.nameKey) }}</span>
+                <span class="jumlah-param">
+                  {{ feature.count }}
+                  <span class="satuan-param">{{ $t("packages.paramUnit") }}</span>
+                </span>
+              </span>
             </li>
           </ul>
         </div>
@@ -181,9 +187,16 @@ const showPopup = ref(false);
           >
             <img src="@/assets/icons/green-checklist.svg" loading="lazy" decoding="async" />
           </div>
-          <div class="w-full h-full flex items-center">
+          <div class="w-full h-full flex items-center justify-between gap-x-3">
             <p class="text-[#515E71] text-[14px] lg:text-[16px] capitalize">
               {{ $t(feature.nameKey) }}
+            </p>
+            <!-- Jumlah parameter kategori ini. Angkanya datang dari daftar
+                 parameter yang sama dengan yang dipakai modal rincian, jadi
+                 kartu dan modalnya tidak mungkin menyebut jumlah berbeda. -->
+            <p class="jumlah-param shrink-0">
+              {{ feature.count }}
+              <span class="satuan-param">{{ $t("packages.paramUnit") }}</span>
             </p>
           </div>
         </div>
@@ -192,7 +205,7 @@ const showPopup = ref(false);
       <!-- <div class="w-full h-[2px] bg-[#E2E7EF]" /> -->
 
       <!-- Commission -->
-      <div class="flex flex-col gap-y-5">
+      <div class="flex flex-col gap-y-5 mt-4">
         <!-- <p class="text-[#515E71] font-semibold text-[14px] lg:text-[16px]">
           Potensi komisi Selica Partner
         </p>
@@ -240,6 +253,30 @@ const showPopup = ref(false);
 </template>
 
 <style scoped>
+/* Angka jumlah parameter per kategori. Angkanya yang ditonjolkan, satuannya
+   dibuat kecil dan redup — yang dibandingkan pembaca antarpaket memang
+   angkanya, bukan kata "parameter" yang berulang di tiap baris. */
+.jumlah-param {
+  font-size: 15px;
+  font-weight: 600;
+  color: #374151;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.satuan-param {
+  font-size: 10px;
+  font-weight: 400;
+  color: #a0a3bd;
+}
+@media (min-width: 1024px) {
+  .jumlah-param {
+    font-size: 16px;
+  }
+  .satuan-param {
+    font-size: 11px;
+  }
+}
+
 .fade-gradient-enter-active,
 .fade-gradient-leave-active {
   transition: opacity 0.2s ease;

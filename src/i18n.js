@@ -4,7 +4,13 @@ import en from "@/locales/en.json";
 import id from "@/locales/id.json";
 
 export const SUPPORTED_LOCALES = ["en", "id"];
-export const DEFAULT_LOCALE = "en";
+// Produk ini dipakai di Indonesia, jadi kunjungan pertama dibuka dalam
+// bahasa Indonesia. Pengunjung yang pernah menukar bahasa tetap mendapat
+// pilihannya, karena pilihan itu disimpan di localStorage dan dibaca di bawah.
+//
+// Ini juga menentukan `fallbackLocale`: kunci yang belum diterjemahkan di
+// berkas bahasa lain akan jatuh ke kalimat Indonesianya, bukan ke Inggris.
+export const DEFAULT_LOCALE = "id";
 
 let savedLocale = null;
 try {

@@ -242,7 +242,7 @@ const strokeDashoffset = computed(() => {
 
         <!-- Description -->
         <p
-          class="keterangan-langkah font-[400] text-[#515E71] text-[12px] md:text-[16px] leading-normal tracking-wide text-center h-10 md:h-16"
+          class="keterangan-langkah font-[400] text-[#515E71] text-[12px] md:text-[16px] leading-normal tracking-wide text-center min-h-10 md:min-h-16"
           v-html="steps[currentIndex].description"
         />
       </div>

@@ -536,7 +536,7 @@ onUnmounted(() => {
               <img
                 :src="playstore"
                 alt="Playstore"
-                class="w-full h-[60px] object-contain object-center"
+                class="w-full h-[30px] sm:h-[60px] object-contain object-center"
                 loading="lazy"
                 decoding="async"
               />
@@ -1271,9 +1271,9 @@ onUnmounted(() => {
           class="lg:absolute z-20 left-0 top-0 w-full h-full flex flex-col lg:flex-row gap-y-5 md:gap-y-10 gap-x-3 p-6 md:p-10 lg:p-0 bg-gradient-to-br from-[#28B1B8] to-[#124F52] lg:bg-none rounded-[20px] lg:rounded-none"
         >
           <div
-            class="w-full h-auto flex flex-col lg:px-7 xl:px-10 lg:pt-10 xl:pt-12 gap-y-6 md:gap-y-8 lg:gap-y-6 xl:gap-y-8"
+            class="w-full h-auto flex flex-col lg:px-7 xl:px-10 lg:pt-10 xl:pt-8 gap-y-6 md:gap-y-8 lg:gap-y-6 xl:gap-y-6"
           >
-            <div class="w-full h-auto flex flex-col gap-y-6 md:gap-y-8 lg:gap-y-6 xl:gap-y-8">
+            <div class="w-full h-auto flex flex-col gap-y-6 md:gap-y-8 lg:gap-y-6 xl:gap-y-4">
               <div class="w-full h-auto flex">
                 <span
                   class="text-[#FFFFFF] max-smallest:text-[16px] text-[18px] sm:text-[28px] md:text-[32px] lg:text-[24px] xl:text-[42px] xls:text-[42px] font-[600] leading-snug"
@@ -1320,6 +1320,43 @@ onUnmounted(() => {
                   </div>
                 </div>
               </div>
+            </div>
+            <div class="w-fit h-auto flex-1">
+              <router-link
+                to="/selica-partner"
+                class="inline-flex justify-center sm:justify-between md:justify-start items-center gap-x-5 sm:gap-x-3 w-full sm:w-auto sm:px-8 lg:px-8 xl:px-10 py-3 md:py-3.5 lg:py-3 xl:py-3 bg-white rounded-[12px] shadow-xl font-[700]"
+              >
+                <span
+                  class="text-[#20868B] whitespace-nowrap text-[14px] md:text-[16px] lg:text-[14px] xl:text-[16px] font-[500]"
+                >
+                  {{ $t("home.learnMoreCta") }}
+                </span>
+                <div class="w-auto h-auto text-[#20868B] flex items-end justify-center">
+                  <svg
+                    class="w-5 h-5 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-5 lg:h-5 xl:w-6 xl:h-6"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M14.43 18.07L20.5 12L14.43 5.92999"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-miterlimit="10"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M3.50002 12L20.33 12"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-miterlimit="10"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+              </router-link>
             </div>
           </div>
           <div class="relative w-full h-auto lg:pt-[110px] xl:pt-[130px] xls:pt-[125px]">

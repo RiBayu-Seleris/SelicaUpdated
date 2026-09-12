@@ -27,6 +27,7 @@
     "phone": "Phone",
     "email": "Email",
     "getTheApp": "Get The App",
+    "scanQr": "Scan to open Selica",
     "rights": "© 2023 Seleris Asia Pacific Technology. All rights reserved"
   },
   "partner": {
@@ -59,7 +60,7 @@
       "0": {
         "nama": "Inactive",
         "ringkas": "Right after signing up",
-        "detail": "You can already run screenings, for yourself or for other people. Recruiting is not open yet."
+        "detail": "You can already conduct screenings, for yourself or for other people. Recruiting is not open yet."
       },
       "1": {
         "nama": "Active",
@@ -108,7 +109,7 @@
         },
         "1": {
           "judul": "15% per screening",
-          "isi": "Applies to screenings you run for yourself and for other people."
+          "isi": "Applies to self-screenings and screenings for other people."
         },
         "2": {
           "judul": "Two-layer network commission",
@@ -133,14 +134,14 @@
       "intro": "There are two sources of commission. Both are calculated from the price of the screening package sold.",
       "colSource": "Source",
       "colRate": "Rate",
-      "rowDirect": "Screening you run, for yourself or others",
+      "rowDirect": "Screening you conduct, for yourself or others",
       "rowLayer1": "Network layer 1, your direct downline",
       "rowLayer2": "Network layer 2, their downline",
       "perTransaction": "per transaction",
       "simHeading": "Estimate your commission",
       "simIntro": "Move the numbers to see how the commission adds up. Every calculation uses the same rates as the table above.",
       "simPackage": "Screening package price",
-      "simOwn": "Screenings you run per month",
+      "simOwn": "Screenings you complete per month",
       "simDownline": "Active downline in your network",
       "simPerDownline": "Average screenings per downline per month",
       "simNeedsDownline": "Add downline first",
@@ -585,6 +586,7 @@
       "komposisi": "Body composition screening",
       "risiko": "Disease risk analysis"
     },
+    "paramUnit": "parameters",
     "params": {
       "0": "Heart rate",
       "1": "Blood oxygen availability (SpO2)",
@@ -727,7 +729,7 @@
         "answer": "You can request a withdrawal directly from the dashboard. Payouts are processed according to the schedule you choose."
       }
     },
-    "faqHeading": "Common questions",
+    "faqHeading": "Frequently Asked Questions",
     "demoCta": "Request a demo",
     "demoTitle": "Book a Demo",
     "dashboardLogin": "Sign in to the dashboard",
@@ -736,6 +738,7 @@
     "downloadButton": "Download",
     "applicationWorkTitle": "How the App Works",
     "registerCta": "Register as an SCA",
+    "learnMoreCta": "Learn more",
     "whatsSelica": {
       "0": {
         "title": "Medical AI technology",
@@ -825,16 +828,16 @@
     "dashboardAlt": "Preview of the Selica Partner dashboard",
     "registerFlow": {
       "0": {
-        "title": "Create an account",
-        "description": "Register through <a href=\"https://sca.seleriscare.ai\" target=\"_blank\">sca.seleriscare.ai</a> and buy a product as part of the sign-up process"
+        "title": "Step 1 — Create an account",
+        "description": "Create your Partner account at <a href=\"https://sca.seleriscare.ai\" target=\"_blank\" rel=\"noopener\">sca.seleriscare.ai</a> or straight from <a href=\"https://selica.app\" target=\"_blank\" rel=\"noopener\">selica.app</a>. Fill in the details and follow the sign-up process through to the end."
       },
       "1": {
-        "title": "Download Selica",
-        "description": "Get the <a href=\"https://sca.seleriscare.ai\" target=\"_blank\">Selica</a> app from the Google Play Store and install it on your device before you start."
+        "title": "Step 2 — Open Selica",
+        "description": "Once your account is ready, open Selica through:<br>the Selica app (download and open it on your device), or<br>the Web App straight from your browser"
       },
       "2": {
-        "title": "Sign in to Selica",
-        "description": "Sign in to the Selica app with your account and start using the services available"
+        "title": "Step 3 — Sign in",
+        "description": "Sign in with the Partner account you registered, and you are ready to start using Selica as a Partner."
       }
     },
     "appWork": {

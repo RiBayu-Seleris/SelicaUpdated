@@ -30,7 +30,7 @@ app.component("apexchart", VueApexCharts);
 
 // ✅ Set title per halaman
 router.beforeEach((to, from, next) => {
-  document.title = "Seleris | " + (to.meta.title || "Seleris");
+  document.title = "Selica | " + (to.meta.title || "Seleris");
   next();
 });
 
