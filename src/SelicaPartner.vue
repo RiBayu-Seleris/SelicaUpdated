@@ -560,7 +560,7 @@ const keBagian = (id) =>
           </div>
         </div>
 
-        <div class="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           <div v-for="(b, i) in manfaatLain" :key="i" v-muncul="i * 70" class="kartu-putih p-6">
             <span class="ubin ubin-kecil">
               <IkonPartner :nama="b.ikon" class="h-[1.05rem] w-[1.05rem]" />

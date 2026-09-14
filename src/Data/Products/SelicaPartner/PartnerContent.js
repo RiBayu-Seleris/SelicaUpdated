@@ -14,7 +14,6 @@ export const benefits = [
   { ikon: "gratis" },
   { ikon: "komisi" },
   { ikon: "jaringan" },
-  { ikon: "panduan" },
   { ikon: "dashboard" },
   { ikon: "fleksibel" },
 ];
